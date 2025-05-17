@@ -1,15 +1,17 @@
 
 import { Button } from '@/components/ui/button';
 import { useLanguage } from './LanguageContext';
+import { Link } from 'react-router-dom';
 
 interface ProgramCardProps {
+  id: string;
   title: string;
   description: string;
   icon: React.ReactNode;
   color?: string;
 }
 
-const ProgramCard = ({ title, description, icon, color = 'bg-white' }: ProgramCardProps) => {
+const ProgramCard = ({ id, title, description, icon, color = 'bg-white' }: ProgramCardProps) => {
   const { t } = useLanguage();
   
   return (
@@ -20,9 +22,11 @@ const ProgramCard = ({ title, description, icon, color = 'bg-white' }: ProgramCa
         </div>
         <h3 className="text-xl font-bold mb-3 text-vjn-blue">{title}</h3>
         <p className="mb-4 text-vjn-dark-gray">{description}</p>
-        <Button variant="outline" className="border-vjn-blue text-vjn-blue hover:bg-vjn-blue hover:text-white">
-          {t('programs.learnMore')}
-        </Button>
+        <Link to={`/programs/${id}`}>
+          <Button variant="outline" className="border-vjn-blue text-vjn-blue hover:bg-vjn-blue hover:text-white">
+            {t('programs.learnMore')}
+          </Button>
+        </Link>
       </div>
     </div>
   );
