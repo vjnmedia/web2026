@@ -30,6 +30,7 @@ const Navbar = () => {
     { label: t('nav.careers'), path: '/careers' },
     { label: t('nav.media'), path: '/media' },
     { label: t('nav.contact'), path: '/contact' },
+    { label: t('dashboard.title'), path: '/dashboard' },
   ];
 
   return (

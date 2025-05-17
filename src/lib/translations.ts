@@ -1,623 +1,615 @@
 
 export type Language = 'en' | 'fr';
 
-export interface Translations {
-  [key: string]: {
-    en: string;
-    fr: string;
-  };
-}
-
-const translations: Translations = {
-  // Navigation
+const translations = {
   'nav.home': {
     en: 'Home',
-    fr: 'Accueil',
+    fr: 'Accueil'
   },
   'nav.about': {
-    en: 'About Us',
-    fr: 'À Propos',
+    en: 'About',
+    fr: 'À Propos'
   },
   'nav.programs': {
     en: 'Programs',
-    fr: 'Programmes',
-  },
-  'nav.services': {
-    en: 'Services',
-    fr: 'Services',
+    fr: 'Programmes'
   },
   'nav.careers': {
     en: 'Careers',
-    fr: 'Carrières',
+    fr: 'Carrières'
   },
   'nav.media': {
     en: 'Media',
-    fr: 'Média',
+    fr: 'Médias'
   },
   'nav.contact': {
     en: 'Contact',
-    fr: 'Contact',
+    fr: 'Contact'
   },
   'nav.donate': {
     en: 'Donate',
-    fr: 'Faire un Don',
+    fr: 'Faire un don'
   },
-  
-  // Hero section
   'hero.title': {
     en: 'Strengthening youth for a better future',
-    fr: 'Renforcer la jeunesse pour un avenir meilleur',
+    fr: 'Renforcement de la jeunesse pour un meilleur avenir'
   },
   'hero.subtitle': {
-    en: 'Vision Jeunesse Nouvelle is dedicated to empowering youth through various programs, fostering peace, promoting economic development, and nurturing leadership among young people.',
-    fr: 'Vision Jeunesse Nouvelle se consacre à l\'autonomisation des jeunes par le biais de divers programmes, en favorisant la paix, en promouvant le développement économique et en cultivant le leadership parmi les jeunes.',
+    en: 'Vision Jeunesse Nouvelle (VJN) is a Rwandan non-governmental organization dedicated to empowering youth',
+    fr: 'Vision Jeunesse Nouvelle (VJN) est une organisation non gouvernementale rwandaise dédiée à l\'autonomisation des jeunes'
   },
-  'hero.cta.join': {
-    en: 'Join Us',
-    fr: 'Rejoignez-nous',
+  'hero.button1': {
+    en: 'Learn More',
+    fr: 'En savoir plus'
   },
-  'hero.cta.donate': {
-    en: 'Donate',
-    fr: 'Faire un don',
+  'hero.button2': {
+    en: 'Support Us',
+    fr: 'Soutenez-nous'
   },
-  'hero.cta.volunteer': {
-    en: 'Volunteer',
-    fr: 'Bénévole',
-  },
-  
-  // About section
-  'about.title': {
-    en: 'About Vision Jeunesse Nouvelle',
-    fr: 'À propos de Vision Jeunesse Nouvelle',
-  },
-  'about.subtitle': {
-    en: 'Established in 2002 by Brother Gabriel Lauzon and Father Epimaque Makuza',
-    fr: 'Fondée en 2002 par Frère Gabriel Lauzon et Père Epimaque Makuza',
-  },
-  'about.history': {
-    en: 'Our History',
-    fr: 'Notre Histoire',
-  },
-  'about.mission': {
-    en: 'Our Mission',
-    fr: 'Notre Mission',
-  },
-  'about.vision': {
-    en: 'Our Vision',
-    fr: 'Notre Vision',
-  },
-  'about.mission.text': {
-    en: 'To empower Rwandan youth by providing them with the skills, knowledge, and opportunities needed to become responsible citizens and leaders in their communities.',
-    fr: 'Autonomiser les jeunes rwandais en leur fournissant les compétences, les connaissances et les opportunités nécessaires pour devenir des citoyens responsables et des leaders dans leurs communautés.',
-  },
-  'about.vision.text': {
-    en: 'A society where all young people are empowered to reach their full potential and contribute positively to their communities and country.',
-    fr: 'Une société où tous les jeunes sont habilités à atteindre leur plein potentiel et à contribuer positivement à leurs communautés et à leur pays.',
-  },
-  'about.history.text': {
-    en: 'Vision Jeunesse Nouvelle (VJN) was established in 2002 by Brother Gabriel Lauzon and Father Epimaque Makuza to respond to the needs of Rwandan youth in the aftermath of the 1994 genocide. What began as a small initiative has grown into a comprehensive organization addressing various aspects of youth development.',
-    fr: 'Vision Jeunesse Nouvelle (VJN) a été créée en 2002 par Frère Gabriel Lauzon et Père Epimaque Makuza pour répondre aux besoins de la jeunesse rwandaise au lendemain du génocide de 1994. Ce qui a commencé comme une petite initiative s\'est transformé en une organisation complète qui aborde divers aspects du développement des jeunes.',
-  },
-  
-  // Programs section
   'programs.title': {
     en: 'Our Programs',
-    fr: 'Nos Programmes',
+    fr: 'Nos Programmes'
   },
   'programs.subtitle': {
-    en: 'Empowering youth through comprehensive development initiatives',
-    fr: 'Autonomiser les jeunes grâce à des initiatives de développement complètes',
+    en: 'Discover how we are transforming lives through our diverse initiatives',
+    fr: 'Découvrez comment nous transformons des vies grâce à nos diverses initiatives'
   },
   'programs.education': {
     en: 'Education',
-    fr: 'Éducation',
+    fr: 'Éducation'
+  },
+  'programs.education.subtitle': {
+    en: 'Building knowledge and skills',
+    fr: 'Développer les connaissances et les compétences'
+  },
+  'programs.education.desc': {
+    en: 'Providing vocational training and literacy programs for youth empowerment.',
+    fr: 'Offrir une formation professionnelle et des programmes d\'alphabétisation pour l\'autonomisation des jeunes.'
   },
   'programs.economic': {
     en: 'Economic Empowerment',
-    fr: 'Autonomisation Économique',
+    fr: 'Autonomisation Économique'
+  },
+  'programs.economic.subtitle': {
+    en: 'Creating financial independence',
+    fr: 'Créer l\'indépendance financière'
+  },
+  'programs.economic.desc': {
+    en: 'Supporting entrepreneurship and financial literacy for sustainable livelihoods.',
+    fr: 'Soutenir l\'entrepreneuriat et l\'éducation financière pour des moyens de subsistance durables.'
   },
   'programs.health': {
     en: 'Health Promotion',
-    fr: 'Promotion de la Santé',
+    fr: 'Promotion de la Santé'
+  },
+  'programs.health.subtitle': {
+    en: 'Fostering well-being',
+    fr: 'Favoriser le bien-être'
+  },
+  'programs.health.desc': {
+    en: 'Advocating for health awareness and access to essential health services.',
+    fr: 'Plaider pour la sensibilisation à la santé et l\'accès aux services de santé essentiels.'
   },
   'programs.peace': {
     en: 'Peace Building',
-    fr: 'Consolidation de la Paix',
+    fr: 'Consolidation de la Paix'
+  },
+  'programs.peace.subtitle': {
+    en: 'Nurturing harmony',
+    fr: 'Favoriser l\'harmonie'
+  },
+  'programs.peace.desc': {
+    en: 'Promoting conflict resolution and community cohesion through dialogue.',
+    fr: 'Promouvoir la résolution des conflits et la cohésion communautaire par le dialogue.'
   },
   'programs.arts': {
     en: 'Sports, Culture & Arts',
-    fr: 'Sports, Culture et Arts',
-  },
-  'programs.education.desc': {
-    en: 'Vocational training, literacy classes, and special education initiatives.',
-    fr: 'Formation professionnelle, cours d\'alphabétisation et initiatives d\'éducation spéciale.',
-  },
-  'programs.economic.desc': {
-    en: 'Entrepreneurship training, support for youth cooperatives, and financial literacy programs.',
-    fr: 'Formation à l\'entrepreneuriat, soutien aux coopératives de jeunes et programmes d\'alphabétisation financière.',
-  },
-  'programs.health.desc': {
-    en: 'Sexual and reproductive health education, HIV/AIDS awareness, and pandemic response initiatives.',
-    fr: 'Éducation à la santé sexuelle et reproductive, sensibilisation au VIH/SIDA et initiatives de réponse aux pandémies.',
-  },
-  'programs.peace.desc': {
-    en: 'Conflict resolution training, peace camps, and interfaith dialogues.',
-    fr: 'Formation à la résolution des conflits, camps de paix et dialogues interreligieux.',
-  },
-  'programs.arts.desc': {
-    en: 'Talent development in sports and arts, cultural events, and artistic expression platforms.',
-    fr: 'Développement des talents dans les sports et les arts, événements culturels et plateformes d\'expression artistique.',
-  },
-  'programs.education.fullDesc': {
-    en: 'Our Education Program focuses on developing practical skills and knowledge that empower young people to secure sustainable livelihoods. We believe that education is the foundation for personal growth and community development.',
-    fr: 'Notre Programme d\'Éducation se concentre sur le développement de compétences pratiques et de connaissances qui permettent aux jeunes d\'assurer des moyens de subsistance durables. Nous croyons que l\'éducation est la base de la croissance personnelle et du développement communautaire.',
-  },
-  'programs.economic.fullDesc': {
-    en: 'The Economic Empowerment Program equips youth with entrepreneurial skills, financial literacy, and resources needed to start and grow successful businesses. We foster economic independence and innovation among young Rwandans.',
-    fr: 'Le Programme d\'Autonomisation Économique dote les jeunes de compétences entrepreneuriales, d\'éducation financière et des ressources nécessaires pour créer et développer des entreprises prospères. Nous favorisons l\'indépendance économique et l\'innovation parmi les jeunes Rwandais.',
-  },
-  'programs.health.fullDesc': {
-    en: 'Our Health Promotion Program addresses critical health issues facing Rwandan youth, providing education, resources, and support for their physical and mental well-being. We focus on preventive care and healthy lifestyle choices.',
-    fr: 'Notre Programme de Promotion de la Santé aborde les problèmes de santé critiques auxquels sont confrontés les jeunes Rwandais, en fournissant éducation, ressources et soutien pour leur bien-être physique et mental. Nous nous concentrons sur les soins préventifs et les choix de vie sains.',
-  },
-  'programs.peace.fullDesc': {
-    en: 'The Peace Building Program works to heal the wounds of the past and create a culture of peace among Rwandan youth. Through dialogue, education, and community activities, we promote understanding, reconciliation, and social cohesion.',
-    fr: 'Le Programme de Consolidation de la Paix travaille à guérir les blessures du passé et à créer une culture de paix parmi les jeunes Rwandais. Par le dialogue, l\'éducation et les activités communautaires, nous promouvons la compréhension, la réconciliation et la cohésion sociale.',
-  },
-  'programs.arts.fullDesc': {
-    en: 'Our Sports, Culture & Arts Program celebrates Rwanda's rich cultural heritage while providing outlets for creative expression and physical activity. We believe that arts and sports are powerful tools for personal development and social change.',
-    fr: 'Notre Programme de Sports, Culture et Arts célèbre le riche patrimoine culturel du Rwanda tout en offrant des débouchés pour l\'expression créative et l\'activité physique. Nous croyons que les arts et les sports sont des outils puissants pour le développement personnel et le changement social.',
-  },
-  'programs.education.subtitle': {
-    en: 'Building knowledge and skills for a brighter future',
-    fr: 'Construire des connaissances et des compétences pour un avenir meilleur',
-  },
-  'programs.economic.subtitle': {
-    en: 'Creating pathways to financial independence',
-    fr: 'Créer des voies vers l\'indépendance financière',
-  },
-  'programs.health.subtitle': {
-    en: 'Promoting wellness and healthy lifestyles',
-    fr: 'Promouvoir le bien-être et les modes de vie sains',
-  },
-  'programs.peace.subtitle': {
-    en: 'Fostering reconciliation and social harmony',
-    fr: 'Favoriser la réconciliation et l\'harmonie sociale',
+    fr: 'Sports, Culture et Arts'
   },
   'programs.arts.subtitle': {
-    en: 'Nurturing creativity and cultural expression',
-    fr: 'Nourrir la créativité et l\'expression culturelle',
+    en: 'Expressing creativity',
+    fr: 'Exprimer la créativité'
   },
-  'programs.education.detail1': {
-    en: 'Vocational training in carpentry, welding, tailoring, and computer skills',
-    fr: 'Formation professionnelle en menuiserie, soudure, couture et informatique',
+  'programs.arts.desc': {
+    en: 'Developing talents through sports, cultural exchange, and artistic expression.',
+    fr: 'Développer les talents à travers le sport, les échanges culturels et l\'expression artistique.'
   },
-  'programs.education.detail2': {
-    en: 'Literacy classes for youth who missed formal education',
-    fr: 'Cours d\'alphabétisation pour les jeunes qui ont manqué l\'éducation formelle',
+  'footer.navigation': {
+    en: 'Navigation',
+    fr: 'Navigation'
   },
-  'programs.education.detail3': {
-    en: 'Special education initiatives for differently-abled youth',
-    fr: 'Initiatives d\'éducation spéciale pour les jeunes handicapés',
+  'footer.programs': {
+    en: 'Programs',
+    fr: 'Programmes'
   },
-  'programs.education.detail4': {
-    en: 'Scholarship programs for secondary and tertiary education',
-    fr: 'Programmes de bourses pour l\'enseignement secondaire et supérieur',
+  'footer.connect': {
+    en: 'Connect With Us',
+    fr: 'Connectez-vous avec nous'
   },
-  'programs.education.detail5': {
-    en: 'Mentorship and career guidance services',
-    fr: 'Services de mentorat et d\'orientation professionnelle',
+  'footer.subscribe': {
+    en: 'Subscribe to our newsletter',
+    fr: 'Abonnez-vous à notre newsletter'
   },
-  'programs.economic.detail1': {
-    en: 'Business plan development and entrepreneurship training',
-    fr: 'Développement de plans d\'affaires et formation à l\'entrepreneuriat',
+  'footer.subscribeButton': {
+    en: 'Subscribe',
+    fr: 'S\'abonner'
   },
-  'programs.economic.detail2': {
-    en: 'Support for youth cooperatives and small business startups',
-    fr: 'Soutien aux coopératives de jeunes et aux startups de petites entreprises',
+  'footer.rights': {
+    en: 'All rights reserved',
+    fr: 'Tous droits réservés'
   },
-  'programs.economic.detail3': {
-    en: 'Financial literacy and savings programs',
-    fr: 'Programmes d\'alphabétisation financière et d\'épargne',
+  'about.title': {
+    en: 'About Vision Jeunesse Nouvelle',
+    fr: 'À Propos de Vision Jeunesse Nouvelle'
   },
-  'programs.economic.detail4': {
-    en: 'Market linkage and product development assistance',
-    fr: 'Assistance en matière de liaison avec le marché et de développement de produits',
+  'about.subtitle': {
+    en: 'Our journey of empowering Rwandan youth',
+    fr: 'Notre parcours pour autonomiser la jeunesse rwandaise'
   },
-  'programs.economic.detail5': {
-    en: 'Microfinance and small grants for youth-led enterprises',
-    fr: 'Microfinance et petites subventions pour les entreprises dirigées par des jeunes',
+  'about.history': {
+    en: 'Our History',
+    fr: 'Notre Histoire'
   },
-  'programs.health.detail1': {
-    en: 'Sexual and reproductive health education',
-    fr: 'Éducation à la santé sexuelle et reproductive',
+  'about.mission': {
+    en: 'Our Mission',
+    fr: 'Notre Mission'
   },
-  'programs.health.detail2': {
-    en: 'HIV/AIDS awareness and prevention programs',
-    fr: 'Programmes de sensibilisation et de prévention du VIH/SIDA',
+  'about.vision': {
+    en: 'Our Vision',
+    fr: 'Notre Vision'
   },
-  'programs.health.detail3': {
-    en: 'Mental health support and trauma counseling',
-    fr: 'Soutien en santé mentale et conseil en traumatologie',
+  'about.values': {
+    en: 'Our Values',
+    fr: 'Nos Valeurs'
   },
-  'programs.health.detail4': {
-    en: 'Nutrition and physical wellness initiatives',
-    fr: 'Initiatives en nutrition et bien-être physique',
-  },
-  'programs.health.detail5': {
-    en: 'Pandemic preparedness and response training',
-    fr: 'Formation à la préparation et à la réponse aux pandémies',
-  },
-  'programs.peace.detail1': {
-    en: 'Conflict resolution and mediation training',
-    fr: 'Formation à la résolution des conflits et à la médiation',
-  },
-  'programs.peace.detail2': {
-    en: 'Peace camps bringing together youth from diverse backgrounds',
-    fr: 'Camps de paix rassemblant des jeunes de milieux divers',
-  },
-  'programs.peace.detail3': {
-    en: 'Interfaith dialogue and cultural exchange programs',
-    fr: 'Programmes de dialogue interreligieux et d\'échange culturel',
-  },
-  'programs.peace.detail4': {
-    en: 'Genocide memory and reconciliation initiatives',
-    fr: 'Initiatives de mémoire et de réconciliation du génocide',
-  },
-  'programs.peace.detail5': {
-    en: 'Community service and social cohesion activities',
-    fr: 'Activités de service communautaire et de cohésion sociale',
-  },
-  'programs.arts.detail1': {
-    en: 'Sports training and competitions in football, basketball, and volleyball',
-    fr: 'Entraînement sportif et compétitions en football, basketball et volleyball',
-  },
-  'programs.arts.detail2': {
-    en: 'Traditional dance and music preservation',
-    fr: 'Préservation de la danse traditionnelle et de la musique',
-  },
-  'programs.arts.detail3': {
-    en: 'Visual arts and crafts workshops',
-    fr: 'Ateliers d\'arts visuels et d\'artisanat',
-  },
-  'programs.arts.detail4': {
-    en: 'Theater and drama for social change',
-    fr: 'Théâtre et drame pour le changement social',
-  },
-  'programs.arts.detail5': {
-    en: 'Cultural festivals and community celebrations',
-    fr: 'Festivals culturels et célébrations communautaires',
-  },
-  'programs.learnMore': {
-    en: 'Learn More',
-    fr: 'En Savoir Plus',
-  },
-  'programs.backToAll': {
-    en: 'Back to All Programs',
-    fr: 'Retour à Tous les Programmes',
-  },
-  'programs.whatWeOffer': {
-    en: 'What We Offer',
-    fr: 'Ce Que Nous Offrons',
-  },
-  'programs.impactStories': {
-    en: 'Impact Stories',
-    fr: 'Histoires d\'Impact',
-  },
-  'programs.impactStoriesText': {
-    en: 'Through our programs, we have witnessed remarkable transformations in the lives of Rwandan youth. From acquiring new skills to starting successful businesses, our participants have demonstrated resilience, innovation, and a commitment to building a better Rwanda.',
-    fr: 'Grâce à nos programmes, nous avons été témoins de transformations remarquables dans la vie des jeunes Rwandais. De l\'acquisition de nouvelles compétences à la création d\'entreprises prospères, nos participants ont démontré résilience, innovation et engagement à construire un Rwanda meilleur.',
-  },
-  'programs.getInvolved': {
-    en: 'Get Involved',
-    fr: 'S\'Impliquer',
-  },
-  'programs.getInvolvedText': {
-    en: 'There are many ways you can support our programs and make a difference in the lives of Rwandan youth. Whether through volunteering, donating, or partnering with us, your contribution helps create a brighter future for young people.',
-    fr: 'Il existe de nombreuses façons de soutenir nos programmes et de faire une différence dans la vie des jeunes Rwandais. Que ce soit par le bénévolat, les dons ou un partenariat avec nous, votre contribution aide à créer un avenir meilleur pour les jeunes.',
-  },
-  'programs.volunteer': {
-    en: 'Volunteer With Us',
-    fr: 'Faire du Bénévolat',
-  },
-  'programs.donate': {
-    en: 'Make a Donation',
-    fr: 'Faire un Don',
-  },
-  'programs.contactUs': {
-    en: 'Contact Us',
-    fr: 'Contactez-Nous',
-  },
-  'programs.relatedPrograms': {
-    en: 'Explore Our Other Programs',
-    fr: 'Explorez Nos Autres Programmes',
-  },
-  'programs.relatedProgramsText': {
-    en: 'At Vision Jeunesse Nouvelle, we offer a range of programs designed to address the diverse needs of Rwandan youth. Discover our other initiatives and how they work together to create lasting change.',
-    fr: 'À Vision Jeunesse Nouvelle, nous proposons une gamme de programmes conçus pour répondre aux divers besoins des jeunes Rwandais. Découvrez nos autres initiatives et comment elles fonctionnent ensemble pour créer un changement durable.',
-  },
-  'programs.viewAllPrograms': {
-    en: 'View All Programs',
-    fr: 'Voir Tous les Programmes',
-  },
-  
-  // Services section
-  'services.title': {
-    en: 'Our Services',
-    fr: 'Nos Services',
-  },
-  'services.subtitle': {
-    en: 'Comprehensive solutions for youth and community development',
-    fr: 'Solutions complètes pour le développement de la jeunesse et de la communauté',
-  },
-  'services.whatWeOffer': {
-    en: 'Services We Provide',
-    fr: 'Services Que Nous Fournissons',
-  },
-  'services.whatWeOfferText': {
-    en: 'Vision Jeunesse Nouvelle offers a range of professional services designed to support youth development, community growth, and organizational capacity building.',
-    fr: 'Vision Jeunesse Nouvelle offre une gamme de services professionnels conçus pour soutenir le développement des jeunes, la croissance communautaire et le renforcement des capacités organisationnelles.',
-  },
-  'services.youthDevelopment': {
-    en: 'Youth Development',
-    fr: 'Développement des Jeunes',
-  },
-  'services.youthDevelopment.desc': {
-    en: 'Comprehensive programs and services designed to help young people develop the skills, knowledge, and attitudes they need to become productive adults.',
-    fr: 'Programmes et services complets conçus pour aider les jeunes à développer les compétences, les connaissances et les attitudes dont ils ont besoin pour devenir des adultes productifs.',
-  },
-  'services.youthDevelopment.offering1.title': {
-    en: 'Leadership Training',
-    fr: 'Formation au Leadership',
-  },
-  'services.youthDevelopment.offering1.desc': {
-    en: 'Workshops and courses to develop strong leadership skills among youth.',
-    fr: 'Ateliers et cours pour développer de solides compétences en leadership parmi les jeunes.',
-  },
-  'services.youthDevelopment.offering2.title': {
-    en: 'Mentorship Programs',
-    fr: 'Programmes de Mentorat',
-  },
-  'services.youthDevelopment.offering2.desc': {
-    en: 'Connecting youth with experienced mentors for guidance and support.',
-    fr: 'Connecter les jeunes avec des mentors expérimentés pour orientation et soutien.',
-  },
-  'services.youthDevelopment.offering3.title': {
-    en: 'Skills Assessment',
-    fr: 'Évaluation des Compétences',
-  },
-  'services.youthDevelopment.offering3.desc': {
-    en: 'Identifying strengths and growth areas to create personalized development plans.',
-    fr: 'Identifier les forces et les domaines de croissance pour créer des plans de développement personnalisés.',
-  },
-  'services.communityPrograms': {
-    en: 'Community Programs',
-    fr: 'Programmes Communautaires',
-  },
-  'services.communityPrograms.desc': {
-    en: 'Initiatives that strengthen communities by promoting collaboration, addressing local challenges, and building capacity for sustainable development.',
-    fr: 'Initiatives qui renforcent les communautés en favorisant la collaboration, en relevant les défis locaux et en renforçant les capacités pour un développement durable.',
-  },
-  'services.communityPrograms.offering1.title': {
-    en: 'Community Assessments',
-    fr: 'Évaluations Communautaires',
-  },
-  'services.communityPrograms.offering1.desc': {
-    en: 'Research and analysis to identify community needs and resources.',
-    fr: 'Recherche et analyse pour identifier les besoins et les ressources de la communauté.',
-  },
-  'services.communityPrograms.offering2.title': {
-    en: 'Group Facilitation',
-    fr: 'Facilitation de Groupe',
-  },
-  'services.communityPrograms.offering2.desc': {
-    en: 'Professional facilitation for community meetings and collaborative projects.',
-    fr: 'Facilitation professionnelle pour les réunions communautaires et les projets collaboratifs.',
-  },
-  'services.communityPrograms.offering3.title': {
-    en: 'Capacity Building',
-    fr: 'Renforcement des Capacités',
-  },
-  'services.communityPrograms.offering3.desc': {
-    en: 'Training local leaders and organizations to address community challenges.',
-    fr: 'Former les leaders locaux et les organisations à relever les défis communautaires.',
-  },
-  'services.educationResources': {
-    en: 'Education Resources',
-    fr: 'Ressources Éducatives',
-  },
-  'services.educationResources.desc': {
-    en: 'Educational materials, training opportunities, and resources designed to support both formal and informal learning environments.',
-    fr: 'Matériel éducatif, opportunités de formation et ressources conçus pour soutenir les environnements d\'apprentissage formels et informels.',
-  },
-  'services.educationResources.offering1.title': {
-    en: 'Curriculum Development',
-    fr: 'Développement de Programmes',
-  },
-  'services.educationResources.offering1.desc': {
-    en: 'Creating tailored educational materials for various learning needs and contexts.',
-    fr: 'Création de matériels éducatifs adaptés à divers besoins et contextes d\'apprentissage.',
-  },
-  'services.educationResources.offering2.title': {
-    en: 'Teacher Training',
-    fr: 'Formation des Enseignants',
-  },
-  'services.educationResources.offering2.desc': {
-    en: 'Workshops to enhance teaching skills and methodologies.',
-    fr: 'Ateliers pour améliorer les compétences et les méthodologies d\'enseignement.',
-  },
-  'services.educationResources.offering3.title': {
-    en: 'Learning Materials',
-    fr: 'Matériels d\'Apprentissage',
-  },
-  'services.educationResources.offering3.desc': {
-    en: 'Access to books, digital resources, and learning tools.',
-    fr: 'Accès aux livres, ressources numériques et outils d\'apprentissage.',
-  },
-  'services.consultation': {
-    en: 'Consultation Services',
-    fr: 'Services de Consultation',
-  },
-  'services.consultation.desc': {
-    en: 'Professional advice and expertise to help organizations develop strategies, evaluate programs, and implement best practices.',
-    fr: 'Conseils professionnels et expertise pour aider les organisations à développer des stratégies, évaluer des programmes et mettre en œuvre les meilleures pratiques.',
-  },
-  'services.consultation.offering1.title': {
-    en: 'Program Evaluation',
-    fr: 'Évaluation de Programmes',
-  },
-  'services.consultation.offering1.desc': {
-    en: 'Assessment of program effectiveness and impact using proven methodologies.',
-    fr: 'Évaluation de l\'efficacité et de l\'impact des programmes à l\'aide de méthodologies éprouvées.',
-  },
-  'services.consultation.offering2.title': {
-    en: 'Strategic Planning',
-    fr: 'Planification Stratégique',
-  },
-  'services.consultation.offering2.desc': {
-    en: 'Guidance in developing clear, actionable organizational strategies.',
-    fr: 'Orientation dans l\'élaboration de stratégies organisationnelles claires et réalisables.',
-  },
-  'services.consultation.offering3.title': {
-    en: 'Grant Writing',
-    fr: 'Rédaction de Subventions',
-  },
-  'services.consultation.offering3.desc': {
-    en: 'Support in developing compelling funding proposals and applications.',
-    fr: 'Soutien dans l\'élaboration de propositions de financement et de demandes convaincantes.',
-  },
-  'services.learnMore': {
-    en: 'Learn More About This Service',
-    fr: 'En Savoir Plus Sur Ce Service',
-  },
-  'services.requestInfo': {
-    en: 'Request Information',
-    fr: 'Demander des Informations',
-  },
-  'services.requestInfoText': {
-    en: 'Interested in learning more about our services? Contact us to discuss how we can support your organization or community initiative.',
-    fr: 'Intéressé à en savoir plus sur nos services? Contactez-nous pour discuter de la façon dont nous pouvons soutenir votre organisation ou votre initiative communautaire.',
-  },
-  'services.faqTitle': {
-    en: 'Frequently Asked Questions',
-    fr: 'Questions Fréquemment Posées',
-  },
-  'services.faqSubtitle': {
-    en: 'Find answers to commonly asked questions about our services and how we work with clients and communities.',
-    fr: 'Trouvez des réponses aux questions fréquemment posées sur nos services et notre façon de travailler avec les clients et les communautés.',
-  },
-  'services.faq1.question': {
-    en: 'How do you determine the fees for your services?',
-    fr: 'Comment déterminez-vous les frais pour vos services?',
-  },
-  'services.faq1.answer': {
-    en: 'Our fees are based on the scope of work, complexity, duration, and resources required. We offer flexible pricing structures including sliding scales for organizations with limited resources. Contact us for a customized quote.',
-    fr: 'Nos frais sont basés sur l\'étendue du travail, la complexité, la durée et les ressources requises. Nous offrons des structures de prix flexibles, y compris des échelles mobiles pour les organisations aux ressources limitées. Contactez-nous pour un devis personnalisé.',
-  },
-  'services.faq2.question': {
-    en: 'Do you work with government agencies and international organizations?',
-    fr: 'Travaillez-vous avec des agences gouvernementales et des organisations internationales?',
-  },
-  'services.faq2.answer': {
-    en: 'Yes, we collaborate with a wide range of partners including government entities, international NGOs, and multinational organizations. We have experience adapting our services to meet the unique requirements of these partnerships.',
-    fr: 'Oui, nous collaborons avec un large éventail de partenaires, y compris des entités gouvernementales, des ONG internationales et des organisations multinationales. Nous avons l\'expérience d\'adapter nos services pour répondre aux exigences uniques de ces partenariats.',
-  },
-  'services.faq3.question': {
-    en: 'Can you customize your services for our specific needs?',
-    fr: 'Pouvez-vous personnaliser vos services pour nos besoins spécifiques?',
-  },
-  'services.faq3.answer': {
-    en: 'Absolutely. We believe in tailoring our approach to address the unique challenges and goals of each client. Our team works closely with you to understand your needs and develop customized solutions.',
-    fr: 'Absolument. Nous croyons en l\'adaptation de notre approche pour répondre aux défis et objectifs uniques de chaque client. Notre équipe travaille en étroite collaboration avec vous pour comprendre vos besoins et développer des solutions personnalisées.',
-  },
-  'services.faq4.question': {
-    en: 'What geographic areas do you serve?',
-    fr: 'Quelles zones géographiques desservez-vous?',
-  },
-  'services.faq4.answer': {
-    en: 'While our primary focus is Rwanda, we also work throughout the Great Lakes region of Africa. For certain services, we can provide remote support to organizations worldwide.',
-    fr: 'Bien que notre objectif principal soit le Rwanda, nous travaillons également dans toute la région des Grands Lacs d\'Afrique. Pour certains services, nous pouvons fournir un soutien à distance aux organisations du monde entier.',
-  },
-  'services.faq5.question': {
-    en: 'How do you measure the success of your services?',
-    fr: 'Comment mesurez-vous le succès de vos services?',
-  },
-  'services.faq5.answer': {
-    en: 'We establish clear metrics and evaluation frameworks at the beginning of each engagement. Throughout the project, we conduct regular assessments and provide detailed reports on progress and outcomes. We value transparency and work collaboratively with clients to ensure expectations are met.',
-    fr: 'Nous établissons des métriques claires et des cadres d\'évaluation au début de chaque engagement. Tout au long du projet, nous effectuons des évaluations régulières et fournissons des rapports détaillés sur les progrès et les résultats. Nous valorisons la transparence et travaillons en collaboration avec les clients pour nous assurer que les attentes sont satisfaites.',
-  },
-  'services.startToday': {
-    en: 'Ready to Get Started?',
-    fr: 'Prêt à Commencer?',
-  },
-  'services.startTodayText': {
-    en: 'Contact our team to discuss how our services can support your organization\'s goals and make a positive impact in your community.',
-    fr: 'Contactez notre équipe pour discuter de la façon dont nos services peuvent soutenir les objectifs de votre organisation et avoir un impact positif dans votre communauté.',
-  },
-  'services.contactUs': {
-    en: 'Contact Our Team',
-    fr: 'Contacter Notre Équipe',
-  },
-  'services.explorePrograms': {
-    en: 'Explore Our Programs',
-    fr: 'Explorer Nos Programmes',
-  },
-  
-  // Contact section
   'contact.title': {
-    en: 'Contact Us',
-    fr: 'Contactez-nous',
+    en: 'Get in Touch',
+    fr: 'Contactez-Nous'
   },
   'contact.subtitle': {
-    en: 'Get in touch with our team',
-    fr: 'Entrez en contact avec notre équipe',
-  },
-  'contact.form.name': {
-    en: 'Your Name',
-    fr: 'Votre Nom',
-  },
-  'contact.form.email': {
-    en: 'Your Email',
-    fr: 'Votre Email',
-  },
-  'contact.form.message': {
-    en: 'Your Message',
-    fr: 'Votre Message',
-  },
-  'contact.form.submit': {
-    en: 'Send Message',
-    fr: 'Envoyer le Message',
+    en: 'We\'d love to hear from you',
+    fr: 'Nous aimerions avoir de vos nouvelles'
   },
   'contact.address': {
     en: 'Address',
-    fr: 'Adresse',
+    fr: 'Adresse'
   },
   'contact.phone': {
     en: 'Phone',
-    fr: 'Téléphone',
+    fr: 'Téléphone'
   },
   'contact.email': {
     en: 'Email',
-    fr: 'Email',
+    fr: 'Email'
   },
-  'contact.address.value': {
-    en: 'Kimironko, Kigali, Rwanda',
-    fr: 'Kimironko, Kigali, Rwanda',
+  'contact.name': {
+    en: 'Name',
+    fr: 'Nom'
   },
-  
-  // Footer
-  'footer.rights': {
-    en: 'All Rights Reserved',
-    fr: 'Tous Droits Réservés',
+  'contact.message': {
+    en: 'Message',
+    fr: 'Message'
   },
-  'footer.privacy': {
-    en: 'Privacy Policy',
-    fr: 'Politique de Confidentialité',
+  'contact.send': {
+    en: 'Send Message',
+    fr: 'Envoyer le Message'
   },
-  'footer.terms': {
-    en: 'Terms of Service',
-    fr: 'Conditions d\'Utilisation',
+  'programs.education.fullDesc': {
+    en: 'Our Education Program focuses on providing quality education and skills development for youth. Through vocational training, literacy classes, and special education initiatives, we empower young people with the knowledge and abilities they need to succeed in life.',
+    fr: 'Notre programme d\'éducation se concentre sur la fourniture d\'une éducation de qualité et le développement des compétences pour les jeunes. Grâce à une formation professionnelle, des cours d\'alphabétisation et des initiatives d\'éducation spéciale, nous donnons aux jeunes les connaissances et les capacités dont ils ont besoin pour réussir dans la vie.'
   },
+  'programs.economic.fullDesc': {
+    en: 'The Economic Empowerment Program aims to create financial independence among the youth through entrepreneurship training, support for youth cooperatives, and financial literacy programs. We believe that economic self-sufficiency is crucial for long-term development and stability.',
+    fr: 'Le Programme d\'autonomisation économique vise à créer une indépendance financière chez les jeunes grâce à une formation à l\'entrepreneuriat, au soutien aux coopératives de jeunes et aux programmes d\'éducation financière. Nous croyons que l\'autosuffisance économique est cruciale pour le développement et la stabilité à long terme.'
+  },
+  'programs.health.fullDesc': {
+    en: 'Our Health Promotion Program is dedicated to improving the well-being of youth through sexual and reproductive health education, HIV/AIDS awareness, and pandemic response initiatives. We work to ensure that young people have access to the information and services they need to lead healthy lives.',
+    fr: 'Notre programme de promotion de la santé est dédié à l\'amélioration du bien-être des jeunes grâce à l\'éducation à la santé sexuelle et reproductive, à la sensibilisation au VIH/SIDA et aux initiatives de réponse aux pandémies. Nous travaillons pour garantir que les jeunes aient accès aux informations et aux services dont ils ont besoin pour mener une vie saine.'
+  },
+  'programs.peace.fullDesc': {
+    en: 'The Peace Building Program focuses on promoting harmony and understanding through conflict resolution training, peace camps, and interfaith dialogues. We believe that fostering a culture of peace is essential for the sustainable development of communities and nations.',
+    fr: 'Le programme de consolidation de la paix se concentre sur la promotion de l\'harmonie et de la compréhension grâce à une formation à la résolution des conflits, des camps de paix et des dialogues interconfessionnels. Nous croyons que favoriser une culture de paix est essentiel pour le développement durable des communautés et des nations.'
+  },
+  'programs.arts.fullDesc': {
+    en: 'Our Sports, Culture, and Arts Program nurtures creative expression and physical development through talent development in sports and arts, cultural events, and artistic expression platforms. We believe that these activities play a crucial role in personal growth and community building.',
+    fr: 'Notre programme de sports, de culture et d\'arts favorise l\'expression créative et le développement physique grâce au développement des talents dans les sports et les arts, aux événements culturels et aux plateformes d\'expression artistique. Nous croyons que ces activités jouent un rôle crucial dans la croissance personnelle et la construction communautaire.'
+  },
+  'programs.education.detail1': {
+    en: 'Vocational training programs for out-of-school youth',
+    fr: 'Programmes de formation professionnelle pour les jeunes déscolarisés'
+  },
+  'programs.education.detail2': {
+    en: 'Literacy classes for improved reading and writing skills',
+    fr: 'Cours d\'alphabétisation pour améliorer les compétences en lecture et en écriture'
+  },
+  'programs.education.detail3': {
+    en: 'Special education initiatives for disadvantaged groups',
+    fr: 'Initiatives d\'éducation spéciale pour les groupes défavorisés'
+  },
+  'programs.education.detail4': {
+    en: 'Computer literacy and digital skills development',
+    fr: 'Alphabétisation informatique et développement des compétences numériques'
+  },
+  'programs.education.detail5': {
+    en: 'Mentorship programs connecting youth with professionals',
+    fr: 'Programmes de mentorat connectant les jeunes avec des professionnels'
+  },
+  'programs.economic.detail1': {
+    en: 'Entrepreneurship training for young business aspirants',
+    fr: 'Formation à l\'entrepreneuriat pour les jeunes aspirants entrepreneurs'
+  },
+  'programs.economic.detail2': {
+    en: 'Support for youth cooperatives and small businesses',
+    fr: 'Soutien aux coopératives de jeunes et aux petites entreprises'
+  },
+  'programs.economic.detail3': {
+    en: 'Financial literacy education for sustainable management',
+    fr: 'Éducation à la littératie financière pour une gestion durable'
+  },
+  'programs.economic.detail4': {
+    en: 'Market linkages and business networking opportunities',
+    fr: 'Liens avec le marché et opportunités de réseautage d\'affaires'
+  },
+  'programs.economic.detail5': {
+    en: 'Micro-grant programs for startup initiatives',
+    fr: 'Programmes de micro-subventions pour les initiatives de démarrage'
+  },
+  'programs.health.detail1': {
+    en: 'Sexual and reproductive health education workshops',
+    fr: 'Ateliers d\'éducation à la santé sexuelle et reproductive'
+  },
+  'programs.health.detail2': {
+    en: 'HIV/AIDS awareness campaigns and testing services',
+    fr: 'Campagnes de sensibilisation au VIH/SIDA et services de dépistage'
+  },
+  'programs.health.detail3': {
+    en: 'Mental health support and counseling',
+    fr: 'Soutien en santé mentale et conseils'
+  },
+  'programs.health.detail4': {
+    en: 'Substance abuse prevention programs',
+    fr: 'Programmes de prévention de l\'abus de substances'
+  },
+  'programs.health.detail5': {
+    en: 'Community health outreach initiatives',
+    fr: 'Initiatives de sensibilisation à la santé communautaire'
+  },
+  'programs.peace.detail1': {
+    en: 'Conflict resolution training for community leaders',
+    fr: 'Formation à la résolution des conflits pour les leaders communautaires'
+  },
+  'programs.peace.detail2': {
+    en: 'Peace camps bringing together youth from different backgrounds',
+    fr: 'Camps de paix réunissant des jeunes de différents milieux'
+  },
+  'programs.peace.detail3': {
+    en: 'Interfaith dialogue sessions promoting religious tolerance',
+    fr: 'Sessions de dialogue interconfessionnel promouvant la tolérance religieuse'
+  },
+  'programs.peace.detail4': {
+    en: 'Community reconciliation projects',
+    fr: 'Projets de réconciliation communautaire'
+  },
+  'programs.peace.detail5': {
+    en: 'Advocacy for peaceful conflict resolution',
+    fr: 'Plaidoyer pour une résolution pacifique des conflits'
+  },
+  'programs.arts.detail1': {
+    en: 'Sports teams for football, basketball, and volleyball',
+    fr: 'Équipes sportives pour le football, le basketball et le volleyball'
+  },
+  'programs.arts.detail2': {
+    en: 'Music and dance training programs',
+    fr: 'Programmes de formation en musique et en danse'
+  },
+  'programs.arts.detail3': {
+    en: 'Visual arts workshops and exhibitions',
+    fr: 'Ateliers d\'arts visuels et expositions'
+  },
+  'programs.arts.detail4': {
+    en: 'Cultural exchange events celebrating diversity',
+    fr: 'Événements d\'échange culturel célébrant la diversité'
+  },
+  'programs.arts.detail5': {
+    en: 'Talent shows and competitions for youth expression',
+    fr: 'Spectacles de talents et compétitions pour l\'expression des jeunes'
+  },
+  'services.title': {
+    en: 'Our Services',
+    fr: 'Nos Services'
+  },
+  'services.subtitle': {
+    en: 'Comprehensive support for youth development',
+    fr: 'Soutien complet pour le développement des jeunes'
+  },
+  'dashboard.title': {
+    en: 'Data Management System',
+    fr: 'Système de Gestion des Données'
+  },
+  'dashboard.projects': {
+    en: 'Projects',
+    fr: 'Projets'
+  },
+  'dashboard.youth': {
+    en: 'Youth Talents',
+    fr: 'Talents des Jeunes'
+  },
+  'dashboard.teams': {
+    en: 'Teams',
+    fr: 'Équipes'
+  },
+  'dashboard.blog': {
+    en: 'Blog & News',
+    fr: 'Blog et Actualités'
+  },
+  'dashboard.social': {
+    en: 'Social Media',
+    fr: 'Réseaux Sociaux'
+  },
+  'dashboard.events': {
+    en: 'Events',
+    fr: 'Événements'
+  },
+  'dashboard.locations': {
+    en: 'Locations',
+    fr: 'Emplacements'
+  },
+  'dashboard.projectsManagement': {
+    en: 'Projects Management',
+    fr: 'Gestion des Projets'
+  },
+  'dashboard.addProject': {
+    en: 'Add Project',
+    fr: 'Ajouter un Projet'
+  },
+  'dashboard.searchProjects': {
+    en: 'Search projects...',
+    fr: 'Rechercher des projets...'
+  },
+  'dashboard.projectName': {
+    en: 'Project Name',
+    fr: 'Nom du Projet'
+  },
+  'dashboard.status': {
+    en: 'Status',
+    fr: 'Statut'
+  },
+  'dashboard.startDate': {
+    en: 'Start Date',
+    fr: 'Date de Début'
+  },
+  'dashboard.endDate': {
+    en: 'End Date',
+    fr: 'Date de Fin'
+  },
+  'dashboard.actions': {
+    en: 'Actions',
+    fr: 'Actions'
+  },
+  'dashboard.noProjects': {
+    en: 'No projects found',
+    fr: 'Aucun projet trouvé'
+  },
+  'dashboard.youthTalentsManagement': {
+    en: 'Youth Talents Management',
+    fr: 'Gestion des Talents des Jeunes'
+  },
+  'dashboard.addYouth': {
+    en: 'Add Youth',
+    fr: 'Ajouter un Jeune'
+  },
+  'dashboard.searchYouth': {
+    en: 'Search youth talents...',
+    fr: 'Rechercher des talents de jeunes...'
+  },
+  'dashboard.name': {
+    en: 'Name',
+    fr: 'Nom'
+  },
+  'dashboard.age': {
+    en: 'Age',
+    fr: 'Âge'
+  },
+  'dashboard.talent': {
+    en: 'Talent',
+    fr: 'Talent'
+  },
+  'dashboard.program': {
+    en: 'Program',
+    fr: 'Programme'
+  },
+  'dashboard.joinedDate': {
+    en: 'Joined Date',
+    fr: 'Date d\'Adhésion'
+  },
+  'dashboard.noYouth': {
+    en: 'No youth talents found',
+    fr: 'Aucun talent de jeunes trouvé'
+  },
+  'dashboard.teamsManagement': {
+    en: 'Teams Management',
+    fr: 'Gestion des Équipes'
+  },
+  'dashboard.addTeam': {
+    en: 'Add Team',
+    fr: 'Ajouter une Équipe'
+  },
+  'dashboard.searchTeams': {
+    en: 'Search teams...',
+    fr: 'Rechercher des équipes...'
+  },
+  'dashboard.teamName': {
+    en: 'Team Name',
+    fr: 'Nom de l\'Équipe'
+  },
+  'dashboard.sport': {
+    en: 'Sport',
+    fr: 'Sport'
+  },
+  'dashboard.members': {
+    en: 'Members',
+    fr: 'Membres'
+  },
+  'dashboard.coach': {
+    en: 'Coach',
+    fr: 'Entraîneur'
+  },
+  'dashboard.founded': {
+    en: 'Founded',
+    fr: 'Fondée'
+  },
+  'dashboard.noTeams': {
+    en: 'No teams found',
+    fr: 'Aucune équipe trouvée'
+  },
+  'dashboard.blogManagement': {
+    en: 'Blog & News Management',
+    fr: 'Gestion du Blog et des Actualités'
+  },
+  'dashboard.addPost': {
+    en: 'Add Post',
+    fr: 'Ajouter un Article'
+  },
+  'dashboard.searchPosts': {
+    en: 'Search posts...',
+    fr: 'Rechercher des articles...'
+  },
+  'dashboard.title': {
+    en: 'Title',
+    fr: 'Titre'
+  },
+  'dashboard.category': {
+    en: 'Category',
+    fr: 'Catégorie'
+  },
+  'dashboard.author': {
+    en: 'Author',
+    fr: 'Auteur'
+  },
+  'dashboard.date': {
+    en: 'Date',
+    fr: 'Date'
+  },
+  'dashboard.noPosts': {
+    en: 'No posts found',
+    fr: 'Aucun article trouvé'
+  },
+  'dashboard.socialMediaManagement': {
+    en: 'Social Media Management',
+    fr: 'Gestion des Réseaux Sociaux'
+  },
+  'dashboard.addSocialPost': {
+    en: 'Add Post',
+    fr: 'Ajouter une Publication'
+  },
+  'dashboard.searchSocialPosts': {
+    en: 'Search social media posts...',
+    fr: 'Rechercher des publications sur les réseaux sociaux...'
+  },
+  'dashboard.platform': {
+    en: 'Platform',
+    fr: 'Plateforme'
+  },
+  'dashboard.content': {
+    en: 'Content',
+    fr: 'Contenu'
+  },
+  'dashboard.scheduledDate': {
+    en: 'Scheduled Date',
+    fr: 'Date Programmée'
+  },
+  'dashboard.noSocialPosts': {
+    en: 'No social media posts found',
+    fr: 'Aucune publication sur les réseaux sociaux trouvée'
+  },
+  'dashboard.allPlatforms': {
+    en: 'All Platforms',
+    fr: 'Toutes les Plateformes'
+  },
+  'dashboard.eventsManagement': {
+    en: 'Events Management',
+    fr: 'Gestion des Événements'
+  },
+  'dashboard.addEvent': {
+    en: 'Add Event',
+    fr: 'Ajouter un Événement'
+  },
+  'dashboard.searchEvents': {
+    en: 'Search events...',
+    fr: 'Rechercher des événements...'
+  },
+  'dashboard.eventName': {
+    en: 'Event Name',
+    fr: 'Nom de l\'Événement'
+  },
+  'dashboard.location': {
+    en: 'Location',
+    fr: 'Lieu'
+  },
+  'dashboard.attendees': {
+    en: 'Attendees',
+    fr: 'Participants'
+  },
+  'dashboard.noEvents': {
+    en: 'No events found',
+    fr: 'Aucun événement trouvé'
+  },
+  'dashboard.upcomingEvents': {
+    en: 'Upcoming Events',
+    fr: 'Événements à Venir'
+  },
+  'dashboard.expectedAttendees': {
+    en: 'Expected Attendees',
+    fr: 'Participants Attendus'
+  },
+  'dashboard.viewDetails': {
+    en: 'View Details',
+    fr: 'Voir les Détails'
+  },
+  'dashboard.locationsManagement': {
+    en: 'Locations Management',
+    fr: 'Gestion des Emplacements'
+  },
+  'dashboard.addLocation': {
+    en: 'Add Location',
+    fr: 'Ajouter un Emplacement'
+  },
+  'dashboard.searchLocations': {
+    en: 'Search locations...',
+    fr: 'Rechercher des emplacements...'
+  },
+  'dashboard.locationName': {
+    en: 'Location Name',
+    fr: 'Nom de l\'Emplacement'
+  },
+  'dashboard.address': {
+    en: 'Address',
+    fr: 'Adresse'
+  },
+  'dashboard.type': {
+    en: 'Type',
+    fr: 'Type'
+  },
+  'dashboard.services': {
+    en: 'Services',
+    fr: 'Services'
+  },
+  'dashboard.noLocations': {
+    en: 'No locations found',
+    fr: 'Aucun emplacement trouvé'
+  },
+  'dashboard.locationMap': {
+    en: 'Location Map',
+    fr: 'Carte des Emplacements'
+  },
+  'dashboard.mapPlaceholder': {
+    en: 'Interactive Map Coming Soon',
+    fr: 'Carte Interactive Bientôt Disponible'
+  },
+  'dashboard.mapIntegration': {
+    en: 'Map integration will display all service locations',
+    fr: 'L\'intégration de la carte affichera tous les emplacements de service'
+  }
 };
 
 export default translations;

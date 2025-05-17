@@ -18,6 +18,7 @@ import Economic from "./pages/programs/Economic";
 import Health from "./pages/programs/Health";
 import Peace from "./pages/programs/Peace";
 import Arts from "./pages/programs/Arts";
+import Dashboard from "./pages/Dashboard";
 
 const queryClient = new QueryClient();
 
@@ -42,6 +43,7 @@ const App = () => (
                 <Route path="/programs/arts" element={<Arts />} />
                 <Route path="/services" element={<Services />} />
                 <Route path="/contact" element={<Contact />} />
+                <Route path="/dashboard" element={<Dashboard />} />
                 {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
                 <Route path="*" element={<NotFound />} />
               </Routes>
