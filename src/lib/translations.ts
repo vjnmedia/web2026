@@ -1,3 +1,5 @@
+export type Language = 'en' | 'fr';
+
 const translations = {
   'hero.title': {
     en: 'Empowering Rwandan Youth, Building a Brighter Future',
@@ -267,10 +269,6 @@ const translations = {
     en: 'Search Posts',
     fr: 'Rechercher des Articles'
   },
-  'dashboard.title': {
-    en: 'Title',
-    fr: 'Titre'
-  },
   'dashboard.category': {
     en: 'Category',
     fr: 'Catégorie'
@@ -279,17 +277,9 @@ const translations = {
     en: 'Author',
     fr: 'Auteur'
   },
-   'dashboard.date': {
+  'dashboard.date': {
     en: 'Date',
     fr: 'Date'
-  },
-  'dashboard.status': {
-    en: 'Status',
-    fr: 'Statut'
-  },
-  'dashboard.actions': {
-    en: 'Actions',
-    fr: 'Actions'
   },
   'dashboard.noPosts': {
     en: 'No blog posts found',
@@ -343,10 +333,6 @@ const translations = {
     en: 'Event Name',
     fr: 'Nom de l\'Événement'
   },
-  'dashboard.date': {
-    en: 'Date',
-    fr: 'Date'
-  },
   'dashboard.location': {
     en: 'Location',
     fr: 'Lieu'
@@ -354,10 +340,6 @@ const translations = {
   'dashboard.attendees': {
     en: 'Attendees',
     fr: 'Participants'
-  },
-  'dashboard.status': {
-    en: 'Status',
-    fr: 'Statut'
   },
   'dashboard.noEvents': {
     en: 'No events found',
@@ -419,7 +401,6 @@ const translations = {
     en: 'We are working on integrating map functionality to display locations.',
     fr: 'Nous travaillons à l\'intégration de la fonctionnalité de carte pour afficher les lieux.'
   },
-  // Add new translations
   'dashboard.addProjectDescription': {
     en: 'Create a new project by filling out the form below.',
     fr: 'Créez un nouveau projet en remplissant le formulaire ci-dessous.'
