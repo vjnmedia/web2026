@@ -1,334 +1,123 @@
-
-export type Language = 'en' | 'fr';
-
 const translations = {
-  'nav.home': {
-    en: 'Home',
-    fr: 'Accueil'
-  },
-  'nav.about': {
-    en: 'About',
-    fr: 'À Propos'
-  },
-  'nav.programs': {
-    en: 'Programs',
-    fr: 'Programmes'
-  },
-  'nav.careers': {
-    en: 'Careers',
-    fr: 'Carrières'
-  },
-  'nav.media': {
-    en: 'Media',
-    fr: 'Médias'
-  },
-  'nav.contact': {
-    en: 'Contact',
-    fr: 'Contact'
-  },
-  'nav.donate': {
-    en: 'Donate',
-    fr: 'Faire un don'
-  },
   'hero.title': {
-    en: 'Strengthening youth for a better future',
-    fr: 'Renforcement de la jeunesse pour un meilleur avenir'
+    en: 'Empowering Rwandan Youth, Building a Brighter Future',
+    fr: 'Autonomiser la jeunesse rwandaise, construire un avenir meilleur',
   },
   'hero.subtitle': {
-    en: 'Vision Jeunesse Nouvelle (VJN) is a Rwandan non-governmental organization dedicated to empowering youth',
-    fr: 'Vision Jeunesse Nouvelle (VJN) est une organisation non gouvernementale rwandaise dédiée à l\'autonomisation des jeunes'
+    en: 'Join us in creating opportunities for education, economic empowerment, and peace.',
+    fr: 'Rejoignez-nous pour créer des opportunités d\'éducation, d\'autonomisation économique et de paix.',
   },
-  'hero.button1': {
-    en: 'Learn More',
-    fr: 'En savoir plus'
+  'hero.cta.join': {
+    en: 'Join Us',
+    fr: 'Rejoignez-nous',
   },
-  'hero.button2': {
-    en: 'Support Us',
-    fr: 'Soutenez-nous'
+  'hero.cta.donate': {
+    en: 'Donate',
+    fr: 'Faire un don',
   },
   'programs.title': {
     en: 'Our Programs',
-    fr: 'Nos Programmes'
+    fr: 'Nos programmes',
   },
   'programs.subtitle': {
-    en: 'Discover how we are transforming lives through our diverse initiatives',
-    fr: 'Découvrez comment nous transformons des vies grâce à nos diverses initiatives'
+    en: 'We focus on key areas to drive sustainable change and improve the lives of Rwandan youth.',
+    fr: 'Nous nous concentrons sur des domaines clés pour impulser un changement durable et améliorer la vie des jeunes Rwandais.',
   },
   'programs.education': {
     en: 'Education',
-    fr: 'Éducation'
-  },
-  'programs.education.subtitle': {
-    en: 'Building knowledge and skills',
-    fr: 'Développer les connaissances et les compétences'
+    fr: 'Éducation',
   },
   'programs.education.desc': {
-    en: 'Providing vocational training and literacy programs for youth empowerment.',
-    fr: 'Offrir une formation professionnelle et des programmes d\'alphabétisation pour l\'autonomisation des jeunes.'
+    en: 'Providing access to quality education and vocational training.',
+    fr: 'Fournir un accès à une éducation de qualité et à une formation professionnelle.',
   },
   'programs.economic': {
     en: 'Economic Empowerment',
-    fr: 'Autonomisation Économique'
-  },
-  'programs.economic.subtitle': {
-    en: 'Creating financial independence',
-    fr: 'Créer l\'indépendance financière'
+    fr: 'Autonomisation économique',
   },
   'programs.economic.desc': {
-    en: 'Supporting entrepreneurship and financial literacy for sustainable livelihoods.',
-    fr: 'Soutenir l\'entrepreneuriat et l\'éducation financière pour des moyens de subsistance durables.'
+    en: 'Supporting entrepreneurship and creating economic opportunities for youth.',
+    fr: 'Soutenir l\'entrepreneuriat et créer des opportunités économiques pour les jeunes.',
   },
   'programs.health': {
-    en: 'Health Promotion',
-    fr: 'Promotion de la Santé'
-  },
-  'programs.health.subtitle': {
-    en: 'Fostering well-being',
-    fr: 'Favoriser le bien-être'
+    en: 'Health & Well-being',
+    fr: 'Santé et bien-être',
   },
   'programs.health.desc': {
-    en: 'Advocating for health awareness and access to essential health services.',
-    fr: 'Plaider pour la sensibilisation à la santé et l\'accès aux services de santé essentiels.'
+    en: 'Promoting health awareness and providing access to healthcare services.',
+    fr: 'Promouvoir la sensibilisation à la santé et fournir un accès aux services de santé.',
   },
   'programs.peace': {
     en: 'Peace Building',
-    fr: 'Consolidation de la Paix'
-  },
-  'programs.peace.subtitle': {
-    en: 'Nurturing harmony',
-    fr: 'Favoriser l\'harmonie'
+    fr: 'Consolidation de la paix',
   },
   'programs.peace.desc': {
-    en: 'Promoting conflict resolution and community cohesion through dialogue.',
-    fr: 'Promouvoir la résolution des conflits et la cohésion communautaire par le dialogue.'
+    en: 'Fostering peace and reconciliation through dialogue and community initiatives.',
+    fr: 'Promouvoir la paix et la réconciliation par le dialogue et les initiatives communautaires.',
   },
   'programs.arts': {
-    en: 'Sports, Culture & Arts',
-    fr: 'Sports, Culture et Arts'
-  },
-  'programs.arts.subtitle': {
-    en: 'Expressing creativity',
-    fr: 'Exprimer la créativité'
+    en: 'Arts & Culture',
+    fr: 'Arts et culture',
   },
   'programs.arts.desc': {
-    en: 'Developing talents through sports, cultural exchange, and artistic expression.',
-    fr: 'Développer les talents à travers le sport, les échanges culturels et l\'expression artistique.'
-  },
-  'footer.navigation': {
-    en: 'Navigation',
-    fr: 'Navigation'
-  },
-  'footer.programs': {
-    en: 'Programs',
-    fr: 'Programmes'
-  },
-  'footer.connect': {
-    en: 'Connect With Us',
-    fr: 'Connectez-vous avec nous'
-  },
-  'footer.subscribe': {
-    en: 'Subscribe to our newsletter',
-    fr: 'Abonnez-vous à notre newsletter'
-  },
-  'footer.subscribeButton': {
-    en: 'Subscribe',
-    fr: 'S\'abonner'
-  },
-  'footer.rights': {
-    en: 'All rights reserved',
-    fr: 'Tous droits réservés'
+    en: 'Celebrating Rwandan culture and providing platforms for artistic expression.',
+    fr: 'Célébrer la culture rwandaise et offrir des plateformes d\'expression artistique.',
   },
   'about.title': {
-    en: 'About Vision Jeunesse Nouvelle',
-    fr: 'À Propos de Vision Jeunesse Nouvelle'
+    en: 'About VJN Rwanda',
+    fr: 'À propos de VJN Rwanda',
   },
   'about.subtitle': {
-    en: 'Our journey of empowering Rwandan youth',
-    fr: 'Notre parcours pour autonomiser la jeunesse rwandaise'
+    en: 'Vision Jeunesse Nouvelle (VJN) is a youth-led organization dedicated to empowering Rwandan youth through sustainable programs.',
+    fr: 'Vision Jeunesse Nouvelle (VJN) est une organisation dirigée par des jeunes et dédiée à l\'autonomisation de la jeunesse rwandaise par le biais de programmes durables.',
   },
   'about.history': {
     en: 'Our History',
-    fr: 'Notre Histoire'
+    fr: 'Notre histoire',
+  },
+  'about.history.text': {
+    en: 'Founded in 2010, VJN Rwanda has been at the forefront of youth development, impacting thousands of lives across the country.',
+    fr: 'Fondée en 2010, VJN Rwanda est à l\'avant-garde du développement de la jeunesse, ayant un impact sur des milliers de vies à travers le pays.',
   },
   'about.mission': {
     en: 'Our Mission',
-    fr: 'Notre Mission'
-  },
-  'about.vision': {
-    en: 'Our Vision',
-    fr: 'Notre Vision'
-  },
-  'about.values': {
-    en: 'Our Values',
-    fr: 'Nos Valeurs'
-  },
-  'about.history.text': {
-    en: 'Founded in 2002, Vision Jeunesse Nouvelle has been at the forefront of youth empowerment in Rwanda. Through numerous programs and initiatives, we have touched the lives of thousands of young people.',
-    fr: 'Fondée en 2002, Vision Jeunesse Nouvelle est à l\'avant-garde de l\'autonomisation des jeunes au Rwanda. Grâce à de nombreux programmes et initiatives, nous avons touché la vie de milliers de jeunes.'
+    fr: 'Notre mission',
   },
   'contact.title': {
-    en: 'Get in Touch',
-    fr: 'Contactez-Nous'
+    en: 'Get In Touch',
+    fr: 'Contactez-nous',
   },
   'contact.subtitle': {
-    en: 'We\'d love to hear from you',
-    fr: 'Nous aimerions avoir de vos nouvelles'
+    en: 'Have questions or want to get involved? Reach out to us today!',
+    fr: 'Vous avez des questions ou souhaitez vous impliquer ? Contactez-nous dès aujourd\'hui !',
   },
-  'contact.address': {
-    en: 'Address',
-    fr: 'Adresse'
+  'contact.form.name': {
+    en: 'Your Name',
+    fr: 'Votre nom',
   },
-  'contact.phone': {
-    en: 'Phone',
-    fr: 'Téléphone'
+  'contact.form.email': {
+    en: 'Your Email',
+    fr: 'Votre email',
   },
-  'contact.email': {
-    en: 'Email',
-    fr: 'Email'
-  },
-  'contact.name': {
-    en: 'Name',
-    fr: 'Nom'
-  },
-  'contact.message': {
+  'contact.form.message': {
     en: 'Message',
-    fr: 'Message'
+    fr: 'Message',
   },
-  'contact.send': {
+  'contact.form.submit': {
     en: 'Send Message',
-    fr: 'Envoyer le Message'
+    fr: 'Envoyer le message',
   },
-  'programs.education.fullDesc': {
-    en: 'Our Education Program focuses on providing quality education and skills development for youth. Through vocational training, literacy classes, and special education initiatives, we empower young people with the knowledge and abilities they need to succeed in life.',
-    fr: 'Notre programme d\'éducation se concentre sur la fourniture d\'une éducation de qualité et le développement des compétences pour les jeunes. Grâce à une formation professionnelle, des cours d\'alphabétisation et des initiatives d\'éducation spéciale, nous donnons aux jeunes les connaissances et les capacités dont ils ont besoin pour réussir dans la vie.'
-  },
-  'programs.economic.fullDesc': {
-    en: 'The Economic Empowerment Program aims to create financial independence among the youth through entrepreneurship training, support for youth cooperatives, and financial literacy programs. We believe that economic self-sufficiency is crucial for long-term development and stability.',
-    fr: 'Le Programme d\'autonomisation économique vise à créer une indépendance financière chez les jeunes grâce à une formation à l\'entrepreneuriat, au soutien aux coopératives de jeunes et aux programmes d\'éducation financière. Nous croyons que l\'autosuffisance économique est cruciale pour le développement et la stabilité à long terme.'
-  },
-  'programs.health.fullDesc': {
-    en: 'Our Health Promotion Program is dedicated to improving the well-being of youth through sexual and reproductive health education, HIV/AIDS awareness, and pandemic response initiatives. We work to ensure that young people have access to the information and services they need to lead healthy lives.',
-    fr: 'Notre programme de promotion de la santé est dédié à l\'amélioration du bien-être des jeunes grâce à l\'éducation à la santé sexuelle et reproductive, à la sensibilisation au VIH/SIDA et aux initiatives de réponse aux pandémies. Nous travaillons pour garantir que les jeunes aient accès aux informations et aux services dont ils ont besoin pour mener une vie saine.'
-  },
-  'programs.peace.fullDesc': {
-    en: 'The Peace Building Program focuses on promoting harmony and understanding through conflict resolution training, peace camps, and interfaith dialogues. We believe that fostering a culture of peace is essential for the sustainable development of communities and nations.',
-    fr: 'Le programme de consolidation de la paix se concentre sur la promotion de l\'harmonie et de la compréhension grâce à une formation à la résolution des conflits, des camps de paix et des dialogues interconfessionnels. Nous croyons que favoriser une culture de paix est essentiel pour le développement durable des communautés et des nations.'
-  },
-  'programs.arts.fullDesc': {
-    en: 'Our Sports, Culture, and Arts Program nurtures creative expression and physical development through talent development in sports and arts, cultural events, and artistic expression platforms. We believe that these activities play a crucial role in personal growth and community building.',
-    fr: 'Notre programme de sports, de culture et d\'arts favorise l\'expression créative et le développement physique grâce au développement des talents dans les sports et les arts, aux événements culturels et aux plateformes d\'expression artistique. Nous croyons que ces activités jouent un rôle crucial dans la croissance personnelle et la construction communautaire.'
-  },
-  'programs.education.detail1': {
-    en: 'Vocational training programs for out-of-school youth',
-    fr: 'Programmes de formation professionnelle pour les jeunes déscolarisés'
-  },
-  'programs.education.detail2': {
-    en: 'Literacy classes for improved reading and writing skills',
-    fr: 'Cours d\'alphabétisation pour améliorer les compétences en lecture et en écriture'
-  },
-  'programs.education.detail3': {
-    en: 'Special education initiatives for disadvantaged groups',
-    fr: 'Initiatives d\'éducation spéciale pour les groupes défavorisés'
-  },
-  'programs.education.detail4': {
-    en: 'Computer literacy and digital skills development',
-    fr: 'Alphabétisation informatique et développement des compétences numériques'
-  },
-  'programs.education.detail5': {
-    en: 'Mentorship programs connecting youth with professionals',
-    fr: 'Programmes de mentorat connectant les jeunes avec des professionnels'
-  },
-  'programs.economic.detail1': {
-    en: 'Entrepreneurship training for young business aspirants',
-    fr: 'Formation à l\'entrepreneuriat pour les jeunes aspirants entrepreneurs'
-  },
-  'programs.economic.detail2': {
-    en: 'Support for youth cooperatives and small businesses',
-    fr: 'Soutien aux coopératives de jeunes et aux petites entreprises'
-  },
-  'programs.economic.detail3': {
-    en: 'Financial literacy education for sustainable management',
-    fr: 'Éducation à la littératie financière pour une gestion durable'
-  },
-  'programs.economic.detail4': {
-    en: 'Market linkages and business networking opportunities',
-    fr: 'Liens avec le marché et opportunités de réseautage d\'affaires'
-  },
-  'programs.economic.detail5': {
-    en: 'Micro-grant programs for startup initiatives',
-    fr: 'Programmes de micro-subventions pour les initiatives de démarrage'
-  },
-  'programs.health.detail1': {
-    en: 'Sexual and reproductive health education workshops',
-    fr: 'Ateliers d\'éducation à la santé sexuelle et reproductive'
-  },
-  'programs.health.detail2': {
-    en: 'HIV/AIDS awareness campaigns and testing services',
-    fr: 'Campagnes de sensibilisation au VIH/SIDA et services de dépistage'
-  },
-  'programs.health.detail3': {
-    en: 'Mental health support and counseling',
-    fr: 'Soutien en santé mentale et conseils'
-  },
-  'programs.health.detail4': {
-    en: 'Substance abuse prevention programs',
-    fr: 'Programmes de prévention de l\'abus de substances'
-  },
-  'programs.health.detail5': {
-    en: 'Community health outreach initiatives',
-    fr: 'Initiatives de sensibilisation à la santé communautaire'
-  },
-  'programs.peace.detail1': {
-    en: 'Conflict resolution training for community leaders',
-    fr: 'Formation à la résolution des conflits pour les leaders communautaires'
-  },
-  'programs.peace.detail2': {
-    en: 'Peace camps bringing together youth from different backgrounds',
-    fr: 'Camps de paix réunissant des jeunes de différents milieux'
-  },
-  'programs.peace.detail3': {
-    en: 'Interfaith dialogue sessions promoting religious tolerance',
-    fr: 'Sessions de dialogue interconfessionnel promouvant la tolérance religieuse'
-  },
-  'programs.peace.detail4': {
-    en: 'Community reconciliation projects',
-    fr: 'Projets de réconciliation communautaire'
-  },
-  'programs.peace.detail5': {
-    en: 'Advocacy for peaceful conflict resolution',
-    fr: 'Plaidoyer pour une résolution pacifique des conflits'
-  },
-  'programs.arts.detail1': {
-    en: 'Sports teams for football, basketball, and volleyball',
-    fr: 'Équipes sportives pour le football, le basketball et le volleyball'
-  },
-  'programs.arts.detail2': {
-    en: 'Music and dance training programs',
-    fr: 'Programmes de formation en musique et en danse'
-  },
-  'programs.arts.detail3': {
-    en: 'Visual arts workshops and exhibitions',
-    fr: 'Ateliers d\'arts visuels et expositions'
-  },
-  'programs.arts.detail4': {
-    en: 'Cultural exchange events celebrating diversity',
-    fr: 'Événements d\'échange culturel célébrant la diversité'
-  },
-  'programs.arts.detail5': {
-    en: 'Talent shows and competitions for youth expression',
-    fr: 'Spectacles de talents et compétitions pour l\'expression des jeunes'
-  },
-  'services.title': {
-    en: 'Our Services',
-    fr: 'Nos Services'
-  },
-  'services.subtitle': {
-    en: 'Comprehensive support for youth development',
-    fr: 'Soutien complet pour le développement des jeunes'
+  'footer.copyright': {
+    en: '© 2023 VJN Rwanda. All rights reserved.',
+    fr: '© 2023 VJN Rwanda. Tous droits réservés.',
   },
   'dashboard.title': {
     en: 'Data Management System',
     fr: 'Système de Gestion des Données'
+  },
+  'dashboard.tableTitle': {
+    en: 'Title',
+    fr: 'Titre'
   },
   'dashboard.projects': {
     en: 'Projects',
@@ -336,19 +125,19 @@ const translations = {
   },
   'dashboard.youth': {
     en: 'Youth Talents',
-    fr: 'Talents des Jeunes'
+    fr: 'Jeunes Talents'
   },
   'dashboard.teams': {
     en: 'Teams',
     fr: 'Équipes'
   },
   'dashboard.blog': {
-    en: 'Blog & News',
-    fr: 'Blog et Actualités'
+    en: 'Blog',
+    fr: 'Blog'
   },
   'dashboard.social': {
     en: 'Social Media',
-    fr: 'Réseaux Sociaux'
+    fr: 'Médias Sociaux'
   },
   'dashboard.events': {
     en: 'Events',
@@ -356,7 +145,7 @@ const translations = {
   },
   'dashboard.locations': {
     en: 'Locations',
-    fr: 'Emplacements'
+    fr: 'Lieux'
   },
   'dashboard.projectsManagement': {
     en: 'Projects Management',
@@ -367,8 +156,8 @@ const translations = {
     fr: 'Ajouter un Projet'
   },
   'dashboard.searchProjects': {
-    en: 'Search projects...',
-    fr: 'Rechercher des projets...'
+    en: 'Search Projects',
+    fr: 'Rechercher des Projets'
   },
   'dashboard.projectName': {
     en: 'Project Name',
@@ -396,15 +185,15 @@ const translations = {
   },
   'dashboard.youthTalentsManagement': {
     en: 'Youth Talents Management',
-    fr: 'Gestion des Talents des Jeunes'
+    fr: 'Gestion des Jeunes Talents'
   },
   'dashboard.addYouth': {
     en: 'Add Youth',
     fr: 'Ajouter un Jeune'
   },
   'dashboard.searchYouth': {
-    en: 'Search youth talents...',
-    fr: 'Rechercher des talents de jeunes...'
+    en: 'Search Youth',
+    fr: 'Rechercher des Jeunes'
   },
   'dashboard.name': {
     en: 'Name',
@@ -428,7 +217,7 @@ const translations = {
   },
   'dashboard.noYouth': {
     en: 'No youth talents found',
-    fr: 'Aucun talent de jeunes trouvé'
+    fr: 'Aucun jeune talent trouvé'
   },
   'dashboard.teamsManagement': {
     en: 'Teams Management',
@@ -439,8 +228,8 @@ const translations = {
     fr: 'Ajouter une Équipe'
   },
   'dashboard.searchTeams': {
-    en: 'Search teams...',
-    fr: 'Rechercher des équipes...'
+    en: 'Search Teams',
+    fr: 'Rechercher des Équipes'
   },
   'dashboard.teamName': {
     en: 'Team Name',
@@ -467,22 +256,18 @@ const translations = {
     fr: 'Aucune équipe trouvée'
   },
   'dashboard.blogManagement': {
-    en: 'Blog & News Management',
-    fr: 'Gestion du Blog et des Actualités'
+    en: 'Blog Management',
+    fr: 'Gestion du Blog'
   },
   'dashboard.addPost': {
     en: 'Add Post',
     fr: 'Ajouter un Article'
   },
   'dashboard.searchPosts': {
-    en: 'Search posts...',
-    fr: 'Rechercher des articles...'
+    en: 'Search Posts',
+    fr: 'Rechercher des Articles'
   },
   'dashboard.title': {
-    en: 'Data Management System',
-    fr: 'Système de Gestion des Données'
-  },
-  'dashboard.postTitle': {
     en: 'Title',
     fr: 'Titre'
   },
@@ -494,25 +279,33 @@ const translations = {
     en: 'Author',
     fr: 'Auteur'
   },
-  'dashboard.date': {
+   'dashboard.date': {
     en: 'Date',
     fr: 'Date'
   },
+  'dashboard.status': {
+    en: 'Status',
+    fr: 'Statut'
+  },
+  'dashboard.actions': {
+    en: 'Actions',
+    fr: 'Actions'
+  },
   'dashboard.noPosts': {
-    en: 'No posts found',
-    fr: 'Aucun article trouvé'
+    en: 'No blog posts found',
+    fr: 'Aucun article de blog trouvé'
   },
   'dashboard.socialMediaManagement': {
     en: 'Social Media Management',
-    fr: 'Gestion des Réseaux Sociaux'
+    fr: 'Gestion des Médias Sociaux'
   },
   'dashboard.addSocialPost': {
-    en: 'Add Post',
+    en: 'Add Social Post',
     fr: 'Ajouter une Publication'
   },
   'dashboard.searchSocialPosts': {
-    en: 'Search social media posts...',
-    fr: 'Rechercher des publications sur les réseaux sociaux...'
+    en: 'Search Social Posts',
+    fr: 'Rechercher des Publications'
   },
   'dashboard.platform': {
     en: 'Platform',
@@ -524,15 +317,15 @@ const translations = {
   },
   'dashboard.scheduledDate': {
     en: 'Scheduled Date',
-    fr: 'Date Programmée'
-  },
-  'dashboard.noSocialPosts': {
-    en: 'No social media posts found',
-    fr: 'Aucune publication sur les réseaux sociaux trouvée'
+    fr: 'Date Planifiée'
   },
   'dashboard.allPlatforms': {
     en: 'All Platforms',
     fr: 'Toutes les Plateformes'
+  },
+  'dashboard.noSocialPosts': {
+    en: 'No social media posts found',
+    fr: 'Aucune publication sur les médias sociaux trouvée'
   },
   'dashboard.eventsManagement': {
     en: 'Events Management',
@@ -543,12 +336,16 @@ const translations = {
     fr: 'Ajouter un Événement'
   },
   'dashboard.searchEvents': {
-    en: 'Search events...',
-    fr: 'Rechercher des événements...'
+    en: 'Search Events',
+    fr: 'Rechercher des Événements'
   },
   'dashboard.eventName': {
     en: 'Event Name',
     fr: 'Nom de l\'Événement'
+  },
+  'dashboard.date': {
+    en: 'Date',
+    fr: 'Date'
   },
   'dashboard.location': {
     en: 'Location',
@@ -557,6 +354,10 @@ const translations = {
   'dashboard.attendees': {
     en: 'Attendees',
     fr: 'Participants'
+  },
+  'dashboard.status': {
+    en: 'Status',
+    fr: 'Statut'
   },
   'dashboard.noEvents': {
     en: 'No events found',
@@ -576,19 +377,19 @@ const translations = {
   },
   'dashboard.locationsManagement': {
     en: 'Locations Management',
-    fr: 'Gestion des Emplacements'
+    fr: 'Gestion des Lieux'
   },
   'dashboard.addLocation': {
     en: 'Add Location',
-    fr: 'Ajouter un Emplacement'
+    fr: 'Ajouter un Lieu'
   },
   'dashboard.searchLocations': {
-    en: 'Search locations...',
-    fr: 'Rechercher des emplacements...'
+    en: 'Search Locations',
+    fr: 'Rechercher des Lieux'
   },
   'dashboard.locationName': {
     en: 'Location Name',
-    fr: 'Nom de l\'Emplacement'
+    fr: 'Nom du Lieu'
   },
   'dashboard.address': {
     en: 'Address',
@@ -604,36 +405,141 @@ const translations = {
   },
   'dashboard.noLocations': {
     en: 'No locations found',
-    fr: 'Aucun emplacement trouvé'
+    fr: 'Aucun lieu trouvé'
   },
   'dashboard.locationMap': {
     en: 'Location Map',
-    fr: 'Carte des Emplacements'
+    fr: 'Carte des Lieux'
   },
   'dashboard.mapPlaceholder': {
-    en: 'Interactive Map Coming Soon',
-    fr: 'Carte Interactive Bientôt Disponible'
+    en: 'Map integration coming soon!',
+    fr: 'Intégration de la carte bientôt disponible !'
   },
   'dashboard.mapIntegration': {
-    en: 'Map integration will display all service locations',
-    fr: 'L\'intégration de la carte affichera tous les emplacements de service'
+    en: 'We are working on integrating map functionality to display locations.',
+    fr: 'Nous travaillons à l\'intégration de la fonctionnalité de carte pour afficher les lieux.'
   },
-  'programs.learnMore': {
-    en: 'Learn More',
-    fr: 'En savoir plus'
+  // Add new translations
+  'dashboard.addProjectDescription': {
+    en: 'Create a new project by filling out the form below.',
+    fr: 'Créez un nouveau projet en remplissant le formulaire ci-dessous.'
   },
-  'hero.cta.join': {
-    en: 'Join Us',
-    fr: 'Rejoignez-nous'
+  'dashboard.allFieldsRequired': {
+    en: 'All fields are required',
+    fr: 'Tous les champs sont obligatoires'
   },
-  'hero.cta.donate': {
-    en: 'Donate',
-    fr: 'Faire un don'
+  'dashboard.close': {
+    en: 'Close',
+    fr: 'Fermer'
   },
-  'hero.cta.volunteer': {
-    en: 'Volunteer',
-    fr: 'Devenir bénévole'
+  'dashboard.cancel': {
+    en: 'Cancel',
+    fr: 'Annuler'
+  },
+  'dashboard.save': {
+    en: 'Save',
+    fr: 'Enregistrer'
+  },
+  'dashboard.delete': {
+    en: 'Delete',
+    fr: 'Supprimer'
+  },
+  'dashboard.confirmDelete': {
+    en: 'Confirm Deletion',
+    fr: 'Confirmer la Suppression'
+  },
+  'dashboard.deleteProjectConfirmation': {
+    en: 'Are you sure you want to delete this project? This action cannot be undone.',
+    fr: 'Êtes-vous sûr de vouloir supprimer ce projet ? Cette action ne peut pas être annulée.'
+  },
+  'dashboard.projectAdded': {
+    en: 'Project added successfully',
+    fr: 'Projet ajouté avec succès'
+  },
+  'dashboard.projectUpdated': {
+    en: 'Project updated successfully',
+    fr: 'Projet mis à jour avec succès'
+  },
+  'dashboard.projectDeleted': {
+    en: 'Project deleted successfully',
+    fr: 'Projet supprimé avec succès'
+  },
+  'dashboard.editProject': {
+    en: 'Edit Project',
+    fr: 'Modifier le Projet'
+  },
+  'dashboard.selectStatus': {
+    en: 'Select status',
+    fr: 'Sélectionner le statut'
+  },
+  'dashboard.addYouthDescription': {
+    en: 'Add a new youth talent by filling out the form below.',
+    fr: 'Ajoutez un nouveau talent jeunesse en remplissant le formulaire ci-dessous.'
+  },
+  'dashboard.viewYouthDetails': {
+    en: 'Youth Talent Details',
+    fr: 'Détails du Talent Jeunesse'
+  },
+  'dashboard.editYouth': {
+    en: 'Edit Youth Talent',
+    fr: 'Modifier le Talent Jeunesse'
+  },
+  'dashboard.deleteYouthConfirmation': {
+    en: 'Are you sure you want to delete this youth talent? This action cannot be undone.',
+    fr: 'Êtes-vous sûr de vouloir supprimer ce talent jeunesse ? Cette action ne peut pas être annulée.'
+  },
+  'dashboard.youthAdded': {
+    en: 'Youth talent added successfully',
+    fr: 'Talent jeunesse ajouté avec succès'
+  },
+  'dashboard.youthUpdated': {
+    en: 'Youth talent updated successfully',
+    fr: 'Talent jeunesse mis à jour avec succès'
+  },
+  'dashboard.youthDeleted': {
+    en: 'Youth talent deleted successfully',
+    fr: 'Talent jeunesse supprimé avec succès'
+  },
+  'dashboard.selectProgram': {
+    en: 'Select program',
+    fr: 'Sélectionner le programme'
+  },
+  'dashboard.addTeamDescription': {
+    en: 'Create a new sports team by filling out the form below.',
+    fr: 'Créez une nouvelle équipe sportive en remplissant le formulaire ci-dessous.'
+  },
+  'dashboard.teamMembers': {
+    en: 'Team Members',
+    fr: 'Membres de l\'Équipe'
+  },
+  'dashboard.position': {
+    en: 'Position',
+    fr: 'Poste'
+  },
+  'dashboard.editTeam': {
+    en: 'Edit Team',
+    fr: 'Modifier l\'Équipe'
+  },
+  'dashboard.deleteTeamConfirmation': {
+    en: 'Are you sure you want to delete this team? This action cannot be undone.',
+    fr: 'Êtes-vous sûr de vouloir supprimer cette équipe ? Cette action ne peut pas être annulée.'
+  },
+  'dashboard.teamAdded': {
+    en: 'Team added successfully',
+    fr: 'Équipe ajoutée avec succès'
+  },
+  'dashboard.teamUpdated': {
+    en: 'Team updated successfully',
+    fr: 'Équipe mise à jour avec succès'
+  },
+  'dashboard.teamDeleted': {
+    en: 'Team deleted successfully',
+    fr: 'Équipe supprimée avec succès'
+  },
+  'dashboard.noMembersFound': {
+    en: 'No team members found',
+    fr: 'Aucun membre d\'équipe trouvé'
   }
-};
+}
 
 export default translations;

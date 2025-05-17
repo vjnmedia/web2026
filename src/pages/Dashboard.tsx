@@ -18,6 +18,7 @@ import {
   Calendar, 
   MapPin 
 } from 'lucide-react';
+import { Toaster } from 'sonner';
 
 const Dashboard = () => {
   const { t } = useLanguage();
@@ -97,6 +98,8 @@ const Dashboard = () => {
           <LocationsManagement />
         </TabsContent>
       </Tabs>
+      
+      <Toaster position="top-right" />
     </div>
   );
 };

@@ -5,6 +5,19 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import { Plus, Pencil, Trash2, Users } from 'lucide-react';
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter, DialogDescription } from '@/components/ui/dialog';
+import { Label } from '@/components/ui/label';
+import { toast } from 'sonner';
+
+// Team type definition
+interface Team {
+  id: number;
+  name: string;
+  sport: string;
+  members: number;
+  coach: string;
+  founded: string;
+}
 
 // Mock data for sports teams
 const mockTeams = [
@@ -14,10 +27,39 @@ const mockTeams = [
   { id: 4, name: "VJN Runners", sport: "Athletics", members: 18, coach: "Marie Gahima", founded: "2016" },
 ];
 
+// Mock team members for demonstration
+const mockTeamMembers = {
+  1: [
+    { id: 1, name: "Jean Claude", position: "Forward", age: 19 },
+    { id: 2, name: "Pierre Nkusi", position: "Midfielder", age: 20 },
+    { id: 3, name: "Samuel Gatete", position: "Goalkeeper", age: 21 },
+    // Add more mock members
+  ],
+  2: [
+    { id: 1, name: "Marie Uwase", position: "Point Guard", age: 18 },
+    { id: 2, name: "Joseph Habimana", position: "Center", age: 22 },
+    // Add more mock members
+  ],
+  // Add members for other teams
+};
+
 const TeamsManagement = () => {
   const { t } = useLanguage();
-  const [teams, setTeams] = useState(mockTeams);
+  const [teams, setTeams] = useState<Team[]>(mockTeams);
   const [searchTerm, setSearchTerm] = useState('');
+  const [isAddDialogOpen, setIsAddDialogOpen] = useState(false);
+  const [isEditDialogOpen, setIsEditDialogOpen] = useState(false);
+  const [isDeleteDialogOpen, setIsDeleteDialogOpen] = useState(false);
+  const [isViewMembersDialogOpen, setIsViewMembersDialogOpen] = useState(false);
+  const [currentTeam, setCurrentTeam] = useState<Team | null>(null);
+  const [currentTeamMembers, setCurrentTeamMembers] = useState<any[]>([]);
+  const [newTeam, setNewTeam] = useState<Omit<Team, 'id'>>({
+    name: '',
+    sport: '',
+    members: 0,
+    coach: '',
+    founded: ''
+  });
 
   const filteredTeams = teams.filter(team => 
     team.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -26,20 +68,74 @@ const TeamsManagement = () => {
   );
 
   const handleAddTeam = () => {
-    console.log("Add new team");
+    setNewTeam({
+      name: '',
+      sport: '',
+      members: 0,
+      coach: '',
+      founded: ''
+    });
+    setIsAddDialogOpen(true);
   };
 
   const handleViewMembers = (id: number) => {
-    console.log("View members of team with id:", id);
+    const team = teams.find(team => team.id === id);
+    if (team) {
+      setCurrentTeam(team);
+      // In a real app, this would fetch members from an API
+      setCurrentTeamMembers(mockTeamMembers[id as keyof typeof mockTeamMembers] || []);
+      setIsViewMembersDialogOpen(true);
+    }
   };
 
   const handleEditTeam = (id: number) => {
-    console.log("Edit team with id:", id);
+    const teamToEdit = teams.find(team => team.id === id);
+    if (teamToEdit) {
+      setCurrentTeam(teamToEdit);
+      setIsEditDialogOpen(true);
+    }
   };
 
   const handleDeleteTeam = (id: number) => {
-    console.log("Delete team with id:", id);
-    setTeams(teams.filter(team => team.id !== id));
+    const teamToDelete = teams.find(team => team.id === id);
+    if (teamToDelete) {
+      setCurrentTeam(teamToDelete);
+      setIsDeleteDialogOpen(true);
+    }
+  };
+
+  const saveNewTeam = () => {
+    if (!newTeam.name || !newTeam.sport || !newTeam.coach) {
+      toast.error(t('dashboard.allFieldsRequired'));
+      return;
+    }
+
+    const newId = Math.max(...teams.map(t => t.id), 0) + 1;
+    const teamToAdd = { id: newId, ...newTeam };
+    
+    setTeams([...teams, teamToAdd]);
+    setIsAddDialogOpen(false);
+    toast.success(t('dashboard.teamAdded'));
+  };
+
+  const saveEditedTeam = () => {
+    if (!currentTeam) return;
+    
+    const updatedTeams = teams.map(team =>
+      team.id === currentTeam.id ? currentTeam : team
+    );
+    
+    setTeams(updatedTeams);
+    setIsEditDialogOpen(false);
+    toast.success(t('dashboard.teamUpdated'));
+  };
+
+  const confirmDeleteTeam = () => {
+    if (!currentTeam) return;
+    
+    setTeams(teams.filter(team => team.id !== currentTeam.id));
+    setIsDeleteDialogOpen(false);
+    toast.success(t('dashboard.teamDeleted'));
   };
 
   return (
@@ -105,6 +201,233 @@ const TeamsManagement = () => {
           </TableBody>
         </Table>
       </div>
+      
+      {/* Add Team Dialog */}
+      <Dialog open={isAddDialogOpen} onOpenChange={setIsAddDialogOpen}>
+        <DialogContent className="sm:max-w-[425px]">
+          <DialogHeader>
+            <DialogTitle>{t('dashboard.addTeam')}</DialogTitle>
+            <DialogDescription>
+              {t('dashboard.addTeamDescription')}
+            </DialogDescription>
+          </DialogHeader>
+          <div className="grid gap-4 py-4">
+            <div className="grid grid-cols-4 items-center gap-4">
+              <Label htmlFor="name" className="text-right">
+                {t('dashboard.teamName')}
+              </Label>
+              <Input
+                id="name"
+                value={newTeam.name}
+                onChange={(e) => setNewTeam({...newTeam, name: e.target.value})}
+                className="col-span-3"
+              />
+            </div>
+            <div className="grid grid-cols-4 items-center gap-4">
+              <Label htmlFor="sport" className="text-right">
+                {t('dashboard.sport')}
+              </Label>
+              <Input
+                id="sport"
+                value={newTeam.sport}
+                onChange={(e) => setNewTeam({...newTeam, sport: e.target.value})}
+                className="col-span-3"
+              />
+            </div>
+            <div className="grid grid-cols-4 items-center gap-4">
+              <Label htmlFor="members" className="text-right">
+                {t('dashboard.members')}
+              </Label>
+              <Input
+                id="members"
+                type="number"
+                min="1"
+                value={newTeam.members}
+                onChange={(e) => setNewTeam({...newTeam, members: parseInt(e.target.value)})}
+                className="col-span-3"
+              />
+            </div>
+            <div className="grid grid-cols-4 items-center gap-4">
+              <Label htmlFor="coach" className="text-right">
+                {t('dashboard.coach')}
+              </Label>
+              <Input
+                id="coach"
+                value={newTeam.coach}
+                onChange={(e) => setNewTeam({...newTeam, coach: e.target.value})}
+                className="col-span-3"
+              />
+            </div>
+            <div className="grid grid-cols-4 items-center gap-4">
+              <Label htmlFor="founded" className="text-right">
+                {t('dashboard.founded')}
+              </Label>
+              <Input
+                id="founded"
+                type="text"
+                placeholder="YYYY"
+                value={newTeam.founded}
+                onChange={(e) => setNewTeam({...newTeam, founded: e.target.value})}
+                className="col-span-3"
+              />
+            </div>
+          </div>
+          <DialogFooter>
+            <Button variant="outline" onClick={() => setIsAddDialogOpen(false)}>
+              {t('dashboard.cancel')}
+            </Button>
+            <Button onClick={saveNewTeam} className="bg-vjn-blue hover:bg-vjn-light-blue">
+              {t('dashboard.save')}
+            </Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
+
+      {/* Edit Team Dialog */}
+      <Dialog open={isEditDialogOpen} onOpenChange={setIsEditDialogOpen}>
+        <DialogContent className="sm:max-w-[425px]">
+          <DialogHeader>
+            <DialogTitle>{t('dashboard.editTeam')}</DialogTitle>
+          </DialogHeader>
+          {currentTeam && (
+            <div className="grid gap-4 py-4">
+              <div className="grid grid-cols-4 items-center gap-4">
+                <Label htmlFor="edit-name" className="text-right">
+                  {t('dashboard.teamName')}
+                </Label>
+                <Input
+                  id="edit-name"
+                  value={currentTeam.name}
+                  onChange={(e) => setCurrentTeam({...currentTeam, name: e.target.value})}
+                  className="col-span-3"
+                />
+              </div>
+              <div className="grid grid-cols-4 items-center gap-4">
+                <Label htmlFor="edit-sport" className="text-right">
+                  {t('dashboard.sport')}
+                </Label>
+                <Input
+                  id="edit-sport"
+                  value={currentTeam.sport}
+                  onChange={(e) => setCurrentTeam({...currentTeam, sport: e.target.value})}
+                  className="col-span-3"
+                />
+              </div>
+              <div className="grid grid-cols-4 items-center gap-4">
+                <Label htmlFor="edit-members" className="text-right">
+                  {t('dashboard.members')}
+                </Label>
+                <Input
+                  id="edit-members"
+                  type="number"
+                  min="1"
+                  value={currentTeam.members}
+                  onChange={(e) => setCurrentTeam({...currentTeam, members: parseInt(e.target.value)})}
+                  className="col-span-3"
+                />
+              </div>
+              <div className="grid grid-cols-4 items-center gap-4">
+                <Label htmlFor="edit-coach" className="text-right">
+                  {t('dashboard.coach')}
+                </Label>
+                <Input
+                  id="edit-coach"
+                  value={currentTeam.coach}
+                  onChange={(e) => setCurrentTeam({...currentTeam, coach: e.target.value})}
+                  className="col-span-3"
+                />
+              </div>
+              <div className="grid grid-cols-4 items-center gap-4">
+                <Label htmlFor="edit-founded" className="text-right">
+                  {t('dashboard.founded')}
+                </Label>
+                <Input
+                  id="edit-founded"
+                  value={currentTeam.founded}
+                  onChange={(e) => setCurrentTeam({...currentTeam, founded: e.target.value})}
+                  className="col-span-3"
+                />
+              </div>
+            </div>
+          )}
+          <DialogFooter>
+            <Button variant="outline" onClick={() => setIsEditDialogOpen(false)}>
+              {t('dashboard.cancel')}
+            </Button>
+            <Button onClick={saveEditedTeam} className="bg-vjn-blue hover:bg-vjn-light-blue">
+              {t('dashboard.save')}
+            </Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
+
+      {/* View Team Members Dialog */}
+      <Dialog open={isViewMembersDialogOpen} onOpenChange={setIsViewMembersDialogOpen}>
+        <DialogContent className="sm:max-w-[600px]">
+          <DialogHeader>
+            <DialogTitle>
+              {currentTeam ? `${currentTeam.name} ${t('dashboard.members')}` : t('dashboard.teamMembers')}
+            </DialogTitle>
+            <DialogDescription>
+              {currentTeam && `${t('dashboard.sport')}: ${currentTeam.sport}`}
+            </DialogDescription>
+          </DialogHeader>
+          <div className="py-4">
+            {currentTeamMembers.length > 0 ? (
+              <Table>
+                <TableHeader>
+                  <TableRow>
+                    <TableHead>{t('dashboard.name')}</TableHead>
+                    <TableHead>{t('dashboard.position')}</TableHead>
+                    <TableHead>{t('dashboard.age')}</TableHead>
+                  </TableRow>
+                </TableHeader>
+                <TableBody>
+                  {currentTeamMembers.map((member) => (
+                    <TableRow key={member.id}>
+                      <TableCell>{member.name}</TableCell>
+                      <TableCell>{member.position}</TableCell>
+                      <TableCell>{member.age}</TableCell>
+                    </TableRow>
+                  ))}
+                </TableBody>
+              </Table>
+            ) : (
+              <p className="text-center py-4">{t('dashboard.noMembersFound')}</p>
+            )}
+          </div>
+          <DialogFooter>
+            <Button onClick={() => setIsViewMembersDialogOpen(false)}>
+              {t('dashboard.close')}
+            </Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
+
+      {/* Delete Confirmation Dialog */}
+      <Dialog open={isDeleteDialogOpen} onOpenChange={setIsDeleteDialogOpen}>
+        <DialogContent className="sm:max-w-[425px]">
+          <DialogHeader>
+            <DialogTitle>{t('dashboard.confirmDelete')}</DialogTitle>
+            <DialogDescription>
+              {t('dashboard.deleteTeamConfirmation')}
+            </DialogDescription>
+          </DialogHeader>
+          {currentTeam && (
+            <div className="py-4">
+              <p className="text-center font-medium">{currentTeam.name}</p>
+            </div>
+          )}
+          <DialogFooter>
+            <Button variant="outline" onClick={() => setIsDeleteDialogOpen(false)}>
+              {t('dashboard.cancel')}
+            </Button>
+            <Button variant="destructive" onClick={confirmDeleteTeam}>
+              {t('dashboard.delete')}
+            </Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 };
