@@ -162,6 +162,10 @@ const translations = {
     en: 'Our Values',
     fr: 'Nos Valeurs'
   },
+  'about.history.text': {
+    en: 'Founded in 2002, Vision Jeunesse Nouvelle has been at the forefront of youth empowerment in Rwanda. Through numerous programs and initiatives, we have touched the lives of thousands of young people.',
+    fr: 'Fondée en 2002, Vision Jeunesse Nouvelle est à l\'avant-garde de l\'autonomisation des jeunes au Rwanda. Grâce à de nombreux programmes et initiatives, nous avons touché la vie de milliers de jeunes.'
+  },
   'contact.title': {
     en: 'Get in Touch',
     fr: 'Contactez-Nous'
@@ -475,6 +479,10 @@ const translations = {
     fr: 'Rechercher des articles...'
   },
   'dashboard.title': {
+    en: 'Data Management System',
+    fr: 'Système de Gestion des Données'
+  },
+  'dashboard.postTitle': {
     en: 'Title',
     fr: 'Titre'
   },
@@ -609,6 +617,22 @@ const translations = {
   'dashboard.mapIntegration': {
     en: 'Map integration will display all service locations',
     fr: 'L\'intégration de la carte affichera tous les emplacements de service'
+  },
+  'programs.learnMore': {
+    en: 'Learn More',
+    fr: 'En savoir plus'
+  },
+  'hero.cta.join': {
+    en: 'Join Us',
+    fr: 'Rejoignez-nous'
+  },
+  'hero.cta.donate': {
+    en: 'Donate',
+    fr: 'Faire un don'
+  },
+  'hero.cta.volunteer': {
+    en: 'Volunteer',
+    fr: 'Devenir bénévole'
   }
 };
 

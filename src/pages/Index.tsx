@@ -10,26 +10,31 @@ const Index = () => {
 
   const programs = [
     {
+      id: 'education',
       title: t('programs.education'),
       description: t('programs.education.desc'),
       icon: <Book size={32} />,
     },
     {
+      id: 'economic',
       title: t('programs.economic'),
       description: t('programs.economic.desc'),
       icon: <Users size={32} />,
     },
     {
+      id: 'health',
       title: t('programs.health'),
       description: t('programs.health.desc'),
       icon: <Heart size={32} />,
     },
     {
+      id: 'peace',
       title: t('programs.peace'),
       description: t('programs.peace.desc'),
       icon: <Smile size={32} />,
     },
     {
+      id: 'arts',
       title: t('programs.arts'),
       description: t('programs.arts.desc'),
       icon: <Music size={32} />,
@@ -52,6 +57,7 @@ const Index = () => {
             {programs.map((program, index) => (
               <ProgramCard
                 key={index}
+                id={program.id}
                 title={program.title}
                 description={program.description}
                 icon={program.icon}
