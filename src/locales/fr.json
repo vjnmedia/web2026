@@ -12,7 +12,8 @@
     "dms": "DMS",
     "login": "Connexion",
     "logout": "Déconnexion",
-    "dashboard": "Tableau de Bord"
+    "dashboard": "Tableau de Bord",
+    "contact": "Nous Contacter"
   },
   "services": {
     "title": "Nos Services – Construire des Vies, Pas à Pas",
@@ -317,6 +318,40 @@
         "news": "Actualités",
         "careers": "Carrières",
         "contact": "Contact"
+      },
+      "form": {
+        "title": "Envoyez-nous un message",
+        "name": "Nom",
+        "email": "E-mail",
+        "message": "Message",
+        "submit": "Envoyer",
+        "sending": "Envoi en cours...",
+        "error": {
+          "nameRequired": "Le nom est requis",
+          "emailRequired": "L'e-mail est requis",
+          "emailInvalid": "Adresse e-mail invalide",
+          "messageRequired": "Le message est requis"
+        }
+      },
+      "faq": {
+        "title": "Foire aux Questions",
+        "subtitle": "Trouvez des réponses aux questions fréquentes sur notre organisation et nos programmes.",
+        "q1": {
+          "title": "Comment puis-je faire du bénévolat avec VJN ?",
+          "answer": "Vous pouvez postuler pour faire du bénévolat via notre page Carrières. Nous accueillons des bénévoles locaux et\n                internationaux ayant diverses compétences et expériences."
+        },
+        "q2": {
+          "title": "Comment mon don est-il utilisé ?",
+          "answer": "Vos dons soutiennent directement nos programmes d'autonomisation des jeunes, y compris les initiatives d'éducation, la formation à l'entrepreneuriat et les activités de consolidation de la paix."
+        },
+        "q3": {
+          "title": "Mon organisation peut-elle s'associer à VJN ?",
+          "answer": "Oui, nous accueillons favorablement les partenariats avec les organisations qui partagent notre mission. Veuillez\n                nous contacter avec votre proposition de partenariat, et notre équipe vous répondra."
+        },
+        "q4": {
+          "title": "Où nos programmes opèrent-ils ?",
+          "answer": "Nos programmes opèrent dans les 30 districts du Rwanda, avec notre siège à Kigali.\n                Nous avons des bureaux régionaux dans les principales villes du pays."
+        }
       }
     }
   },
@@ -326,9 +361,9 @@
     "history": "Notre histoire",
     "history.text": "Texte d'historique de l'espace réservé.",
     "mission": "Notre mission",
-    "mission.text": "Permettre aux jeunes d'acquérir les compétences, les connaissances et les opportunités dont ils ont besoin pour devenir des agents de changement positif dans leurs communautés et contribuer au développement national durable.",
+    "mission.text": "La mission de VJN est de développer les talents, les capacités des jeunes, et de promouvoir des valeurs positives et spirituelles pour leur implication dans le processus de durabilité et de développement socio-économique.",
     "vision": "Notre vision",
-    "vision.text": "Une société où chaque jeune est équipé et inspiré pour réaliser pleinement son potentiel, diriger avec intégrité et bâtir un avenir pacifique et prospère pour tous.",
+    "vision.text": "La jeunesse rwandaise est physiquement, moralement, spirituellement renouvelée et est productive et dynamique pour un avenir meilleur",
     "foundingMembers": {
       "title": "Membres fondateurs",
       "text": "Rencontrez les personnes qui ont jeté les bases de Vision Jeunesse Nouvelle."

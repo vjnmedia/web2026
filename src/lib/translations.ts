@@ -97,6 +97,18 @@ const translations = {
     en: 'Our Vision',
     fr: 'Notre Vision',
   },
+  'about.mission.text': {
+    en: 'The VJN mission is to develop the talents, the capacities of young people, and promote positive and spiritual values for their involvement in the process of sustainability and socio-economic development.',
+    fr: 'La mission de VJN est de développer les talents, les capacités des jeunes, et de promouvoir des valeurs positives et spirituelles pour leur implication dans le processus de durabilité et de développement socio-économique.',
+  },
+  'about.vision.text': {
+    en: 'Rwandan youth are physically, morally, spiritually renewed and are productive and dynamic for a better future',
+    fr: 'La jeunesse rwandaise est physiquement, moralement, spirituellement renouvelée et est productive et dynamique pour un avenir meilleur',
+  },
+  'about.staffLink': {
+    en: 'Meet Our Staff',
+    fr: 'Rencontrez notre personnel',
+  },
   'contact.title': {
     en: 'Get In Touch',
     fr: 'Contactez-nous',

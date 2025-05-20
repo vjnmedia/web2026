@@ -12,7 +12,8 @@
     "dms": "DMS",
     "login": "Login",
     "logout": "Logout",
-    "dashboard": "Dashboard"
+    "dashboard": "Dashboard",
+    "contact": "Contact Us"
   },
   "services": {
     "title": "Our Services – Building Lives, One Step at a Time",
@@ -326,9 +327,9 @@
     "history": "Our History",
     "history.text": "Placeholder history text.",
     "mission": "Our Mission",
-    "mission.text": "To empower young people with the skills, knowledge, and opportunities they need to become agents of positive change in their communities and contribute to sustainable national development.",
+    "mission.text": "The VJN mission is to develop the talents, the capacities of young people, and promote positive and spiritual values for their involvement in the process of sustainability and socio-economic development.",
     "vision": "Our Vision",
-    "vision.text": "A society where every young person is equipped and inspired to realize their full potential, lead with integrity, and build a peaceful and prosperous future for all.",
+    "vision.text": "Rwandan youth are physically, morally, spiritually renewed and are productive and dynamic for a better future",
     "foundingMembers": {
       "title": "Founding Members",
       "text": "Meet the individuals who laid the foundation for Vision Jeunesse Nouvelle."

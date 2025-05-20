@@ -2,9 +2,12 @@ import { Book, Users, Heart, Smile, Music } from 'lucide-react';
 import { useLanguage } from '@/components/LanguageContext';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
+import { useState } from 'react';
+import DonationModal from '@/components/DonationModal';
 
 const Programs = () => {
   const { t } = useLanguage();
+  const [isDonationModalOpen, setIsDonationModalOpen] = useState(false);
   
   const programData = [
     {
@@ -20,7 +23,8 @@ const Programs = () => {
         'Special education initiatives for differently-abled youth',
         'Scholarship programs for secondary and tertiary education',
         'Mentorship and career guidance services'
-      ]
+      ],
+      imageUrl: '/images/programs/education/IMG_9525.JPG'
     },
     {
       id: 'economic',
@@ -35,7 +39,8 @@ const Programs = () => {
         'Financial literacy and savings programs',
         'Market linkage and product development assistance',
         'Microfinance and small grants for youth-led enterprises'
-      ]
+      ],
+      imageUrl: '/images/programs/economic/Gh-xYUVXoAAsibq.jpg'
     },
     {
       id: 'health',
@@ -50,7 +55,8 @@ const Programs = () => {
         'Mental health support and trauma counseling',
         'Nutrition and physical wellness initiatives',
         'Pandemic preparedness and response training'
-      ]
+      ],
+      imageUrl: '/images/programs/health/IMG_5140.JPG'
     },
     {
       id: 'peace',
@@ -65,7 +71,8 @@ const Programs = () => {
         'Interfaith dialogue and cultural exchange programs',
         'Genocide memory and reconciliation initiatives',
         'Community service and social cohesion activities'
-      ]
+      ],
+      imageUrl: '/images/programs/peace/IMG_9336.JPG'
     },
     {
       id: 'arts',
@@ -80,7 +87,8 @@ const Programs = () => {
         'Visual arts and crafts workshops',
         'Theater and drama for social change',
         'Cultural festivals and community celebrations'
-      ]
+      ],
+      imageUrl: '/images/programs/culture/GpTA0d9XQAE0C1G.jpg'
     }
   ];
 
@@ -148,7 +156,7 @@ const Programs = () => {
                 
                 <div className={`${index % 2 !== 0 ? 'lg:col-start-1' : ''} rounded-lg shadow-lg overflow-hidden`}>
                   <img 
-                    src={`https://picsum.photos/seed/${program.id}/800/600`} 
+                    src={program.imageUrl} 
                     alt={program.title} 
                     className="w-full h-auto object-cover"
                   />
@@ -169,25 +177,59 @@ const Programs = () => {
             </p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div className="bg-white p-8 text-center rounded-lg shadow-md">
-              <div className="text-4xl font-bold text-vjn-blue mb-2">50,000+</div>
-              <p className="text-lg">Youth reached annually</p>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {/* Youth Trained in VTC */}
+            <div className="bg-white p-6 text-center rounded-lg shadow-md">
+              <div className="text-3xl font-bold text-vjn-blue mb-2">2500+</div>
+              <p className="text-lg font-semibold">Youth Trained in VTC</p>
+              <p className="text-sm text-gray-600 mt-2">
+                Empowering over 2,500 youth with hands-on training in Automobile Mechanics, Tailoring, Welding, and Hairdressing—equipping them with skills for self-reliance and a brighter future.
+              </p>
             </div>
             
-            <div className="bg-white p-8 text-center rounded-lg shadow-md">
-              <div className="text-4xl font-bold text-vjn-blue mb-2">30</div>
-              <p className="text-lg">Districts across Rwanda</p>
+            {/* Districts Services Covered */}
+            <div className="bg-white p-6 text-center rounded-lg shadow-md">
+              <div className="text-3xl font-bold text-vjn-blue mb-2">10</div>
+              <p className="text-lg font-semibold">Districts Services Covered</p>
+              <p className="text-sm text-gray-600 mt-2">
+                Western Province: Rubavu and Nyabihu Districts; Southern Province: Gisagara, Nyamagabe and Huye Districts; Northern Province: Musanze and Burera Districts; Eastern Province: Nyagatare, Ngoma, and Kirehe districts.
+              </p>
             </div>
             
-            <div className="bg-white p-8 text-center rounded-lg shadow-md">
-              <div className="text-4xl font-bold text-vjn-blue mb-2">5,000+</div>
-              <p className="text-lg">Businesses started</p>
+            {/* Refugee Camps Served */}
+            <div className="bg-white p-6 text-center rounded-lg shadow-md">
+              <div className="text-3xl font-bold text-vjn-blue mb-2">5</div> {/* Assuming 5 camps are listed */}
+              <p className="text-lg font-semibold">Refugee Camps Served</p>
+              <p className="text-sm text-gray-600 mt-2">
+                VJN extends its impact to refugee communities, actively serving youth in Kigeme, Mugombwa, Mahama, Nyabiheke, and Kiziba camps through empowerment programs that foster skills, resilience, and hope for a better future.
+              </p>
             </div>
-            
-            <div className="bg-white p-8 text-center rounded-lg shadow-md">
-              <div className="text-4xl font-bold text-vjn-blue mb-2">20+</div>
-              <p className="text-lg">Years of service</p>
+
+            {/* Peacebuilding Activities */}
+             <div className="bg-white p-6 text-center rounded-lg shadow-md">
+              <div className="text-3xl font-bold text-vjn-blue mb-2">100+</div>
+              <p className="text-lg font-semibold">Peacebuilding Activities Annually</p>
+              <p className="text-sm text-gray-600 mt-2">
+                 Annually, the program brings together 252 participants from Rwanda (241 females and 263 males) and more than 500 youth from across the Great Lakes region.
+              </p>
+            </div>
+
+             {/* Sports, Cultural & Arts Events */}
+             <div className="bg-white p-6 text-center rounded-lg shadow-md">
+              <div className="text-3xl font-bold text-vjn-blue mb-2">50,000+</div>
+              <p className="text-lg font-semibold">Youth Engaged in Sports, Cultural & Arts Events</p>
+              <p className="text-sm text-gray-600 mt-2">
+                 Engaging over 50,000 young people every year, fostering talent, unity, and personal growth—while earning 5+ trophies annually.
+              </p>
+            </div>
+
+             {/* Girls & Young Women Empowered */}
+             <div className="bg-white p-6 text-center rounded-lg shadow-md">
+              <div className="text-3xl font-bold text-vjn-blue mb-2">1,000+</div>
+              <p className="text-lg font-semibold">Girls & Young Women Empowered</p>
+              <p className="text-sm text-gray-600 mt-2">
+                 Empowered in leadership, entrepreneurship, and reproductive health.
+              </p>
             </div>
           </div>
         </div>
@@ -202,18 +244,34 @@ const Programs = () => {
             you can contribute to our programs and make a difference.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
-            <Button size="lg" className="bg-white text-vjn-blue hover:bg-gray-100">
-              {t('hero.cta.volunteer')}
-            </Button>
-            <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10">
+            {/* Volunteer Button */}
+            <Link to="/contact?subject=Volunteer%20Inquiry">
+              <Button size="lg" variant="outline" className="border-vjn-blue text-vjn-blue hover:bg-vjn-blue/10">
+                {t('hero.cta.volunteer')}
+              </Button>
+            </Link>
+            
+            {/* Donate Button */}
+            <Button 
+              size="lg" 
+              className="bg-vjn-blue text-white hover:bg-vjn-light-blue"
+              onClick={() => setIsDonationModalOpen(true)}
+            >
               {t('hero.cta.donate')}
             </Button>
-            <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10">
-              Partner With Us
-            </Button>
+            
+            {/* Partner With Us Button */}
+            <Link to="/contact?subject=Partnership%20Inquiry">
+              <Button size="lg" variant="outline" className="border-vjn-blue text-vjn-blue hover:bg-vjn-blue/10">
+                Partner With Us
+              </Button>
+            </Link>
           </div>
         </div>
       </section>
+
+      {/* Add Donation Modal */}
+      <DonationModal isOpen={isDonationModalOpen} onClose={() => setIsDonationModalOpen(false)} />
     </div>
   );
 };

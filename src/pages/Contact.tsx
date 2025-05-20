@@ -66,7 +66,7 @@ const Contact = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {/* Contact Form */}
             <div>
-              <h2 className="mb-6">Send us a message</h2>
+              <h2 className="mb-6">{t('contact.form.title', 'Send us a message')}</h2>
               <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
                 <div>
                   <label htmlFor="name" className="block mb-2 font-medium">
@@ -75,7 +75,7 @@ const Contact = () => {
                   <Input
                     id="name"
                     placeholder={t('contact.form.name')}
-                    {...register('name', { required: 'Name is required' })}
+                    {...register('name', { required: t('contact.form.error.nameRequired', 'Name is required') })}
                     className={errors.name ? 'border-red-500' : ''}
                   />
                   {errors.name && (
@@ -92,10 +92,10 @@ const Contact = () => {
                     type="email"
                     placeholder={t('contact.form.email')}
                     {...register('email', { 
-                      required: 'Email is required',
+                      required: t('contact.form.error.emailRequired', 'Email is required'),
                       pattern: {
                         value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                        message: 'Invalid email address'
+                        message: t('contact.form.error.emailInvalid', 'Invalid email address')
                       }
                     })}
                     className={errors.email ? 'border-red-500' : ''}
@@ -113,7 +113,7 @@ const Contact = () => {
                     id="message"
                     placeholder={t('contact.form.message')}
                     rows={6}
-                    {...register('message', { required: 'Message is required' })}
+                    {...register('message', { required: t('contact.form.error.messageRequired', 'Message is required') })}
                     className={errors.message ? 'border-red-500' : ''}
                   />
                   {errors.message && (
@@ -126,14 +126,14 @@ const Contact = () => {
                   className="bg-vjn-blue hover:bg-vjn-light-blue w-full md:w-auto"
                   disabled={isSubmitting}
                 >
-                  {isSubmitting ? 'Sending...' : t('contact.form.submit')}
+                  {isSubmitting ? t('contact.form.sending', 'Sending...') : t('contact.form.submit')}
                 </Button>
               </form>
             </div>
             
             {/* Contact Information */}
             <div>
-              <h2 className="mb-6">Contact Information</h2>
+              <h2 className="mb-6">{t('contact.info.title', 'Contact Information')}</h2>
               
               <div className="grid grid-cols-1 gap-8">
                 {/* Address */}
@@ -173,12 +173,18 @@ const Contact = () => {
                 </div>
               </div>
               
-              {/* Map placeholder */}
-              <div className="mt-8 bg-vjn-gray rounded-lg h-64 w-full flex items-center justify-center">
-                <p className="text-gray-500 text-center">
-                  Google Map would be embedded here.<br/>
-                  (A real implementation would include an iframe with Google Maps)
-                </p>
+              {/* Google Map Embed */}
+              <div className="mt-8 bg-vjn-gray rounded-lg h-64 w-full overflow-hidden">
+                <iframe 
+                  src="https://www.google.com/maps/embed/place/Vision+Jeunesse+Nouvelle/@-1.702211,29.2571873,17z/data=!3m1!4b1!4m6!3m5!1s0x19dd050a47fb11e7:0xe550726afa8eb90a!8m2!3d-1.702211!4d29.2597622!16s%2Fg%2F11c52m6znk?entry=ttu"
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0 }}
+                  allowFullScreen={true}
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  title="Vision Jeunesse Nouvelle Location Map"
+                ></iframe>
               </div>
             </div>
           </div>
@@ -189,46 +195,42 @@ const Contact = () => {
       <section className="section bg-vjn-gray">
         <div className="container-custom">
           <div className="text-center mb-12">
-            <h2>Frequently Asked Questions</h2>
+            <h2>{t('contact.faq.title', 'Frequently Asked Questions')}</h2>
             <p className="max-w-3xl mx-auto">
-              Find answers to common questions about our organization and programs.
+              {t('contact.faq.subtitle', 'Find answers to common questions about our organization and programs.')}
             </p>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
             {/* FAQ Item 1 */}
             <div className="bg-white p-6 rounded-lg shadow-md">
-              <h3 className="text-lg font-semibold mb-2 text-vjn-blue">How can I volunteer with VJN?</h3>
+              <h3 className="text-lg font-semibold mb-2 text-vjn-blue">{t('contact.faq.q1.title', 'How can I volunteer with VJN?')}</h3>
               <p>
-                You can apply to volunteer through our Careers page. We welcome both local and
-                international volunteers with various skills and backgrounds.
+                {t('contact.faq.q1.answer', 'You can apply to volunteer through our Careers page. We welcome both local and\n                international volunteers with various skills and backgrounds.')}
               </p>
             </div>
             
             {/* FAQ Item 2 */}
             <div className="bg-white p-6 rounded-lg shadow-md">
-              <h3 className="text-lg font-semibold mb-2 text-vjn-blue">How is my donation used?</h3>
+              <h3 className="text-lg font-semibold mb-2 text-vjn-blue">{t('contact.faq.q2.title', 'How is my donation used?')}</h3>
               <p>
-                Your donations directly support our programs for youth empowerment, including
-                education initiatives, entrepreneurship training, and peace-building activities.
+                {t('contact.faq.q2.answer', 'Your donations directly support our programs for youth empowerment, including\n                education initiatives, entrepreneurship training, and peace-building activities.')}
               </p>
             </div>
             
             {/* FAQ Item 3 */}
             <div className="bg-white p-6 rounded-lg shadow-md">
-              <h3 className="text-lg font-semibold mb-2 text-vjn-blue">Can my organization partner with VJN?</h3>
+              <h3 className="text-lg font-semibold mb-2 text-vjn-blue">{t('contact.faq.q3.title', 'Can my organization partner with VJN?')}</h3>
               <p>
-                Yes, we welcome partnerships with organizations that share our mission. Please
-                contact us with your partnership proposal, and our team will get back to you.
+                {t('contact.faq.q3.answer', 'Yes, we welcome partnerships with organizations that share our mission. Please\n                contact us with your partnership proposal, and our team will get back to you.')}
               </p>
             </div>
             
             {/* FAQ Item 4 */}
             <div className="bg-white p-6 rounded-lg shadow-md">
-              <h3 className="text-lg font-semibold mb-2 text-vjn-blue">Where do your programs operate?</h3>
+              <h3 className="text-lg font-semibold mb-2 text-vjn-blue">{t('contact.faq.q4.title', 'Where do your programs operate?')}</h3>
               <p>
-                Our programs operate in all 30 districts of Rwanda, with our headquarters in Kigali.
-                We have regional offices in major cities across the country.
+                {t('contact.faq.q4.answer', 'Our programs operate in all 30 districts of Rwanda, with our headquarters in Kigali.\n                We have regional offices in major cities across the country.')}
               </p>
             </div>
           </div>

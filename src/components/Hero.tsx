@@ -5,27 +5,27 @@ import { useTranslation } from 'react-i18next';
 
 const slides = [
   {
-    image: '/images/home-slider/slider (1).JPG',
+    image: '/images/home-slider/youth.JPG',
     title: 'Empowering Youth',
     description: 'Building a better future through education and skills development'
   },
   {
-    image: '/images/home-slider/slider (2).jpg',
+    image: '/images/home-slider/economic.jpg',
     title: 'Economic Growth',
     description: 'Supporting young entrepreneurs and business initiatives'
   },
   {
-    image: '/images/home-slider/slider (3).jpg',
-    title: 'Health & Wellness',
-    description: 'Promoting health awareness and well-being in our communities'
+    image: '/images/home-slider/educ.JPG',
+    title: 'Education',
+    description: 'Providing quality education and learning opportunities'
   },
   {
-    image: '/images/home-slider/slider (4).JPG',
+    image: '/images/home-slider/peace.jpg',
     title: 'Peace Building',
     description: 'Fostering peace and reconciliation through youth leadership'
   },
   {
-    image: '/images/home-slider/slider.jpg',
+    image: '/images/home-slider/karate.JPG',
     title: 'Sports & Culture',
     description: 'Nurturing talent and cultural expression through various programs'
   }
@@ -35,12 +35,14 @@ const Hero = () => {
   const { t } = useTranslation();
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
+  const [direction, setDirection] = useState(0);
 
   // Auto-advance carousel
   useEffect(() => {
     if (!isAutoPlaying) return;
     
     const timer = setInterval(() => {
+      setDirection(1);
       setCurrentIndex((prevIndex) => (prevIndex + 1) % slides.length);
     }, 5000);
     
@@ -49,30 +51,55 @@ const Hero = () => {
 
   const nextSlide = () => {
     setIsAutoPlaying(false);
+    setDirection(1);
     setCurrentIndex((prevIndex) => (prevIndex + 1) % slides.length);
   };
 
   const prevSlide = () => {
     setIsAutoPlaying(false);
+    setDirection(-1);
     setCurrentIndex((prevIndex) => (prevIndex - 1 + slides.length) % slides.length);
   };
 
   const goToSlide = (index: number) => {
     setIsAutoPlaying(false);
+    setDirection(index > currentIndex ? 1 : -1);
     setCurrentIndex(index);
+  };
+
+  const slideVariants = {
+    enter: (direction: number) => ({
+      x: direction > 0 ? 1000 : -1000,
+      opacity: 0
+    }),
+    center: {
+      zIndex: 1,
+      x: 0,
+      opacity: 1
+    },
+    exit: (direction: number) => ({
+      zIndex: 0,
+      x: direction < 0 ? 1000 : -1000,
+      opacity: 0
+    })
   };
 
   return (
     <section className="relative h-[80vh] overflow-hidden">
       {/* Slider */}
       <div className="relative h-full">
-        <AnimatePresence mode="wait">
+        <AnimatePresence initial={false} custom={direction}>
           <motion.div
             key={currentIndex}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.5 }}
+            custom={direction}
+            variants={slideVariants}
+            initial="enter"
+            animate="center"
+            exit="exit"
+            transition={{
+              x: { type: "spring", stiffness: 300, damping: 30 },
+              opacity: { duration: 0.2 }
+            }}
             className="absolute w-full h-full"
           >
             <div 

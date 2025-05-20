@@ -5,11 +5,13 @@ import { Button } from './ui/button';
 import { useAuth } from '@/hooks/useAuth';
 import { Menu, X, ChevronDown } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useLanguage } from '@/components/LanguageContext';
 
 const Navbar = () => {
   const { t } = useTranslation();
   const { user, logout } = useAuth();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const { language, setLanguage } = useLanguage();
 
   // Close mobile menu when clicking outside
   useEffect(() => {
@@ -45,6 +47,7 @@ const Navbar = () => {
     { to: '/media', label: t('nav.media') },
     { to: '/news', label: t('nav.news') },
     { to: '/resources', label: t('nav.resources') },
+    { to: '/contact', label: t('nav.contact') },
     { 
       to: 'https://chat.visionjeunessenouvelle.org.rw', 
       label: t('nav.community'),
@@ -123,6 +126,28 @@ const Navbar = () => {
 
           {/* Auth Buttons */}
           <div className="hidden md:flex items-center space-x-4">
+            {/* Language Switcher */}
+            <div className="relative group">
+              <Button variant="outline" className="flex items-center">
+                {language.toUpperCase()}
+                <ChevronDown className="ml-1 h-4 w-4" />
+              </Button>
+              <div className="absolute right-0 mt-2 w-24 bg-white border rounded-md shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+                <button 
+                  onClick={() => setLanguage('en')}
+                  className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 w-full text-left"
+                >
+                  English
+                </button>
+                <button 
+                  onClick={() => setLanguage('fr')}
+                  className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 w-full text-left"
+                >
+                  Français
+                </button>
+              </div>
+            </div>
+            
             {user ? (
               <>
                 <Link to="/dashboard">
