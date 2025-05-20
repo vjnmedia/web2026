@@ -1,7 +1,7 @@
-
 import { Book, Users, Heart, Smile, Music } from 'lucide-react';
 import { useLanguage } from '@/components/LanguageContext';
 import { Button } from '@/components/ui/button';
+import { Link } from 'react-router-dom';
 
 const Programs = () => {
   const { t } = useLanguage();
@@ -139,9 +139,11 @@ const Programs = () => {
                     ))}
                   </ul>
                   
-                  <Button className="bg-vjn-blue hover:bg-vjn-light-blue">
-                    {t('programs.learnMore')}
-                  </Button>
+                  <Link to={`/programs/${program.id}`}>
+                    <Button className="bg-vjn-blue hover:bg-vjn-light-blue">
+                      {t('programs.learnMore')}
+                    </Button>
+                  </Link>
                 </div>
                 
                 <div className={`${index % 2 !== 0 ? 'lg:col-start-1' : ''} rounded-lg shadow-lg overflow-hidden`}>

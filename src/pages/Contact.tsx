@@ -1,4 +1,3 @@
-
 import { useLanguage } from '@/components/LanguageContext';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -145,7 +144,7 @@ const Contact = () => {
                   <div>
                     <h3 className="text-lg font-semibold mb-1">{t('contact.address')}</h3>
                     <p>Vision Jeunesse Nouvelle (VJN)</p>
-                    <p>{t('contact.address.value')}</p>
+                    <p>Rubavu District, Gisenyi Sector, Nengo Cell, Gikarani Village</p>
                     <p>Rwanda</p>
                   </div>
                 </div>
@@ -157,8 +156,8 @@ const Contact = () => {
                   </div>
                   <div>
                     <h3 className="text-lg font-semibold mb-1">{t('contact.phone')}</h3>
-                    <p>+250 788 123 456</p>
-                    <p>+250 788 456 789</p>
+                    <p>+250 785 403 435</p>
+                    <p>+250 788 892 826</p>
                   </div>
                 </div>
                 
@@ -169,8 +168,7 @@ const Contact = () => {
                   </div>
                   <div>
                     <h3 className="text-lg font-semibold mb-1">{t('contact.email')}</h3>
-                    <p>info@vjn.org</p>
-                    <p>support@vjn.org</p>
+                    <p>visionjeunesse2050@gmail.com</p>
                   </div>
                 </div>
               </div>

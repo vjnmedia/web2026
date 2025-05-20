@@ -1,5 +1,14 @@
-
+import React from 'react';
 import { useLanguage } from '@/components/LanguageContext';
+import { motion } from 'framer-motion';
+// import { fadeIn } from '@/utils/motion'; // Removed problematic import
+import { Link } from 'react-router-dom';
+
+// Simple fade-in animation variants
+const sectionVariants = {
+  hidden: { opacity: 0, y: 50 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
+};
 
 const About = () => {
   const { t } = useLanguage();
@@ -26,7 +35,13 @@ const About = () => {
       </section>
 
       {/* History Section */}
-      <section className="section bg-white">
+      <motion.section 
+        variants={sectionVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.3 }}
+        className="section bg-white"
+      >
         <div className="container-custom">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
@@ -50,10 +65,16 @@ const About = () => {
             </div>
           </div>
         </div>
-      </section>
+      </motion.section>
 
       {/* Mission & Vision */}
-      <section className="section bg-vjn-gray">
+      <motion.section 
+        variants={sectionVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.3 }}
+        className="section bg-vjn-gray"
+      >
         <div className="container-custom">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
             {/* Mission */}
@@ -93,10 +114,84 @@ const About = () => {
             </div>
           </div>
         </div>
-      </section>
+      </motion.section>
+
+      {/* Key Achievements */}
+      <motion.section 
+        variants={sectionVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.3 }}
+        className="section bg-white"
+      >
+        <div className="container-custom">
+          <h2 className="text-center mb-12">Key Achievements in 23 Years</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {/* VTC Training */}
+            <div className="bg-vjn-gray p-6 rounded-lg shadow-md">
+              <div className="text-3xl font-bold text-vjn-blue mb-2">2,500+</div>
+              <h3 className="text-xl font-semibold mb-3">Youth Trained in VTC</h3>
+              <p className="text-gray-600">
+                Empowering over 2,500 youth with hands-on training in Automobile Mechanics, Tailoring, Welding, and Hairdressing—equipping them with skills for self-reliance and a brighter future.
+              </p>
+            </div>
+
+            {/* Districts Coverage */}
+            <div className="bg-vjn-gray p-6 rounded-lg shadow-md">
+              <div className="text-3xl font-bold text-vjn-blue mb-2">10</div>
+              <h3 className="text-xl font-semibold mb-3">Districts Services Covered</h3>
+              <p className="text-gray-600">
+                Western Province: Rubavu and Nyabihu Districts; Southern Province: Gisagara, Nyamagabe and Huye Districts; Northern Province: Musanze and Burera Districts; Eastern Province: Nyagatare, Ngoma, and Kirehe districts.
+              </p>
+            </div>
+
+            {/* Refugee Camps */}
+            <div className="bg-vjn-gray p-6 rounded-lg shadow-md">
+              <div className="text-3xl font-bold text-vjn-blue mb-2">5+</div>
+              <h3 className="text-xl font-semibold mb-3">Refugee Camps Served</h3>
+              <p className="text-gray-600">
+                VJN extends its impact to refugee communities, actively serving youth in Kigeme, Mugombwa, Mahama, Nyabiheke, and Kiziba camps through empowerment programs that foster skills, resilience, and hope for a better future.
+              </p>
+            </div>
+
+            {/* Peacebuilding Activities */}
+            <div className="bg-vjn-gray p-6 rounded-lg shadow-md">
+              <div className="text-3xl font-bold text-vjn-blue mb-2">100+</div>
+              <h3 className="text-xl font-semibold mb-3">Peacebuilding Activities</h3>
+              <p className="text-gray-600">
+                Annually, the program brings together 252 participants from Rwanda (241 females and 263 males) and more than 500 youth from across the Great Lakes region.
+              </p>
+            </div>
+
+            {/* Sports & Culture */}
+            <div className="bg-vjn-gray p-6 rounded-lg shadow-md">
+              <div className="text-3xl font-bold text-vjn-blue mb-2">50,000+</div>
+              <h3 className="text-xl font-semibold mb-3">Sports, Cultural & Arts Events</h3>
+              <p className="text-gray-600">
+                Engaging over 50,000 young people every year through Cultural & Sports Events, fostering talent, unity, and personal growth—while earning 5+ trophies annually in recognition of excellence.
+              </p>
+            </div>
+
+            {/* Girls Empowerment */}
+            <div className="bg-vjn-gray p-6 rounded-lg shadow-md">
+              <div className="text-3xl font-bold text-vjn-blue mb-2">1,000+</div>
+              <h3 className="text-xl font-semibold mb-3">Girls & Young Women Empowered</h3>
+              <p className="text-gray-600">
+                Empowering over 1,000 girls and young women in leadership, entrepreneurship, and reproductive health.
+              </p>
+            </div>
+          </div>
+        </div>
+      </motion.section>
 
       {/* Founding Members */}
-      <section className="section bg-white">
+      <motion.section 
+        variants={sectionVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.3 }}
+        className="section bg-white"
+      >
         <div className="container-custom">
           <h2 className="text-center mb-12">Founding Members</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
@@ -133,10 +228,32 @@ const About = () => {
             </div>
           </div>
         </div>
-      </section>
+      </motion.section>
+
+      {/* Link to Staff Page */}
+      <motion.div 
+        variants={sectionVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.5 }}
+        className="text-center py-12"
+      >
+        <Link
+          to="/staff"
+          className="inline-block bg-vjn-blue text-white text-lg font-semibold px-8 py-3 rounded-lg hover:bg-vjn-orange transition-colors duration-300"
+        >
+          {t('about.staffLink', 'Meet Our Staff')}
+        </Link>
+      </motion.div>
 
       {/* Impact Timeline */}
-      <section className="section bg-vjn-gray">
+      <motion.section 
+        variants={sectionVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.3 }}
+        className="section bg-vjn-gray"
+      >
         <div className="container-custom">
           <h2 className="text-center mb-12">Our Journey & Impact</h2>
           
@@ -210,7 +327,7 @@ const About = () => {
             </div>
           </div>
         </div>
-      </section>
+      </motion.section>
     </div>
   );
 };

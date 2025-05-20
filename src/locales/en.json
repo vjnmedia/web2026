@@ -1,0 +1,338 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "programs": "Programs",
+    "services": "Services",
+    "media": "Media",
+    "news": "News Updates",
+    "resources": "Resources",
+    "community": "Community",
+    "careers": "Careers",
+    "dms": "DMS",
+    "login": "Login",
+    "logout": "Logout",
+    "dashboard": "Dashboard"
+  },
+  "services": {
+    "title": "Our Services – Building Lives, One Step at a Time",
+    "subtitle": "From the playground to the peace table, from skill-building workshops to the silent suffering behind bars—Vision Jeunesse Nouvelle is there. Serving with hands that heal, minds that teach, and hearts that transform.",
+    "introduction": "At Vision Jeunesse Nouvelle, we serve youth and beyond—equipping individuals with tools, skills, and support to lead dignified, healthy, and purposeful lives. Whether through vocational training, health outreach, peacebuilding, or creative expression, our services reach communities across Rwanda and the region.",
+    "sections": {
+      "youth": "Services for Youth",
+      "vulnerable": "Services for Vulnerable Populations",
+      "support": "Cross-Cutting Support Services"
+    },
+    "youthServices": {
+      "vocational": {
+        "title": "Vocational & Technical Training",
+        "description": "Empowering youth with practical skills for sustainable employment",
+        "items": [
+          "Sewing, hairdressing, welding, mechanics",
+          "Literacy and numeracy classes",
+          "Special education for the deaf and mute"
+        ]
+      },
+      "entrepreneurship": {
+        "title": "Entrepreneurship & Economic Empowerment",
+        "description": "Building business acumen and financial independence",
+        "items": [
+          "Business skills workshops",
+          "GSLA (Group Saving & Loan Associations)",
+          "E-commerce training & cooperative development"
+        ]
+      },
+      "health": {
+        "title": "Health Awareness & Peer Education",
+        "description": "Promoting health and well-being through peer-led initiatives",
+        "items": [
+          "Reproductive health, HIV/AIDS, family planning",
+          "Obesity and NCD prevention",
+          "Trained peer educators and youth-friendly services"
+        ]
+      },
+      "talent": {
+        "title": "Talent & Skills Development",
+        "description": "Nurturing creativity and cultural expression",
+        "items": [
+          "Sports, arts, music, dance, theater",
+          "Cultural competitions and community showcases"
+        ]
+      },
+      "peace": {
+        "title": "Peace & Leadership Initiatives",
+        "description": "Building tomorrow's leaders and peacemakers",
+        "items": [
+          "Public speaking, debate clubs",
+          "Peace camps, cross-border dialogues",
+          "Digital peacebuilding and human rights advocacy"
+        ]
+      }
+    },
+    "vulnerableServices": {
+      "refugees": {
+        "title": "Refugees & Disaster Victims",
+        "description": "Supporting those affected by displacement and crisis",
+        "items": [
+          "Psycho-social support",
+          "Inclusion in peace and health programs",
+          "Economic reintegration"
+        ]
+      },
+      "hiv": {
+        "title": "People Living with HIV/AIDS",
+        "description": "Comprehensive support and care services",
+        "items": [
+          "Counseling and group therapy",
+          "Awareness campaigns",
+          "Community-based support services"
+        ]
+      },
+      "prisoners": {
+        "title": "Prisoners & Ex-Convicts",
+        "description": "Pathways to rehabilitation and reintegration",
+        "items": [
+          "Re-education and reintegration programs",
+          "Skill-building and rehabilitation",
+          "Social reinsertion follow-up"
+        ]
+      },
+      "parents": {
+        "title": "Parents & Community Members",
+        "description": "Strengthening families and communities",
+        "items": [
+          "Parenting workshops",
+          "Intergenerational dialogue",
+          "Community health forums"
+        ]
+      }
+    },
+    "supportServices": {
+      "libraries": {
+        "title": "Libraries & Digital Learning Hubs",
+        "description": "Access to knowledge and digital resources",
+        "items": [
+          "Reading programs, ICT training",
+          "Access to knowledge for all"
+        ]
+      },
+      "peace": {
+        "title": "Peace and Conflict Resolution Centers",
+        "description": "Spaces for healing and dialogue",
+        "items": [
+          "For youth and community leaders alike",
+          "Support in trauma healing, mediation"
+        ]
+      },
+      "repository": {
+        "title": "Youth Group Repository Access",
+        "description": "Supporting youth organizations",
+        "items": [
+          "Monitored growth and evaluation",
+          "Support in registration, formalization, and partnerships"
+        ]
+      }
+    },
+    "testimonials": {
+      "title": "Real Stories, Real Impact",
+      "marie": {
+        "quote": "VJN's vocational training gave me the skills and confidence to start my own business.",
+        "author": "Marie Uwimana",
+        "role": "Graduate, Sewing Program"
+      },
+      "jean": {
+        "quote": "The peacebuilding workshops helped me become a community leader and advocate for change.",
+        "author": "Jean Paul Niyonsenga",
+        "role": "Youth Leader"
+      }
+    },
+    "cta": {
+      "title": "Looking for support or want to join a program?",
+      "subtitle": "Let us know how we can walk with you",
+      "contact": "Contact Us",
+      "join": "Join a Program",
+      "visit": "Visit Our Centers"
+    }
+  },
+  "media": {
+    "title": "Media"
+  },
+  "news": {
+    "title": "News Updates"
+  },
+  "resources": {
+    "title": "Resources",
+    "search": {
+      "title": "Search Resources",
+      "placeholder": "Search for resources...",
+      "allTypes": "All Types"
+    },
+    "sections": {
+      "publications": "Publications",
+      "announcements": "Announcements",
+      "documents": "Documents",
+      "media": "Media"
+    },
+    "download": "Download",
+    "fileTypes": {
+      "pdf": "PDF",
+      "doc": "DOC",
+      "xls": "XLS",
+      "image": "Images"
+    }
+  },
+  "footer": {
+    "about": {
+      "title": "About Us",
+      "description": "Vision Jeunesse Nouvelle (VJN) is a youth-led organization dedicated to empowering young people through education, economic development, health initiatives, peace building, and arts programs."
+    },
+    "usefulLinks": {
+      "title": "Quick Links",
+      "about": "About",
+      "programs": "Programs",
+      "services": "Services",
+      "contact": "Contact",
+      "community": "Community",
+      "blog": "Blog",
+      "events": "Events",
+      "volunteer": "Volunteer",
+      "donate": "Donate"
+    },
+    "copyright": "All rights reserved.",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service",
+    "sitemap": "Sitemap"
+  },
+  "newsletter": {
+    "title": "Stay Connected",
+    "description": "Subscribe to receive updates about our programs, events, and opportunities to get involved.",
+    "emailPlaceholder": "Your email address",
+    "subscribe": "Join Now"
+  },
+  "home": {
+    "hero": {
+      "title": "Strengthening youth for a better future",
+      "subtitle": "Empowering young people through education, economic development, health initiatives, peace building, and arts programs",
+      "cta": {
+        "explore": "Explore Programs",
+        "support": "Support Our Work",
+        "join": "Join a Youth Group"
+      }
+    },
+    "about": {
+      "description": "Vision Jeunesse Nouvelle (VJN) is a youth-led organization founded in 2005, dedicated to empowering young people across Rwanda and the region through comprehensive programs in education, economic development, health, peace building, and arts.",
+      "learnMore": "Learn More About Us"
+    },
+    "programs": {
+      "title": "Our Core Programs",
+      "learnMore": "Learn More",
+      "education": {
+        "title": "Education",
+        "description": "Providing quality education and vocational training to equip youth with essential skills for success"
+      },
+      "economic": {
+        "title": "Economic Empowerment",
+        "description": "Building business skills and financial independence through entrepreneurship programs"
+      },
+      "health": {
+        "title": "Health",
+        "description": "Promoting health awareness and providing access to essential healthcare services"
+      },
+      "peace": {
+        "title": "Peace Building",
+        "description": "Fostering peace and reconciliation through dialogue and community engagement"
+      },
+      "culture": {
+        "title": "Sports, Culture & Arts",
+        "description": "Nurturing creativity and cultural expression through various artistic and athletic programs"
+      }
+    },
+    "impact": {
+      "name": "Marie Uwimana",
+      "location": "Kigali, Rwanda",
+      "quote": "VJN's programs gave me the skills and confidence to start my own business. Today, I'm not just surviving—I'm thriving and helping others do the same.",
+      "readMore": "Read More Stories"
+    },
+    "news": {
+      "title": "Latest News & Updates",
+      "readMore": "Read More",
+      "item1": {
+        "title": "New Youth Center Opens in Nyundo",
+        "excerpt": "Expanding our reach to serve more young people in the Western Province",
+        "date": "March 15, 2024"
+      },
+      "item2": {
+        "title": "Peace Building Workshop Success",
+        "excerpt": "Over 100 youth leaders trained in conflict resolution and community dialogue",
+        "date": "March 10, 2024"
+      }
+    },
+    "beneficiaries": {
+      "title": "Who We Serve",
+      "list": [
+        "Children, youth, and adults",
+        "Refugees and disaster victims",
+        "People living with HIV/AIDS",
+        "Prisoners and vulnerable individuals",
+        "Parents and community members"
+      ]
+    },
+    "opportunities": {
+      "title": "Career & Training Opportunities",
+      "apply": "Apply Now",
+      "viewAll": "View All Opportunities",
+      "item1": {
+        "title": "Youth Program Coordinator",
+        "type": "Full-time",
+        "location": "Kigali"
+      },
+      "item2": {
+        "title": "Peace Building Workshop",
+        "type": "Training",
+        "location": "Nyundo"
+      }
+    },
+    "repository": {
+      "title": "Youth Group Repository",
+      "description": "Access our comprehensive database of youth groups and organizations. Register your group to connect with others and access resources.",
+      "access": "Access Repository",
+      "register": "Register a Youth Group"
+    },
+    "partner": {
+      "title": "Partner With Us",
+      "description": "Join us in our mission to empower youth and build stronger communities. Your support can make a lasting impact.",
+      "becomePartner": "Become a Partner",
+      "donate": "Donate Now"
+    },
+    "contact": {
+      "title": "Contact Information",
+      "phone": "+250 785 403 435 / 788 892 826",
+      "email": "visionjeunesse2050@gmail.com",
+      "address": "Rubavu District, Gisenyi Sector, Nengo Cell, Gikarani Village",
+      "quickLinks": "Quick Links",
+      "links": {
+        "about": "About",
+        "programs": "Programs",
+        "services": "Services",
+        "news": "News",
+        "careers": "Careers",
+        "contact": "Contact"
+      }
+    }
+  },
+  "about": {
+    "title": "About Us",
+    "subtitle": "Empowering youth for a better future",
+    "history": "Our History",
+    "history.text": "Placeholder history text.",
+    "mission": "Our Mission",
+    "mission.text": "To empower young people with the skills, knowledge, and opportunities they need to become agents of positive change in their communities and contribute to sustainable national development.",
+    "vision": "Our Vision",
+    "vision.text": "A society where every young person is equipped and inspired to realize their full potential, lead with integrity, and build a peaceful and prosperous future for all.",
+    "foundingMembers": {
+      "title": "Founding Members",
+      "text": "Meet the individuals who laid the foundation for Vision Jeunesse Nouvelle."
+    },
+    "staffLink": "Meet Our Staff"
+  }
+} 

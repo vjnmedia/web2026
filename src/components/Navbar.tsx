@@ -1,128 +1,249 @@
-
-import { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Menu, X, Globe } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import { useLanguage } from './LanguageContext';
-import { 
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu';
+import { useTranslation } from 'react-i18next';
+import { Button } from './ui/button';
+import { useAuth } from '@/hooks/useAuth';
+import { Menu, X, ChevronDown } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const Navbar = () => {
-  const { language, setLanguage, t } = useLanguage();
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { t } = useTranslation();
+  const { user, logout } = useAuth();
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
+  // Close mobile menu when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      const mobileMenu = document.getElementById('mobile-menu');
+      const mobileMenuButton = document.getElementById('mobile-menu-button');
+      
+      if (mobileMenu && 
+          mobileMenuButton && 
+          !mobileMenu.contains(event.target as Node) && 
+          !mobileMenuButton.contains(event.target as Node)) {
+        setIsMobileMenuOpen(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
+
+  // Close mobile menu when route changes
+  useEffect(() => {
+    setIsMobileMenuOpen(false);
+  }, [window.location.pathname]);
+
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
   };
 
-  const closeMenu = () => {
-    setIsMenuOpen(false);
-  };
-
-  const navItems = [
-    { label: t('nav.home'), path: '/' },
-    { label: t('nav.about'), path: '/about' },
-    { label: t('nav.programs'), path: '/programs' },
-    { label: t('nav.careers'), path: '/careers' },
-    { label: t('nav.media'), path: '/media' },
-    { label: t('nav.contact'), path: '/contact' },
-    { label: t('dashboard.title'), path: '/dashboard' },
+  const navLinks = [
+    { to: '/about', label: t('nav.about') },
+    { to: '/programs', label: t('nav.programs') },
+    { to: '/services', label: t('nav.services') },
+    { to: '/media', label: t('nav.media') },
+    { to: '/news', label: t('nav.news') },
+    { to: '/resources', label: t('nav.resources') },
+    { 
+      to: 'https://chat.visionjeunessenouvelle.org.rw', 
+      label: t('nav.community'),
+      external: true 
+    },
+    { 
+      to: 'https://jobs.visionjeunessenouvelle.org.rw', 
+      label: t('nav.careers'),
+      external: true 
+    }
   ];
+
+  if (user?.role === 'admin') {
+    navLinks.push({ to: '/dms', label: t('nav.dms') });
+  }
+
+  const mobileMenuVariants = {
+    closed: {
+      opacity: 0,
+      y: -20,
+      transition: {
+        duration: 0.2,
+        ease: "easeInOut"
+      }
+    },
+    open: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.3,
+        ease: "easeOut"
+      }
+    }
+  };
 
   return (
     <nav className="bg-white shadow-md sticky top-0 z-50">
-      <div className="container-custom flex items-center justify-between py-4">
-        {/* Logo */}
-        <Link to="/" className="flex items-center" onClick={closeMenu}>
-          <span className="text-vjn-blue font-bold text-2xl">VJN</span>
-        </Link>
+      <div className="container mx-auto px-4">
+        <div className="flex justify-between items-center h-20">
+          {/* Logo */}
+          <Link 
+            to="/" 
+            className="flex items-center group transition-transform duration-300 hover:scale-105"
+          >
+            <img 
+              src="/images/VJN_LOGO.jpg" 
+              alt="VJN Logo" 
+              className="h-14 w-auto md:h-16 lg:h-20 object-contain"
+            />
+          </Link>
 
-        {/* Desktop Navigation */}
-        <div className="hidden md:flex items-center space-x-1">
-          {navItems.map((item, index) => (
-            <Link
-              key={index}
-              to={item.path}
-              className="px-3 py-2 text-vjn-blue hover:bg-vjn-gray rounded-md transition-colors duration-300"
-            >
-              {item.label}
-            </Link>
-          ))}
-          
-          {/* Donate Button */}
-          <Button className="ml-2 bg-vjn-blue hover:bg-vjn-light-blue text-white">
-            {t('nav.donate')}
-          </Button>
-          
-          {/* Language Switcher */}
-          <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <Button variant="ghost" size="icon" className="ml-2">
-                <Globe className="h-5 w-5" />
-              </Button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent align="end">
-              <DropdownMenuItem onClick={() => setLanguage('en')}>
-                <span className={language === 'en' ? 'font-bold' : ''}>English</span>
-              </DropdownMenuItem>
-              <DropdownMenuItem onClick={() => setLanguage('fr')}>
-                <span className={language === 'fr' ? 'font-bold' : ''}>Français</span>
-              </DropdownMenuItem>
-            </DropdownMenuContent>
-          </DropdownMenu>
-        </div>
+          {/* Desktop Navigation */}
+          <div className="hidden md:flex space-x-8">
+            {navLinks.map((link, index) => (
+              link.external ? (
+                <a
+                  key={index}
+                  href={link.to}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-gray-700 hover:text-vjn-blue transition-colors duration-300"
+                >
+                  {link.label}
+                </a>
+              ) : (
+                <Link
+                  key={index}
+                  to={link.to}
+                  className="text-gray-700 hover:text-vjn-blue transition-colors duration-300"
+                >
+                  {link.label}
+                </Link>
+              )
+            ))}
+          </div>
 
-        {/* Mobile Navigation Toggle */}
-        <div className="md:hidden flex items-center">
-          {/* Language Switcher (Mobile) */}
-          <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <Button variant="ghost" size="icon" className="mr-2">
-                <Globe className="h-5 w-5" />
-              </Button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent align="end">
-              <DropdownMenuItem onClick={() => setLanguage('en')}>
-                <span className={language === 'en' ? 'font-bold' : ''}>English</span>
-              </DropdownMenuItem>
-              <DropdownMenuItem onClick={() => setLanguage('fr')}>
-                <span className={language === 'fr' ? 'font-bold' : ''}>Français</span>
-              </DropdownMenuItem>
-            </DropdownMenuContent>
-          </DropdownMenu>
-          
-          <button onClick={toggleMenu} className="text-vjn-blue">
-            {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+          {/* Auth Buttons */}
+          <div className="hidden md:flex items-center space-x-4">
+            {user ? (
+              <>
+                <Link to="/dashboard">
+                  <Button variant="outline">{t('nav.dashboard')}</Button>
+                </Link>
+                <Button onClick={logout} variant="destructive">
+                  {t('nav.logout')}
+                </Button>
+              </>
+            ) : (
+              <Link to="/login">
+                <Button>{t('nav.login')}</Button>
+              </Link>
+            )}
+          </div>
+
+          {/* Mobile Menu Button */}
+          <button
+            id="mobile-menu-button"
+            onClick={toggleMobileMenu}
+            className="md:hidden p-2 rounded-md hover:bg-gray-100 transition-colors focus:outline-none focus:ring-2 focus:ring-vjn-blue focus:ring-opacity-50"
+            aria-label={isMobileMenuOpen ? 'Close menu' : 'Open menu'}
+          >
+            <AnimatePresence mode="wait">
+              {isMobileMenuOpen ? (
+                <motion.div
+                  key="close"
+                  initial={{ rotate: -90, opacity: 0 }}
+                  animate={{ rotate: 0, opacity: 1 }}
+                  exit={{ rotate: 90, opacity: 0 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  <X className="h-6 w-6 text-gray-700" />
+                </motion.div>
+              ) : (
+                <motion.div
+                  key="menu"
+                  initial={{ rotate: 90, opacity: 0 }}
+                  animate={{ rotate: 0, opacity: 1 }}
+                  exit={{ rotate: -90, opacity: 0 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  <Menu className="h-6 w-6 text-gray-700" />
+                </motion.div>
+              )}
+            </AnimatePresence>
           </button>
         </div>
-      </div>
 
-      {/* Mobile Menu */}
-      {isMenuOpen && (
-        <div className="md:hidden bg-white border-t border-gray-200 animate-fade-in">
-          <div className="container-custom py-3">
-            {navItems.map((item, index) => (
-              <Link
-                key={index}
-                to={item.path}
-                className="block py-2 px-4 text-vjn-blue hover:bg-vjn-gray rounded-md"
-                onClick={closeMenu}
-              >
-                {item.label}
-              </Link>
-            ))}
-            <div className="mt-3 px-4">
-              <Button className="w-full bg-vjn-blue hover:bg-vjn-light-blue text-white">
-                {t('nav.donate')}
-              </Button>
-            </div>
-          </div>
-        </div>
-      )}
+        {/* Mobile Menu */}
+        <AnimatePresence>
+          {isMobileMenuOpen && (
+            <motion.div
+              id="mobile-menu"
+              initial="closed"
+              animate="open"
+              exit="closed"
+              variants={mobileMenuVariants}
+              className="md:hidden absolute left-0 right-0 bg-white shadow-lg border-t"
+            >
+              <div className="container mx-auto px-4 py-4">
+                <div className="space-y-4">
+                  {navLinks.map((link, index) => (
+                    <motion.div
+                      key={index}
+                      initial={{ opacity: 0, x: -20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: index * 0.1 }}
+                    >
+                      {link.external ? (
+                        <a
+                          href={link.to}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex items-center justify-between text-gray-700 hover:text-vjn-blue transition-colors duration-300 py-2"
+                          onClick={toggleMobileMenu}
+                        >
+                          <span>{link.label}</span>
+                          <ChevronDown className="h-4 w-4 transform rotate-[-90deg]" />
+                        </a>
+                      ) : (
+                        <Link
+                          to={link.to}
+                          className="flex items-center justify-between text-gray-700 hover:text-vjn-blue transition-colors duration-300 py-2"
+                          onClick={toggleMobileMenu}
+                        >
+                          <span>{link.label}</span>
+                          <ChevronDown className="h-4 w-4 transform rotate-[-90deg]" />
+                        </Link>
+                      )}
+                    </motion.div>
+                  ))}
+                  <motion.div
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: navLinks.length * 0.1 }}
+                    className="pt-4 border-t"
+                  >
+                    {user ? (
+                      <div className="space-y-2">
+                        <Link to="/dashboard" className="block">
+                          <Button variant="outline" className="w-full">
+                            {t('nav.dashboard')}
+                          </Button>
+                        </Link>
+                        <Button onClick={logout} variant="destructive" className="w-full">
+                          {t('nav.logout')}
+                        </Button>
+                      </div>
+                    ) : (
+                      <Link to="/login" className="block" onClick={toggleMobileMenu}>
+                        <Button className="w-full">{t('nav.login')}</Button>
+                      </Link>
+                    )}
+                  </motion.div>
+                </div>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
     </nav>
   );
 };

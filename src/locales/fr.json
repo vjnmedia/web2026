@@ -1,0 +1,338 @@
+{
+  "nav": {
+    "home": "Accueil",
+    "about": "À Propos",
+    "programs": "Programmes",
+    "services": "Services",
+    "media": "Médias",
+    "news": "Actualités",
+    "resources": "Ressources",
+    "community": "Communauté",
+    "careers": "Carrières",
+    "dms": "DMS",
+    "login": "Connexion",
+    "logout": "Déconnexion",
+    "dashboard": "Tableau de Bord"
+  },
+  "services": {
+    "title": "Nos Services – Construire des Vies, Pas à Pas",
+    "subtitle": "De la cour de récréation à la table de paix, des ateliers de formation aux souffrances silencieuses derrière les barreaux—Vision Jeunesse Nouvelle est là. Servir avec des mains qui guérissent, des esprits qui enseignent et des cœurs qui transforment.",
+    "introduction": "Chez Vision Jeunesse Nouvelle, nous servons les jeunes et au-delà—en équipant les individus d'outils, de compétences et de soutien pour mener une vie digne, saine et pleine de sens. Que ce soit par la formation professionnelle, la sensibilisation à la santé, la consolidation de la paix ou l'expression créative, nos services atteignent les communautés à travers le Rwanda et la région.",
+    "sections": {
+      "youth": "Services pour les Jeunes",
+      "vulnerable": "Services pour les Populations Vulnérables",
+      "support": "Services de Soutien Transversaux"
+    },
+    "youthServices": {
+      "vocational": {
+        "title": "Formation Professionnelle et Technique",
+        "description": "Autonomiser les jeunes avec des compétences pratiques pour un emploi durable",
+        "items": [
+          "Couture, coiffure, soudure, mécanique",
+          "Cours d'alphabétisation et de calcul",
+          "Éducation spéciale pour les sourds et muets"
+        ]
+      },
+      "entrepreneurship": {
+        "title": "Entrepreneuriat et Autonomisation Économique",
+        "description": "Développer l'acuité commerciale et l'indépendance financière",
+        "items": [
+          "Ateliers de compétences commerciales",
+          "GSLA (Associations d'Épargne et de Crédit)",
+          "Formation au commerce électronique et développement coopératif"
+        ]
+      },
+      "health": {
+        "title": "Sensibilisation à la Santé et Éducation par les Pairs",
+        "description": "Promouvoir la santé et le bien-être par des initiatives dirigées par les pairs",
+        "items": [
+          "Santé reproductive, VIH/SIDA, planification familiale",
+          "Prévention de l'obésité et des MNT",
+          "Éducateurs pairs formés et services adaptés aux jeunes"
+        ]
+      },
+      "talent": {
+        "title": "Développement des Talents et Compétences",
+        "description": "Encourager la créativité et l'expression culturelle",
+        "items": [
+          "Sports, arts, musique, danse, théâtre",
+          "Compétitions culturelles et présentations communautaires"
+        ]
+      },
+      "peace": {
+        "title": "Initiatives de Paix et Leadership",
+        "description": "Construire les leaders et artisans de paix de demain",
+        "items": [
+          "Prise de parole en public, clubs de débat",
+          "Camps de paix, dialogues transfrontaliers",
+          "Consolidation de la paix numérique et défense des droits de l'homme"
+        ]
+      }
+    },
+    "vulnerableServices": {
+      "refugees": {
+        "title": "Réfugiés et Victimes de Catastrophes",
+        "description": "Soutenir ceux touchés par le déplacement et la crise",
+        "items": [
+          "Soutien psychosocial",
+          "Inclusion dans les programmes de paix et de santé",
+          "Réintégration économique"
+        ]
+      },
+      "hiv": {
+        "title": "Personnes Vivant avec le VIH/SIDA",
+        "description": "Services complets de soutien et de soins",
+        "items": [
+          "Counseling et thérapie de groupe",
+          "Campagnes de sensibilisation",
+          "Services de soutien communautaire"
+        ]
+      },
+      "prisoners": {
+        "title": "Prisonniers et Anciens Détenus",
+        "description": "Voies de réhabilitation et de réintégration",
+        "items": [
+          "Programmes de rééducation et de réintégration",
+          "Développement des compétences et réhabilitation",
+          "Suivi de la réinsertion sociale"
+        ]
+      },
+      "parents": {
+        "title": "Parents et Membres de la Communauté",
+        "description": "Renforcer les familles et les communautés",
+        "items": [
+          "Ateliers de parentalité",
+          "Dialogue intergénérationnel",
+          "Forums de santé communautaire"
+        ]
+      }
+    },
+    "supportServices": {
+      "libraries": {
+        "title": "Bibliothèques et Centres d'Apprentissage Numérique",
+        "description": "Accès aux connaissances et ressources numériques",
+        "items": [
+          "Programmes de lecture, formation TIC",
+          "Accès aux connaissances pour tous"
+        ]
+      },
+      "peace": {
+        "title": "Centres de Paix et Résolution des Conflits",
+        "description": "Espaces de guérison et de dialogue",
+        "items": [
+          "Pour les jeunes et les leaders communautaires",
+          "Soutien dans la guérison des traumatismes, médiation"
+        ]
+      },
+      "repository": {
+        "title": "Accès au Répertoire des Groupes de Jeunes",
+        "description": "Soutenir les organisations de jeunesse",
+        "items": [
+          "Suivi de la croissance et évaluation",
+          "Soutien à l'enregistrement, la formalisation et les partenariats"
+        ]
+      }
+    },
+    "testimonials": {
+      "title": "Histoires Réelles, Impact Réel",
+      "marie": {
+        "quote": "La formation professionnelle de VJN m'a donné les compétences et la confiance pour démarrer ma propre entreprise.",
+        "author": "Marie Uwimana",
+        "role": "Diplômée, Programme de Couture"
+      },
+      "jean": {
+        "quote": "Les ateliers de consolidation de la paix m'ont aidé à devenir un leader communautaire et un défenseur du changement.",
+        "author": "Jean Paul Niyonsenga",
+        "role": "Leader Jeunesse"
+      }
+    },
+    "cta": {
+      "title": "Vous cherchez du soutien ou vous voulez rejoindre un programme ?",
+      "subtitle": "Dites-nous comment nous pouvons marcher avec vous",
+      "contact": "Contactez-nous",
+      "join": "Rejoindre un Programme",
+      "visit": "Visiter nos Centres"
+    }
+  },
+  "media": {
+    "title": "Médias"
+  },
+  "news": {
+    "title": "Actualités"
+  },
+  "resources": {
+    "title": "Ressources",
+    "search": {
+      "title": "Rechercher des Ressources",
+      "placeholder": "Rechercher des ressources...",
+      "allTypes": "Tous les Types"
+    },
+    "sections": {
+      "publications": "Publications",
+      "announcements": "Annonces",
+      "documents": "Documents",
+      "media": "Médias"
+    },
+    "download": "Télécharger",
+    "fileTypes": {
+      "pdf": "PDF",
+      "doc": "DOC",
+      "xls": "XLS",
+      "image": "Images"
+    }
+  },
+  "footer": {
+    "about": {
+      "title": "À Propos",
+      "description": "Vision Jeunesse Nouvelle (VJN) est une organisation dirigée par des jeunes, dédiée à l'autonomisation des jeunes à travers l'éducation, le développement économique, les initiatives de santé, la construction de la paix et les programmes artistiques."
+    },
+    "usefulLinks": {
+      "title": "Liens Rapides",
+      "about": "À Propos",
+      "programs": "Programmes",
+      "services": "Services",
+      "contact": "Contact",
+      "community": "Communauté",
+      "blog": "Blog",
+      "events": "Événements",
+      "volunteer": "Bénévolat",
+      "donate": "Don"
+    },
+    "copyright": "Tous droits réservés.",
+    "privacy": "Politique de Confidentialité",
+    "terms": "Conditions d'Utilisation",
+    "sitemap": "Plan du Site"
+  },
+  "newsletter": {
+    "title": "Restez Connecté",
+    "description": "Abonnez-vous pour recevoir des mises à jour sur nos programmes, événements et opportunités de participation.",
+    "emailPlaceholder": "Votre adresse e-mail",
+    "subscribe": "Rejoindre"
+  },
+  "home": {
+    "hero": {
+      "title": "Renforcer la jeunesse pour un meilleur avenir",
+      "subtitle": "Autonomiser les jeunes à travers l'éducation, le développement économique, les initiatives de santé, la construction de la paix et les programmes artistiques",
+      "cta": {
+        "explore": "Explorer les Programmes",
+        "support": "Soutenir Notre Travail",
+        "join": "Rejoindre un Groupe de Jeunes"
+      }
+    },
+    "about": {
+      "description": "Vision Jeunesse Nouvelle (VJN) est une organisation dirigée par des jeunes, fondée en 2005, dédiée à l'autonomisation des jeunes à travers le Rwanda et la région grâce à des programmes complets en éducation, développement économique, santé, construction de la paix et arts.",
+      "learnMore": "En Savoir Plus Sur Nous"
+    },
+    "programs": {
+      "title": "Nos Programmes Principaux",
+      "learnMore": "En Savoir Plus",
+      "education": {
+        "title": "Éducation",
+        "description": "Fournir une éducation de qualité et une formation professionnelle pour équiper les jeunes des compétences essentielles pour réussir"
+      },
+      "economic": {
+        "title": "Autonomisation Économique",
+        "description": "Développer les compétences commerciales et l'indépendance financière à travers des programmes d'entrepreneuriat"
+      },
+      "health": {
+        "title": "Santé",
+        "description": "Promouvoir la sensibilisation à la santé et fournir l'accès aux services de santé essentiels"
+      },
+      "peace": {
+        "title": "Construction de la Paix",
+        "description": "Favoriser la paix et la réconciliation à travers le dialogue et l'engagement communautaire"
+      },
+      "culture": {
+        "title": "Sports, Culture & Arts",
+        "description": "Encourager la créativité et l'expression culturelle à travers divers programmes artistiques et sportifs"
+      }
+    },
+    "impact": {
+      "name": "Marie Uwimana",
+      "location": "Kigali, Rwanda",
+      "quote": "Les programmes de VJN m'ont donné les compétences et la confiance pour démarrer ma propre entreprise. Aujourd'hui, je ne fais pas que survivre—je prospère et aide les autres à faire de même.",
+      "readMore": "Lire Plus d'Histoires"
+    },
+    "news": {
+      "title": "Dernières Nouvelles & Mises à Jour",
+      "readMore": "Lire Plus",
+      "item1": {
+        "title": "Nouveau Centre de Jeunesse Ouvert à Nyundo",
+        "excerpt": "Élargir notre portée pour servir plus de jeunes dans la Province de l'Ouest",
+        "date": "15 Mars 2024"
+      },
+      "item2": {
+        "title": "Succès de l'Atelier de Construction de la Paix",
+        "excerpt": "Plus de 100 leaders jeunesse formés à la résolution des conflits et au dialogue communautaire",
+        "date": "10 Mars 2024"
+      }
+    },
+    "beneficiaries": {
+      "title": "Qui Nous Servons",
+      "list": [
+        "Enfants, jeunes et adultes",
+        "Réfugiés et victimes de catastrophes",
+        "Personnes vivant avec le VIH/SIDA",
+        "Prisonniers et individus vulnérables",
+        "Parents et membres de la communauté"
+      ]
+    },
+    "opportunities": {
+      "title": "Opportunités de Carrière & Formation",
+      "apply": "Postuler Maintenant",
+      "viewAll": "Voir Toutes les Opportunités",
+      "item1": {
+        "title": "Coordinateur de Programme Jeunesse",
+        "type": "Temps plein",
+        "location": "Kigali"
+      },
+      "item2": {
+        "title": "Atelier de Construction de la Paix",
+        "type": "Formation",
+        "location": "Nyundo"
+      }
+    },
+    "repository": {
+      "title": "Répertoire des Groupes de Jeunes",
+      "description": "Accédez à notre base de données complète de groupes et organisations de jeunes. Enregistrez votre groupe pour vous connecter avec d'autres et accéder aux ressources.",
+      "access": "Accéder au Répertoire",
+      "register": "Enregistrer un Groupe de Jeunes"
+    },
+    "partner": {
+      "title": "Devenez Partenaire",
+      "description": "Rejoignez-nous dans notre mission d'autonomiser les jeunes et de construire des communautés plus fortes. Votre soutien peut avoir un impact durable.",
+      "becomePartner": "Devenir Partenaire",
+      "donate": "Faire un Don"
+    },
+    "contact": {
+      "title": "Informations de Contact",
+      "phone": "+250 785 403 435 / 788 892 826",
+      "email": "visionjeunesse2050@gmail.com",
+      "address": "District de Rubavu, Secteur de Gisenyi, Cellule de Nengo, Village de Gikarani",
+      "quickLinks": "Liens Rapides",
+      "links": {
+        "about": "À Propos",
+        "programs": "Programmes",
+        "services": "Services",
+        "news": "Actualités",
+        "careers": "Carrières",
+        "contact": "Contact"
+      }
+    }
+  },
+  "about": {
+    "title": "À propos de nous",
+    "subtitle": "Renforcer les jeunes pour un avenir meilleur",
+    "history": "Notre histoire",
+    "history.text": "Texte d'historique de l'espace réservé.",
+    "mission": "Notre mission",
+    "mission.text": "Permettre aux jeunes d'acquérir les compétences, les connaissances et les opportunités dont ils ont besoin pour devenir des agents de changement positif dans leurs communautés et contribuer au développement national durable.",
+    "vision": "Notre vision",
+    "vision.text": "Une société où chaque jeune est équipé et inspiré pour réaliser pleinement son potentiel, diriger avec intégrité et bâtir un avenir pacifique et prospère pour tous.",
+    "foundingMembers": {
+      "title": "Membres fondateurs",
+      "text": "Rencontrez les personnes qui ont jeté les bases de Vision Jeunesse Nouvelle."
+    },
+    "staffLink": "Rencontrez notre personnel"
+  }
+} 

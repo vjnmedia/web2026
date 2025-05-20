@@ -17,6 +17,10 @@ const translations = {
     en: 'Donate',
     fr: 'Faire un don',
   },
+  'hero.cta.volunteer': {
+    en: 'Volunteer',
+    fr: 'Bénévolat',
+  },
   'programs.title': {
     en: 'Our Programs',
     fr: 'Nos programmes',
@@ -65,6 +69,10 @@ const translations = {
     en: 'Celebrating Rwandan culture and providing platforms for artistic expression.',
     fr: 'Célébrer la culture rwandaise et offrir des plateformes d\'expression artistique.',
   },
+  'programs.learnMore': {
+    en: 'Learn More',
+    fr: 'En savoir plus',
+  },
   'about.title': {
     en: 'About VJN Rwanda',
     fr: 'À propos de VJN Rwanda',
@@ -84,6 +92,10 @@ const translations = {
   'about.mission': {
     en: 'Our Mission',
     fr: 'Notre mission',
+  },
+  'about.vision': {
+    en: 'Our Vision',
+    fr: 'Notre Vision',
   },
   'contact.title': {
     en: 'Get In Touch',
@@ -109,9 +121,25 @@ const translations = {
     en: 'Send Message',
     fr: 'Envoyer le message',
   },
+  'contact.address.value': {
+    en: 'Kigali, Rwanda',
+    fr: 'Kigali, Rwanda',
+  },
   'footer.copyright': {
     en: '© 2023 VJN Rwanda. All rights reserved.',
     fr: '© 2023 VJN Rwanda. Tous droits réservés.',
+  },
+  'footer.rights': {
+    en: 'All rights reserved',
+    fr: 'Tous droits réservés',
+  },
+  'footer.privacy': {
+    en: 'Privacy Policy',
+    fr: 'Politique de confidentialité',
+  },
+  'footer.terms': {
+    en: 'Terms of Service',
+    fr: 'Conditions d\'utilisation',
   },
   'dashboard.title': {
     en: 'Data Management System',
@@ -520,7 +548,35 @@ const translations = {
   'dashboard.noMembersFound': {
     en: 'No team members found',
     fr: 'Aucun membre d\'équipe trouvé'
-  }
+  },
+  'nav.home': {
+    en: 'Home',
+    fr: 'Accueil',
+  },
+  'nav.about': {
+    en: 'About',
+    fr: 'À propos',
+  },
+  'nav.programs': {
+    en: 'Programs',
+    fr: 'Programmes',
+  },
+  'nav.careers': {
+    en: 'Careers',
+    fr: 'Carrières',
+  },
+  'nav.media': {
+    en: 'Media',
+    fr: 'Médias',
+  },
+  'nav.contact': {
+    en: 'Contact',
+    fr: 'Contact',
+  },
+  'nav.donate': {
+    en: 'Donate',
+    fr: 'Faire un don',
+  },
 }
 
 export default translations;

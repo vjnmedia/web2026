@@ -1,8 +1,8 @@
-
 import { Book, Users, Heart, Smile, Music } from 'lucide-react';
 import { useLanguage } from '@/components/LanguageContext';
 import Hero from '@/components/Hero';
 import ProgramCard from '@/components/ProgramCard';
+import LogoCarousel from '@/components/LogoCarousel';
 import { Button } from '@/components/ui/button';
 
 const Index = () => {
@@ -67,6 +67,9 @@ const Index = () => {
         </div>
       </section>
 
+      {/* Partners & Donors Section */}
+      <LogoCarousel />
+
       {/* About Section */}
       <section className="section bg-white">
         <div className="container-custom">
@@ -86,7 +89,7 @@ const Index = () => {
             </div>
             <div className="order-1 md:order-2">
               <img
-                src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"
+                src="images/home.jpg"
                 alt="Youth in Rwanda"
                 className="rounded-lg shadow-lg w-full h-auto object-cover"
               />

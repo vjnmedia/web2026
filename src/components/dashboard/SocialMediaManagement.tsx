@@ -1,164 +1,329 @@
-
-import { useState } from 'react';
-import { useLanguage } from '@/components/LanguageContext';
+import React, { useState, useEffect } from 'react';
+import { Twitter, Instagram, Plus, Edit2, Trash2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
+import { Textarea } from '@/components/ui/textarea';
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from '@/components/ui/dialog';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
-import { Plus, Pencil, Trash2, Facebook, Twitter, Instagram } from 'lucide-react';
+import { ImageUpload } from '@/components/ui/ImageUpload';
+import { useSocialMedia } from '@/hooks/useSocialMedia';
+import { SocialMediaPost } from '@/types/socialMedia';
+import { toast } from 'react-hot-toast';
 
-// Mock data for social media posts
-const mockSocialPosts = [
-  { 
-    id: 1, 
-    content: "Join us for our Youth Leadership Summit next week!", 
-    platform: "Facebook", 
-    scheduled: "2023-07-15", 
-    status: "Scheduled" 
-  },
-  { 
-    id: 2, 
-    content: "Check out our latest blog post on youth empowerment!", 
-    platform: "Twitter", 
-    scheduled: "2023-07-10", 
-    status: "Posted" 
-  },
-  { 
-    id: 3, 
-    content: "Photos from our Community Day event are now live on our website!", 
-    platform: "Instagram", 
-    scheduled: "2023-07-05", 
-    status: "Posted" 
-  },
-  { 
-    id: 4, 
-    content: "Registration for our summer programs starts tomorrow!", 
-    platform: "Facebook", 
-    scheduled: "2023-07-20", 
-    status: "Draft" 
-  },
-];
+const SocialMediaManagement: React.FC = () => {
+  const {
+    twitterPosts,
+    instagramPosts,
+    loading,
+    error,
+    fetchPosts,
+    createPost,
+    updatePost,
+    deletePost,
+    uploadImage,
+  } = useSocialMedia();
 
-const SocialMediaManagement = () => {
-  const { t } = useLanguage();
-  const [socialPosts, setSocialPosts] = useState(mockSocialPosts);
-  const [searchTerm, setSearchTerm] = useState('');
-  const [activePlatform, setActivePlatform] = useState("all");
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
+  const [editingPost, setEditingPost] = useState<SocialMediaPost | null>(null);
+  const [activeTab, setActiveTab] = useState('twitter');
+  const [uploadedImageUrl, setUploadedImageUrl] = useState<string | null>(null);
 
-  const filteredPosts = socialPosts.filter(post => {
-    const matchesSearch = post.content.toLowerCase().includes(searchTerm.toLowerCase());
-    const matchesPlatform = activePlatform === "all" || post.platform.toLowerCase() === activePlatform.toLowerCase();
-    return matchesSearch && matchesPlatform;
-  });
+  useEffect(() => {
+    fetchPosts();
+  }, [fetchPosts]);
 
   const handleAddPost = () => {
-    console.log("Add new social media post");
+    setEditingPost(null);
+    setUploadedImageUrl(null);
+    setIsDialogOpen(true);
   };
 
-  const handleEditPost = (id: number) => {
-    console.log("Edit social media post with id:", id);
+  const handleEditPost = (post: SocialMediaPost) => {
+    setEditingPost(post);
+    setUploadedImageUrl(post.image || null);
+    setIsDialogOpen(true);
   };
 
-  const handleDeletePost = (id: number) => {
-    console.log("Delete social media post with id:", id);
-    setSocialPosts(socialPosts.filter(post => post.id !== id));
-  };
-
-  const getPlatformIcon = (platform: string) => {
-    switch(platform.toLowerCase()) {
-      case 'facebook':
-        return <Facebook className="h-4 w-4 text-blue-600" />;
-      case 'twitter':
-        return <Twitter className="h-4 w-4 text-blue-400" />;
-      case 'instagram':
-        return <Instagram className="h-4 w-4 text-pink-600" />;
-      default:
-        return null;
+  const handleDeletePost = async (postId: number, platform: 'twitter' | 'instagram') => {
+    if (window.confirm('Are you sure you want to delete this post?')) {
+      await deletePost(postId, platform);
     }
   };
 
+  const handleImageUpload = async (file: File) => {
+    try {
+      const url = await uploadImage(file);
+      setUploadedImageUrl(url);
+    } catch (error) {
+      console.error('Failed to upload image:', error);
+    }
+  };
+
+  const handleSavePost = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const formData = new FormData(e.currentTarget);
+
+    const postData: Partial<SocialMediaPost> = {
+      content: formData.get('content') as string,
+      caption: formData.get('caption') as string,
+      date: formData.get('date') as string,
+      likes: parseInt(formData.get('likes') as string),
+      author: formData.get('author') as string,
+      authorHandle: formData.get('authorHandle') as string,
+      authorImage: formData.get('authorImage') as string,
+    };
+
+    if (activeTab === 'twitter') {
+      postData.retweets = parseInt(formData.get('retweets') as string);
+    } else {
+      postData.comments = parseInt(formData.get('comments') as string);
+      postData.image = uploadedImageUrl || editingPost?.image;
+    }
+
+    try {
+      if (editingPost) {
+        await updatePost(editingPost.id, postData, activeTab as 'twitter' | 'instagram');
+      } else {
+        await createPost(postData as Omit<SocialMediaPost, 'id'>, activeTab as 'twitter' | 'instagram');
+      }
+      setIsDialogOpen(false);
+    } catch (error) {
+      console.error('Failed to save post:', error);
+    }
+  };
+
+  if (loading && !twitterPosts.length && !instagramPosts.length) {
+    return (
+      <div className="flex items-center justify-center min-h-screen">
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-vjn-blue"></div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="flex items-center justify-center min-h-screen">
+        <div className="text-red-500 text-center">
+          <p className="text-xl font-semibold mb-2">Error</p>
+          <p>{error}</p>
+          <Button onClick={() => fetchPosts()} className="mt-4">
+            Retry
+          </Button>
+        </div>
+      </div>
+    );
+  }
+
   return (
-    <div className="space-y-6">
-      <div className="flex justify-between items-center">
-        <h2 className="text-2xl font-semibold">{t('dashboard.socialMediaManagement')}</h2>
-        <Button onClick={handleAddPost} className="bg-vjn-blue hover:bg-vjn-light-blue">
-          <Plus className="mr-2 h-4 w-4" />
-          {t('dashboard.addSocialPost')}
+    <div className="p-6">
+      <div className="flex justify-between items-center mb-6">
+        <h2 className="text-2xl font-bold">Social Media Management</h2>
+        <Button onClick={handleAddPost} className="flex items-center gap-2">
+          <Plus className="h-4 w-4" />
+          Add New Post
         </Button>
       </div>
-      
-      <div className="flex items-center">
-        <Input
-          placeholder={t('dashboard.searchSocialPosts')}
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-          className="max-w-sm"
-        />
-      </div>
-      
-      <Tabs value={activePlatform} onValueChange={setActivePlatform}>
-        <TabsList>
-          <TabsTrigger value="all">{t('dashboard.allPlatforms')}</TabsTrigger>
-          <TabsTrigger value="facebook">Facebook</TabsTrigger>
-          <TabsTrigger value="twitter">Twitter</TabsTrigger>
-          <TabsTrigger value="instagram">Instagram</TabsTrigger>
+
+      <Tabs defaultValue="twitter" onValueChange={setActiveTab}>
+        <TabsList className="mb-6">
+          <TabsTrigger value="twitter" className="flex items-center gap-2">
+            <Twitter className="h-4 w-4" />
+            Twitter Posts
+          </TabsTrigger>
+          <TabsTrigger value="instagram" className="flex items-center gap-2">
+            <Instagram className="h-4 w-4" />
+            Instagram Posts
+          </TabsTrigger>
         </TabsList>
-        
-        <TabsContent value={activePlatform} className="pt-4">
-          <div className="rounded-md border">
-            <Table>
-              <TableHeader>
-                <TableRow>
-                  <TableHead>{t('dashboard.platform')}</TableHead>
-                  <TableHead>{t('dashboard.content')}</TableHead>
-                  <TableHead>{t('dashboard.scheduledDate')}</TableHead>
-                  <TableHead>{t('dashboard.status')}</TableHead>
-                  <TableHead className="text-right">{t('dashboard.actions')}</TableHead>
-                </TableRow>
-              </TableHeader>
-              <TableBody>
-                {filteredPosts.length === 0 ? (
-                  <TableRow>
-                    <TableCell colSpan={5} className="text-center py-4">
-                      {t('dashboard.noSocialPosts')}
-                    </TableCell>
-                  </TableRow>
-                ) : (
-                  filteredPosts.map((post) => (
-                    <TableRow key={post.id}>
-                      <TableCell>
-                        <div className="flex items-center gap-2">
-                          {getPlatformIcon(post.platform)}
-                          {post.platform}
-                        </div>
-                      </TableCell>
-                      <TableCell className="max-w-xs truncate">{post.content}</TableCell>
-                      <TableCell>{post.scheduled}</TableCell>
-                      <TableCell>
-                        <span className={`px-2 py-1 rounded text-xs font-medium ${
-                          post.status === 'Posted' ? 'bg-green-100 text-green-800' : 
-                          post.status === 'Scheduled' ? 'bg-blue-100 text-blue-800' : 
-                          'bg-gray-100 text-gray-800'
-                        }`}>
-                          {post.status}
-                        </span>
-                      </TableCell>
-                      <TableCell className="text-right">
-                        <Button variant="ghost" size="icon" onClick={() => handleEditPost(post.id)}>
-                          <Pencil className="h-4 w-4" />
-                        </Button>
-                        <Button variant="ghost" size="icon" onClick={() => handleDeletePost(post.id)}>
-                          <Trash2 className="h-4 w-4" />
-                        </Button>
-                      </TableCell>
-                    </TableRow>
-                  ))
-                )}
-              </TableBody>
-            </Table>
+
+        <TabsContent value="twitter">
+          <div className="grid gap-4">
+            {twitterPosts.map((post) => (
+              <div key={post.id} className="bg-white p-4 rounded-lg shadow">
+                <div className="flex justify-between items-start mb-4">
+                  <div className="flex items-center gap-3">
+                    <img src={post.authorImage} alt={post.author} className="w-10 h-10 rounded-full" />
+                    <div>
+                      <h3 className="font-semibold">{post.author}</h3>
+                      <p className="text-sm text-gray-500">{post.authorHandle}</p>
+                    </div>
+                  </div>
+                  <div className="flex gap-2">
+                    <Button variant="outline" size="sm" onClick={() => handleEditPost(post)}>
+                      <Edit2 className="h-4 w-4" />
+                    </Button>
+                    <Button variant="outline" size="sm" onClick={() => handleDeletePost(post.id, 'twitter')}>
+                      <Trash2 className="h-4 w-4" />
+                    </Button>
+                  </div>
+                </div>
+                <p className="text-gray-700 mb-2">{post.content}</p>
+                <div className="flex items-center gap-4 text-sm text-gray-500">
+                  <span>{post.date}</span>
+                  <span>•</span>
+                  <span>{post.likes} likes</span>
+                  <span>•</span>
+                  <span>{post.retweets} retweets</span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </TabsContent>
+
+        <TabsContent value="instagram">
+          <div className="grid gap-4">
+            {instagramPosts.map((post) => (
+              <div key={post.id} className="bg-white p-4 rounded-lg shadow">
+                <div className="flex justify-between items-start mb-4">
+                  <div className="aspect-square w-24 overflow-hidden rounded-lg">
+                    <img src={post.image} alt="Post" className="w-full h-full object-cover" />
+                  </div>
+                  <div className="flex gap-2">
+                    <Button variant="outline" size="sm" onClick={() => handleEditPost(post)}>
+                      <Edit2 className="h-4 w-4" />
+                    </Button>
+                    <Button variant="outline" size="sm" onClick={() => handleDeletePost(post.id, 'instagram')}>
+                      <Trash2 className="h-4 w-4" />
+                    </Button>
+                  </div>
+                </div>
+                <p className="text-gray-700 mb-2">{post.caption}</p>
+                <div className="flex items-center gap-4 text-sm text-gray-500">
+                  <span>{post.date}</span>
+                  <span>•</span>
+                  <span>{post.likes} likes</span>
+                  <span>•</span>
+                  <span>{post.comments} comments</span>
+                </div>
+              </div>
+            ))}
           </div>
         </TabsContent>
       </Tabs>
+
+      <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
+        <DialogContent className="sm:max-w-[600px]" aria-describedby="dialog-description">
+          <DialogHeader>
+            <DialogTitle>{editingPost ? 'Edit Post' : 'Add New Post'}</DialogTitle>
+            <DialogDescription id="dialog-description">
+              {editingPost ? 'Edit the details of your social media post.' : 'Create a new social media post.'}
+            </DialogDescription>
+          </DialogHeader>
+          <form onSubmit={handleSavePost}>
+            <div className="grid gap-4 py-4">
+              {activeTab === 'twitter' ? (
+                <>
+                  <div className="grid gap-2">
+                    <label htmlFor="author">Author Name</label>
+                    <Input
+                      id="author"
+                      name="author"
+                      defaultValue={editingPost?.author}
+                      placeholder="Enter author name"
+                      required
+                    />
+                  </div>
+                  <div className="grid gap-2">
+                    <label htmlFor="authorHandle">Author Handle</label>
+                    <Input
+                      id="authorHandle"
+                      name="authorHandle"
+                      defaultValue={editingPost?.authorHandle || '@visionjeunesse2'}
+                      placeholder="@visionjeunesse2"
+                      required
+                    />
+                  </div>
+                  <div className="grid gap-2">
+                    <label htmlFor="content">Content</label>
+                    <Textarea
+                      id="content"
+                      name="content"
+                      defaultValue={editingPost?.content}
+                      placeholder="Enter post content"
+                      required
+                    />
+                  </div>
+                </>
+              ) : (
+                <>
+                  <div className="grid gap-2">
+                    <label>Image</label>
+                    <ImageUpload
+                      onUpload={handleImageUpload}
+                      currentImage={editingPost?.image}
+                      maxSizeMB={5}
+                    />
+                  </div>
+                  <div className="grid gap-2">
+                    <label htmlFor="caption">Caption</label>
+                    <Textarea
+                      id="caption"
+                      name="caption"
+                      defaultValue={editingPost?.caption}
+                      placeholder="Enter post caption"
+                      required
+                    />
+                  </div>
+                </>
+              )}
+              <div className="grid gap-2">
+                <label htmlFor="date">Date</label>
+                <Input
+                  id="date"
+                  name="date"
+                  defaultValue={editingPost?.date}
+                  placeholder="e.g., 2 hours ago"
+                  required
+                />
+              </div>
+              <div className="grid gap-2">
+                <label htmlFor="likes">Likes</label>
+                <Input
+                  id="likes"
+                  name="likes"
+                  type="number"
+                  defaultValue={editingPost?.likes}
+                  placeholder="Enter number of likes"
+                  required
+                />
+              </div>
+              {activeTab === 'twitter' ? (
+                <div className="grid gap-2">
+                  <label htmlFor="retweets">Retweets</label>
+                  <Input
+                    id="retweets"
+                    name="retweets"
+                    type="number"
+                    defaultValue={editingPost?.retweets}
+                    placeholder="Enter number of retweets"
+                    required
+                  />
+                </div>
+              ) : (
+                <div className="grid gap-2">
+                  <label htmlFor="comments">Comments</label>
+                  <Input
+                    id="comments"
+                    name="comments"
+                    type="number"
+                    defaultValue={editingPost?.comments}
+                    placeholder="Enter number of comments"
+                    required
+                  />
+                </div>
+              )}
+            </div>
+            <div className="flex justify-end gap-2">
+              <Button type="button" variant="outline" onClick={() => setIsDialogOpen(false)}>
+                Cancel
+              </Button>
+              <Button type="submit" disabled={loading}>
+                {loading ? 'Saving...' : 'Save'}
+              </Button>
+            </div>
+          </form>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 };
