@@ -16,150 +16,180 @@
     "contact": "Nous Contacter"
   },
   "services": {
-    "title": "Nos Services – Construire des Vies, Pas à Pas",
-    "subtitle": "De la cour de récréation à la table de paix, des ateliers de formation aux souffrances silencieuses derrière les barreaux—Vision Jeunesse Nouvelle est là. Servir avec des mains qui guérissent, des esprits qui enseignent et des cœurs qui transforment.",
-    "introduction": "Chez Vision Jeunesse Nouvelle, nous servons les jeunes et au-delà—en équipant les individus d'outils, de compétences et de soutien pour mener une vie digne, saine et pleine de sens. Que ce soit par la formation professionnelle, la sensibilisation à la santé, la consolidation de la paix ou l'expression créative, nos services atteignent les communautés à travers le Rwanda et la région.",
+    "title": "Nos Services – Construire des vies, une étape à la fois",
+    "subtitle": "Du terrain de jeu à la table de paix, des ateliers de développement de compétences à la souffrance silencieuse derrière les barreaux—Vision Jeunesse Nouvelle est là. Servir avec des mains qui guérissent, des esprits qui enseignent et des cœurs qui transforment.",
+    "introduction": "À Vision Jeunesse Nouvelle, nous servons la jeunesse et au-delà—équipant les individus avec des outils, des compétences et un soutien pour mener une vie digne, saine et pleine de sens. Que ce soit par la formation professionnelle, la sensibilisation à la santé, la consolidation de la paix ou l'expression créative, nos services atteignent les communautés à travers le Rwanda et la région.",
     "sections": {
-      "youth": "Services pour les Jeunes",
+      "youth": "Services pour la Jeunesse",
       "vulnerable": "Services pour les Populations Vulnérables",
       "support": "Services de Soutien Transversaux"
     },
     "youthServices": {
       "vocational": {
-        "title": "Formation Professionnelle et Technique",
+        "title": "Formation Professionnelle & Technique",
         "description": "Autonomiser les jeunes avec des compétences pratiques pour un emploi durable",
         "items": [
           "Couture, coiffure, soudure, mécanique",
           "Cours d'alphabétisation et de calcul",
-          "Éducation spéciale pour les sourds et muets"
+          "Éducation spécialisée pour les sourds et muets"
         ]
       },
       "entrepreneurship": {
-        "title": "Entrepreneuriat et Autonomisation Économique",
-        "description": "Développer l'acuité commerciale et l'indépendance financière",
+        "title": "Entrepreneuriat & Autonomisation Économique",
+        "description": "Développer l'esprit d'entreprise et l'indépendance financière",
         "items": [
-          "Ateliers de compétences commerciales",
+          "Ateliers de compétences entrepreneuriales",
           "GSLA (Associations d'Épargne et de Crédit)",
-          "Formation au commerce électronique et développement coopératif"
+          "Formation au e-commerce & développement de coopératives"
         ]
       },
       "health": {
-        "title": "Sensibilisation à la Santé et Éducation par les Pairs",
+        "title": "Sensibilisation à la Santé & Éducation par les Pairs",
         "description": "Promouvoir la santé et le bien-être par des initiatives dirigées par les pairs",
         "items": [
           "Santé reproductive, VIH/SIDA, planification familiale",
-          "Prévention de l'obésité et des MNT",
-          "Éducateurs pairs formés et services adaptés aux jeunes"
+          "Prévention de l'obésité et des maladies non transmissibles",
+          "Pairs éducateurs formés et services adaptés aux jeunes"
         ]
       },
       "talent": {
-        "title": "Développement des Talents et Compétences",
-        "description": "Encourager la créativité et l'expression culturelle",
+        "title": "Développement des Talents & Compétences",
+        "description": "Favoriser la créativité et l'expression culturelle",
         "items": [
           "Sports, arts, musique, danse, théâtre",
-          "Compétitions culturelles et présentations communautaires"
+          "Compétitions culturelles et spectacles communautaires"
         ]
       },
       "peace": {
-        "title": "Initiatives de Paix et Leadership",
-        "description": "Construire les leaders et artisans de paix de demain",
+        "title": "Initiatives de Paix & Leadership",
+        "description": "Former les leaders et artisans de paix de demain",
         "items": [
           "Prise de parole en public, clubs de débat",
           "Camps de paix, dialogues transfrontaliers",
-          "Consolidation de la paix numérique et défense des droits de l'homme"
+          "Consolidation de la paix numérique et plaidoyer pour les droits humains"
         ]
       }
     },
     "vulnerableServices": {
       "refugees": {
-        "title": "Réfugiés et Victimes de Catastrophes",
-        "description": "Soutenir ceux touchés par le déplacement et la crise",
+        "title": "Réfugiés & Victimes de Catastrophes",
+        "description": "Soutenir les personnes touchées par le déplacement et la crise",
         "items": [
           "Soutien psychosocial",
           "Inclusion dans les programmes de paix et de santé",
-          "Réintégration économique"
+          "Réinsertion économique"
         ]
       },
       "hiv": {
-        "title": "Personnes Vivant avec le VIH/SIDA",
-        "description": "Services complets de soutien et de soins",
+        "title": "Personnes vivant avec le VIH/SIDA",
+        "description": "Soutien et soins complets",
         "items": [
-          "Counseling et thérapie de groupe",
+          "Conseils et thérapie de groupe",
           "Campagnes de sensibilisation",
           "Services de soutien communautaire"
         ]
       },
       "prisoners": {
-        "title": "Prisonniers et Anciens Détenus",
-        "description": "Voies de réhabilitation et de réintégration",
+        "title": "Prisonniers & Ex-détenus",
+        "description": "Parcours de réhabilitation et de réinsertion",
         "items": [
-          "Programmes de rééducation et de réintégration",
-          "Développement des compétences et réhabilitation",
+          "Programmes de rééducation et de réinsertion",
+          "Développement de compétences et réhabilitation",
           "Suivi de la réinsertion sociale"
         ]
       },
       "parents": {
-        "title": "Parents et Membres de la Communauté",
+        "title": "Parents & Membres de la Communauté",
         "description": "Renforcer les familles et les communautés",
         "items": [
-          "Ateliers de parentalité",
+          "Ateliers pour parents",
           "Dialogue intergénérationnel",
-          "Forums de santé communautaire"
+          "Forums communautaires sur la santé"
         ]
       }
     },
     "supportServices": {
       "libraries": {
-        "title": "Bibliothèques et Centres d'Apprentissage Numérique",
-        "description": "Accès aux connaissances et ressources numériques",
+        "title": "Bibliothèques & Espaces d'Apprentissage Numérique",
+        "description": "Accès à la connaissance et aux ressources numériques",
         "items": [
           "Programmes de lecture, formation TIC",
-          "Accès aux connaissances pour tous"
+          "Accès à la connaissance pour tous"
         ]
       },
       "peace": {
-        "title": "Centres de Paix et Résolution des Conflits",
+        "title": "Centres de Paix et de Résolution des Conflits",
         "description": "Espaces de guérison et de dialogue",
         "items": [
           "Pour les jeunes et les leaders communautaires",
-          "Soutien dans la guérison des traumatismes, médiation"
+          "Soutien à la guérison des traumatismes, médiation"
         ]
       },
       "repository": {
         "title": "Accès au Répertoire des Groupes de Jeunes",
         "description": "Soutenir les organisations de jeunesse",
         "items": [
-          "Suivi de la croissance et évaluation",
+          "Croissance et évaluation suivies",
           "Soutien à l'enregistrement, la formalisation et les partenariats"
         ]
       }
     },
     "testimonials": {
-      "title": "Histoires Réelles, Impact Réel",
+      "title": "Témoignages Réels, Impact Réel",
       "marie": {
-        "quote": "La formation professionnelle de VJN m'a donné les compétences et la confiance pour démarrer ma propre entreprise.",
+        "quote": "La formation professionnelle de VJN m'a donné les compétences et la confiance pour créer ma propre entreprise.",
         "author": "Marie Uwimana",
-        "role": "Diplômée, Programme de Couture"
+        "role": "Diplômée, Programme de couture"
       },
       "jean": {
         "quote": "Les ateliers de consolidation de la paix m'ont aidé à devenir un leader communautaire et un défenseur du changement.",
         "author": "Jean Paul Niyonsenga",
-        "role": "Leader Jeunesse"
+        "role": "Jeune leader"
       }
     },
     "cta": {
-      "title": "Vous cherchez du soutien ou vous voulez rejoindre un programme ?",
-      "subtitle": "Dites-nous comment nous pouvons marcher avec vous",
+      "title": "Vous cherchez du soutien ou souhaitez rejoindre un programme ?",
+      "subtitle": "Dites-nous comment nous pouvons vous accompagner",
       "contact": "Contactez-nous",
-      "join": "Rejoindre un Programme",
-      "visit": "Visiter nos Centres"
+      "join": "Rejoindre un programme",
+      "visit": "Visitez nos centres"
     }
   },
   "media": {
-    "title": "Médias"
+    "title": "Médias",
+    "gallery": "Galerie",
+    "videos": "Vidéos",
+    "press": "Presse",
+    "social": "Médias Sociaux",
+    "noMedia": "Aucun média disponible",
+    "categories": {
+      "all": "Tous les médias",
+      "photos": "Photos",
+      "videos": "Vidéos",
+      "documents": "Documents"
+    },
+    "filters": {
+      "search": "Rechercher des médias...",
+      "date": "Filtrer par date",
+      "type": "Filtrer par type"
+    }
   },
   "news": {
-    "title": "Actualités"
+    "title": "Actualités",
+    "readMore": "Lire Plus",
+    "latestNews": "Dernières Actualités",
+    "noNews": "Aucune actualité disponible",
+    "categories": {
+      "all": "Toutes les catégories",
+      "events": "Événements",
+      "programs": "Programmes",
+      "announcements": "Annonces"
+    },
+    "filters": {
+      "search": "Rechercher des actualités...",
+      "date": "Filtrer par date",
+      "category": "Filtrer par catégorie"
+    }
   },
   "resources": {
     "title": "Ressources",
@@ -180,6 +210,18 @@
       "doc": "DOC",
       "xls": "XLS",
       "image": "Images"
+    },
+    "noResources": "Aucune ressource disponible",
+    "categories": {
+      "all": "Toutes les ressources",
+      "publications": "Publications",
+      "reports": "Rapports",
+      "guides": "Guides"
+    },
+    "filters": {
+      "search": "Rechercher des ressources...",
+      "type": "Filtrer par type",
+      "date": "Filtrer par date"
     }
   },
   "footer": {
@@ -212,40 +254,71 @@
   },
   "home": {
     "hero": {
-      "title": "Renforcer la jeunesse pour un meilleur avenir",
-      "subtitle": "Autonomiser les jeunes à travers l'éducation, le développement économique, les initiatives de santé, la construction de la paix et les programmes artistiques",
-      "cta": {
-        "explore": "Explorer les Programmes",
-        "support": "Soutenir Notre Travail",
-        "join": "Rejoindre un Groupe de Jeunes"
-      }
+      "title": "Autonomiser les jeunes pour un meilleur avenir",
+      "subtitle": "Construire un avenir meilleur grâce à l'éducation, l'autonomisation économique et le développement communautaire",
+      "cta": "S'impliquer"
     },
     "about": {
       "description": "Vision Jeunesse Nouvelle (VJN) est une organisation dirigée par des jeunes, fondée en 2005, dédiée à l'autonomisation des jeunes à travers le Rwanda et la région grâce à des programmes complets en éducation, développement économique, santé, construction de la paix et arts.",
       "learnMore": "En Savoir Plus Sur Nous"
     },
     "programs": {
-      "title": "Nos Programmes Principaux",
-      "learnMore": "En Savoir Plus",
+      "title": "Nos Programmes",
+      "subtitle": "Nous nous concentrons sur des domaines clés pour impulser un changement durable et améliorer la vie des jeunes Rwandais.",
       "education": {
-        "title": "Éducation",
-        "description": "Fournir une éducation de qualité et une formation professionnelle pour équiper les jeunes des compétences essentielles pour réussir"
+        "title": "Éducation et Formation Professionnelle",
+        "description": "Fournir une éducation de qualité et une formation professionnelle pour doter les jeunes des compétences essentielles pour réussir dans le monde moderne",
+        "details": {
+          "1": "Formation professionnelle en menuiserie, soudure, couture et informatique",
+          "2": "Cours d'alphabétisation pour les jeunes qui ont manqué l'éducation formelle",
+          "3": "Initiatives d'éducation spéciale pour les jeunes en situation de handicap",
+          "4": "Programmes de bourses pour l'enseignement secondaire et supérieur",
+          "5": "Services de mentorat et d'orientation professionnelle"
+        }
       },
       "economic": {
         "title": "Autonomisation Économique",
-        "description": "Développer les compétences commerciales et l'indépendance financière à travers des programmes d'entrepreneuriat"
+        "description": "Développer les compétences entrepreneuriales et l'indépendance financière grâce à des programmes d'entrepreneuriat et de formation professionnelle",
+        "details": {
+          "1": "Développement de plans d'affaires et formation à l'entrepreneuriat",
+          "2": "Soutien aux coopératives de jeunes et aux petites entreprises",
+          "3": "Programmes d'éducation financière et d'épargne",
+          "4": "Assistance à la liaison avec le marché et au développement de produits",
+          "5": "Microfinance et petites subventions pour les entreprises dirigées par des jeunes"
+        }
       },
       "health": {
-        "title": "Santé",
-        "description": "Promouvoir la sensibilisation à la santé et fournir l'accès aux services de santé essentiels"
+        "title": "Santé et Bien-être",
+        "description": "Promouvoir la sensibilisation à la santé et fournir un accès aux services de santé essentiels pour les jeunes et les communautés",
+        "details": {
+          "1": "Éducation à la santé sexuelle et reproductive",
+          "2": "Programmes de sensibilisation et de prévention du VIH/SIDA",
+          "3": "Soutien en santé mentale et conseil en traumatismes",
+          "4": "Initiatives de nutrition et de bien-être physique",
+          "5": "Formation à la préparation et à la réponse aux pandémies"
+        }
       },
       "peace": {
         "title": "Construction de la Paix",
-        "description": "Favoriser la paix et la réconciliation à travers le dialogue et l'engagement communautaire"
+        "description": "Promouvoir la paix et la réconciliation par le dialogue et les initiatives communautaires",
+        "details": {
+          "1": "Formation à la résolution des conflits et à la médiation",
+          "2": "Camps de paix réunissant des jeunes de divers horizons",
+          "3": "Programmes de dialogue interreligieux et d'échange culturel",
+          "4": "Initiatives de mémoire du génocide et de réconciliation",
+          "5": "Activités de service communautaire et de cohésion sociale"
+        }
       },
-      "culture": {
-        "title": "Sports, Culture & Arts",
-        "description": "Encourager la créativité et l'expression culturelle à travers divers programmes artistiques et sportifs"
+      "arts": {
+        "title": "Arts et Culture",
+        "description": "Célébrer la culture rwandaise et offrir des plateformes d'expression artistique",
+        "details": {
+          "1": "Entraînement sportif et compétitions en football, basket-ball et volley-ball",
+          "2": "Préservation de la danse et de la musique traditionnelles",
+          "3": "Ateliers d'arts visuels et d'artisanat",
+          "4": "Théâtre et art dramatique pour le changement social",
+          "5": "Festivals culturels et célébrations communautaires"
+        }
       }
     },
     "impact": {
@@ -353,6 +426,10 @@
           "answer": "Nos programmes opèrent dans les 30 districts du Rwanda, avec notre siège à Kigali.\n                Nous avons des bureaux régionaux dans les principales villes du pays."
         }
       }
+    },
+    "mission": {
+      "title": "Notre Mission",
+      "description": "Autonomiser les jeunes par l'éducation, le développement des compétences et l'engagement communautaire, créant un changement durable au Rwanda et au-delà."
     }
   },
   "about": {
@@ -369,5 +446,150 @@
       "text": "Rencontrez les personnes qui ont jeté les bases de Vision Jeunesse Nouvelle."
     },
     "staffLink": "Rencontrez notre personnel"
+  },
+  "donate": {
+    "title": "Soutenez Notre Cause",
+    "description": "Votre généreuse contribution nous aide à poursuivre notre travail et à avoir un impact positif dans la communauté. Chaque contribution, quelle que soit sa taille, fait une différence.",
+    "button": "Faire un don"
+  },
+  "donationModal": {
+    "title": "Faire un Don",
+    "subtitle": "Votre soutien fait la différence",
+    "amount": "Montant du don",
+    "currency": "Devise",
+    "paymentMethod": "Méthode de paiement",
+    "paypalTab": "PayPal",
+    "mtnTab": "MTN Mobile Money",
+    "bankTab": "Virement Bancaire",
+    "payMtn": "Payer avec MTN Mobile Money",
+    "bankName": "Banque : Bank of Kigali",
+    "accountName": "Nom du compte : VJN Rwanda",
+    "accountNumber": "Numéro de compte : 0000000000",
+    "swiftCode": "Code Swift : BKIGRWRW",
+    "branch": "Agence : Agence principale de Kigali",
+    "getBankDetails": "Obtenir les détails bancaires",
+    "donate": "Faire un don",
+    "cancel": "Annuler"
+  },
+  "programs": {
+    "title": "Nos Programmes",
+    "subtitle": "Découvrez nos programmes complets conçus pour autonomiser les jeunes et créer un changement durable dans nos communautés",
+    "education": {
+      "title": "Éducation & Formation Professionnelle",
+      "description": "Offrir une éducation de qualité et une formation professionnelle pour doter les jeunes des compétences essentielles pour leur réussite future.",
+      "readMore": "En savoir plus"
+    },
+    "economic": {
+      "title": "Autonomisation Économique",
+      "description": "Soutenir l'entrepreneuriat des jeunes et le développement économique par la formation, le mentorat et les ressources.",
+      "readMore": "En savoir plus"
+    },
+    "health": {
+      "title": "Santé & Bien-être",
+      "description": "Promouvoir la santé physique et mentale par l'éducation, la sensibilisation et l'accès aux services de santé.",
+      "readMore": "En savoir plus"
+    },
+    "peace": {
+      "title": "Construction de la Paix",
+      "description": "Favoriser la paix et la réconciliation par le dialogue, les échanges culturels et l'engagement communautaire.",
+      "readMore": "En savoir plus"
+    },
+    "arts": {
+      "title": "Sports, Culture & Arts",
+      "description": "Encourager la créativité et l'expression culturelle par le sport, les arts et les activités culturelles.",
+      "readMore": "En savoir plus"
+    },
+    "cta": {
+      "title": "Rejoignez Notre Mission",
+      "subtitle": "Contactez-nous dès aujourd'hui et devenez partie prenante d'un mouvement croissant pour façonner un meilleur avenir",
+      "join": "Nous Rejoindre",
+      "contact": "Nous Contacter",
+      "support": "Nous Soutenir"
+    },
+    "backToAll": "Retour à tous les programmes",
+    "whatWeOffer": "Ce que nous offrons",
+    "impactStories": "Histoires d'impact",
+    "impactStoriesText": "Découvrez comment nos programmes font une différence dans la vie des jeunes et des communautés.",
+    "getInvolved": "S'impliquer",
+    "getInvolvedText": "Rejoignez-nous dans notre mission d'autonomiser les jeunes et de créer un changement durable dans nos communautés.",
+    "volunteer": "Bénévolat",
+    "donate": "Faire un don",
+    "contactUs": "Contactez-nous",
+    "relatedPrograms": "Programmes connexes",
+    "relatedProgramsText": "Explorez d'autres programmes qui pourraient vous intéresser",
+    "viewAllPrograms": "Voir tous les programmes"
+  },
+  "stories": {
+    "title": "Histoires d'Impact",
+    "story1": {
+      "title": "Autonomiser les Jeunes",
+      "content": "Grâce à nos programmes, nous avons autonomisé d'innombrables jeunes pour réaliser leurs rêves.",
+      "author": "Jean Dupont",
+      "role": "Participant au Programme"
+    },
+    "story2": {
+      "title": "Soutenir les Populations Vulnérables",
+      "content": "Nos initiatives ont fourni un soutien crucial aux communautés vulnérables, les aidant à se reconstruire et à prospérer.",
+      "author": "Marie Martin",
+      "role": "Leader Communautaire"
+    },
+    "story3": {
+      "title": "Construire la Paix",
+      "content": "Nous avons travaillé sans relâche pour promouvoir la paix et la compréhension entre divers groupes.",
+      "author": "Sophie Bernard",
+      "role": "Défenseur de la Paix"
+    }
+  },
+  "contact": {
+    "title": "Contactez-nous",
+    "subtitle": "Nous sommes là pour vous aider",
+    "form": {
+      "title": "Envoyez-nous un message",
+      "name": "Nom",
+      "email": "E-mail",
+      "subject": "Sujet",
+      "message": "Message",
+      "submit": "Envoyer",
+      "sending": "Envoi en cours...",
+      "success": "Message envoyé avec succès",
+      "error": "Une erreur est survenue"
+    },
+    "info": {
+      "title": "Informations de contact",
+      "address": "Adresse",
+      "phone": "Téléphone",
+      "email": "E-mail",
+      "hours": "Heures d'ouverture"
+    },
+    "faq": {
+      "title": "Questions fréquentes",
+      "subtitle": "Trouvez des réponses à vos questions",
+      "q1": {
+        "title": "Comment puis-je faire du bénévolat ?",
+        "answer": "Vous pouvez postuler via notre page Carrières. Nous accueillons les bénévoles locaux et internationaux."
+      },
+      "q2": {
+        "title": "Comment mon don est-il utilisé ?",
+        "answer": "Vos dons soutiennent directement nos programmes d'autonomisation des jeunes."
+      },
+      "q3": {
+        "title": "Comment puis-je m'impliquer ?",
+        "answer": "Il y a plusieurs façons de s'impliquer : bénévolat, dons, partenariats, ou participation à nos programmes."
+      }
+    }
+  },
+  "staff": {
+    "title": "Notre Équipe",
+    "searchPlaceholder": "Rechercher un membre...",
+    "filterByDepartment": "Filtrer par département",
+    "departments": {
+      "all": "Tous les départements",
+      "management": "Direction",
+      "programs": "Programmes",
+      "support": "Support"
+    },
+    "noStaff": "Aucun membre du personnel trouvé",
+    "viewProfile": "Voir le profil",
+    "contact": "Contacter"
   }
 } 

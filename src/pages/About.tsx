@@ -194,37 +194,24 @@ const About = () => {
       >
         <div className="container-custom">
           <h2 className="text-center mb-12">Founding Members</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-            {/* Brother Gabriel Lauzon */}
-            <div className="flex flex-col md:flex-row items-center md:items-start gap-6">
-              <div className="w-40 h-40 rounded-full bg-gray-300 flex-shrink-0 overflow-hidden">
-                <div className="w-full h-full bg-gray-300"></div>
-              </div>
-              <div>
-                <h3 className="text-xl font-bold mb-2">Brother Gabriel Lauzon</h3>
-                <p className="mb-4">
-                  A Canadian missionary who came to Rwanda in the late 1990s, Brother Gabriel was moved by the plight of youth in post-genocide Rwanda. With a background in education and community development, he dedicated his life to creating opportunities for young Rwandans to heal, learn, and grow.
-                </p>
-                <p>
-                  His vision of a youth-led renaissance in Rwanda became the foundation of VJN's approach to empowerment and community engagement.
-                </p>
-              </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="text-center">
+              <img src="/images/staff/Founder.jpg" alt="Brother Gabriel Lauzon" className="w-32 h-32 rounded-full mx-auto mb-4" />
+              <h3 className="text-xl font-semibold">Brother Gabriel Lauzon</h3>
+              <p className="text-gray-600">Founder</p>
+              <p className="mt-2 text-sm text-gray-500">A Canadian missionary dedicated to youth development in Rwanda.</p>
             </div>
-
-            {/* Father Epimaque Makuza */}
-            <div className="flex flex-col md:flex-row items-center md:items-start gap-6">
-              <div className="w-40 h-40 rounded-full bg-gray-300 flex-shrink-0 overflow-hidden">
-                <div className="w-full h-full bg-gray-300"></div>
-              </div>
-              <div>
-                <h3 className="text-xl font-bold mb-2">Father Epimaque Makuza</h3>
-                <p className="mb-4">
-                  A Rwandan priest who survived the genocide, Father Epimaque witnessed firsthand the devastation of his country and the trauma experienced by its youth. His deep understanding of Rwandan culture and society, combined with his pastoral commitment to healing and reconciliation, provided essential guidance for VJN's development.
-                </p>
-                <p>
-                  Father Epimaque's emphasis on peace-building and cultural identity continues to influence VJN's holistic approach to youth development.
-                </p>
-              </div>
+            <div className="text-center">
+              <img src="/images/staff/Makuza.jpg" alt="Father Epimaque Makuza" className="w-32 h-32 rounded-full mx-auto mb-4" />
+              <h3 className="text-xl font-semibold">Father Epimaque Makuza</h3>
+              <p className="text-gray-600">Founder</p>
+              <p className="mt-2 text-sm text-gray-500">A Rwandan priest committed to peace and reconciliation.</p>
+            </div>
+            <div className="text-center">
+              <img src="/images/staff/RINGUYENEZA.jpg" alt="Br. Vital RINGUYENEZA" className="w-32 h-32 rounded-full mx-auto mb-4" />
+              <h3 className="text-xl font-semibold">Br. Vital RINGUYENEZA</h3>
+              <p className="text-gray-600">Executive Director</p>
+              <p className="mt-2 text-sm text-gray-500">Leading VJN with a vision for youth empowerment and community development.</p>
             </div>
           </div>
         </div>

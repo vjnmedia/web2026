@@ -212,47 +212,207 @@
   },
   "home": {
     "hero": {
-      "title": "Strengthening youth for a better future",
-      "subtitle": "Empowering young people through education, economic development, health initiatives, peace building, and arts programs",
-      "cta": {
-        "explore": "Explore Programs",
-        "support": "Support Our Work",
-        "join": "Join a Youth Group"
-      }
+      "title": "Empowering Youth for a Better Tomorrow",
+      "subtitle": "Building a brighter future through education, economic empowerment, and community development",
+      "cta": "Get Involved"
     },
     "about": {
       "description": "Vision Jeunesse Nouvelle (VJN) is a youth-led organization founded in 2005, dedicated to empowering young people across Rwanda and the region through comprehensive programs in education, economic development, health, peace building, and arts.",
       "learnMore": "Learn More About Us"
     },
     "programs": {
-      "title": "Our Core Programs",
-      "learnMore": "Learn More",
+      "title": "Our Programs",
+      "subtitle": "Discover our comprehensive programs designed to empower youth and create lasting change in our communities",
+      "cta": {
+        "title": "Join Our Mission",
+        "subtitle": "Contact us today and become part of a growing movement to shape a better future",
+        "join": "Join Us",
+        "contact": "Contact Us",
+        "support": "Support Us"
+      },
       "education": {
-        "title": "Education",
-        "description": "Providing quality education and vocational training to equip youth with essential skills for success"
+        "title": "Education & Vocational Training",
+        "description": "Providing quality education and vocational training to equip youth with essential skills for future success.",
+        "readMore": "Learn More",
+        "fullPage": {
+          "title": "Empowering Minds, Shaping Futures",
+          "intro": "At VJN, we believe that education is more than schooling—it's a gateway to dignity, independence, and purpose. Our Education Program targets youth from low-income and unemployed families, offering them the knowledge and skills to thrive in life and work.",
+          "whatWeDo": {
+            "title": "What We Do",
+            "items": [
+              "Vocational Training: Courses in sewing, hairdressing, welding, and mechanical automobile repair.",
+              "Literacy Support: We provide adult literacy and numeracy classes to reduce illiteracy in the region.",
+              "Inclusive Education: Special support for deaf and mute students to ensure no one is left behind.",
+              "Libraries & Learning Hubs: Access to books, digital resources, and research tools to inspire lifelong learning."
+            ]
+          },
+          "whoItServes": {
+            "title": "Who It Serves",
+            "items": [
+              "Out-of-school youth",
+              "Vulnerable adolescents",
+              "People with disabilities"
+            ]
+          },
+          "getInvolved": {
+            "title": "Get Involved",
+            "buttons": {
+              "joinClass": "Join a Class",
+              "supportStudent": "Support a Student",
+              "visitCenter": "Visit a Center"
+            }
+          }
+        }
       },
       "economic": {
         "title": "Economic Empowerment",
-        "description": "Building business skills and financial independence through entrepreneurship programs"
+        "description": "Supporting youth entrepreneurship and economic development through training, mentorship, and resources.",
+        "readMore": "Learn More",
+        "fullPage": {
+          "title": "Building Skills for Financial Freedom",
+          "intro": "In a world of growing economic challenges, our Economic Empowerment Program equips youth with the tools to escape poverty and build thriving futures. From start-up basics to cooperative registration, we prepare young entrepreneurs to succeed.",
+          "whatWeDo": {
+            "title": "What We Do",
+            "items": [
+              "Entrepreneurship Training: Covering business planning, marketing, e-commerce, and customer service.",
+              "GSLA Formation: Supporting Group Savings and Loan Associations as vehicles for local development.",
+              "Market Linkages: We connect young producers with buyers, cooperatives, and trade fairs.",
+              "Business Law & Digital Finance: Basic legal literacy and digital banking access."
+            ]
+          },
+          "whoItServes": {
+            "title": "Who It Serves",
+            "items": [
+              "Youth aged 18–35",
+              "Young women and men in informal sectors",
+              "Community-based cooperatives"
+            ]
+          },
+          "getInvolved": {
+            "title": "Get Involved",
+            "buttons": {
+              "applyTraining": "Apply for Training",
+              "supportBusiness": "Support a Business",
+              "partner": "Partner with Us"
+            }
+          }
+        }
       },
       "health": {
-        "title": "Health",
-        "description": "Promoting health awareness and providing access to essential healthcare services"
+        "title": "Health & Well-being",
+        "description": "Promoting physical and mental health through education, awareness, and access to healthcare services.",
+        "readMore": "Learn More",
+        "fullPage": {
+          "title": "Informed Youth, Healthier Communities",
+          "intro": "Good health is the foundation of strong societies. Through our Health Program, VJN empowers young people to protect themselves, spread awareness, and challenge stigma around sexual and reproductive health.",
+          "whatWeDo": {
+            "title": "What We Do",
+            "items": [
+              "Youth-Friendly Health Services: Partnering with clinics and schools for inclusive access.",
+              "Peer Educator Training: Mobilizing youth to educate others on HIV/AIDS, STIs, and reproductive rights.",
+              "Awareness Campaigns: Focused on family planning, mental health, obesity, and substance abuse.",
+              "Pandemic Response: COVID-19 education and safety practices for youth groups."
+            ]
+          },
+          "whoItServes": {
+            "title": "Who It Serves",
+            "items": [
+              "Adolescents aged 10–24",
+              "School and out-of-school youth",
+              "Communities facing health misinformation"
+            ]
+          },
+          "getInvolved": {
+            "title": "Get Involved",
+            "buttons": {
+              "becomeEducator": "Become a Peer Educator",
+              "requestWorkshop": "Request a Workshop",
+              "donateSupplies": "Donate Medical Supplies"
+            }
+          }
+        }
       },
       "peace": {
         "title": "Peace Building",
-        "description": "Fostering peace and reconciliation through dialogue and community engagement"
+        "description": "Fostering peace and reconciliation through dialogue, cultural exchange, and community engagement.",
+        "readMore": "Learn More",
+        "fullPage": {
+          "title": "Peace Starts with Me",
+          "intro": "Our Peace Building Program is a response to conflict, division, and trauma. We train youth to become ambassadors of peace in their communities, facilitating dialogue, tolerance, and reconciliation across borders and beliefs.",
+          "whatWeDo": {
+            "title": "What We Do",
+            "items": [
+              "Public Speaking & Media Training: Teaching youth to use their voice for peace and advocacy.",
+              "Peace Camps & Cross-Border Dialogues: Bringing together youth from Rwanda and neighboring regions.",
+              "Digital Peacebuilding: Online campaigns, storytelling, and conflict-sensitive social media use.",
+              "Human Rights & Mediation Training: Equipping youth to lead nonviolent movements for justice."
+            ]
+          },
+          "whoItServes": {
+            "title": "Who It Serves",
+            "items": [
+              "Youth in conflict-prone areas",
+              "Refugees and host communities",
+              "Faith-based and multicultural groups"
+            ]
+          },
+          "getInvolved": {
+            "title": "Get Involved",
+            "buttons": {
+              "attendCamp": "Attend a Peace Camp",
+              "shareStory": "Share Your Story",
+              "supportPeace": "Support Peace Initiatives"
+            }
+          }
+        }
       },
-      "culture": {
+      "arts": {
         "title": "Sports, Culture & Arts",
-        "description": "Nurturing creativity and cultural expression through various artistic and athletic programs"
+        "description": "Nurturing creativity and cultural expression through sports, arts, and cultural activities.",
+        "readMore": "Learn More",
+        "fullPage": {
+          "title": "Where Talent Meets Transformation",
+          "intro": "We believe in the power of expression. Our Sports, Culture & Arts Program gives young people a platform to showcase their gifts while building confidence, discipline, and purpose through performance and play.",
+          "whatWeDo": {
+            "title": "What We Do",
+            "items": [
+              "Sports Leagues & Competitions: Football, volleyball, basketball, and athletics programs for youth.",
+              "Artistic Development: Music, dance, theater, and visual arts workshops for self-expression.",
+              "Cultural Celebrations: Events that preserve and promote traditional Rwandan and African culture.",
+              "Life Skills through Talent: Leadership, teamwork, and emotional resilience training through creative outlets."
+            ]
+          },
+          "whoItServes": {
+            "title": "Who It Serves",
+            "items": [
+              "Talented youth aged 10–30",
+              "Young people at risk of crime or isolation",
+              "Artists, athletes, and performers"
+            ]
+          },
+          "getInvolved": {
+            "title": "Get Involved",
+            "buttons": {
+              "joinTeam": "Join a Team or Club",
+              "sponsorPerformer": "Sponsor a Performer",
+              "attendEvent": "Attend an Event"
+            }
+          }
+        }
+      },
+      "finalCta": {
+        "title": "Interested in one of our programs? Want to bring VJN to your community?",
+        "subtitle": "Let's build the future together—one skill, one voice, one goal at a time.",
+        "buttons": {
+          "contact": "Contact Us",
+          "partner": "Partner With Us",
+          "donate": "Donate Now"
+        }
       }
     },
     "impact": {
-      "name": "Marie Uwimana",
-      "location": "Kigali, Rwanda",
-      "quote": "VJN's programs gave me the skills and confidence to start my own business. Today, I'm not just surviving—I'm thriving and helping others do the same.",
-      "readMore": "Read More Stories"
+      "title": "Our Impact",
+      "description": "Through our programs, we've reached thousands of young people, providing them with the tools and opportunities they need to succeed."
     },
     "news": {
       "title": "Latest News & Updates",
@@ -335,5 +495,145 @@
       "text": "Meet the individuals who laid the foundation for Vision Jeunesse Nouvelle."
     },
     "staffLink": "Meet Our Staff"
+  },
+  "donate": {
+    "title": "Support Our Cause",
+    "description": "Your generous donation helps us continue our work and make a positive impact in the community. Every contribution, no matter the size, makes a difference.",
+    "button": "Donate now"
+  },
+  "donationModal": {
+    "title": "Make a Donation",
+    "subtitle": "Your support makes a difference",
+    "amount": "Donation Amount",
+    "currency": "Currency",
+    "paymentMethod": "Payment Method",
+    "paypalTab": "PayPal",
+    "mtnTab": "MTN Mobile Money",
+    "bankTab": "Bank Transfer",
+    "payMtn": "Pay with MTN Mobile Money",
+    "bankName": "Bank: Bank of Kigali",
+    "accountName": "Account Name: VJN Rwanda",
+    "accountNumber": "Account Number: 0000000000",
+    "swiftCode": "Swift Code: BKIGRWRW",
+    "branch": "Branch: Kigali Main Branch",
+    "getBankDetails": "Get Bank Details",
+    "donate": "Donate Now",
+    "cancel": "Cancel",
+    "description": "Your contribution will help us continue our mission of empowering Rwandan youth. Please enter the amount you would like to donate.",
+    "amountLabel": "Donation Amount (RWF)",
+    "amountPlaceholder": "Enter amount",
+    "paypalDescription": "You will be redirected to PayPal to complete your payment securely.",
+    "phoneNumberLabel": "MTN Phone Number",
+    "phoneNumberPlaceholder": "e.g., 078XXXXXXX",
+    "emailLabel": "Email Address",
+    "emailPlaceholder": "Enter your email"
+  },
+  "common": {
+    "menu": {
+      "home": "Home",
+      "about": "About",
+      "programs": "Programs",
+      "services": "Services",
+      "media": "Media",
+      "news": "News",
+      "resources": "Resources",
+      "community": "Community",
+      "careers": "Careers",
+      "dms": "DMS",
+      "login": "Login",
+      "logout": "Logout",
+      "dashboard": "Dashboard",
+      "contact": "Contact Us"
+    },
+    "language": {
+      "en": "English",
+      "fr": "Français"
+    },
+    "buttons": {
+      "readMore": "Read More",
+      "learnMore": "Learn More",
+      "donate": "Donate Now",
+      "contact": "Contact Us",
+      "join": "Join Us"
+    }
+  },
+  "programs": {
+    "title": "Our Programs",
+    "subtitle": "Discover our comprehensive programs designed to empower youth and create lasting change in our communities",
+    "education": {
+      "title": "Education & Vocational Training",
+      "description": "Providing quality education and vocational training to equip youth with essential skills for future success.",
+      "readMore": "Learn More"
+    },
+    "economic": {
+      "title": "Economic Empowerment",
+      "description": "Supporting youth entrepreneurship and economic development through training, mentorship, and resources.",
+      "readMore": "Learn More"
+    },
+    "health": {
+      "title": "Health & Well-being",
+      "description": "Promoting physical and mental health through education, awareness, and access to healthcare services.",
+      "readMore": "Learn More"
+    },
+    "peace": {
+      "title": "Peace Building",
+      "subtitle": "Building bridges and fostering understanding",
+      "fullDesc": "Our peace building program focuses on creating sustainable peace through dialogue, education, and community engagement.",
+      "detail1": "Cross-cultural dialogue and exchange programs",
+      "detail2": "Conflict resolution and mediation training",
+      "detail3": "Youth leadership development",
+      "detail4": "Community peace initiatives",
+      "detail5": "Reconciliation workshops"
+    },
+    "arts": {
+      "title": "Sports, Culture & Arts",
+      "description": "Nurturing creativity and cultural expression through sports, arts, and cultural activities.",
+      "readMore": "Learn More"
+    },
+    "cta": {
+      "title": "Join Our Mission",
+      "subtitle": "Contact us today and become part of a growing movement to shape a better future",
+      "join": "Join Us",
+      "contact": "Contact Us",
+      "support": "Support Us"
+    },
+    "backToAll": "Back to All Programs",
+    "whatWeOffer": "What We Offer",
+    "impactStories": "Impact Stories",
+    "impactStoriesText": "Discover how our programs are making a difference in the lives of young people and communities.",
+    "getInvolved": "Get Involved",
+    "getInvolvedText": "Join us in our mission to empower youth and create lasting change in our communities.",
+    "volunteer": "Volunteer",
+    "donate": "Donate",
+    "contactUs": "Contact Us",
+    "relatedPrograms": "Related Programs",
+    "relatedProgramsText": "Explore other programs that might interest you",
+    "viewAllPrograms": "View All Programs"
+  },
+  "stories": {
+    "title": "Impact Stories",
+    "story1": {
+      "title": "Empowering Youth",
+      "content": "Through our programs, we have empowered countless young individuals to achieve their dreams.",
+      "author": "John Doe",
+      "role": "Program Participant"
+    },
+    "story2": {
+      "title": "Supporting Vulnerable Populations",
+      "content": "Our initiatives have provided crucial support to vulnerable communities, helping them rebuild and thrive.",
+      "author": "Jane Smith",
+      "role": "Community Leader"
+    },
+    "story3": {
+      "title": "Building Peace",
+      "content": "We have worked tirelessly to promote peace and understanding among diverse groups.",
+      "author": "Alice Johnson",
+      "role": "Peace Advocate"
+    }
+  },
+  "staff": {
+    "title": "Our Staff",
+    "searchPlaceholder": "Search staff...",
+    "filterByDepartment": "Filter by Department"
   }
 } 

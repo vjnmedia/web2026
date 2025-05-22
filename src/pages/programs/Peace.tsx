@@ -1,4 +1,3 @@
-
 import { Smile } from 'lucide-react';
 import ProgramDetail from '@/components/ProgramDetail';
 import { useLanguage } from '@/components/LanguageContext';
@@ -17,7 +16,7 @@ const Peace = () => {
   return (
     <ProgramDetail
       id="peace"
-      title={t('programs.peace')}
+      title={t('programs.peace.title')}
       subtitle={t('programs.peace.subtitle')}
       description={t('programs.peace.fullDesc')}
       details={peaceDetails}

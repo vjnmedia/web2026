@@ -161,62 +161,65 @@ const DonationModal = ({ isOpen, onClose }: DonationModalProps) => {
 
   return (
     <AlertDialog open={isOpen} onOpenChange={onClose}>
-      <AlertDialogContent className="max-w-md">
+      <AlertDialogContent className="w-full max-w-sm md:max-w-md overflow-y-auto p-6">
         <AlertDialogHeader>
-          <AlertDialogTitle>Make a Donation</AlertDialogTitle>
-          <AlertDialogDescription>
-            Your contribution will help us continue our mission of empowering Rwandan youth.
-            Please enter the amount you would like to donate.
+          <AlertDialogTitle>{t('donationModal.title', 'Make a Donation')}</AlertDialogTitle>
+          <AlertDialogDescription className="mt-2 mb-4">
+            {t('donationModal.description', 'Your contribution will help us continue our mission of empowering Rwandan youth. Please enter the amount you would like to donate.')}
           </AlertDialogDescription>
         </AlertDialogHeader>
-        <div className="py-4">
-          <Input
-            type="number"
-            placeholder="Enter amount"
-            value={amount}
-            onChange={(e) => setAmount(e.target.value)}
-            className="mb-4"
-          />
-          <div className="flex gap-2 mb-6">
-            <Button
-              variant="outline"
-              onClick={() => setAmount('10000')}
-              className="flex-1"
-            >
-              10,000 RWF
-            </Button>
-            <Button
-              variant="outline"
-              onClick={() => setAmount('25000')}
-              className="flex-1"
-            >
-              25,000 RWF
-            </Button>
-            <Button
-              variant="outline"
-              onClick={() => setAmount('50000')}
-              className="flex-1"
-            >
-              50,000 RWF
-            </Button>
-            <Button
-              variant="outline"
-              onClick={() => setAmount('100000')}
-              className="flex-1"
-            >
-              100,000 RWF
-            </Button>
+        <div className="space-y-6">
+          <div className="w-full block">
+            <Label htmlFor="amount" className="mb-2 block">{t('donationModal.amountLabel', 'Donation Amount (RWF)')}</Label>
+            <Input
+              id="amount"
+              type="number"
+              placeholder={t('donationModal.amountPlaceholder', 'Enter amount')}
+              value={amount}
+              onChange={(e) => setAmount(e.target.value)}
+              className="w-full"
+            />
+            <div className="flex flex-wrap gap-2 w-full mt-2">
+              <Button
+                variant="outline"
+                onClick={() => setAmount('10000')}
+                className="flex-1 min-w-[100px]"
+              >
+                10,000 RWF
+              </Button>
+              <Button
+                variant="outline"
+                onClick={() => setAmount('25000')}
+                className="flex-1 min-w-[100px]"
+              >
+                25,000 RWF
+              </Button>
+              <Button
+                variant="outline"
+                onClick={() => setAmount('50000')}
+                className="flex-1 min-w-[100px]"
+              >
+                50,000 RWF
+              </Button>
+              <Button
+                variant="outline"
+                onClick={() => setAmount('100000')}
+                className="flex-1 min-w-[100px]"
+              >
+                100,000 RWF
+              </Button>
+            </div>
           </div>
 
           <Tabs defaultValue="paypal" className="w-full" onValueChange={setPaymentMethod}>
             <TabsList className="grid w-full grid-cols-3">
-              <TabsTrigger value="paypal">PayPal</TabsTrigger>
-              <TabsTrigger value="mtn">MTN Mobile Money</TabsTrigger>
-              <TabsTrigger value="bank">Bank Transfer</TabsTrigger>
+              <TabsTrigger value="paypal">{t('donationModal.paypalTab', 'PayPal')}</TabsTrigger>
+              <TabsTrigger value="mtn">{t('donationModal.mtnTab', 'MTN Mobile Money')}</TabsTrigger>
+              <TabsTrigger value="bank">{t('donationModal.bankTab', 'Bank Transfer')}</TabsTrigger>
             </TabsList>
             <TabsContent value="paypal" className="mt-4">
               <div className="text-sm text-gray-500 mb-4">
-                You will be redirected to PayPal to complete your payment securely.
+                {t('donationModal.paypalDescription', 'You will be redirected to PayPal to complete your payment securely.')}
               </div>
               {amount && (
                 <PayPalButtons
@@ -256,70 +259,70 @@ const DonationModal = ({ isOpen, onClose }: DonationModalProps) => {
                 />
               )}
             </TabsContent>
-            <TabsContent value="mtn" className="mt-4">
-              <div className="space-y-4">
-                <div className="text-sm text-gray-500">
-                  Enter your MTN Mobile Money phone number to receive a payment prompt.
-                </div>
-                <div className="space-y-2">
-                  <Label htmlFor="phone">MTN Phone Number</Label>
-                  <Input
-                    id="phone"
-                    type="tel"
-                    placeholder="07XXXXXXXX"
-                    value={phoneNumber}
-                    onChange={(e) => setPhoneNumber(e.target.value)}
-                    className={!phoneNumber || validatePhoneNumber(phoneNumber) ? '' : 'border-red-500'}
-                  />
-                  {phoneNumber && !validatePhoneNumber(phoneNumber) && (
-                    <p className="text-sm text-red-500">Please enter a valid MTN phone number (07XXXXXXXX)</p>
-                  )}
-                </div>
-                {paymentStatus === 'PENDING' && (
-                  <div className="text-sm text-blue-500">
-                    Waiting for payment confirmation. Please check your phone.
-                  </div>
-                )}
-                <Button
-                  onClick={handleDonate}
-                  disabled={!amount || !phoneNumber || !validatePhoneNumber(phoneNumber) || isProcessing || paymentStatus === 'PENDING'}
-                  className="w-full bg-vjn-blue hover:bg-vjn-light-blue"
-                >
-                  {isProcessing ? 'Processing...' : paymentStatus === 'PENDING' ? 'Waiting for Confirmation...' : 'Pay with MTN Mobile Money'}
-                </Button>
-              </div>
-            </TabsContent>
-            <TabsContent value="bank" className="mt-4">
-              <div className="space-y-4">
-                <div className="text-sm text-gray-500">
-                  Enter your email address to receive bank transfer details.
-                </div>
+            <TabsContent value="mtn" className="mt-4 space-y-4">
+              <div className="w-full block">
+                <Label htmlFor="phoneNumber" className="mb-2 block">{t('donationModal.phoneNumberLabel', 'MTN Phone Number')}</Label>
                 <Input
+                  id="phoneNumber"
+                  type="tel"
+                  placeholder={t('donationModal.phoneNumberPlaceholder', 'e.g., 078XXXXXXX')}
+                  value={phoneNumber}
+                  onChange={(e) => setPhoneNumber(e.target.value)}
+                  className="w-full"
+                />
+                {!validatePhoneNumber(phoneNumber) && phoneNumber && (
+                  <p className="text-red-500 text-sm mt-1">{t('donationModal.phoneNumberError', 'Please enter a valid MTN Rwanda phone number (e.g., 078XXXXXXX).')}</p>
+                )}
+              </div>
+              {paymentStatus === 'PENDING' && (
+                <div className="text-sm text-blue-500">
+                  {t('donationModal.waiting', 'Waiting for payment confirmation. Please check your phone.')}
+                </div>
+              )}
+              <Button
+                onClick={handleDonate}
+                disabled={!amount || !phoneNumber || !validatePhoneNumber(phoneNumber) || isProcessing || paymentStatus === 'PENDING'}
+                className="w-full bg-vjn-blue hover:bg-vjn-light-blue"
+              >
+                {isProcessing ? t('donationModal.processing', 'Processing...') : paymentStatus === 'PENDING' ? t('donationModal.waiting', 'Waiting for Confirmation...') : t('donationModal.payMtn', 'Pay with MTN Mobile Money')}
+              </Button>
+            </TabsContent>
+            <TabsContent value="bank" className="mt-4 space-y-4">
+              <div className="w-full block">
+                <Label htmlFor="email" className="mb-2 block">{t('donationModal.emailLabel', 'Email Address')}</Label>
+                <Input
+                  id="email"
                   type="email"
-                  placeholder="Your email address"
+                  placeholder={t('donationModal.emailPlaceholder', 'Enter your email')}
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
+                  className="w-full"
                 />
-                <div className="text-sm text-gray-500">
-                  <p className="mb-2">Bank: Bank of Kigali</p>
-                  <p className="mb-2">Account Name: VJN Rwanda</p>
-                  <p className="mb-2">Account Number: 0000000000</p>
-                  <p className="mb-2">Swift Code: BKIGRWRW</p>
-                  <p>Branch: Kigali Main Branch</p>
-                </div>
-                <Button
-                  onClick={handleDonate}
-                  disabled={!amount || !email || isProcessing}
-                  className="w-full bg-vjn-blue hover:bg-vjn-light-blue"
-                >
-                  {isProcessing ? 'Processing...' : 'Get Bank Details'}
-                </Button>
               </div>
+              <div className="text-sm text-gray-500 space-y-1 w-full">
+                <p>{t('donationModal.bankName', 'Bank: Bank of Kigali')}</p>
+                <p>{t('donationModal.accountName', 'Account Name: VJN Rwanda')}</p>
+                <p>{t('donationModal.accountNumber', 'Account Number: 0000000000')}</p>
+                <p>{t('donationModal.swiftCode', 'Swift Code: BKIGRWRW')}</p>
+                <p>{t('donationModal.branch', 'Branch: Kigali Main Branch')}</p>
+              </div>
+              <Button
+                onClick={handleDonate}
+                disabled={!amount || !email || isProcessing}
+                className="w-full bg-vjn-blue hover:bg-vjn-light-blue"
+              >
+                {isProcessing ? t('donationModal.processing', 'Processing...') : t('donationModal.getBankDetails', 'Get Bank Details')}
+              </Button>
             </TabsContent>
           </Tabs>
         </div>
-        <AlertDialogFooter>
-          <AlertDialogCancel>Cancel</AlertDialogCancel>
+        <AlertDialogFooter className="mt-6">
+          {paymentMethod !== 'paypal' && paymentStatus !== 'PENDING' && (
+            <Button onClick={handleDonate} disabled={isProcessing}>
+              {isProcessing ? t('donationModal.processing', 'Processing...') : t('donationModal.submit', 'Submit Donation')}
+            </Button>
+          )}
+          <AlertDialogCancel disabled={isProcessing}>{t('donationModal.cancel', 'Cancel')}</AlertDialogCancel>
         </AlertDialogFooter>
       </AlertDialogContent>
     </AlertDialog>

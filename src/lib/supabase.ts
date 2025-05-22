@@ -7,22 +7,11 @@ if (!supabaseUrl || !supabaseAnonKey) {
   throw new Error('Missing Supabase environment variables');
 }
 
-let supabaseInstance: ReturnType<typeof createClient> | null = null;
-
-export const supabase = (() => {
-  if (!supabaseInstance) {
-    supabaseInstance = createClient(supabaseUrl, supabaseAnonKey, {
-      auth: {
-        persistSession: true,
-        autoRefreshToken: true,
-        detectSessionInUrl: true
-      },
-      global: {
-        headers: {
-          'x-application-name': 'jeune-avenir-connect'
-        }
-      }
-    });
+// Create a single instance of the Supabase client
+export const supabase = createClient(supabaseUrl, supabaseAnonKey, {
+  auth: {
+    persistSession: true,
+    autoRefreshToken: true,
+    detectSessionInUrl: true
   }
-  return supabaseInstance;
-})(); 
+}); 

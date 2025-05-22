@@ -1,3 +1,4 @@
+import './i18n';
 import React from 'react';
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
@@ -32,7 +33,9 @@ import Media from './pages/Media';
 import NewsUpdates from './pages/NewsUpdates';
 import Resources from './pages/Resources';
 import Staff from './pages/Staff';
-import './i18n'; // Import i18n configuration
+import BlogPost from '@/pages/BlogPost';
+import Donate from './pages/Donate';
+import Stories from './pages/Stories';
 
 const App = () => {
   // Create QueryClient inside the component
@@ -67,6 +70,7 @@ const App = () => {
                       <Route path="/news" element={<NewsUpdates />} />
                       <Route path="/resources" element={<Resources />} />
                       <Route path="/staff" element={<Staff />} />
+                      <Route path="/donate" element={<Donate />} />
                       <Route
                         path="/dms"
                         element={
@@ -99,6 +103,8 @@ const App = () => {
                           </ProtectedRoute>
                         }
                       />
+                      <Route path="/blog/:id" element={<BlogPost />} />
+                      <Route path="/stories" element={<Stories />} />
                       <Route path="*" element={<NotFound />} />
                     </Routes>
                   </main>

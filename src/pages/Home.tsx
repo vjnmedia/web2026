@@ -31,6 +31,9 @@ import {
   Globe
 } from 'lucide-react';
 import Hero from "@/components/Hero";
+import { supabase } from '@/lib/supabase';
+import { useLanguage } from '@/components/LanguageContext';
+import { toast } from 'react-hot-toast';
 
 // Animation variants
 const fadeInUp = {
@@ -92,6 +95,16 @@ interface Opportunity {
   link: string;
 }
 
+interface Blog {
+  id: number;
+  title: string;
+  content: string;
+  image_url: string;
+  created_at: string;
+  author: string;
+  language: 'en' | 'fr';
+}
+
 const Home: React.FC = () => {
   const { t } = useTranslation();
   const [[page, direction], setPage] = useState([0, 0]);
@@ -99,6 +112,9 @@ const Home: React.FC = () => {
   const [email, setEmail] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitSuccess, setSubmitSuccess] = useState(false);
+  const { language } = useLanguage();
+  const [latestBlogs, setLatestBlogs] = useState<Blog[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   const carouselItems = [
     {
@@ -489,6 +505,34 @@ const Home: React.FC = () => {
     }
   ];
 
+  useEffect(() => {
+    fetchLatestBlogs();
+  }, [language]);
+
+  const fetchLatestBlogs = async () => {
+    try {
+      const { data, error } = await supabase
+        .from('blogs')
+        .select('*')
+        .eq('language', language)
+        .order('created_at', { ascending: false })
+        .limit(3);
+
+      if (error) {
+        console.error('Error fetching latest blogs:', error);
+        toast.error('Failed to fetch latest blogs');
+        return;
+      }
+      
+      setLatestBlogs(data || []);
+    } catch (error) {
+      console.error('Error fetching latest blogs:', error);
+      toast.error('Failed to fetch latest blogs');
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   return (
     <div className="min-h-screen">
       <Hero />
@@ -615,67 +659,66 @@ const Home: React.FC = () => {
         </div>
       </motion.section>
 
-      {/* Latest News */}
-      <motion.section 
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-        variants={staggerContainer}
-        className="py-20 bg-gray-50"
-      >
+      {/* Latest News & Updates */}
+      <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-4">
-          <motion.h2 
-            variants={fadeInUp}
-            className="text-3xl font-bold text-center mb-12"
-          >
-            Latest News & Updates
-          </motion.h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {news.map((item, index) => (
-              <motion.div
-                key={index}
-                variants={fadeInUp}
-                whileHover={{ y: -5 }}
-                className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-all"
-              >
-                <div className="relative h-48 overflow-hidden">
-                  <img
-                    src={item.image}
-                    alt={item.title}
-                    className="w-full h-full object-cover transform hover:scale-110 transition-transform duration-300"
-                  />
+          <h2 className="text-3xl font-bold text-center mb-12">
+            {language === 'en' ? 'Latest News & Updates' : 'Dernières Nouvelles et Mises à Jour'}
+          </h2>
+          
+          {isLoading ? (
+            <div className="flex justify-center">
+              <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-vjn-blue"></div>
+            </div>
+          ) : latestBlogs.length === 0 ? (
+            <p className="text-center text-gray-500">
+              {language === 'en' ? 'No news available at the moment.' : 'Aucune nouvelle disponible pour le moment.'}
+            </p>
+          ) : (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {latestBlogs.map((blog) => (
+                <div key={blog.id} className="bg-white rounded-lg shadow-md overflow-hidden">
+                  {blog.image_url && (
+                    <div className="aspect-video relative">
+                      <img
+                        src={blog.image_url}
+                        alt={blog.title}
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                  )}
+                  <div className="p-6">
+                    <h3 className="text-xl font-semibold mb-2">{blog.title}</h3>
+                    <p className="text-gray-600 mb-4 line-clamp-3">
+                      {blog.content}
+                    </p>
+                    <div className="flex justify-between items-center text-sm text-gray-500 mb-4">
+                      <span>{blog.author}</span>
+                      <span>{new Date(blog.created_at).toLocaleDateString()}</span>
+                    </div>
+                    <a
+                      href={`/blog/${blog.id}`}
+                      className="inline-flex items-center text-vjn-blue font-semibold hover:text-vjn-light-blue transition-colors"
+                    >
+                      {language === 'en' ? 'Read More' : 'Lire la Suite'}
+                      <ChevronRight className="h-5 w-5 ml-1" />
+                    </a>
+                  </div>
                 </div>
-                <div className="p-6">
-                  <p className="text-sm text-gray-500 mb-2">{item.date}</p>
-                  <h3 className="text-xl font-semibold mb-2">{item.title}</h3>
-                  <p className="text-gray-600 mb-4">{item.excerpt}</p>
-                  <motion.a
-                    whileHover={{ x: 5 }}
-                    href={item.link}
-                    className="inline-flex items-center text-vjn-blue font-semibold hover:text-vjn-light-blue transition-colors"
-                  >
-                    Read More
-                    <ChevronRight className="h-5 w-5 ml-1" />
-                  </motion.a>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-          <motion.div 
-            variants={fadeInUp}
-            className="text-center mt-8"
-          >
-            <motion.a
-              whileHover={{ x: 5 }}
+              ))}
+            </div>
+          )}
+
+          <div className="text-center mt-8">
+            <a
               href="/news"
-              className="inline-flex items-center text-vjn-blue font-semibold hover:text-vjn-light-blue transition-colors"
+              className="inline-block bg-vjn-blue text-white px-6 py-3 rounded-md font-semibold hover:bg-vjn-light-blue transition-colors"
             >
-              View All News
-              <ChevronRight className="h-5 w-5 ml-1" />
-            </motion.a>
-          </motion.div>
+              {language === 'en' ? 'View All News' : 'Voir Toutes les Nouvelles'}
+            </a>
+          </div>
         </div>
-      </motion.section>
+      </section>
 
       {/* Who We Serve */}
       <motion.section 

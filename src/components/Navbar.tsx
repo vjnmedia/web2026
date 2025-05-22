@@ -101,6 +101,7 @@ const Navbar = () => {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex space-x-8">
+            <Link to="/" className="text-gray-700 hover:text-vjn-blue transition-colors duration-300">Home</Link>
             {navLinks.map((link, index) => (
               link.external ? (
                 <a

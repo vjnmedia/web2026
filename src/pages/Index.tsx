@@ -99,53 +99,109 @@ const Index = () => {
       </section>
 
       {/* Testimonials Section */}
-      <section className="section bg-vjn-blue text-white">
+      <section className="section bg-gradient-to-b from-gray-900 to-gray-800">
         <div className="container-custom">
           <div className="text-center mb-12">
-            <h2 className="text-white">Testimonials</h2>
-            <p className="text-lg max-w-2xl mx-auto text-gray-200">
-              Hear from youth who have benefited from our programs
+            <h2 className="text-white text-3xl md:text-4xl font-bold mb-4">Success Stories</h2>
+            <p className="text-lg max-w-2xl mx-auto text-gray-300">
+              Hear from youth who have transformed their lives through our programs
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {/* Testimonial 1 */}
-            <div className="bg-white/10 backdrop-blur-lg p-6 rounded-lg shadow-lg">
+            <div className="bg-emerald-600/20 backdrop-blur-lg p-6 rounded-lg shadow-lg border border-emerald-500/30 hover:bg-emerald-600/30 transition-all duration-300">
+              <div className="flex items-center mb-4">
+                <div className="w-12 h-12 bg-emerald-500 rounded-full flex items-center justify-center">
+                  <span className="text-white font-bold text-xl">MK</span>
+                </div>
+                <div className="ml-3">
+                  <p className="font-medium text-white">Marie K.</p>
+                  <p className="text-sm text-emerald-200">Entrepreneur, Kigali</p>
+                </div>
+              </div>
               <p className="italic text-gray-200 mb-4">
                 "VJN's economic empowerment program gave me the skills and confidence to start my own business. I now employ five people from my community."
               </p>
-              <div className="flex items-center">
-                <div className="w-12 h-12 bg-gray-400 rounded-full"></div>
+            </div>
+
+            {/* Testimonial 2 */}
+            <div className="bg-emerald-600/20 backdrop-blur-lg p-6 rounded-lg shadow-lg border border-emerald-500/30 hover:bg-emerald-600/30 transition-all duration-300">
+              <div className="flex items-center mb-4">
+                <div className="w-12 h-12 bg-emerald-500 rounded-full flex items-center justify-center">
+                  <span className="text-white font-bold text-xl">JP</span>
+                </div>
                 <div className="ml-3">
-                  <p className="font-medium">Marie K.</p>
-                  <p className="text-sm text-gray-300">Entrepreneur, Kigali</p>
+                  <p className="font-medium text-white">Jean P.</p>
+                  <p className="text-sm text-emerald-200">Student, Butare</p>
                 </div>
               </div>
-            </div>
-            {/* Testimonial 2 */}
-            <div className="bg-white/10 backdrop-blur-lg p-6 rounded-lg shadow-lg">
               <p className="italic text-gray-200 mb-4">
                 "The peace building program helped me heal from past trauma and taught me how to be an advocate for unity in my community."
               </p>
-              <div className="flex items-center">
-                <div className="w-12 h-12 bg-gray-400 rounded-full"></div>
+            </div>
+
+            {/* Testimonial 3 */}
+            <div className="bg-emerald-600/20 backdrop-blur-lg p-6 rounded-lg shadow-lg border border-emerald-500/30 hover:bg-emerald-600/30 transition-all duration-300">
+              <div className="flex items-center mb-4">
+                <div className="w-12 h-12 bg-emerald-500 rounded-full flex items-center justify-center">
+                  <span className="text-white font-bold text-xl">EN</span>
+                </div>
                 <div className="ml-3">
-                  <p className="font-medium">Jean P.</p>
-                  <p className="text-sm text-gray-300">Student, Butare</p>
+                  <p className="font-medium text-white">Emmanuel N.</p>
+                  <p className="text-sm text-emerald-200">Athlete, Gisenyi</p>
                 </div>
               </div>
-            </div>
-            {/* Testimonial 3 */}
-            <div className="bg-white/10 backdrop-blur-lg p-6 rounded-lg shadow-lg">
               <p className="italic text-gray-200 mb-4">
                 "Through VJN's sports program, I discovered my talent for football. Now I play for a national team and mentor younger athletes."
               </p>
-              <div className="flex items-center">
-                <div className="w-12 h-12 bg-gray-400 rounded-full"></div>
+            </div>
+
+            {/* Testimonial 4 */}
+            <div className="bg-emerald-600/20 backdrop-blur-lg p-6 rounded-lg shadow-lg border border-emerald-500/30 hover:bg-emerald-600/30 transition-all duration-300">
+              <div className="flex items-center mb-4">
+                <div className="w-12 h-12 bg-emerald-500 rounded-full flex items-center justify-center">
+                  <span className="text-white font-bold text-xl">AU</span>
+                </div>
                 <div className="ml-3">
-                  <p className="font-medium">Emmanuel N.</p>
-                  <p className="text-sm text-gray-300">Athlete, Gisenyi</p>
+                  <p className="font-medium text-white">Aline U.</p>
+                  <p className="text-sm text-emerald-200">Tech Graduate, Kigali</p>
                 </div>
               </div>
+              <p className="italic text-gray-200 mb-4">
+                "The digital skills training opened new opportunities for me. I now work as a software developer and help other young women enter tech."
+              </p>
+            </div>
+
+            {/* Testimonial 5 */}
+            <div className="bg-emerald-600/20 backdrop-blur-lg p-6 rounded-lg shadow-lg border border-emerald-500/30 hover:bg-emerald-600/30 transition-all duration-300">
+              <div className="flex items-center mb-4">
+                <div className="w-12 h-12 bg-emerald-500 rounded-full flex items-center justify-center">
+                  <span className="text-white font-bold text-xl">PM</span>
+                </div>
+                <div className="ml-3">
+                  <p className="font-medium text-white">Patrick M.</p>
+                  <p className="text-sm text-emerald-200">Artist, Huye</p>
+                </div>
+              </div>
+              <p className="italic text-gray-200 mb-4">
+                "VJN's cultural program helped me develop my artistic talents. I now run a successful art studio and teach traditional dance."
+              </p>
+            </div>
+
+            {/* Testimonial 6 */}
+            <div className="bg-emerald-600/20 backdrop-blur-lg p-6 rounded-lg shadow-lg border border-emerald-500/30 hover:bg-emerald-600/30 transition-all duration-300">
+              <div className="flex items-center mb-4">
+                <div className="w-12 h-12 bg-emerald-500 rounded-full flex items-center justify-center">
+                  <span className="text-white font-bold text-xl">SN</span>
+                </div>
+                <div className="ml-3">
+                  <p className="font-medium text-white">Sarah N.</p>
+                  <p className="text-sm text-emerald-200">Health Educator, Rubavu</p>
+                </div>
+              </div>
+              <p className="italic text-gray-200 mb-4">
+                "The health education program empowered me to become a community health educator. I now help young people make informed health choices."
+              </p>
             </div>
           </div>
         </div>
