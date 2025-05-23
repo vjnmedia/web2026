@@ -20,6 +20,7 @@ export const LanguageProvider: React.FC<{ children: ReactNode }> = ({ children }
       await i18n.changeLanguage(lng);
       setLanguageState(lng);
       localStorage.setItem('language', lng);
+      document.documentElement.lang = lng;
     } catch (error) {
       console.error('Error changing language:', error);
     }
@@ -34,7 +35,9 @@ export const LanguageProvider: React.FC<{ children: ReactNode }> = ({ children }
 
     // Listen for language changes
     const handleLanguageChanged = (lng: string) => {
+      console.log('Language changed in context:', lng);
       setLanguageState(lng);
+      document.documentElement.lang = lng;
     };
 
     i18n.on('languageChanged', handleLanguageChanged);
@@ -43,8 +46,27 @@ export const LanguageProvider: React.FC<{ children: ReactNode }> = ({ children }
     };
   }, []);
 
+  // Force a re-render when language changes
+  useEffect(() => {
+    const handleLanguageChanged = () => {
+      console.log('Forcing re-render for language:', i18n.language);
+      setLanguageState(i18n.language);
+    };
+    i18n.on('languageChanged', handleLanguageChanged);
+    return () => {
+      i18n.off('languageChanged', handleLanguageChanged);
+    };
+  }, []);
+
+  const value = {
+    language,
+    setLanguage: changeLanguage,
+    t,
+    changeLanguage
+  };
+
   return (
-    <LanguageContext.Provider value={{ language, setLanguage: changeLanguage, t, changeLanguage }}>
+    <LanguageContext.Provider value={value}>
       {children}
     </LanguageContext.Provider>
   );

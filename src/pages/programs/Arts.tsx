@@ -1,4 +1,3 @@
-
 import { Music } from 'lucide-react';
 import ProgramDetail from '@/components/ProgramDetail';
 import { useLanguage } from '@/components/LanguageContext';
@@ -24,7 +23,7 @@ const Arts = () => {
       icon={<Music size={48} />}
       color="bg-purple-50"
       iconColor="text-purple-500"
-      imageSrc="https://images.unsplash.com/photo-1511379938547-c1f69419868d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80"
+      imageSrc="/images/programs/culture/arts.jpg"
     />
   );
 };

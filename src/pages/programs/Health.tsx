@@ -1,4 +1,3 @@
-
 import { Heart } from 'lucide-react';
 import ProgramDetail from '@/components/ProgramDetail';
 import { useLanguage } from '@/components/LanguageContext';
@@ -24,7 +23,7 @@ const Health = () => {
       icon={<Heart size={48} />}
       color="bg-red-50"
       iconColor="text-red-500"
-      imageSrc="https://images.unsplash.com/photo-1576091160550-2173dba999ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80"
+      imageSrc="/images/programs/health/health.jpg"
     />
   );
 };

@@ -334,37 +334,15 @@
       },
       "peace": {
         "title": "Peace Building",
-        "description": "Fostering peace and reconciliation through dialogue, cultural exchange, and community engagement.",
+        "description": "Building bridges and fostering understanding through dialogue and community engagement.",
         "readMore": "Learn More",
-        "fullPage": {
-          "title": "Peace Starts with Me",
-          "intro": "Our Peace Building Program is a response to conflict, division, and trauma. We train youth to become ambassadors of peace in their communities, facilitating dialogue, tolerance, and reconciliation across borders and beliefs.",
-          "whatWeDo": {
-            "title": "What We Do",
-            "items": [
-              "Public Speaking & Media Training: Teaching youth to use their voice for peace and advocacy.",
-              "Peace Camps & Cross-Border Dialogues: Bringing together youth from Rwanda and neighboring regions.",
-              "Digital Peacebuilding: Online campaigns, storytelling, and conflict-sensitive social media use.",
-              "Human Rights & Mediation Training: Equipping youth to lead nonviolent movements for justice."
-            ]
-          },
-          "whoItServes": {
-            "title": "Who It Serves",
-            "items": [
-              "Youth in conflict-prone areas",
-              "Refugees and host communities",
-              "Faith-based and multicultural groups"
-            ]
-          },
-          "getInvolved": {
-            "title": "Get Involved",
-            "buttons": {
-              "attendCamp": "Attend a Peace Camp",
-              "shareStory": "Share Your Story",
-              "supportPeace": "Support Peace Initiatives"
-            }
-          }
-        }
+        "subtitle": "Building bridges and fostering understanding",
+        "fullDesc": "Our peace building program focuses on creating sustainable peace through dialogue, education, and community engagement.",
+        "detail1": "Cross-cultural dialogue and exchange programs",
+        "detail2": "Conflict resolution and mediation training",
+        "detail3": "Youth leadership development",
+        "detail4": "Community peace initiatives",
+        "detail5": "Reconciliation workshops"
       },
       "arts": {
         "title": "Sports, Culture & Arts",
@@ -399,6 +377,10 @@
             }
           }
         }
+      },
+      "culture": {
+        "title": "Sports, Culture & Arts",
+        "description": "We uncover and develop youth talent in sports, music, and visual arts, creating spaces for self-expression and community healing."
       },
       "finalCta": {
         "title": "Interested in one of our programs? Want to bring VJN to your community?",
@@ -577,6 +559,8 @@
     },
     "peace": {
       "title": "Peace Building",
+      "description": "Building bridges and fostering understanding through dialogue and community engagement.",
+      "readMore": "Learn More",
       "subtitle": "Building bridges and fostering understanding",
       "fullDesc": "Our peace building program focuses on creating sustainable peace through dialogue, education, and community engagement.",
       "detail1": "Cross-cultural dialogue and exchange programs",

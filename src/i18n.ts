@@ -15,31 +15,44 @@ i18n
         translation: frTranslations
       }
     },
-    lng: 'en', // default language
+    lng: localStorage.getItem('language') || 'en',
     fallbackLng: 'en',
-    debug: true, // Enable debug mode to see what's happening
+    debug: process.env.NODE_ENV === 'development',
     interpolation: {
       escapeValue: false
     },
     react: {
-      useSuspense: false,
+      useSuspense: true,
       bindI18n: 'languageChanged loaded',
       bindI18nStore: 'added removed',
       transEmptyNodeValue: '',
       transSupportBasicHtmlNodes: true,
       transKeepBasicHtmlNodesFor: ['br', 'strong', 'i', 'p']
     },
-    keySeparator: '.', // Use dot notation for nested keys
-    nsSeparator: ':', // Use colon for namespace separation
+    keySeparator: '.',
+    nsSeparator: ':',
     defaultNS: 'translation',
     fallbackNS: 'translation',
-    load: 'languageOnly', // Only load the language, not the region
-    preload: ['en', 'fr'], // Preload both languages
-    saveMissing: true, // Save missing keys
+    load: 'languageOnly',
+    preload: ['en', 'fr'],
+    saveMissing: true,
     missingKeyHandler: (lng, ns, key, fallbackValue) => {
       console.warn(`Missing translation key: ${key} for language: ${lng}`);
     }
   });
+
+// Ensure translations are loaded before proceeding
+i18n.on('initialized', () => {
+  console.log('i18n initialized with language:', i18n.language);
+  document.documentElement.lang = i18n.language;
+});
+
+// Handle language changes
+i18n.on('languageChanged', (lng) => {
+  console.log('Language changed to:', lng);
+  document.documentElement.lang = lng;
+  localStorage.setItem('language', lng);
+});
 
 // Log the loaded translations for debugging
 console.log('Loaded translations:', {

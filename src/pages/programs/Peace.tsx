@@ -23,7 +23,7 @@ const Peace = () => {
       icon={<Smile size={48} />}
       color="bg-yellow-50"
       iconColor="text-yellow-600"
-      imageSrc="https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80"
+      imageSrc="/images/programs/peace/peace.jpg"
     />
   );
 };

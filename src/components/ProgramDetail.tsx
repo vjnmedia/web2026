@@ -1,4 +1,3 @@
-
 import { ArrowLeft } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
@@ -7,13 +6,13 @@ import { useLanguage } from './LanguageContext';
 interface ProgramDetailProps {
   id: string;
   title: string;
-  subtitle?: string;
+  subtitle: string;
   description: string;
   details: string[];
   icon: React.ReactNode;
   color: string;
   iconColor: string;
-  imageSrc?: string;
+  imageSrc: string;
 }
 
 const ProgramDetail = ({
@@ -25,34 +24,38 @@ const ProgramDetail = ({
   icon,
   color,
   iconColor,
-  imageSrc = `https://picsum.photos/seed/${id}/1200/600`,
+  imageSrc
 }: ProgramDetailProps) => {
   const { t } = useLanguage();
 
   return (
-    <div>
+    <div className="min-h-screen">
       {/* Hero Section */}
-      <section className={`relative ${color} py-16 md:py-24`}>
-        <div className="absolute inset-0 bg-gradient-to-br from-black/50 to-transparent z-10"></div>
-        <div
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{ 
-            backgroundImage: `url('${imageSrc}')`,
-            filter: 'brightness(0.7)'
-          }}
-        ></div>
-        
-        <div className="container-custom relative z-20">
-          <Link to="/programs" className="inline-flex items-center text-white mb-6 hover:underline">
-            <ArrowLeft className="mr-2" size={20} />
-            {t('programs.backToAll')}
-          </Link>
-          <h1 className="text-white">{title}</h1>
-          {subtitle && <p className="text-xl text-gray-200 max-w-3xl">{subtitle}</p>}
+      <section className={`section ${color}`}>
+        <div className="container-custom">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div>
+              <div className={`${iconColor} mb-8`}>
+                {icon}
+              </div>
+              <h1 className="text-4xl font-bold mb-4">{title}</h1>
+              <p className="text-xl mb-8">{subtitle}</p>
+              <Link to="/programs" className="text-vjn-blue hover:text-vjn-light-blue font-semibold">
+                {t('programs.backToAll')} →
+              </Link>
+            </div>
+            <div className="relative h-[400px] rounded-lg overflow-hidden">
+              <img
+                src={imageSrc}
+                alt={title}
+                className="absolute inset-0 w-full h-full object-cover"
+              />
+            </div>
+          </div>
         </div>
       </section>
 
-      {/* Program Content */}
+      {/* Main Content */}
       <section className="section bg-white">
         <div className="container-custom">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
@@ -91,15 +94,21 @@ const ProgramDetail = ({
                   {t('programs.getInvolvedText')}
                 </p>
                 <div className="space-y-3">
-                  <Button className="w-full">
-                    {t('programs.volunteer')}
-                  </Button>
-                  <Button variant="outline" className="w-full">
-                    {t('programs.donate')}
-                  </Button>
-                  <Button variant="outline" className="w-full">
-                    {t('programs.contactUs')}
-                  </Button>
+                  <Link to="/contact" className="w-full">
+                    <Button className="w-full bg-vjn-blue hover:bg-vjn-light-blue">
+                      {t('programs.volunteer')}
+                    </Button>
+                  </Link>
+                  <Link to="/donate" className="w-full">
+                    <Button variant="outline" className="w-full border-vjn-blue text-vjn-blue hover:bg-vjn-blue hover:text-white">
+                      {t('programs.donate')}
+                    </Button>
+                  </Link>
+                  <Link to="/contact" className="w-full">
+                    <Button variant="outline" className="w-full border-vjn-blue text-vjn-blue hover:bg-vjn-blue hover:text-white">
+                      {t('programs.contactUs')}
+                    </Button>
+                  </Link>
                 </div>
               </div>
             </div>

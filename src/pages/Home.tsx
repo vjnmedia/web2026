@@ -28,7 +28,9 @@ import {
   Shield,
   Trophy,
   Star,
-  Globe
+  Globe,
+  Calendar,
+  ChevronDown
 } from 'lucide-react';
 import Hero from "@/components/Hero";
 import { supabase } from '@/lib/supabase';
@@ -537,57 +539,140 @@ const Home: React.FC = () => {
     <div className="min-h-screen">
       <Hero />
 
-      {/* Who We Are */}
+      {/* Hero Section Enhancement */}
+      <motion.section 
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        className="relative min-h-screen flex items-center justify-center overflow-hidden"
+      >
+        {/* Background Video/Image with Overlay */}
+        <div className="absolute inset-0 z-0">
+          <div className="absolute inset-0 bg-gradient-to-r from-vjn-blue/90 to-vjn-light-blue/90 z-10" />
+          <img
+            src="/images/hero-bg.jpg"
+            alt="VJN Youth Programs"
+            className="w-full h-full object-cover"
+          />
+        </div>
+
+        {/* Hero Content */}
+        <div className="container mx-auto px-4 relative z-20">
+          <motion.div 
+            variants={fadeInUp}
+            className="max-w-4xl mx-auto text-center"
+          >
+            <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight">
+              Empowering Youth, Building Tomorrow
+            </h1>
+            <p className="text-xl md:text-2xl text-white/90 mb-12 leading-relaxed">
+              Join Vision Jeunesse Nouvelle in creating opportunities for young people to thrive and make a difference in their communities.
+            </p>
+            <div className="flex flex-wrap justify-center gap-4">
+              <motion.a
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                href="/programs"
+                className="bg-white text-vjn-blue px-8 py-4 rounded-full font-semibold hover:bg-white/90 transition-all duration-300 shadow-lg hover:shadow-xl"
+              >
+                Explore Programs
+                <ChevronRight className="h-5 w-5 ml-2 inline-block" />
+              </motion.a>
+              <motion.a
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                href="/donate"
+                className="bg-transparent border-2 border-white text-white px-8 py-4 rounded-full font-semibold hover:bg-white/10 transition-all duration-300"
+              >
+                Support Our Mission
+              </motion.a>
+            </div>
+          </motion.div>
+        </div>
+
+        {/* Scroll Indicator */}
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 1 }}
+          className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20"
+        >
+          <motion.div
+            animate={{ y: [0, 10, 0] }}
+            transition={{ repeat: Infinity, duration: 1.5 }}
+            className="text-white/80"
+          >
+            <ChevronDown className="h-8 w-8" />
+          </motion.div>
+        </motion.div>
+      </motion.section>
+
+      {/* Who We Are Section Enhancement */}
       <motion.section 
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
         variants={staggerContainer}
-        className="py-20 bg-white"
+        className="py-24 bg-white relative overflow-hidden"
       >
-        <div className="container mx-auto px-4">
+        {/* Background Pattern */}
+        <div className="absolute inset-0 opacity-5">
+          <div className="absolute inset-0" style={{
+            backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23000000' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
+            backgroundSize: '60px 60px'
+          }}></div>
+        </div>
+
+        <div className="container mx-auto px-4 relative">
           <div className="max-w-4xl mx-auto">
             <motion.h2 
               variants={fadeInUp}
-              className="text-3xl font-bold text-center mb-8"
+              className="text-4xl md:text-5xl font-bold text-center mb-8"
             >
               Who We Are
             </motion.h2>
             <motion.p 
               variants={fadeInUp}
-              className="text-lg text-gray-700 mb-8 text-center"
+              className="text-xl text-gray-700 mb-12 text-center leading-relaxed"
             >
               Vision Jeunesse Nouvelle (VJN) is a non-governmental organization founded in Gisenyi, Rwanda, by the Brothers of Christian Instruction. Our mission is to develop youth potential and nurture moral, physical, and spiritual growth for a peaceful and productive society.
             </motion.p>
             <motion.div 
               variants={fadeInUp}
-              className="text-center"
+              className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center"
             >
-              <motion.a
-                whileHover={{ x: 5 }}
-                href="/about"
-                className="inline-flex items-center text-vjn-blue font-semibold hover:text-vjn-light-blue transition-colors"
-              >
-                Read More About Us
-                <ChevronRight className="h-5 w-5 ml-1" />
-              </motion.a>
+              <div className="p-6 rounded-2xl bg-gray-50 hover:bg-gray-100 transition-all duration-300">
+                <Users2 className="h-12 w-12 text-vjn-blue mx-auto mb-4" />
+                <h3 className="text-xl font-semibold mb-2">Our Mission</h3>
+                <p className="text-gray-600">Empowering youth through education, skills development, and community engagement.</p>
+              </div>
+              <div className="p-6 rounded-2xl bg-gray-50 hover:bg-gray-100 transition-all duration-300">
+                <Building2 className="h-12 w-12 text-vjn-blue mx-auto mb-4" />
+                <h3 className="text-xl font-semibold mb-2">Our Vision</h3>
+                <p className="text-gray-600">Creating a society where every young person can reach their full potential.</p>
+              </div>
+              <div className="p-6 rounded-2xl bg-gray-50 hover:bg-gray-100 transition-all duration-300">
+                <Handshake className="h-12 w-12 text-vjn-blue mx-auto mb-4" />
+                <h3 className="text-xl font-semibold mb-2">Our Values</h3>
+                <p className="text-gray-600">Integrity, compassion, and commitment to sustainable development.</p>
+              </div>
             </motion.div>
           </div>
         </div>
       </motion.section>
 
-      {/* Core Programs */}
+      {/* Core Programs Section Enhancement */}
       <motion.section 
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
         variants={staggerContainer}
-        className="py-20 bg-gray-50"
+        className="py-24 bg-gradient-to-br from-gray-50 to-white relative overflow-hidden"
       >
         <div className="container mx-auto px-4">
           <motion.h2 
             variants={fadeInUp}
-            className="text-3xl font-bold text-center mb-12"
+            className="text-4xl md:text-5xl font-bold text-center mb-16"
           >
             Our Core Programs
           </motion.h2>
@@ -596,14 +681,16 @@ const Home: React.FC = () => {
               <motion.div
                 key={index}
                 variants={fadeInUp}
-                whileHover={{ y: -5 }}
-                className="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-all"
+                whileHover={{ y: -10 }}
+                className="group bg-white rounded-2xl shadow-xl p-8 hover:shadow-2xl transition-all duration-500"
               >
-                <div className="flex items-center mb-4">
-                  {program.icon}
-                  <h3 className="text-xl font-semibold ml-3">{program.title}</h3>
+                <div className="flex items-center mb-6">
+                  <div className="p-4 rounded-xl bg-vjn-blue/10 group-hover:bg-vjn-blue/20 transition-all duration-300">
+                    {program.icon}
+                  </div>
+                  <h3 className="text-2xl font-semibold ml-4">{program.title}</h3>
                 </div>
-                <p className="text-gray-600 mb-4">{program.description}</p>
+                <p className="text-gray-600 mb-6 leading-relaxed">{program.description}</p>
                 <motion.a
                   whileHover={{ x: 5 }}
                   href={program.link}
@@ -618,52 +705,11 @@ const Home: React.FC = () => {
         </div>
       </motion.section>
 
-      {/* Impact Story */}
-      <motion.section 
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-        variants={staggerContainer}
-        className="py-20 bg-white"
-      >
+      {/* Latest News Section Enhancement */}
+      <section className="py-24 bg-white relative overflow-hidden">
         <div className="container mx-auto px-4">
-          <motion.div 
-            variants={fadeInUp}
-            className="max-w-4xl mx-auto"
-          >
-            <div className="bg-gray-50 rounded-lg shadow-md p-8">
-              <div className="flex items-center mb-6">
-                <img
-                  src="/images/testimonial.jpg"
-                  alt="Josiane M."
-                  className="w-20 h-20 rounded-full object-cover mr-4"
-                />
-                <div>
-                  <h3 className="text-xl font-semibold">Josiane M.</h3>
-                  <p className="text-gray-600">Rubavu District</p>
-                </div>
-              </div>
-              <blockquote className="text-xl text-gray-700 italic mb-6">
-                "VJN gave me purpose. I was just a student. Now, I am a youth leader in my village, running my own business and mentoring others."
-              </blockquote>
-              <motion.a
-                whileHover={{ x: 5 }}
-                href="/stories"
-                className="inline-flex items-center text-vjn-blue font-semibold hover:text-vjn-light-blue transition-colors"
-              >
-                Read More Success Stories
-                <ChevronRight className="h-5 w-5 ml-1" />
-              </motion.a>
-            </div>
-          </motion.div>
-        </div>
-      </motion.section>
-
-      {/* Latest News & Updates */}
-      <section className="py-16 bg-gray-50">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-12">
-            {language === 'en' ? 'Latest News & Updates' : 'Dernières Nouvelles et Mises à Jour'}
+          <h2 className="text-4xl md:text-5xl font-bold text-center mb-16">
+            Latest News & Updates
           </h2>
           
           {isLoading ? (
@@ -672,103 +718,124 @@ const Home: React.FC = () => {
             </div>
           ) : latestBlogs.length === 0 ? (
             <p className="text-center text-gray-500">
-              {language === 'en' ? 'No news available at the moment.' : 'Aucune nouvelle disponible pour le moment.'}
+              No news available at the moment.
             </p>
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {latestBlogs.map((blog) => (
-                <div key={blog.id} className="bg-white rounded-lg shadow-md overflow-hidden">
+                <motion.div
+                  key={blog.id}
+                  whileHover={{ y: -10 }}
+                  className="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-500"
+                >
                   {blog.image_url && (
-                    <div className="aspect-video relative">
+                    <div className="aspect-video relative overflow-hidden">
                       <img
                         src={blog.image_url}
                         alt={blog.title}
-                        className="w-full h-full object-cover"
+                        className="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500"
                       />
                     </div>
                   )}
-                  <div className="p-6">
-                    <h3 className="text-xl font-semibold mb-2">{blog.title}</h3>
-                    <p className="text-gray-600 mb-4 line-clamp-3">
+                  <div className="p-8">
+                    <h3 className="text-2xl font-semibold mb-4">{blog.title}</h3>
+                    <p className="text-gray-600 mb-6 line-clamp-3 leading-relaxed">
                       {blog.content}
                     </p>
-                    <div className="flex justify-between items-center text-sm text-gray-500 mb-4">
-                      <span>{blog.author}</span>
-                      <span>{new Date(blog.created_at).toLocaleDateString()}</span>
+                    <div className="flex justify-between items-center text-sm text-gray-500 mb-6">
+                      <span className="flex items-center">
+                        <Users2 className="h-4 w-4 mr-2" />
+                        {blog.author}
+                      </span>
+                      <span className="flex items-center">
+                        <Calendar className="h-4 w-4 mr-2" />
+                        {new Date(blog.created_at).toLocaleDateString()}
+                      </span>
                     </div>
-                    <a
+                    <motion.a
+                      whileHover={{ x: 5 }}
                       href={`/blog/${blog.id}`}
                       className="inline-flex items-center text-vjn-blue font-semibold hover:text-vjn-light-blue transition-colors"
                     >
-                      {language === 'en' ? 'Read More' : 'Lire la Suite'}
+                      Read More
                       <ChevronRight className="h-5 w-5 ml-1" />
-                    </a>
+                    </motion.a>
                   </div>
-                </div>
+                </motion.div>
               ))}
             </div>
           )}
 
-          <div className="text-center mt-8">
-            <a
+          <motion.div 
+            variants={fadeInUp}
+            className="text-center mt-12"
+          >
+            <motion.a
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
               href="/news"
-              className="inline-block bg-vjn-blue text-white px-6 py-3 rounded-md font-semibold hover:bg-vjn-light-blue transition-colors"
+              className="inline-flex items-center bg-vjn-blue text-white px-8 py-4 rounded-full font-semibold hover:bg-vjn-light-blue transition-all duration-300 shadow-lg hover:shadow-xl"
             >
-              {language === 'en' ? 'View All News' : 'Voir Toutes les Nouvelles'}
-            </a>
-          </div>
+              View All News
+              <ChevronRight className="h-5 w-5 ml-2" />
+            </motion.a>
+          </motion.div>
         </div>
       </section>
 
-      {/* Who We Serve */}
+      {/* Who We Serve Section Enhancement */}
       <motion.section 
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
         variants={staggerContainer}
-        className="py-20 bg-white"
+        className="py-24 bg-gradient-to-br from-vjn-blue to-vjn-light-blue relative overflow-hidden"
       >
         <div className="container mx-auto px-4">
           <motion.h2 
             variants={fadeInUp}
-            className="text-3xl font-bold text-center mb-12"
+            className="text-4xl md:text-5xl font-bold text-center text-white mb-16"
           >
             Who We Serve
           </motion.h2>
           <motion.div 
             variants={fadeInUp}
-            className="max-w-3xl mx-auto"
+            className="max-w-4xl mx-auto"
           >
-            <ul className="space-y-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {beneficiaries.map((item, index) => (
-                <motion.li
+                <motion.div
                   key={index}
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
                   transition={{ delay: index * 0.1 }}
-                  className="flex items-center"
+                  className="bg-white/10 backdrop-blur-lg p-6 rounded-2xl border border-white/20 hover:bg-white/20 transition-all duration-300"
                 >
-                  <Star className="h-6 w-6 text-vjn-blue mr-3" />
-                  <span className="text-lg">{item}</span>
-                </motion.li>
+                  <div className="flex items-center">
+                    <div className="p-3 rounded-full bg-white/20 mr-4">
+                      <Users2 className="h-6 w-6 text-white" />
+                    </div>
+                    <span className="text-white text-lg">{item}</span>
+                  </div>
+                </motion.div>
               ))}
-            </ul>
+            </div>
           </motion.div>
         </div>
       </motion.section>
 
-      {/* Opportunities */}
+      {/* Opportunities Section Enhancement */}
       <motion.section 
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
         variants={staggerContainer}
-        className="py-20 bg-gray-50"
+        className="py-24 bg-white relative overflow-hidden"
       >
         <div className="container mx-auto px-4">
           <motion.h2 
             variants={fadeInUp}
-            className="text-3xl font-bold text-center mb-12"
+            className="text-4xl md:text-5xl font-bold text-center mb-16"
           >
             Opportunities for You
           </motion.h2>
@@ -778,18 +845,20 @@ const Home: React.FC = () => {
                 <motion.div
                   key={index}
                   variants={fadeInUp}
-                  whileHover={{ y: -5 }}
-                  className="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-all"
+                  whileHover={{ y: -10 }}
+                  className="bg-white rounded-2xl shadow-xl p-8 hover:shadow-2xl transition-all duration-500"
                 >
-                  <h3 className="text-xl font-semibold mb-2">{opportunity.title}</h3>
-                  <div className="flex items-center text-gray-600 mb-4">
-                    <span className="mr-4">{opportunity.type}</span>
+                  <h3 className="text-2xl font-semibold mb-4">{opportunity.title}</h3>
+                  <div className="flex items-center text-gray-600 mb-6">
+                    <span className="bg-vjn-blue/10 text-vjn-blue px-4 py-2 rounded-full text-sm font-semibold mr-4">
+                      {opportunity.type}
+                    </span>
                     <span className="flex items-center">
-                      <MapPin className="h-4 w-4 mr-1" />
+                      <MapPin className="h-4 w-4 mr-2" />
                       {opportunity.location}
                     </span>
                   </div>
-                  <p className="text-sm text-gray-500 mb-4">Application Deadline: {opportunity.deadline}</p>
+                  <p className="text-sm text-gray-500 mb-6">Application Deadline: {opportunity.deadline}</p>
                   <motion.a
                     whileHover={{ x: 5 }}
                     href={opportunity.link}
@@ -803,246 +872,104 @@ const Home: React.FC = () => {
             </div>
             <motion.div 
               variants={fadeInUp}
-              className="text-center mt-8"
+              className="text-center mt-12"
             >
               <motion.a
-                whileHover={{ x: 5 }}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
                 href="/careers"
-                className="inline-flex items-center text-vjn-blue font-semibold hover:text-vjn-light-blue transition-colors"
+                className="inline-flex items-center bg-vjn-blue text-white px-8 py-4 rounded-full font-semibold hover:bg-vjn-light-blue transition-all duration-300 shadow-lg hover:shadow-xl"
               >
                 View All Opportunities
-                <ChevronRight className="h-5 w-5 ml-1" />
+                <ChevronRight className="h-5 w-5 ml-2" />
               </motion.a>
             </motion.div>
           </div>
         </div>
       </motion.section>
 
-      {/* Youth Repository */}
+      {/* Contact Section Enhancement */}
       <motion.section 
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
         variants={staggerContainer}
-        className="py-20 bg-white"
-      >
-        <div className="container mx-auto px-4">
-          <motion.div 
-            variants={fadeInUp}
-            className="max-w-4xl mx-auto text-center"
-          >
-            <h2 className="text-3xl font-bold mb-6">Youth Group Database Access</h2>
-            <p className="text-lg text-gray-700 mb-8">
-              Youth Teams & Talent Repository<br />
-              Are you a partner, coach, or program manager? Log in to manage youth profiles, track development, and support growth.
-            </p>
-            <div className="flex flex-wrap justify-center gap-4">
-              <motion.a
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                href="/repository"
-                className="bg-vjn-blue text-white px-8 py-3 rounded-md font-semibold hover:bg-vjn-light-blue transition-colors"
-              >
-                Access Repository
-              </motion.a>
-              <motion.a
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                href="/register"
-                className="bg-transparent border-2 border-vjn-blue text-vjn-blue px-8 py-3 rounded-md font-semibold hover:bg-vjn-blue/10 transition-colors"
-              >
-                Register a New Youth Group
-              </motion.a>
-            </div>
-          </motion.div>
-        </div>
-      </motion.section>
-
-      {/* Partner CTA */}
-      <motion.section 
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-        variants={staggerContainer}
-        className="py-20 bg-gray-50"
-      >
-        <div className="container mx-auto px-4">
-          <motion.div 
-            variants={fadeInUp}
-            className="max-w-4xl mx-auto text-center"
-          >
-            <h2 className="text-3xl font-bold mb-6">Partner With Us</h2>
-            <p className="text-lg text-gray-700 mb-8">
-              Every act of support creates ripples of transformation.<br />
-              Partner with us to reach more youth, grow more leaders, and build peace in more communities.
-            </p>
-            <div className="flex flex-wrap justify-center gap-4">
-              <motion.a
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                href="/partner"
-                className="bg-vjn-blue text-white px-8 py-3 rounded-md font-semibold hover:bg-vjn-light-blue transition-colors"
-              >
-                Become a Partner
-              </motion.a>
-              <motion.a
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                href="/donate"
-                className="bg-transparent border-2 border-vjn-blue text-vjn-blue px-8 py-3 rounded-md font-semibold hover:bg-vjn-blue/10 transition-colors"
-              >
-                Donate Now
-              </motion.a>
-            </div>
-          </motion.div>
-        </div>
-      </motion.section>
-
-      {/* Partners */}
-      <motion.section 
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-        variants={staggerContainer}
-        className="py-20 bg-gray-50"
-      >
-        <div className="container mx-auto px-4">
-          <motion.h2 
-            variants={fadeInUp}
-            className="text-3xl font-bold text-center mb-12"
-          >
-            Our Partners
-          </motion.h2>
-          
-          <motion.div 
-            variants={fadeInUp}
-            className="relative"
-          >
-            <div className="overflow-hidden">
-              <div className="flex transition-transform duration-500 ease-in-out" style={{ transform: `translateX(-${page * 100}%)` }}>
-                {partners.map((partner, index) => (
-                  <motion.div
-                    key={index}
-                    whileHover={{ y: -5 }}
-                    className="min-w-[200px] mx-4 bg-white rounded-lg shadow-md p-4 text-center hover:shadow-lg transition-all"
-                  >
-                    <div className="h-24 mb-3 flex items-center justify-center">
-                      <img
-                        src={partner.logo}
-                        alt={partner.name}
-                        className="max-h-full max-w-full object-contain"
-                      />
-                    </div>
-                    <h4 className="font-semibold text-sm mb-1 line-clamp-2">{partner.name}</h4>
-                    <p className="text-xs text-gray-600 line-clamp-2">{partner.type}</p>
-                  </motion.div>
-                ))}
-              </div>
-            </div>
-            
-            {/* Navigation Buttons */}
-            <button
-              onClick={() => paginate(-1)}
-              className="absolute left-0 top-1/2 -translate-y-1/2 bg-white rounded-full p-2 shadow-lg hover:bg-gray-100 transition-colors z-10"
-            >
-              <ChevronLeft className="h-6 w-6 text-vjn-blue" />
-            </button>
-            <button
-              onClick={() => paginate(1)}
-              className="absolute right-0 top-1/2 -translate-y-1/2 bg-white rounded-full p-2 shadow-lg hover:bg-gray-100 transition-colors z-10"
-            >
-              <ChevronRight className="h-6 w-6 text-vjn-blue" />
-            </button>
-          </motion.div>
-        </div>
-      </motion.section>
-
-      {/* Contact Info */}
-      <motion.section 
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-        variants={staggerContainer}
-        className="py-20 bg-white"
+        className="py-24 bg-gray-50 relative overflow-hidden"
       >
         <div className="container mx-auto px-4">
           <motion.div 
             variants={fadeInUp}
             className="max-w-6xl mx-auto"
           >
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-              <div className="lg:col-span-1">
-                <h2 className="text-2xl font-bold mb-6">Contact Us</h2>
-                <div className="space-y-4">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+              <div>
+                <h2 className="text-4xl font-bold mb-8">Get in Touch</h2>
+                <div className="space-y-6">
                   <motion.div 
                     whileHover={{ x: 5 }}
-                    className="flex items-center"
+                    className="flex items-center bg-white p-6 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300"
                   >
-                    <MapPin className="h-6 w-6 text-vjn-blue mr-3" />
+                    <MapPin className="h-8 w-8 text-vjn-blue mr-4" />
                     <div>
-                      <p className="font-semibold">Address:</p>
-                      <p>Rubavu District, Gisenyi Sector, Nengo Cell, Gikarani Village</p>
+                      <p className="font-semibold text-lg mb-1">Address</p>
+                      <p className="text-gray-600">Rubavu District, Gisenyi Sector, Nengo Cell, Gikarani Village</p>
                     </div>
                   </motion.div>
                   <motion.div 
                     whileHover={{ x: 5 }}
-                    className="flex items-center"
+                    className="flex items-center bg-white p-6 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300"
                   >
-                    <Phone className="h-6 w-6 text-vjn-blue mr-3" />
+                    <Phone className="h-8 w-8 text-vjn-blue mr-4" />
                     <div>
-                      <p>+250 785 403 435</p>
-                      <p>+250 788 892 826</p>
+                      <p className="font-semibold text-lg mb-1">Phone</p>
+                      <p className="text-gray-600">+250 785 403 435</p>
+                      <p className="text-gray-600">+250 788 892 826</p>
                     </div>
                   </motion.div>
                   <motion.div 
                     whileHover={{ x: 5 }}
-                    className="flex items-center"
+                    className="flex items-center bg-white p-6 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300"
                   >
-                    <Mail className="h-6 w-6 text-vjn-blue mr-3" />
-                    <p>visionjeunesse2050@gmail.com</p>
+                    <Mail className="h-8 w-8 text-vjn-blue mr-4" />
+                    <div>
+                      <p className="font-semibold text-lg mb-1">Email</p>
+                      <p className="text-gray-600">visionjeunesse2050@gmail.com</p>
+                    </div>
                   </motion.div>
                 </div>
-                <div className="flex space-x-4 mt-6">
+                <div className="flex space-x-4 mt-8">
                   <motion.a 
                     whileHover={{ y: -5 }}
                     href="https://facebook.com/visionjeunesse2" 
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-gray-600 hover:text-vjn-blue transition-colors"
+                    className="bg-white p-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
                   >
-                    <Facebook className="h-6 w-6" />
+                    <Facebook className="h-6 w-6 text-vjn-blue" />
                   </motion.a>
                   <motion.a 
                     whileHover={{ y: -5 }}
                     href="https://twitter.com/visionjeunesse2" 
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-gray-600 hover:text-vjn-blue transition-colors"
+                    className="bg-white p-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
                   >
-                    <Twitter className="h-6 w-6" />
+                    <Twitter className="h-6 w-6 text-vjn-blue" />
                   </motion.a>
                   <motion.a 
                     whileHover={{ y: -5 }}
                     href="https://instagram.com/visionjeunesse2" 
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-gray-600 hover:text-vjn-blue transition-colors"
+                    className="bg-white p-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
                   >
-                    <Instagram className="h-6 w-6" />
+                    <Instagram className="h-6 w-6 text-vjn-blue" />
                   </motion.a>
                 </div>
-                <motion.a
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  href="/contact"
-                  className="inline-block mt-8 bg-vjn-blue text-white px-6 py-3 rounded-md font-semibold hover:bg-vjn-light-blue transition-colors"
-                >
-                  Contact Form
-                </motion.a>
               </div>
-              <div className="lg:col-span-2">
-                <h2 className="text-2xl font-bold mb-6">Our Location</h2>
-                <div className="relative h-[500px] rounded-lg overflow-hidden shadow-lg">
+              <div>
+                <h2 className="text-4xl font-bold mb-8">Our Location</h2>
+                <div className="relative h-[500px] rounded-2xl overflow-hidden shadow-xl">
                   <iframe
                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3987.1234567890123!2d29.12345678901234!3d-1.1234567890123456!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMcKwMDcnMjQuNCJTIDI5wrAwNyc0NS4xIkU!5e0!3m2!1sen!2srw!4v1234567890123"
                     width="100%"
@@ -1053,9 +980,9 @@ const Home: React.FC = () => {
                     referrerPolicy="no-referrer-when-downgrade"
                   ></iframe>
                 </div>
-                <div className="mt-4 text-center">
-                  <p className="text-gray-600">
-                    <Globe className="h-5 w-5 inline-block mr-2" />
+                <div className="mt-6 text-center">
+                  <p className="text-gray-600 flex items-center justify-center">
+                    <Globe className="h-5 w-5 mr-2" />
                     Located in Gisenyi, Rubavu District, Western Province, Rwanda
                   </p>
                 </div>
@@ -1065,7 +992,7 @@ const Home: React.FC = () => {
         </div>
       </motion.section>
 
-      {/* Scroll to Top Button */}
+      {/* Scroll to Top Button Enhancement */}
       <AnimatePresence>
         {showScrollTop && (
           <motion.button
@@ -1073,7 +1000,7 @@ const Home: React.FC = () => {
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.5 }}
             onClick={scrollToTop}
-            className="fixed bottom-8 right-8 bg-vjn-blue text-white p-3 rounded-full shadow-lg hover:bg-vjn-light-blue transition-colors z-50"
+            className="fixed bottom-8 right-8 bg-vjn-blue text-white p-4 rounded-full shadow-lg hover:bg-vjn-light-blue transition-all duration-300 z-50"
             whileHover={{ y: -5 }}
             whileTap={{ scale: 0.95 }}
           >

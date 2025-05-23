@@ -254,7 +254,7 @@
   },
   "home": {
     "hero": {
-      "title": "Autonomiser les jeunes pour un meilleur avenir",
+      "title": "Autonomiser les Jeunes pour un Meilleur Demain",
       "subtitle": "Construire un avenir meilleur grâce à l'éducation, l'autonomisation économique et le développement communautaire",
       "cta": "S'impliquer"
     },
@@ -264,80 +264,157 @@
     },
     "programs": {
       "title": "Nos Programmes",
-      "subtitle": "Nous nous concentrons sur des domaines clés pour impulser un changement durable et améliorer la vie des jeunes Rwandais.",
+      "subtitle": "Découvrez nos programmes complets conçus pour autonomiser les jeunes et créer un changement durable dans nos communautés",
+      "cta": {
+        "title": "Rejoignez Notre Mission",
+        "subtitle": "Contactez-nous aujourd'hui et devenez partie intégrante d'un mouvement croissant pour façonner un meilleur avenir",
+        "join": "Rejoignez-nous",
+        "contact": "Contactez-nous",
+        "support": "Soutenez-nous"
+      },
       "education": {
-        "title": "Éducation et Formation Professionnelle",
-        "description": "Fournir une éducation de qualité et une formation professionnelle pour doter les jeunes des compétences essentielles pour réussir dans le monde moderne",
-        "details": {
-          "1": "Formation professionnelle en menuiserie, soudure, couture et informatique",
-          "2": "Cours d'alphabétisation pour les jeunes qui ont manqué l'éducation formelle",
-          "3": "Initiatives d'éducation spéciale pour les jeunes en situation de handicap",
-          "4": "Programmes de bourses pour l'enseignement secondaire et supérieur",
-          "5": "Services de mentorat et d'orientation professionnelle"
+        "title": "Éducation & Formation Professionnelle",
+        "description": "Offrir une éducation de qualité et une formation professionnelle pour doter les jeunes des compétences essentielles pour leur réussite future.",
+        "readMore": "En Savoir Plus",
+        "fullPage": {
+          "title": "Autonomiser les Esprits, Façonner l'Avenir",
+          "intro": "Chez VJN, nous croyons que l'éducation va au-delà de la scolarité—c'est une porte d'entrée vers la dignité, l'indépendance et le but. Notre Programme d'Éducation cible les jeunes de familles à faible revenu et sans emploi, leur offrant les connaissances et les compétences nécessaires pour réussir dans la vie et le travail.",
+          "whatWeDo": {
+            "title": "Ce que nous faisons",
+            "items": [
+              "Formation Professionnelle : Cours de couture, coiffure, soudure et réparation automobile.",
+              "Soutien à l'Alphabétisation : Nous proposons des cours d'alphabétisation et de calcul pour réduire l'illettrisme dans la région.",
+              "Éducation Inclusive : Soutien spécial pour les étudiants sourds et muets pour ne laisser personne de côté.",
+              "Bibliothèques & Centres d'Apprentissage : Accès aux livres, ressources numériques et outils de recherche pour inspirer l'apprentissage tout au long de la vie."
+            ]
+          },
+          "whoItServes": {
+            "title": "Qui nous servons",
+            "items": [
+              "Jeunes déscolarisés",
+              "Adolescents vulnérables",
+              "Personnes en situation de handicap"
+            ]
+          },
+          "getInvolved": {
+            "title": "S'impliquer",
+            "buttons": {
+              "joinClass": "Rejoindre un Cours",
+              "supportStudent": "Soutenir un Étudiant",
+              "visitCenter": "Visiter un Centre"
+            }
+          }
         }
       },
       "economic": {
         "title": "Autonomisation Économique",
-        "description": "Développer les compétences entrepreneuriales et l'indépendance financière grâce à des programmes d'entrepreneuriat et de formation professionnelle",
-        "details": {
-          "1": "Développement de plans d'affaires et formation à l'entrepreneuriat",
-          "2": "Soutien aux coopératives de jeunes et aux petites entreprises",
-          "3": "Programmes d'éducation financière et d'épargne",
-          "4": "Assistance à la liaison avec le marché et au développement de produits",
-          "5": "Microfinance et petites subventions pour les entreprises dirigées par des jeunes"
+        "description": "Soutenir l'entrepreneuriat des jeunes et le développement économique par la formation, le mentorat et les ressources.",
+        "readMore": "En Savoir Plus",
+        "fullPage": {
+          "title": "Développer des Compétences pour la Liberté Financière",
+          "intro": "Dans un monde de défis économiques croissants, notre Programme d'Autonomisation Économique équipe les jeunes des outils pour échapper à la pauvreté et construire des avenirs prospères. Des bases de la création d'entreprise à l'enregistrement des coopératives, nous préparons les jeunes entrepreneurs à réussir.",
+          "whatWeDo": {
+            "title": "Ce que nous faisons",
+            "items": [
+              "Formation à l'Entrepreneuriat : Couvrant la planification d'entreprise, le marketing, le commerce électronique et le service client.",
+              "Formation GSLA : Soutien aux Associations d'Épargne et de Crédit comme véhicules de développement local.",
+              "Liens avec le Marché : Nous connectons les jeunes producteurs avec les acheteurs, les coopératives et les foires commerciales.",
+              "Droit des Affaires & Finance Numérique : Alphabétisation juridique de base et accès au banking numérique."
+            ]
+          },
+          "whoItServes": {
+            "title": "Qui nous servons",
+            "items": [
+              "Jeunes de 18 à 35 ans",
+              "Jeunes femmes et hommes dans les secteurs informels",
+              "Coopératives communautaires"
+            ]
+          },
+          "getInvolved": {
+            "title": "S'impliquer",
+            "buttons": {
+              "applyTraining": "Postuler à la Formation",
+              "supportBusiness": "Soutenir une Entreprise",
+              "partner": "Partenariat"
+            }
+          }
         }
       },
       "health": {
-        "title": "Santé et Bien-être",
-        "description": "Promouvoir la sensibilisation à la santé et fournir un accès aux services de santé essentiels pour les jeunes et les communautés",
-        "details": {
-          "1": "Éducation à la santé sexuelle et reproductive",
-          "2": "Programmes de sensibilisation et de prévention du VIH/SIDA",
-          "3": "Soutien en santé mentale et conseil en traumatismes",
-          "4": "Initiatives de nutrition et de bien-être physique",
-          "5": "Formation à la préparation et à la réponse aux pandémies"
+        "title": "Santé & Bien-être",
+        "description": "Promouvoir la santé physique et mentale par l'éducation, la sensibilisation et l'accès aux services de santé.",
+        "readMore": "En Savoir Plus",
+        "fullPage": {
+          "title": "Jeunesse Informée, Communautés Plus Saines",
+          "intro": "Une bonne santé est le fondement de sociétés fortes. À travers notre Programme de Santé, VJN autonomise les jeunes pour se protéger, diffuser la sensibilisation et combattre la stigmatisation autour de la santé sexuelle et reproductive.",
+          "whatWeDo": {
+            "title": "Ce que nous faisons",
+            "items": [
+              "Services de Santé Adaptés aux Jeunes : Partenariat avec des cliniques et des écoles pour un accès inclusif.",
+              "Formation des Éducateurs Pairs : Mobilisation des jeunes pour éduquer sur le VIH/SIDA, les IST et les droits reproductifs.",
+              "Campagnes de Sensibilisation : Axées sur la planification familiale, la santé mentale, l'obésité et l'abus de substances.",
+              "Réponse à la Pandémie : Éducation COVID-19 et pratiques de sécurité pour les groupes de jeunes."
+            ]
+          },
+          "whoItServes": {
+            "title": "Qui nous servons",
+            "items": [
+              "Adolescents de 10 à 24 ans",
+              "Jeunes scolarisés et déscolarisés",
+              "Communautés confrontées à la désinformation en santé"
+            ]
+          },
+          "getInvolved": {
+            "title": "S'impliquer",
+            "buttons": {
+              "becomeEducator": "Devenir Éducateur Pair",
+              "requestWorkshop": "Demander un Atelier",
+              "donateSupplies": "Donner des Fournitures Médicales"
+            }
+          }
         }
       },
       "peace": {
         "title": "Construction de la Paix",
-        "description": "Promouvoir la paix et la réconciliation par le dialogue et les initiatives communautaires",
-        "details": {
-          "1": "Formation à la résolution des conflits et à la médiation",
-          "2": "Camps de paix réunissant des jeunes de divers horizons",
-          "3": "Programmes de dialogue interreligieux et d'échange culturel",
-          "4": "Initiatives de mémoire du génocide et de réconciliation",
-          "5": "Activités de service communautaire et de cohésion sociale"
-        }
+        "description": "Construire des ponts et favoriser la compréhension par le dialogue et l'engagement communautaire.",
+        "readMore": "En Savoir Plus",
+        "subtitle": "Construire des ponts et favoriser la compréhension",
+        "fullDesc": "Notre programme de construction de la paix se concentre sur la création d'une paix durable par le dialogue, l'éducation et l'engagement communautaire.",
+        "detail1": "Programmes de dialogue et d'échange interculturels",
+        "detail2": "Formation à la résolution de conflits et à la médiation",
+        "detail3": "Développement du leadership des jeunes",
+        "detail4": "Initiatives de paix communautaires",
+        "detail5": "Ateliers de réconciliation"
       },
-      "arts": {
-        "title": "Arts et Culture",
-        "description": "Célébrer la culture rwandaise et offrir des plateformes d'expression artistique",
-        "details": {
-          "1": "Entraînement sportif et compétitions en football, basket-ball et volley-ball",
-          "2": "Préservation de la danse et de la musique traditionnelles",
-          "3": "Ateliers d'arts visuels et d'artisanat",
-          "4": "Théâtre et art dramatique pour le changement social",
-          "5": "Festivals culturels et célébrations communautaires"
+      "culture": {
+        "title": "Sports, Culture & Arts",
+        "description": "Nous découvrons et développons les talents des jeunes dans les sports, la musique et les arts visuels, créant des espaces d'expression personnelle et de guérison communautaire."
+      },
+      "finalCta": {
+        "title": "Intéressé par l'un de nos programmes ? Vous souhaitez amener VJN dans votre communauté ?",
+        "subtitle": "Construisons l'avenir ensemble—une compétence, une voix, un objectif à la fois.",
+        "buttons": {
+          "contact": "Contactez-nous",
+          "partner": "Partenariat",
+          "donate": "Faire un Don"
         }
       }
     },
     "impact": {
-      "name": "Marie Uwimana",
-      "location": "Kigali, Rwanda",
-      "quote": "Les programmes de VJN m'ont donné les compétences et la confiance pour démarrer ma propre entreprise. Aujourd'hui, je ne fais pas que survivre—je prospère et aide les autres à faire de même.",
-      "readMore": "Lire Plus d'Histoires"
+      "title": "Notre Impact",
+      "description": "Grâce à nos programmes, nous avons touché des milliers de jeunes, leur fournissant les outils et les opportunités dont ils ont besoin pour réussir."
     },
     "news": {
       "title": "Dernières Nouvelles & Mises à Jour",
       "readMore": "Lire Plus",
       "item1": {
-        "title": "Nouveau Centre de Jeunesse Ouvert à Nyundo",
+        "title": "Nouveau Centre de Jeunesse à Nyundo",
         "excerpt": "Élargir notre portée pour servir plus de jeunes dans la Province de l'Ouest",
         "date": "15 Mars 2024"
       },
       "item2": {
         "title": "Succès de l'Atelier de Construction de la Paix",
-        "excerpt": "Plus de 100 leaders jeunesse formés à la résolution des conflits et au dialogue communautaire",
+        "excerpt": "Plus de 100 jeunes leaders formés à la résolution de conflits et au dialogue communautaire",
         "date": "10 Mars 2024"
       }
     },
@@ -347,7 +424,7 @@
         "Enfants, jeunes et adultes",
         "Réfugiés et victimes de catastrophes",
         "Personnes vivant avec le VIH/SIDA",
-        "Prisonniers et individus vulnérables",
+        "Prisonniers et personnes vulnérables",
         "Parents et membres de la communauté"
       ]
     },
@@ -373,7 +450,7 @@
       "register": "Enregistrer un Groupe de Jeunes"
     },
     "partner": {
-      "title": "Devenez Partenaire",
+      "title": "Partenariat",
       "description": "Rejoignez-nous dans notre mission d'autonomiser les jeunes et de construire des communautés plus fortes. Votre soutien peut avoir un impact durable.",
       "becomePartner": "Devenir Partenaire",
       "donate": "Faire un Don"
@@ -391,45 +468,7 @@
         "news": "Actualités",
         "careers": "Carrières",
         "contact": "Contact"
-      },
-      "form": {
-        "title": "Envoyez-nous un message",
-        "name": "Nom",
-        "email": "E-mail",
-        "message": "Message",
-        "submit": "Envoyer",
-        "sending": "Envoi en cours...",
-        "error": {
-          "nameRequired": "Le nom est requis",
-          "emailRequired": "L'e-mail est requis",
-          "emailInvalid": "Adresse e-mail invalide",
-          "messageRequired": "Le message est requis"
-        }
-      },
-      "faq": {
-        "title": "Foire aux Questions",
-        "subtitle": "Trouvez des réponses aux questions fréquentes sur notre organisation et nos programmes.",
-        "q1": {
-          "title": "Comment puis-je faire du bénévolat avec VJN ?",
-          "answer": "Vous pouvez postuler pour faire du bénévolat via notre page Carrières. Nous accueillons des bénévoles locaux et\n                internationaux ayant diverses compétences et expériences."
-        },
-        "q2": {
-          "title": "Comment mon don est-il utilisé ?",
-          "answer": "Vos dons soutiennent directement nos programmes d'autonomisation des jeunes, y compris les initiatives d'éducation, la formation à l'entrepreneuriat et les activités de consolidation de la paix."
-        },
-        "q3": {
-          "title": "Mon organisation peut-elle s'associer à VJN ?",
-          "answer": "Oui, nous accueillons favorablement les partenariats avec les organisations qui partagent notre mission. Veuillez\n                nous contacter avec votre proposition de partenariat, et notre équipe vous répondra."
-        },
-        "q4": {
-          "title": "Où nos programmes opèrent-ils ?",
-          "answer": "Nos programmes opèrent dans les 30 districts du Rwanda, avec notre siège à Kigali.\n                Nous avons des bureaux régionaux dans les principales villes du pays."
-        }
       }
-    },
-    "mission": {
-      "title": "Notre Mission",
-      "description": "Autonomiser les jeunes par l'éducation, le développement des compétences et l'engagement communautaire, créant un changement durable au Rwanda et au-delà."
     }
   },
   "about": {
@@ -477,27 +516,150 @@
     "education": {
       "title": "Éducation & Formation Professionnelle",
       "description": "Offrir une éducation de qualité et une formation professionnelle pour doter les jeunes des compétences essentielles pour leur réussite future.",
-      "readMore": "En savoir plus"
+      "readMore": "En savoir plus",
+      "fullPage": {
+        "title": "Autonomiser les Esprits, Façonner l'Avenir",
+        "intro": "Chez VJN, nous croyons que l'éducation va au-delà de la scolarité—c'est une porte d'entrée vers la dignité, l'indépendance et le but. Notre Programme d'Éducation cible les jeunes de familles à faible revenu et sans emploi, leur offrant les connaissances et les compétences pour s'épanouir dans la vie et le travail.",
+        "whatWeDo": {
+          "title": "Ce que nous faisons",
+          "items": [
+            "Formation Professionnelle : Cours de couture, coiffure, soudure et réparation automobile mécanique.",
+            "Soutien à l'Alphabétisation : Nous fournissons des cours d'alphabétisation et de calcul pour réduire l'illettrisme dans la région.",
+            "Éducation Inclusive : Soutien spécial pour les étudiants sourds et muets pour s'assurer que personne n'est laissé pour compte.",
+            "Bibliothèques & Centres d'Apprentissage : Accès aux livres, ressources numériques et outils de recherche pour inspirer l'apprentissage tout au long de la vie."
+          ]
+        },
+        "whoItServes": {
+          "title": "Qui nous servons",
+          "items": [
+            "Jeunes déscolarisés",
+            "Adolescents vulnérables",
+            "Personnes en situation de handicap"
+          ]
+        },
+        "getInvolved": {
+          "title": "S'impliquer",
+          "buttons": {
+            "joinClass": "Rejoindre un Cours",
+            "supportStudent": "Soutenir un Étudiant",
+            "visitCenter": "Visiter un Centre"
+          }
+        }
+      }
     },
     "economic": {
       "title": "Autonomisation Économique",
       "description": "Soutenir l'entrepreneuriat des jeunes et le développement économique par la formation, le mentorat et les ressources.",
-      "readMore": "En savoir plus"
+      "readMore": "En savoir plus",
+      "fullPage": {
+        "title": "Développer des Compétences pour la Liberté Financière",
+        "intro": "Dans un monde de défis économiques croissants, notre Programme d'Autonomisation Économique équipe les jeunes avec les outils pour échapper à la pauvreté et construire des avenirs prospères. Des bases de la création d'entreprise à l'enregistrement des coopératives, nous préparons les jeunes entrepreneurs à réussir.",
+        "whatWeDo": {
+          "title": "Ce que nous faisons",
+          "items": [
+            "Formation à l'Entrepreneuriat : Couvrant la planification d'entreprise, le marketing, le commerce électronique et le service client.",
+            "Formation GSLA : Soutien aux Associations d'Épargne et de Crédit comme véhicules pour le développement local.",
+            "Liens avec le Marché : Nous connectons les jeunes producteurs avec les acheteurs, les coopératives et les foires commerciales.",
+            "Droit des Affaires & Finance Numérique : Alphabétisation juridique de base et accès au bancaire numérique."
+          ]
+        },
+        "whoItServes": {
+          "title": "Qui nous servons",
+          "items": [
+            "Jeunes âgés de 18 à 35 ans",
+            "Jeunes femmes et hommes dans les secteurs informels",
+            "Coopératives communautaires"
+          ]
+        },
+        "getInvolved": {
+          "title": "S'impliquer",
+          "buttons": {
+            "applyTraining": "Postuler à la Formation",
+            "supportBusiness": "Soutenir une Entreprise",
+            "partner": "Devenir Partenaire"
+          }
+        }
+      }
     },
     "health": {
       "title": "Santé & Bien-être",
       "description": "Promouvoir la santé physique et mentale par l'éducation, la sensibilisation et l'accès aux services de santé.",
-      "readMore": "En savoir plus"
+      "readMore": "En savoir plus",
+      "fullPage": {
+        "title": "Jeunesse Informée, Communautés Plus Saines",
+        "intro": "Une bonne santé est le fondement de sociétés fortes. À travers notre Programme de Santé, VJN autonomise les jeunes pour se protéger, diffuser la sensibilisation et défier les stigmates autour de la santé sexuelle et reproductive.",
+        "whatWeDo": {
+          "title": "Ce que nous faisons",
+          "items": [
+            "Services de Santé Adaptés aux Jeunes : Partenariat avec des cliniques et des écoles pour un accès inclusif.",
+            "Formation des Éducateurs Pairs : Mobilisation des jeunes pour éduquer les autres sur le VIH/SIDA, les IST et les droits reproductifs.",
+            "Campagnes de Sensibilisation : Axées sur la planification familiale, la santé mentale, l'obésité et l'abus de substances.",
+            "Réponse aux Pandémies : Éducation sur le COVID-19 et pratiques de sécurité pour les groupes de jeunes."
+          ]
+        },
+        "whoItServes": {
+          "title": "Qui nous servons",
+          "items": [
+            "Adolescents âgés de 10 à 24 ans",
+            "Jeunes scolarisés et déscolarisés",
+            "Communautés confrontées à la désinformation sur la santé"
+          ]
+        },
+        "getInvolved": {
+          "title": "S'impliquer",
+          "buttons": {
+            "becomeEducator": "Devenir Éducateur Pair",
+            "requestWorkshop": "Demander un Atelier",
+            "donateSupplies": "Donner des Fournitures Médicales"
+          }
+        }
+      }
     },
     "peace": {
       "title": "Construction de la Paix",
-      "description": "Favoriser la paix et la réconciliation par le dialogue, les échanges culturels et l'engagement communautaire.",
-      "readMore": "En savoir plus"
+      "description": "Construire des ponts et favoriser la compréhension par le dialogue et l'engagement communautaire.",
+      "readMore": "En Savoir Plus",
+      "subtitle": "Construire des ponts et favoriser la compréhension",
+      "fullDesc": "Notre programme de construction de la paix se concentre sur la création d'une paix durable par le dialogue, l'éducation et l'engagement communautaire.",
+      "detail1": "Programmes de dialogue et d'échange interculturels",
+      "detail2": "Formation à la résolution des conflits et à la médiation",
+      "detail3": "Développement du leadership des jeunes",
+      "detail4": "Initiatives de paix communautaires",
+      "detail5": "Ateliers de réconciliation"
     },
     "arts": {
       "title": "Sports, Culture & Arts",
       "description": "Encourager la créativité et l'expression culturelle par le sport, les arts et les activités culturelles.",
-      "readMore": "En savoir plus"
+      "readMore": "En savoir plus",
+      "fullPage": {
+        "title": "Où le Talent Rencontre la Transformation",
+        "intro": "Nous croyons en la puissance de l'expression. Notre Programme de Sports, Culture & Arts offre aux jeunes une plateforme pour exprimer leurs talents tout en développant la confiance, la discipline et le sens du but à travers la performance et le jeu.",
+        "whatWeDo": {
+          "title": "Ce que nous faisons",
+          "items": [
+            "Ligues Sportives & Compétitions : Programmes de football, volley-ball, basket-ball et athlétisme pour les jeunes.",
+            "Développement Artistique : Ateliers de musique, danse, théâtre et arts visuels pour l'expression de soi.",
+            "Célébrations Culturelles : Événements qui préservent et promeuvent la culture traditionnelle rwandaise et africaine.",
+            "Compétences de Vie par le Talent : Formation au leadership, au travail d'équipe et à la résilience émotionnelle à travers des activités créatives."
+          ]
+        },
+        "whoItServes": {
+          "title": "Qui nous servons",
+          "items": [
+            "Jeunes talentueux âgés de 10 à 30 ans",
+            "Jeunes à risque de délinquance ou d'isolement",
+            "Artistes, athlètes et artistes de spectacle"
+          ]
+        },
+        "getInvolved": {
+          "title": "S'impliquer",
+          "buttons": {
+            "joinTeam": "Rejoindre une Équipe ou un Club",
+            "sponsorPerformer": "Parrainer un Artiste",
+            "attendEvent": "Assister à un Événement"
+          }
+        }
+      }
     },
     "cta": {
       "title": "Rejoignez Notre Mission",
