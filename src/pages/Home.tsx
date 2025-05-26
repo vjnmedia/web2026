@@ -246,23 +246,6 @@ const Home: React.FC = () => {
     }
   ];
 
-  const opportunities = [
-    {
-      title: "Community Program Facilitator (Gisenyi)",
-      type: "Full-time",
-      location: "Gisenyi, Rwanda",
-      deadline: "May 31, 2025",
-      link: '/careers/1'
-    },
-    {
-      title: "Peacebuilding Bootcamp – Kigali",
-      type: "Youth Program",
-      location: "Kigali, Rwanda",
-      deadline: "April 15, 2024",
-      link: '/careers/2'
-    }
-  ];
-
   const beneficiaries = [
     "Children, youth, and adults",
     "Vulnerable individuals",
@@ -536,7 +519,7 @@ const Home: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen">
+    <div>
       <Hero />
 
       {/* Hero Section Enhancement */}
@@ -729,19 +712,22 @@ const Home: React.FC = () => {
                   className="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-500"
                 >
                   {blog.image_url && (
-                    <div className="aspect-video relative overflow-hidden">
+                    <div className="relative w-full aspect-[16/9] overflow-hidden">
                       <img
                         src={blog.image_url}
                         alt={blog.title}
-                        className="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500"
+                        className="w-full h-full object-contain bg-gray-50"
                       />
                     </div>
                   )}
                   <div className="p-8">
                     <h3 className="text-2xl font-semibold mb-4">{blog.title}</h3>
-                    <p className="text-gray-600 mb-6 line-clamp-3 leading-relaxed">
-                      {blog.content}
-                    </p>
+                    <div 
+                      className="text-gray-600 mb-6 line-clamp-3 leading-relaxed prose prose-sm max-w-none"
+                      dangerouslySetInnerHTML={{ 
+                        __html: blog.content.replace(/<[^>]*>/g, '').substring(0, 150) + '...' 
+                      }}
+                    />
                     <div className="flex justify-between items-center text-sm text-gray-500 mb-6">
                       <span className="flex items-center">
                         <Users2 className="h-4 w-4 mr-2" />
@@ -783,7 +769,7 @@ const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* Who We Serve Section Enhancement */}
+      {/* Who We Serve Section */}
       <motion.section 
         initial="hidden"
         whileInView="visible"
@@ -821,70 +807,6 @@ const Home: React.FC = () => {
               ))}
             </div>
           </motion.div>
-        </div>
-      </motion.section>
-
-      {/* Opportunities Section Enhancement */}
-      <motion.section 
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-        variants={staggerContainer}
-        className="py-24 bg-white relative overflow-hidden"
-      >
-        <div className="container mx-auto px-4">
-          <motion.h2 
-            variants={fadeInUp}
-            className="text-4xl md:text-5xl font-bold text-center mb-16"
-          >
-            Opportunities for You
-          </motion.h2>
-          <div className="max-w-4xl mx-auto">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              {opportunities.map((opportunity, index) => (
-                <motion.div
-                  key={index}
-                  variants={fadeInUp}
-                  whileHover={{ y: -10 }}
-                  className="bg-white rounded-2xl shadow-xl p-8 hover:shadow-2xl transition-all duration-500"
-                >
-                  <h3 className="text-2xl font-semibold mb-4">{opportunity.title}</h3>
-                  <div className="flex items-center text-gray-600 mb-6">
-                    <span className="bg-vjn-blue/10 text-vjn-blue px-4 py-2 rounded-full text-sm font-semibold mr-4">
-                      {opportunity.type}
-                    </span>
-                    <span className="flex items-center">
-                      <MapPin className="h-4 w-4 mr-2" />
-                      {opportunity.location}
-                    </span>
-                  </div>
-                  <p className="text-sm text-gray-500 mb-6">Application Deadline: {opportunity.deadline}</p>
-                  <motion.a
-                    whileHover={{ x: 5 }}
-                    href={opportunity.link}
-                    className="inline-flex items-center text-vjn-blue font-semibold hover:text-vjn-light-blue transition-colors"
-                  >
-                    Apply Now
-                    <ChevronRight className="h-5 w-5 ml-1" />
-                  </motion.a>
-                </motion.div>
-              ))}
-            </div>
-            <motion.div 
-              variants={fadeInUp}
-              className="text-center mt-12"
-            >
-              <motion.a
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                href="/careers"
-                className="inline-flex items-center bg-vjn-blue text-white px-8 py-4 rounded-full font-semibold hover:bg-vjn-light-blue transition-all duration-300 shadow-lg hover:shadow-xl"
-              >
-                View All Opportunities
-                <ChevronRight className="h-5 w-5 ml-2" />
-              </motion.a>
-            </motion.div>
-          </div>
         </div>
       </motion.section>
 
@@ -971,7 +893,7 @@ const Home: React.FC = () => {
                 <h2 className="text-4xl font-bold mb-8">Our Location</h2>
                 <div className="relative h-[500px] rounded-2xl overflow-hidden shadow-xl">
                   <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3987.1234567890123!2d29.12345678901234!3d-1.1234567890123456!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMcKwMDcnMjQuNCJTIDI5wrAwNyc0NS4xIkU!5e0!3m2!1sen!2srw!4v1234567890123"
+                    src="https://www.google.com/maps/embed/place/Vision+Jeunesse+Nouvelle/@-1.702211,29.2571873,17z/data=!3m1!4b1!4m6!3m5!1s0x19dd050a47fb11e7:0xe550726afa8eb90a!8m2!3d-1.702211!4d29.2597622!16s%2Fg%2F11c52m6znk?entry=ttu"
                     width="100%"
                     height="100%"
                     style={{ border: 0 }}
