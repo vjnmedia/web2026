@@ -1,0 +1,53 @@
+{
+    "pages": {
+        "management": "Page Management",
+        "create": "Create New Page",
+        "list": "Page List",
+        "slug": "Slug",
+        "slugPlaceholder": "Enter page slug (e.g., about-us)",
+        "title": "Title",
+        "titlePlaceholder": "Enter page title",
+        "content": "Content",
+        "language": "Language",
+        "selectLanguage": "Select language",
+        "status": "Status",
+        "selectStatus": "Select status",
+        "draft": "Draft",
+        "published": "Published"
+    },
+    "errors": {
+        "pages": {
+            "load": "Failed to load pages",
+            "create": "Failed to create page",
+            "update": "Failed to update page",
+            "delete": "Failed to delete page"
+        }
+    },
+    "success": {
+        "pages": {
+            "create": "Page created successfully",
+            "update": "Page updated successfully",
+            "delete": "Page deleted successfully"
+        }
+    },
+    "confirm": {
+        "pages": {
+            "delete": "Are you sure you want to delete this page?"
+        }
+    },
+    "dashboard": {
+        "adminSettings": {
+            "pages": "Pages",
+            "pageManagement": "Manage your website pages and content",
+            "emailTemplates": "Email Templates",
+            "notificationsHelp": "Configure email notification settings",
+            "userRoles": "User Roles and Permissions",
+            "notificationPreferences": "Notification Preferences",
+            "backupDescription": "Manage system backups and restorations"
+        },
+        "loading": "Loading...",
+        "cancel": "Cancel",
+        "save": "Save",
+        "actions": "Actions"
+    }
+} 

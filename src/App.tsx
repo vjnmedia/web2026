@@ -1,11 +1,12 @@
 import './i18n';
-import React, { Suspense } from 'react';
+import React, { Suspense, useState } from 'react';
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useNavigate, useLocation } from "react-router-dom";
 import { LanguageProvider } from "./components/LanguageContext";
+import { ThemeProvider } from "./contexts/ThemeContext";
 import { AuthProvider } from '@/hooks/useAuth';
 import { DonationProvider } from '@/contexts/DonationContext';
 import PayPalProvider from '@/components/PayPalProvider';
@@ -25,7 +26,6 @@ import Health from "./pages/programs/Health";
 import Peace from "./pages/programs/Peace";
 import Arts from "./pages/programs/Arts";
 import Dashboard from "./pages/Dashboard";
-import { useState } from "react";
 import ProtectedRoute from '@/components/ProtectedRoute';
 import BlogManagement from '@/pages/BlogManagement';
 import BlogEditor from '@/components/blog/BlogEditor';
@@ -44,82 +44,108 @@ const LoadingFallback = () => (
   </div>
 );
 
+// LoginModal component to manage login state
+const LoginModal = () => {
+  const [isOpen, setIsOpen] = useState(true);
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const handleClose = () => {
+    setIsOpen(false);
+    // Navigate back to the previous page or home
+    const from = location.state?.from || '/';
+    navigate(from);
+  };
+
+  // Close modal when route changes
+  React.useEffect(() => {
+    const from = location.state?.from || '/';
+    if (from !== '/login') {
+      setIsOpen(false);
+    }
+  }, [location]);
+
+  return <Login isOpen={isOpen} onClose={handleClose} />;
+};
+
 const App = () => {
   const [queryClient] = useState(() => new QueryClient());
 
   return (
     <Suspense fallback={<LoadingFallback />}>
       <QueryClientProvider client={queryClient}>
-        <LanguageProvider>
-          <AuthProvider>
-            <DonationProvider>
-              <PayPalProvider>
-                <TooltipProvider>
-                  <div className="min-h-screen flex flex-col">
-                    <Navbar />
-                    <main className="flex-grow">
-                      <Routes>
-                        <Route path="/" element={<Home />} />
-                        <Route path="/about" element={<About />} />
-                        <Route path="/programs" element={<Programs />} />
-                        <Route path="/programs/education" element={<Education />} />
-                        <Route path="/programs/economic" element={<Economic />} />
-                        <Route path="/programs/health" element={<Health />} />
-                        <Route path="/programs/peace" element={<Peace />} />
-                        <Route path="/programs/arts" element={<Arts />} />
-                        <Route path="/services" element={<Services />} />
-                        <Route path="/media" element={<Media />} />
-                        <Route path="/news" element={<NewsUpdates />} />
-                        <Route path="/resources" element={<Resources />} />
-                        <Route path="/contact" element={<Contact />} />
-                        <Route path="/login" element={<Login />} />
-                        <Route path="/donate" element={<Donate />} />
-                        <Route path="/stories" element={<Stories />} />
-                        <Route path="/blog/:id" element={<BlogPost />} />
-                        <Route
-                          path="/dashboard"
-                          element={
-                            <ProtectedRoute>
-                              <Dashboard />
-                            </ProtectedRoute>
-                          }
-                        />
-                        <Route
-                          path="/dms"
-                          element={
-                            <ProtectedRoute>
-                              <DMS />
-                            </ProtectedRoute>
-                          }
-                        />
-                        <Route
-                          path="/blog-management"
-                          element={
-                            <ProtectedRoute>
-                              <BlogManagement />
-                            </ProtectedRoute>
-                          }
-                        />
-                        <Route
-                          path="/blog-editor/:id?"
-                          element={
-                            <ProtectedRoute>
-                              <BlogEditor />
-                            </ProtectedRoute>
-                          }
-                        />
-                        <Route path="*" element={<NotFound />} />
-                      </Routes>
-                    </main>
-                    <Footer />
-                  </div>
-                  <Toaster />
-                  <Sonner />
-                </TooltipProvider>
-              </PayPalProvider>
-            </DonationProvider>
-          </AuthProvider>
-        </LanguageProvider>
+        <ThemeProvider>
+          <LanguageProvider>
+            <AuthProvider>
+              <DonationProvider>
+                <PayPalProvider>
+                  <TooltipProvider>
+                    <div className="min-h-screen flex flex-col">
+                      <Navbar />
+                      <main className="flex-grow">
+                        <Routes>
+                          <Route path="/" element={<Home />} />
+                          <Route path="/about" element={<About />} />
+                          <Route path="/programs" element={<Programs />} />
+                          <Route path="/programs/education" element={<Education />} />
+                          <Route path="/programs/economic" element={<Economic />} />
+                          <Route path="/programs/health" element={<Health />} />
+                          <Route path="/programs/peace" element={<Peace />} />
+                          <Route path="/programs/arts" element={<Arts />} />
+                          <Route path="/services" element={<Services />} />
+                          <Route path="/media" element={<Media />} />
+                          <Route path="/news" element={<NewsUpdates />} />
+                          <Route path="/resources" element={<Resources />} />
+                          <Route path="/contact" element={<Contact />} />
+                          <Route path="/login" element={<LoginModal />} />
+                          <Route path="/donate" element={<Donate />} />
+                          <Route path="/stories" element={<Stories />} />
+                          <Route path="/blog/:id" element={<BlogPost />} />
+                          <Route
+                            path="/dashboard"
+                            element={
+                              <ProtectedRoute>
+                                <Dashboard />
+                              </ProtectedRoute>
+                            }
+                          />
+                          <Route
+                            path="/dms"
+                            element={
+                              <ProtectedRoute>
+                                <DMS />
+                              </ProtectedRoute>
+                            }
+                          />
+                          <Route
+                            path="/blog-management"
+                            element={
+                              <ProtectedRoute>
+                                <BlogManagement />
+                              </ProtectedRoute>
+                            }
+                          />
+                          <Route
+                            path="/blog-editor/:id?"
+                            element={
+                              <ProtectedRoute>
+                                <BlogEditor />
+                              </ProtectedRoute>
+                            }
+                          />
+                          <Route path="*" element={<NotFound />} />
+                        </Routes>
+                      </main>
+                      <Footer />
+                    </div>
+                    <Toaster />
+                    <Sonner />
+                  </TooltipProvider>
+                </PayPalProvider>
+              </DonationProvider>
+            </AuthProvider>
+          </LanguageProvider>
+        </ThemeProvider>
       </QueryClientProvider>
     </Suspense>
   );

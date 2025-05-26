@@ -5,12 +5,14 @@ import path from "path";
 // https://vitejs.dev/config/
 export default defineConfig({
   server: {
-    host: "::",
-    port: 3000,
-    strictPort: false,
+    host: true,
+    port: 3002,
+    strictPort: true,
     cors: true,
     hmr: {
-      port: 3000
+      protocol: 'ws',
+      host: 'localhost',
+      port: 3002
     },
     proxy: {
       '/api': {
@@ -19,6 +21,10 @@ export default defineConfig({
         secure: false,
         rewrite: (path) => path.replace(/^\/api/, '')
       }
+    },
+    fs: {
+      strict: false,
+      allow: ['..']
     }
   },
   plugins: [react()],
@@ -34,7 +40,11 @@ export default defineConfig({
       output: {
         manualChunks: undefined,
       },
-    }
+    },
+    sourcemap: true
   },
   publicDir: 'public',
+  optimizeDeps: {
+    include: ['react', 'react-dom', 'react-router-dom']
+  }
 });

@@ -6,7 +6,7 @@ import { supabase } from '@/lib/supabase';
 interface User {
   id: string;
   email: string;
-  role: 'admin' | 'user';
+  role: 'admin' | 'editor' | 'viewer';
   name: string;
 }
 
@@ -29,29 +29,84 @@ const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => 
 
   const handleAuthChange = useCallback(async (session: any) => {
     try {
+      console.log('Auth change detected:', { session });
+      
       if (!session?.user) {
+        console.log('No session user found');
         setUser(null);
         return;
       }
 
       // Get user profile from your profiles table
-      const { data: profile, error } = await supabase
-        .from('profiles')
-        .select('*')
-        .eq('id', session.user.id)
-        .single();
+      let profileData;
+      try {
+        console.log('Fetching profile for user:', session.user.id);
+        
+        const { data: profile, error } = await supabase
+          .from('profiles')
+          .select('id, email, role, name')
+          .eq('id', session.user.id)
+          .single();
 
-      if (error) throw error;
+        console.log('Profile fetch result:', { profile, error });
 
-      setUser({
-        id: session.user.id,
-        email: session.user.email!,
-        role: profile.role || 'user',
-        name: profile.name || session.user.email!.split('@')[0]
-      });
-    } catch (error) {
-      console.error('Error fetching user profile:', error);
+        if (error) {
+          if (error.code === 'PGRST116') {
+            console.log('No profile exists, creating one');
+            // No profile exists, create one
+            const { data: newProfile, error: createError } = await supabase
+              .from('profiles')
+              .insert([
+                {
+                  id: session.user.id,
+                  email: session.user.email,
+                  role: 'viewer',
+                  name: session.user.email?.split('@')[0] || 'User'
+                }
+              ])
+              .select('id, email, role, name')
+              .single();
+
+            if (createError) {
+              console.error('Error creating profile:', createError);
+              throw createError;
+            }
+            console.log('New profile created:', newProfile);
+            profileData = newProfile;
+          } else {
+            console.error('Error fetching profile:', error);
+            throw error;
+          }
+        } else {
+          profileData = profile;
+        }
+
+        const userData = {
+          id: session.user.id,
+          email: session.user.email!,
+          role: profileData.role || 'viewer',
+          name: profileData.name || session.user.email!.split('@')[0]
+        };
+
+        console.log('Setting user data:', userData);
+        setUser(userData);
+      } catch (profileError: any) {
+        console.error('Profile fetch error:', profileError);
+        // If we can't fetch or create profile, still set basic user info
+        const fallbackUser = {
+          id: session.user.id,
+          email: session.user.email!,
+          role: 'viewer',
+          name: session.user.email?.split('@')[0] || 'User'
+        };
+        console.log('Setting fallback user data:', fallbackUser);
+        setUser(fallbackUser);
+        toast.error('Error loading profile data. Some features may be limited.');
+      }
+    } catch (error: any) {
+      console.error('Error in handleAuthChange:', error);
       setUser(null);
+      toast.error('An error occurred while loading your profile.');
     }
   }, []);
 
@@ -59,7 +114,10 @@ const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => 
     // Check for existing session on mount
     const checkAuth = async () => {
       try {
+        console.log('Checking auth on mount');
         const { data: { session } } = await supabase.auth.getSession();
+        console.log('Session check result:', { session });
+        
         if (session) {
           await handleAuthChange(session);
         }
@@ -74,6 +132,7 @@ const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => 
 
     // Set up auth state listener
     const { data: { subscription } } = supabase.auth.onAuthStateChange((event, session) => {
+      console.log('Auth state changed:', { event, session });
       if (event === 'SIGNED_IN' && session) {
         handleAuthChange(session);
       } else if (event === 'SIGNED_OUT') {

@@ -12,6 +12,7 @@ interface LanguageContextType {
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
 export const LanguageProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
+  const [isInitialized, setIsInitialized] = useState(false);
   const [language, setLanguageState] = useState<string>(i18n.language || 'en');
   const { t } = useTranslation();
 
@@ -27,10 +28,22 @@ export const LanguageProvider: React.FC<{ children: ReactNode }> = ({ children }
   };
 
   useEffect(() => {
-    // Load saved language preference
-    const savedLanguage = localStorage.getItem('language');
-    if (savedLanguage && savedLanguage !== language) {
-      changeLanguage(savedLanguage);
+    // Wait for i18n to be initialized
+    const handleInitialized = () => {
+      console.log('i18n initialized in provider');
+      setIsInitialized(true);
+      
+      // Load saved language preference
+      const savedLanguage = localStorage.getItem('language');
+      if (savedLanguage && savedLanguage !== language) {
+        changeLanguage(savedLanguage);
+      }
+    };
+
+    if (i18n.isInitialized) {
+      handleInitialized();
+    } else {
+      i18n.on('initialized', handleInitialized);
     }
 
     // Listen for language changes
@@ -41,19 +54,9 @@ export const LanguageProvider: React.FC<{ children: ReactNode }> = ({ children }
     };
 
     i18n.on('languageChanged', handleLanguageChanged);
-    return () => {
-      i18n.off('languageChanged', handleLanguageChanged);
-    };
-  }, []);
 
-  // Force a re-render when language changes
-  useEffect(() => {
-    const handleLanguageChanged = () => {
-      console.log('Forcing re-render for language:', i18n.language);
-      setLanguageState(i18n.language);
-    };
-    i18n.on('languageChanged', handleLanguageChanged);
     return () => {
+      i18n.off('initialized', handleInitialized);
       i18n.off('languageChanged', handleLanguageChanged);
     };
   }, []);
@@ -64,6 +67,10 @@ export const LanguageProvider: React.FC<{ children: ReactNode }> = ({ children }
     t,
     changeLanguage
   };
+
+  if (!isInitialized) {
+    return null; // Don't render children until i18n is initialized
+  }
 
   return (
     <LanguageContext.Provider value={value}>

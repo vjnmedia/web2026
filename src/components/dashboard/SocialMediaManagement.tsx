@@ -12,8 +12,8 @@ import { toast } from 'react-hot-toast';
 
 const SocialMediaManagement: React.FC = () => {
   const {
-    twitterPosts,
-    instagramPosts,
+    twitterPosts = [],
+    instagramPosts = [],
     loading,
     error,
     fetchPosts,
@@ -92,7 +92,7 @@ const SocialMediaManagement: React.FC = () => {
     }
   };
 
-  if (loading && !twitterPosts.length && !instagramPosts.length) {
+  if (loading && (!twitterPosts?.length && !instagramPosts?.length)) {
     return (
       <div className="flex items-center justify-center min-h-screen">
         <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-vjn-blue"></div>
@@ -138,7 +138,7 @@ const SocialMediaManagement: React.FC = () => {
 
         <TabsContent value="twitter">
           <div className="grid gap-4">
-            {twitterPosts.map((post) => (
+            {(twitterPosts || []).map((post) => (
               <div key={post.id} className="bg-white p-4 rounded-lg shadow">
                 <div className="flex justify-between items-start mb-4">
                   <div className="flex items-center gap-3">
@@ -172,7 +172,7 @@ const SocialMediaManagement: React.FC = () => {
 
         <TabsContent value="instagram">
           <div className="grid gap-4">
-            {instagramPosts.map((post) => (
+            {(instagramPosts || []).map((post) => (
               <div key={post.id} className="bg-white p-4 rounded-lg shadow">
                 <div className="flex justify-between items-start mb-4">
                   <div className="aspect-square w-24 overflow-hidden rounded-lg">

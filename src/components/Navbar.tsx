@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { Button } from './ui/button';
 import { useAuth } from '@/hooks/useAuth';
@@ -12,6 +12,7 @@ const Navbar = () => {
   const { user, logout } = useAuth();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const { language, setLanguage } = useLanguage();
+  const navigate = useNavigate();
 
   // Close mobile menu when clicking outside
   useEffect(() => {
@@ -38,6 +39,10 @@ const Navbar = () => {
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
+  };
+
+  const handleLogin = () => {
+    navigate('/login', { state: { from: window.location.pathname } });
   };
 
   const navLinks = [
@@ -159,9 +164,9 @@ const Navbar = () => {
                 </Button>
               </>
             ) : (
-              <Link to="/login">
-                <Button>{t('nav.login')}</Button>
-              </Link>
+              <Button onClick={handleLogin}>
+                {t('nav.login')}
+              </Button>
             )}
           </div>
 
@@ -169,32 +174,13 @@ const Navbar = () => {
           <button
             id="mobile-menu-button"
             onClick={toggleMobileMenu}
-            className="md:hidden p-2 rounded-md hover:bg-gray-100 transition-colors focus:outline-none focus:ring-2 focus:ring-vjn-blue focus:ring-opacity-50"
-            aria-label={isMobileMenuOpen ? 'Close menu' : 'Open menu'}
+            className="md:hidden p-2 rounded-md text-gray-700 hover:text-vjn-blue focus:outline-none"
           >
-            <AnimatePresence mode="wait">
-              {isMobileMenuOpen ? (
-                <motion.div
-                  key="close"
-                  initial={{ rotate: -90, opacity: 0 }}
-                  animate={{ rotate: 0, opacity: 1 }}
-                  exit={{ rotate: 90, opacity: 0 }}
-                  transition={{ duration: 0.2 }}
-                >
-                  <X className="h-6 w-6 text-gray-700" />
-                </motion.div>
-              ) : (
-                <motion.div
-                  key="menu"
-                  initial={{ rotate: 90, opacity: 0 }}
-                  animate={{ rotate: 0, opacity: 1 }}
-                  exit={{ rotate: -90, opacity: 0 }}
-                  transition={{ duration: 0.2 }}
-                >
-                  <Menu className="h-6 w-6 text-gray-700" />
-                </motion.div>
-              )}
-            </AnimatePresence>
+            {isMobileMenuOpen ? (
+              <X className="h-6 w-6" />
+            ) : (
+              <Menu className="h-6 w-6" />
+            )}
           </button>
         </div>
 
@@ -203,68 +189,77 @@ const Navbar = () => {
           {isMobileMenuOpen && (
             <motion.div
               id="mobile-menu"
-              initial="closed"
-              animate="open"
-              exit="closed"
-              variants={mobileMenuVariants}
-              className="md:hidden absolute left-0 right-0 bg-white shadow-lg border-t"
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: 'auto' }}
+              exit={{ opacity: 0, height: 0 }}
+              transition={{ duration: 0.2 }}
+              className="md:hidden"
             >
-              <div className="container mx-auto px-4 py-4">
-                <div className="space-y-4">
-                  {navLinks.map((link, index) => (
-                    <motion.div
-                      key={index}
-                      initial={{ opacity: 0, x: -20 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: index * 0.1 }}
-                    >
-                      {link.external ? (
-                        <a
-                          href={link.to}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="flex items-center justify-between text-gray-700 hover:text-vjn-blue transition-colors duration-300 py-2"
-                          onClick={toggleMobileMenu}
-                        >
-                          <span>{link.label}</span>
-                          <ChevronDown className="h-4 w-4 transform rotate-[-90deg]" />
-                        </a>
-                      ) : (
-                        <Link
-                          to={link.to}
-                          className="flex items-center justify-between text-gray-700 hover:text-vjn-blue transition-colors duration-300 py-2"
-                          onClick={toggleMobileMenu}
-                        >
-                          <span>{link.label}</span>
-                          <ChevronDown className="h-4 w-4 transform rotate-[-90deg]" />
-                        </Link>
-                      )}
-                    </motion.div>
-                  ))}
+              <div className="px-2 pt-2 pb-3 space-y-1">
+                <motion.div
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.1 }}
+                >
+                  <Link
+                    to="/"
+                    className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-vjn-blue hover:bg-gray-50"
+                    onClick={toggleMobileMenu}
+                  >
+                    Home
+                  </Link>
+                </motion.div>
+                {navLinks.map((link, index) => (
                   <motion.div
+                    key={index}
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: navLinks.length * 0.1 }}
-                    className="pt-4 border-t"
+                    transition={{ delay: (index + 2) * 0.1 }}
                   >
-                    {user ? (
-                      <div className="space-y-2">
-                        <Link to="/dashboard" className="block">
-                          <Button variant="outline" className="w-full">
-                            {t('nav.dashboard')}
-                          </Button>
-                        </Link>
-                        <Button onClick={logout} variant="destructive" className="w-full">
-                          {t('nav.logout')}
-                        </Button>
-                      </div>
+                    {link.external ? (
+                      <a
+                        href={link.to}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-vjn-blue hover:bg-gray-50"
+                        onClick={toggleMobileMenu}
+                      >
+                        {link.label}
+                      </a>
                     ) : (
-                      <Link to="/login" className="block" onClick={toggleMobileMenu}>
-                        <Button className="w-full">{t('nav.login')}</Button>
+                      <Link
+                        to={link.to}
+                        className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-vjn-blue hover:bg-gray-50"
+                        onClick={toggleMobileMenu}
+                      >
+                        {link.label}
                       </Link>
                     )}
                   </motion.div>
-                </div>
+                ))}
+                <motion.div
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: navLinks.length * 0.1 }}
+                  className="pt-4 border-t"
+                >
+                  {user ? (
+                    <div className="space-y-2">
+                      <Link to="/dashboard" className="block">
+                        <Button variant="outline" className="w-full">
+                          {t('nav.dashboard')}
+                        </Button>
+                      </Link>
+                      <Button onClick={logout} variant="destructive" className="w-full">
+                        {t('nav.logout')}
+                      </Button>
+                    </div>
+                  ) : (
+                    <Button onClick={handleLogin} className="w-full">
+                      {t('nav.login')}
+                    </Button>
+                  )}
+                </motion.div>
               </div>
             </motion.div>
           )}

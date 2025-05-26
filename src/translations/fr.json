@@ -1,0 +1,53 @@
+{
+    "pages": {
+        "management": "Gestion des Pages",
+        "create": "Créer une Nouvelle Page",
+        "list": "Liste des Pages",
+        "slug": "Slug",
+        "slugPlaceholder": "Entrez le slug de la page (ex: a-propos)",
+        "title": "Titre",
+        "titlePlaceholder": "Entrez le titre de la page",
+        "content": "Contenu",
+        "language": "Langue",
+        "selectLanguage": "Sélectionnez la langue",
+        "status": "Statut",
+        "selectStatus": "Sélectionnez le statut",
+        "draft": "Brouillon",
+        "published": "Publié"
+    },
+    "errors": {
+        "pages": {
+            "load": "Échec du chargement des pages",
+            "create": "Échec de la création de la page",
+            "update": "Échec de la mise à jour de la page",
+            "delete": "Échec de la suppression de la page"
+        }
+    },
+    "success": {
+        "pages": {
+            "create": "Page créée avec succès",
+            "update": "Page mise à jour avec succès",
+            "delete": "Page supprimée avec succès"
+        }
+    },
+    "confirm": {
+        "pages": {
+            "delete": "Êtes-vous sûr de vouloir supprimer cette page ?"
+        }
+    },
+    "dashboard": {
+        "adminSettings": {
+            "pages": "Pages",
+            "pageManagement": "Gérez les pages et le contenu de votre site web",
+            "emailTemplates": "Modèles d'Email",
+            "notificationsHelp": "Configurer les paramètres de notification par email",
+            "userRoles": "Rôles et Permissions Utilisateurs",
+            "notificationPreferences": "Préférences de Notification",
+            "backupDescription": "Gérer les sauvegardes et restaurations du système"
+        },
+        "loading": "Chargement...",
+        "cancel": "Annuler",
+        "save": "Enregistrer",
+        "actions": "Actions"
+    }
+} 

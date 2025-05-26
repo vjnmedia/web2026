@@ -66,6 +66,7 @@ const BlogEditor = () => {
       });
       if (!response.ok) throw new Error('Failed to fetch post');
       const post = await response.json();
+      console.log("Fetched post data:", post);
       setFormData({
         title: post.title,
         content: post.content,
@@ -105,6 +106,7 @@ const BlogEditor = () => {
       if (!response.ok) throw new Error('Failed to save post');
 
       const post = await response.json();
+      console.log("Fetched post data:", post);
       toast.success(`Post ${id ? 'updated' : 'created'} successfully`);
       navigate(`/blog/${post.slug}`);
     } catch (error) {
@@ -131,6 +133,7 @@ const BlogEditor = () => {
       if (!response.ok) throw new Error('Upload failed');
 
       const { url } = await response.json();
+      console.log("Uploaded image URL:", url);
       setFormData(prev => ({ ...prev, featuredImage: url }));
       toast.success('Image uploaded successfully');
     } catch (error) {

@@ -1,179 +1,144 @@
 import React from 'react';
-import { useTranslation } from 'react-i18next';
-import { FileText, Download, BookOpen, Megaphone, FileSpreadsheet, Image, File } from 'lucide-react';
+import { ExternalLink, FileText, Cloud, Link2, FolderOpen } from 'lucide-react';
 
-interface ResourceItem {
-  title: string;
-  description: string;
-  fileType: string;
-  fileSize: string;
-  downloadUrl: string;
-  icon: React.ReactNode;
-}
+const onedriveLinks = [
+  {
+    name: 'VJN General Resources Folder',
+    url: 'https://onedrive.live.com/?cid=YOUR_ONEDRIVE_FOLDER_ID',
+    description: 'Access all shared documents, reports, and templates.'
+  },
+  {
+    name: 'Annual Report 2023',
+    url: 'https://onedrive.live.com/view.aspx?resid=YOUR_ONEDRIVE_FILE_ID',
+    description: 'Download the latest annual report.'
+  }
+];
+
+const vjnSystems = [
+  {
+    name: 'VJN Staff Portal',
+    url: 'https://staff.visionjeunessenouvelle.org.rw',
+    description: 'Internal portal for VJN staff and management.'
+  },
+  {
+    name: 'VJN Youth Registration',
+    url: 'https://youth.visionjeunessenouvelle.org.rw',
+    description: 'Platform for youth to register and join VJN programs.'
+  },
+  {
+    name: 'VJN Blog',
+    url: 'https://blog.visionjeunessenouvelle.org.rw',
+    description: 'Read news, stories, and updates from VJN.'
+  },
+  {
+    name: 'VJN Community',
+    url: 'https://community.visionjeunessenouvelle.org.rw',
+    description: 'Join the VJN community and connect with other members.'
+  },
+  {
+    name: 'Chat System',
+    url: 'https://chat.visionjeunessenouvelle.org.rw',
+    description: 'Real-time chat system for VJN members.'
+  },
+  {
+    name: 'PFR Project',
+    url: 'https://pfr.visionjeunessenouvelle.org.rw',
+    description: 'Information and updates on the PFR project.'
+  },
+  {
+    name: 'Youth Projects Tracker',
+    url: 'https://projects.visionjeunessenouvelle.org.rw',
+    description: 'Track and monitor youth projects and initiatives.'
+  },
+  {
+    name: 'Talents Tracker',
+    url: 'https://talents.visionjeunessenouvelle.org.rw',
+    description: 'Discover and track youth talents and achievements.'
+  },
+  {
+    name: 'Voting System',
+    url: 'https://vote.visionjeunessenouvelle.org.rw',
+    description: 'Participate in VJN voting and decision-making processes.'
+  },
+  {
+    name: 'VJN FC',
+    url: 'https://fc.visionjeunessenouvelle.org.rw',
+    description: 'Information about VJN Football Club.'
+  },
+  {
+    name: 'VJN Record',
+    url: 'https://record.visionjeunessenouvelle.org.rw',
+    description: 'Access VJN records and archives.'
+  },
+  {
+    name: 'Lamennais Ltd',
+    url: 'https://lamennais.visionjeunessenouvelle.org.rw',
+    description: 'Information about Lamennais Ltd and its projects.'
+  }
+];
 
 const Resources: React.FC = () => {
-  const { t } = useTranslation();
-
-  const publications: ResourceItem[] = [
-    {
-      title: "Annual Report 2023",
-      description: "Comprehensive overview of VJN's activities and achievements in 2023",
-      fileType: "PDF",
-      fileSize: "2.4 MB",
-      downloadUrl: "#",
-      icon: <File className="h-6 w-6 text-red-500" />
-    },
-    {
-      title: "Youth Development Strategy",
-      description: "Our strategic approach to youth empowerment and development",
-      fileType: "PDF",
-      fileSize: "1.8 MB",
-      downloadUrl: "#",
-      icon: <File className="h-6 w-6 text-red-500" />
-    },
-    {
-      title: "Research on Youth Employment",
-      description: "Study on youth employment trends and opportunities in Rwanda",
-      fileType: "PDF",
-      fileSize: "3.2 MB",
-      downloadUrl: "#",
-      icon: <File className="h-6 w-6 text-red-500" />
-    }
-  ];
-
-  const announcements: ResourceItem[] = [
-    {
-      title: "Upcoming Training Programs",
-      description: "Schedule of upcoming youth training programs and workshops",
-      fileType: "DOCX",
-      fileSize: "156 KB",
-      downloadUrl: "#",
-      icon: <FileText className="h-6 w-6 text-blue-500" />
-    },
-    {
-      title: "Community Events Calendar",
-      description: "Calendar of community events and activities",
-      fileType: "XLSX",
-      fileSize: "98 KB",
-      downloadUrl: "#",
-      icon: <FileSpreadsheet className="h-6 w-6 text-green-500" />
-    }
-  ];
-
-  const documents: ResourceItem[] = [
-    {
-      title: "Volunteer Application Form",
-      description: "Application form for volunteering opportunities",
-      fileType: "DOCX",
-      fileSize: "45 KB",
-      downloadUrl: "#",
-      icon: <FileText className="h-6 w-6 text-blue-500" />
-    },
-    {
-      title: "Project Proposal Template",
-      description: "Template for submitting project proposals",
-      fileType: "DOCX",
-      fileSize: "78 KB",
-      downloadUrl: "#",
-      icon: <FileText className="h-6 w-6 text-blue-500" />
-    },
-    {
-      title: "Program Guidelines",
-      description: "Guidelines for participating in VJN programs",
-      fileType: "PDF",
-      fileSize: "1.2 MB",
-      downloadUrl: "#",
-      icon: <File className="h-6 w-6 text-red-500" />
-    }
-  ];
-
-  const media: ResourceItem[] = [
-    {
-      title: "Photo Gallery 2023",
-      description: "Collection of photos from our events and activities",
-      fileType: "ZIP",
-      fileSize: "45 MB",
-      downloadUrl: "#",
-      icon: <Image className="h-6 w-6 text-purple-500" />
-    },
-    {
-      title: "VJN Brand Guidelines",
-      description: "Brand assets and usage guidelines",
-      fileType: "PDF",
-      fileSize: "4.5 MB",
-      downloadUrl: "#",
-      icon: <File className="h-6 w-6 text-red-500" />
-    }
-  ];
-
-  const ResourceSection = ({ title, items }: { title: string; items: ResourceItem[] }) => (
-    <div className="mb-8">
-      <h2 className="text-2xl font-semibold mb-4 flex items-center">
-        {title === 'Publications' && <BookOpen className="h-6 w-6 mr-2 text-vjn-blue" />}
-        {title === 'Announcements' && <Megaphone className="h-6 w-6 mr-2 text-vjn-blue" />}
-        {title === 'Documents' && <FileText className="h-6 w-6 mr-2 text-vjn-blue" />}
-        {title === 'Media' && <Image className="h-6 w-6 mr-2 text-vjn-blue" />}
-        {title}
-      </h2>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-        {items.map((item, index) => (
-          <div key={index} className="bg-white rounded-lg shadow-md p-4 hover:shadow-lg transition-shadow">
-            <div className="flex items-start justify-between">
-              <div className="flex items-start space-x-3">
-                {item.icon}
-                <div>
-                  <h3 className="font-semibold text-gray-900">{item.title}</h3>
-                  <p className="text-sm text-gray-600 mt-1">{item.description}</p>
-                </div>
-              </div>
-            </div>
-            <div className="mt-4 flex items-center justify-between text-sm text-gray-500">
-              <div className="flex items-center space-x-2">
-                <span>{item.fileType}</span>
-                <span>•</span>
-                <span>{item.fileSize}</span>
-              </div>
-              <a
-                href={item.downloadUrl}
-                className="flex items-center text-vjn-blue hover:text-vjn-light-blue transition-colors"
-              >
-                <Download className="h-4 w-4 mr-1" />
-                {t('resources.download', 'Download')}
-              </a>
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-
   return (
-    <div className="container mx-auto px-4 py-8">
-      <div className="max-w-7xl mx-auto">
-        <h1 className="text-3xl font-bold mb-8">{t('resources.title', 'Resources')}</h1>
-        
-        <div className="bg-gray-50 rounded-lg p-6 mb-8">
-          <h2 className="text-xl font-semibold mb-4">{t('resources.search.title', 'Search Resources')}</h2>
-          <div className="flex gap-4">
-            <input
-              type="text"
-              placeholder={t('resources.search.placeholder', 'Search for resources...')}
-              className="flex-1 px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-vjn-blue"
-            />
-            <select className="px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-vjn-blue">
-              <option value="">{t('resources.search.allTypes', 'All Types')}</option>
-              <option value="pdf">PDF</option>
-              <option value="doc">DOC</option>
-              <option value="xls">XLS</option>
-              <option value="image">Images</option>
-            </select>
-          </div>
-        </div>
+    <div className="min-h-screen bg-gradient-to-br from-vjn-light-blue to-white py-12 px-4 md:px-0">
+      <div className="max-w-3xl mx-auto">
+        <header className="mb-12 text-center">
+          <h1 className="text-4xl md:text-5xl font-extrabold text-vjn-blue mb-4">Resources & Links</h1>
+          <p className="text-lg text-gray-600">Find important documents, shared resources, and access other VJN systems.</p>
+        </header>
 
-        <ResourceSection title={t('resources.sections.publications', 'Publications')} items={publications} />
-        <ResourceSection title={t('resources.sections.announcements', 'Announcements')} items={announcements} />
-        <ResourceSection title={t('resources.sections.documents', 'Documents')} items={documents} />
-        <ResourceSection title={t('resources.sections.media', 'Media')} items={media} />
+        {/* Documents & Resources Section */}
+        <section className="mb-16">
+          <h2 className="text-2xl font-bold text-gray-800 flex items-center gap-2 mb-6">
+            <Cloud className="w-7 h-7 text-vjn-blue" /> Documents & Resources
+          </h2>
+          <div className="grid gap-6 md:grid-cols-2">
+            {onedriveLinks.map((doc, idx) => (
+              <a
+                key={idx}
+                href={doc.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group block bg-white rounded-2xl shadow-lg hover:shadow-2xl transition p-6 border border-gray-100 hover:border-vjn-blue"
+              >
+                <div className="flex items-center gap-4 mb-3">
+                  <FolderOpen className="w-8 h-8 text-vjn-blue group-hover:text-vjn-dark-blue transition" />
+                  <span className="text-lg font-semibold text-vjn-dark-blue group-hover:underline">
+                    {doc.name}
+                  </span>
+                  <ExternalLink className="w-4 h-4 text-gray-400 ml-auto" />
+                </div>
+                <p className="text-gray-500 text-sm">{doc.description}</p>
+              </a>
+            ))}
+          </div>
+        </section>
+
+        {/* Other VJN Systems Section */}
+        <section>
+          <h2 className="text-2xl font-bold text-gray-800 flex items-center gap-2 mb-6">
+            <Link2 className="w-7 h-7 text-vjn-blue" /> Other VJN Systems
+          </h2>
+          <div className="grid gap-6 md:grid-cols-2">
+            {vjnSystems.map((sys, idx) => (
+              <a
+                key={idx}
+                href={sys.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group block bg-white rounded-2xl shadow-lg hover:shadow-2xl transition p-6 border border-gray-100 hover:border-vjn-blue"
+              >
+                <div className="flex items-center gap-4 mb-3">
+                  <FileText className="w-8 h-8 text-vjn-blue group-hover:text-vjn-dark-blue transition" />
+                  <span className="text-lg font-semibold text-vjn-dark-blue group-hover:underline">
+                    {sys.name}
+                  </span>
+                  <ExternalLink className="w-4 h-4 text-gray-400 ml-auto" />
+                </div>
+                <p className="text-gray-500 text-sm">{sys.description}</p>
+              </a>
+            ))}
+          </div>
+        </section>
       </div>
     </div>
   );
