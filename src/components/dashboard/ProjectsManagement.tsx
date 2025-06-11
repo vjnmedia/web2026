@@ -1,111 +1,126 @@
-
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useLanguage } from '@/components/LanguageContext';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
-import { Plus, Pencil, Trash2 } from 'lucide-react';
+import { Plus, Pencil, Trash2, Loader2 } from 'lucide-react';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter, DialogDescription } from '@/components/ui/dialog';
 import { Label } from '@/components/ui/label';
 import { toast } from 'sonner';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-
-// Project type definition
-interface Project {
-  id: number;
-  name: string;
-  status: string;
-  startDate: string;
-  endDate: string;
-}
-
-// Mock data for projects
-const mockProjects = [
-  { id: 1, name: "Youth Empowerment Initiative", status: "Active", startDate: "2023-01-15", endDate: "2023-12-31" },
-  { id: 2, name: "Digital Skills Training", status: "Completed", startDate: "2022-06-10", endDate: "2022-12-20" },
-  { id: 3, name: "Community Peace Building", status: "Planned", startDate: "2023-07-01", endDate: "2024-06-30" },
-  { id: 4, name: "Rural Health Outreach", status: "Active", startDate: "2023-03-01", endDate: "2023-08-31" },
-];
+import { Textarea } from '@/components/ui/textarea';
+import { useProjects } from '@/hooks/useProjects';
+import { Project } from '@/types/dms';
 
 const ProjectsManagement = () => {
   const { t } = useLanguage();
-  const [projects, setProjects] = useState<Project[]>(mockProjects);
+  const { projects, loading, error, createProject, updateProject, deleteProject, fetchProjects } = useProjects();
   const [searchTerm, setSearchTerm] = useState('');
   const [isAddDialogOpen, setIsAddDialogOpen] = useState(false);
   const [isEditDialogOpen, setIsEditDialogOpen] = useState(false);
   const [isDeleteDialogOpen, setIsDeleteDialogOpen] = useState(false);
   const [currentProject, setCurrentProject] = useState<Project | null>(null);
-  const [newProject, setNewProject] = useState<Omit<Project, 'id'>>({
+  const [formData, setFormData] = useState<Omit<Project, 'id'>>({
     name: '',
     status: 'Planned',
     startDate: '',
-    endDate: ''
+    endDate: '',
+    description: '',
+    imageUrl: '',
+    externalLink: '',
   });
 
   const filteredProjects = projects.filter(project => 
     project.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    project.status.toLowerCase().includes(searchTerm.toLowerCase())
+    project.status.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    project.description.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
   const handleAddProject = () => {
-    setNewProject({
+    setFormData({
       name: '',
       status: 'Planned',
       startDate: '',
-      endDate: ''
+      endDate: '',
+      description: '',
+      imageUrl: '',
+      externalLink: '',
     });
     setIsAddDialogOpen(true);
   };
 
-  const handleEditProject = (id: number) => {
-    const projectToEdit = projects.find(project => project.id === id);
-    if (projectToEdit) {
-      setCurrentProject(projectToEdit);
-      setIsEditDialogOpen(true);
-    }
+  const handleEditProject = (project: Project) => {
+    setCurrentProject(project);
+    setFormData({
+      name: project.name,
+      status: project.status,
+      startDate: project.startDate,
+      endDate: project.endDate,
+      description: project.description,
+      imageUrl: project.imageUrl || '',
+      externalLink: project.externalLink || '',
+    });
+    setIsEditDialogOpen(true);
   };
 
-  const handleDeleteProject = (id: number) => {
-    const projectToDelete = projects.find(project => project.id === id);
-    if (projectToDelete) {
-      setCurrentProject(projectToDelete);
-      setIsDeleteDialogOpen(true);
-    }
+  const handleDeleteProject = (project: Project) => {
+    setCurrentProject(project);
+    setIsDeleteDialogOpen(true);
   };
 
-  const saveNewProject = () => {
-    if (!newProject.name || !newProject.startDate || !newProject.endDate) {
+  const saveNewProject = async () => {
+    if (!formData.name || !formData.startDate || !formData.endDate || !formData.description) {
       toast.error(t('dashboard.allFieldsRequired'));
       return;
     }
-
-    const newId = Math.max(...projects.map(p => p.id), 0) + 1;
-    const projectToAdd = { id: newId, ...newProject };
-    
-    setProjects([...projects, projectToAdd]);
-    setIsAddDialogOpen(false);
-    toast.success(t('dashboard.projectAdded'));
+    try {
+      await createProject(formData);
+      setIsAddDialogOpen(false);
+      fetchProjects();
+    } catch (err) {
+      console.error("Failed to create project:", err);
+    }
   };
 
-  const saveEditedProject = () => {
+  const saveEditedProject = async () => {
     if (!currentProject) return;
-    
-    const updatedProjects = projects.map(project =>
-      project.id === currentProject.id ? currentProject : project
+    if (!formData.name || !formData.startDate || !formData.endDate || !formData.description) {
+      toast.error(t('dashboard.allFieldsRequired'));
+      return;
+    }
+    try {
+      await updateProject(currentProject.id, formData);
+      setIsEditDialogOpen(false);
+      setCurrentProject(null);
+      fetchProjects();
+    } catch (err) {
+      console.error("Failed to update project:", err);
+    }
+  };
+
+  const confirmDeleteProject = async () => {
+    if (!currentProject) return;
+    try {
+      await deleteProject(currentProject.id);
+      setIsDeleteDialogOpen(false);
+      setCurrentProject(null);
+      fetchProjects();
+    } catch (err) {
+      console.error("Failed to delete project:", err);
+    }
+  };
+
+  if (loading) {
+    return (
+      <div className="flex justify-center items-center h-64">
+        <Loader2 className="h-8 w-8 animate-spin text-vjn-blue" />
+      </div>
     );
-    
-    setProjects(updatedProjects);
-    setIsEditDialogOpen(false);
-    toast.success(t('dashboard.projectUpdated'));
-  };
+  }
 
-  const confirmDeleteProject = () => {
-    if (!currentProject) return;
-    
-    setProjects(projects.filter(project => project.id !== currentProject.id));
-    setIsDeleteDialogOpen(false);
-    toast.success(t('dashboard.projectDeleted'));
-  };
+  if (error) {
+    return <div className="text-center text-red-500 py-10">Error: {error}</div>;
+  }
 
   return (
     <div className="space-y-6">
@@ -134,13 +149,15 @@ const ProjectsManagement = () => {
               <TableHead>{t('dashboard.status')}</TableHead>
               <TableHead>{t('dashboard.startDate')}</TableHead>
               <TableHead>{t('dashboard.endDate')}</TableHead>
+              <TableHead>Image</TableHead>
+              <TableHead>External Link</TableHead>
               <TableHead className="text-right">{t('dashboard.actions')}</TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
             {filteredProjects.length === 0 ? (
               <TableRow>
-                <TableCell colSpan={5} className="text-center py-4">
+                <TableCell colSpan={7} className="text-center py-4">
                   {t('dashboard.noProjects')}
                 </TableCell>
               </TableRow>
@@ -159,11 +176,27 @@ const ProjectsManagement = () => {
                   </TableCell>
                   <TableCell>{project.startDate}</TableCell>
                   <TableCell>{project.endDate}</TableCell>
+                  <TableCell>
+                    {project.imageUrl ? (
+                      <img src={project.imageUrl} alt="Project Image" className="w-12 h-12 object-cover rounded" />
+                    ) : (
+                      <span className="text-gray-400">N/A</span>
+                    )}
+                  </TableCell>
+                  <TableCell>
+                    {project.externalLink ? (
+                      <a href={project.externalLink} target="_blank" rel="noopener noreferrer" className="text-vjn-blue hover:underline">
+                        Link
+                      </a>
+                    ) : (
+                      <span className="text-gray-400">N/A</span>
+                    )}
+                  </TableCell>
                   <TableCell className="text-right">
-                    <Button variant="ghost" size="icon" onClick={() => handleEditProject(project.id)}>
+                    <Button variant="ghost" size="icon" onClick={() => handleEditProject(project)}>
                       <Pencil className="h-4 w-4" />
                     </Button>
-                    <Button variant="ghost" size="icon" onClick={() => handleDeleteProject(project.id)}>
+                    <Button variant="ghost" size="icon" onClick={() => handleDeleteProject(project)}>
                       <Trash2 className="h-4 w-4" />
                     </Button>
                   </TableCell>
@@ -190,8 +223,8 @@ const ProjectsManagement = () => {
               </Label>
               <Input
                 id="name"
-                value={newProject.name}
-                onChange={(e) => setNewProject({...newProject, name: e.target.value})}
+                value={formData.name}
+                onChange={(e) => setFormData({...formData, name: e.target.value})}
                 className="col-span-3"
               />
             </div>
@@ -200,8 +233,8 @@ const ProjectsManagement = () => {
                 {t('dashboard.status')}
               </Label>
               <Select 
-                value={newProject.status} 
-                onValueChange={(value) => setNewProject({...newProject, status: value})}
+                value={formData.status} 
+                onValueChange={(value) => setFormData({...formData, status: value})}
               >
                 <SelectTrigger className="col-span-3">
                   <SelectValue placeholder={t('dashboard.selectStatus')} />
@@ -220,8 +253,8 @@ const ProjectsManagement = () => {
               <Input
                 id="startDate"
                 type="date"
-                value={newProject.startDate}
-                onChange={(e) => setNewProject({...newProject, startDate: e.target.value})}
+                value={formData.startDate}
+                onChange={(e) => setFormData({...formData, startDate: e.target.value})}
                 className="col-span-3"
               />
             </div>
@@ -232,8 +265,41 @@ const ProjectsManagement = () => {
               <Input
                 id="endDate"
                 type="date"
-                value={newProject.endDate}
-                onChange={(e) => setNewProject({...newProject, endDate: e.target.value})}
+                value={formData.endDate}
+                onChange={(e) => setFormData({...formData, endDate: e.target.value})}
+                className="col-span-3"
+              />
+            </div>
+            <div className="grid grid-cols-4 items-center gap-4">
+              <Label htmlFor="description" className="text-right">
+                Description
+              </Label>
+              <Textarea
+                id="description"
+                value={formData.description}
+                onChange={(e) => setFormData({...formData, description: e.target.value})}
+                className="col-span-3"
+              />
+            </div>
+            <div className="grid grid-cols-4 items-center gap-4">
+              <Label htmlFor="imageUrl" className="text-right">
+                Image URL
+              </Label>
+              <Input
+                id="imageUrl"
+                value={formData.imageUrl}
+                onChange={(e) => setFormData({...formData, imageUrl: e.target.value})}
+                className="col-span-3"
+              />
+            </div>
+            <div className="grid grid-cols-4 items-center gap-4">
+              <Label htmlFor="externalLink" className="text-right">
+                External Link
+              </Label>
+              <Input
+                id="externalLink"
+                value={formData.externalLink}
+                onChange={(e) => setFormData({...formData, externalLink: e.target.value})}
                 className="col-span-3"
               />
             </div>
@@ -263,8 +329,8 @@ const ProjectsManagement = () => {
                 </Label>
                 <Input
                   id="edit-name"
-                  value={currentProject.name}
-                  onChange={(e) => setCurrentProject({...currentProject, name: e.target.value})}
+                  value={formData.name}
+                  onChange={(e) => setFormData({...formData, name: e.target.value})}
                   className="col-span-3"
                 />
               </div>
@@ -273,8 +339,8 @@ const ProjectsManagement = () => {
                   {t('dashboard.status')}
                 </Label>
                 <Select 
-                  value={currentProject.status} 
-                  onValueChange={(value) => setCurrentProject({...currentProject, status: value})}
+                  value={formData.status} 
+                  onValueChange={(value) => setFormData({...formData, status: value})}
                 >
                   <SelectTrigger className="col-span-3">
                     <SelectValue placeholder={t('dashboard.selectStatus')} />
@@ -293,8 +359,8 @@ const ProjectsManagement = () => {
                 <Input
                   id="edit-startDate"
                   type="date"
-                  value={currentProject.startDate}
-                  onChange={(e) => setCurrentProject({...currentProject, startDate: e.target.value})}
+                  value={formData.startDate}
+                  onChange={(e) => setFormData({...formData, startDate: e.target.value})}
                   className="col-span-3"
                 />
               </div>
@@ -305,8 +371,41 @@ const ProjectsManagement = () => {
                 <Input
                   id="edit-endDate"
                   type="date"
-                  value={currentProject.endDate}
-                  onChange={(e) => setCurrentProject({...currentProject, endDate: e.target.value})}
+                  value={formData.endDate}
+                  onChange={(e) => setFormData({...formData, endDate: e.target.value})}
+                  className="col-span-3"
+                />
+              </div>
+              <div className="grid grid-cols-4 items-center gap-4">
+                <Label htmlFor="edit-description" className="text-right">
+                  Description
+                </Label>
+                <Textarea
+                  id="edit-description"
+                  value={formData.description}
+                  onChange={(e) => setFormData({...formData, description: e.target.value})}
+                  className="col-span-3"
+                />
+              </div>
+              <div className="grid grid-cols-4 items-center gap-4">
+                <Label htmlFor="edit-imageUrl" className="text-right">
+                  Image URL
+                </Label>
+                <Input
+                  id="edit-imageUrl"
+                  value={formData.imageUrl}
+                  onChange={(e) => setFormData({...formData, imageUrl: e.target.value})}
+                  className="col-span-3"
+                />
+              </div>
+              <div className="grid grid-cols-4 items-center gap-4">
+                <Label htmlFor="edit-externalLink" className="text-right">
+                  External Link
+                </Label>
+                <Input
+                  id="edit-externalLink"
+                  value={formData.externalLink}
+                  onChange={(e) => setFormData({...formData, externalLink: e.target.value})}
                   className="col-span-3"
                 />
               </div>
@@ -325,24 +424,19 @@ const ProjectsManagement = () => {
 
       {/* Delete Confirmation Dialog */}
       <Dialog open={isDeleteDialogOpen} onOpenChange={setIsDeleteDialogOpen}>
-        <DialogContent className="sm:max-w-[425px]">
+        <DialogContent>
           <DialogHeader>
-            <DialogTitle>{t('dashboard.confirmDelete')}</DialogTitle>
+            <DialogTitle>{t('dashboard.confirmDelete', 'Confirm Deletion')}</DialogTitle>
             <DialogDescription>
-              {t('dashboard.deleteProjectConfirmation')}
+              {t('dashboard.deleteProjectConfirmation', 'Are you sure you want to delete this project? This action cannot be undone.')}
             </DialogDescription>
           </DialogHeader>
-          {currentProject && (
-            <div className="py-4">
-              <p className="text-center font-medium">{currentProject.name}</p>
-            </div>
-          )}
           <DialogFooter>
             <Button variant="outline" onClick={() => setIsDeleteDialogOpen(false)}>
               {t('dashboard.cancel')}
             </Button>
             <Button variant="destructive" onClick={confirmDeleteProject}>
-              {t('dashboard.delete')}
+              {t('dashboard.delete', 'Delete')}
             </Button>
           </DialogFooter>
         </DialogContent>

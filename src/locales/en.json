@@ -1483,5 +1483,13 @@
         "description": "There was an error submitting your application. Please try again."
       }
     }
+  },
+  "dms": {
+    "title": "Data Management Systems",
+    "projectsTitle": "Our Projects",
+    "noProjects": "No projects available at the moment.",
+    "startDate": "Start:",
+    "viewProject": "View Project",
+    "noExternalLink": "No external link"
   }
 } 
