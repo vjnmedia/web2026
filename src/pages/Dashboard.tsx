@@ -10,6 +10,7 @@ import EventsManagement from '@/components/dashboard/EventsManagement';
 import LocationsManagement from '@/components/dashboard/LocationsManagement';
 import AdminSettings from '@/components/dashboard/AdminSettings';
 import UserProfile from '@/components/dashboard/UserProfile';
+import StaffManagement from '@/components/dashboard/StaffManagement';
 import { 
   FileText, 
   Users, 
@@ -18,7 +19,8 @@ import {
   Share2, 
   Calendar, 
   MapPin,
-  Settings
+  Settings,
+  Briefcase
 } from 'lucide-react';
 import { Toaster } from 'sonner';
 
@@ -35,6 +37,7 @@ const Dashboard = () => {
     social: <Share2 className="mr-2 h-4 w-4" />,
     events: <Calendar className="mr-2 h-4 w-4" />,
     locations: <MapPin className="mr-2 h-4 w-4" />,
+    staff: <Briefcase className="mr-2 h-4 w-4" />,
     admin: <Settings className="mr-2 h-4 w-4" />
   };
 
@@ -102,6 +105,13 @@ const Dashboard = () => {
                 {t('dashboard.locations')}
               </TabsTrigger>
               <TabsTrigger 
+                value="staff" 
+                className="flex items-center justify-start w-full px-4 py-3 data-[state=active]:bg-vjn-blue data-[state=active]:text-white"
+              >
+                {tabIcons.staff}
+                {t('dashboard.staff.title', 'Staff Management')}
+              </TabsTrigger>
+              <TabsTrigger 
                 value="admin" 
                 className="flex items-center justify-start w-full px-4 py-3 data-[state=active]:bg-vjn-blue data-[state=active]:text-white"
               >
@@ -143,6 +153,10 @@ const Dashboard = () => {
             
             <TabsContent value="locations" className="mt-0">
               <LocationsManagement />
+            </TabsContent>
+
+            <TabsContent value="staff" className="mt-0">
+              <StaffManagement />
             </TabsContent>
             
             <TabsContent value="admin" className="mt-0">

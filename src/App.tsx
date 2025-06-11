@@ -1,5 +1,5 @@
 import './i18n';
-import React, { Suspense, useState } from 'react';
+import React, { Suspense, useState, useEffect } from 'react';
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -8,8 +8,9 @@ import { Routes, Route, useNavigate, useLocation } from "react-router-dom";
 import { LanguageProvider } from "./components/LanguageContext";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import { AuthProvider } from '@/hooks/useAuth';
-import { DonationProvider } from '@/contexts/DonationContext';
+import { DonationProvider } from '@/components/DonationContext';
 import PayPalProvider from '@/components/PayPalProvider';
+import { StaffProvider } from '@/contexts/StaffContext';
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Home from "./pages/Home";
@@ -24,7 +25,6 @@ import Education from "./pages/programs/Education";
 import Economic from "./pages/programs/Economic";
 import Health from "./pages/programs/Health";
 import Peace from "./pages/programs/Peace";
-import Arts from "./pages/programs/Arts";
 import Dashboard from "./pages/Dashboard";
 import ProtectedRoute from '@/components/ProtectedRoute';
 import BlogManagement from '@/pages/BlogManagement';
@@ -32,10 +32,20 @@ import BlogEditor from '@/components/blog/BlogEditor';
 import Media from './pages/Media';
 import NewsUpdates from './pages/NewsUpdates';
 import Resources from './pages/Resources';
-import Staff from './pages/Staff';
+import Staff from '@/pages/Staff';
 import BlogPost from '@/pages/BlogPost';
 import Donate from './pages/Donate';
 import Stories from './pages/Stories';
+import SportCultureArts from "./pages/programs/SportCultureArts";
+import Volunteer from "./pages/Volunteer";
+import ImageManager from './pages/ImageManager';
+import Search from "./pages/Search";
+import Privacy from "./pages/Privacy";
+import Terms from "./pages/Terms";
+import Sitemap from "./pages/Sitemap";
+import Impact from "./pages/Impact";
+import Career from './pages/Career';
+import Arts from './pages/programs/Arts';
 
 // Loading component for Suspense
 const LoadingFallback = () => (
@@ -46,24 +56,27 @@ const LoadingFallback = () => (
 
 // LoginModal component to manage login state
 const LoginModal = () => {
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
 
-  const handleClose = () => {
-    setIsOpen(false);
-    // Navigate back to the previous page or home
-    const from = location.state?.from || '/';
-    navigate(from);
-  };
-
-  // Close modal when route changes
-  React.useEffect(() => {
-    const from = location.state?.from || '/';
-    if (from !== '/login') {
+  // Open modal when route is /login
+  useEffect(() => {
+    if (location.pathname === '/login') {
+      setIsOpen(true);
+    } else {
       setIsOpen(false);
     }
-  }, [location]);
+  }, [location.pathname]);
+
+  const handleClose = () => {
+    setIsOpen(false);
+    // Only navigate if we're still on the login page
+    if (location.pathname === '/login') {
+      const from = location.state?.from || '/';
+      navigate(from, { replace: true });
+    }
+  };
 
   return <Login isOpen={isOpen} onClose={handleClose} />;
 };
@@ -79,68 +92,81 @@ const App = () => {
             <AuthProvider>
               <DonationProvider>
                 <PayPalProvider>
-                  <TooltipProvider>
-                    <div className="min-h-screen flex flex-col">
-                      <Navbar />
-                      <main className="flex-grow">
-                        <Routes>
-                          <Route path="/" element={<Home />} />
-                          <Route path="/about" element={<About />} />
-                          <Route path="/programs" element={<Programs />} />
-                          <Route path="/programs/education" element={<Education />} />
-                          <Route path="/programs/economic" element={<Economic />} />
-                          <Route path="/programs/health" element={<Health />} />
-                          <Route path="/programs/peace" element={<Peace />} />
-                          <Route path="/programs/arts" element={<Arts />} />
-                          <Route path="/services" element={<Services />} />
-                          <Route path="/media" element={<Media />} />
-                          <Route path="/news" element={<NewsUpdates />} />
-                          <Route path="/resources" element={<Resources />} />
-                          <Route path="/contact" element={<Contact />} />
-                          <Route path="/login" element={<LoginModal />} />
-                          <Route path="/donate" element={<Donate />} />
-                          <Route path="/stories" element={<Stories />} />
-                          <Route path="/blog/:id" element={<BlogPost />} />
-                          <Route
-                            path="/dashboard"
-                            element={
-                              <ProtectedRoute>
-                                <Dashboard />
-                              </ProtectedRoute>
-                            }
-                          />
-                          <Route
-                            path="/dms"
-                            element={
-                              <ProtectedRoute>
-                                <DMS />
-                              </ProtectedRoute>
-                            }
-                          />
-                          <Route
-                            path="/blog-management"
-                            element={
-                              <ProtectedRoute>
-                                <BlogManagement />
-                              </ProtectedRoute>
-                            }
-                          />
-                          <Route
-                            path="/blog-editor/:id?"
-                            element={
-                              <ProtectedRoute>
-                                <BlogEditor />
-                              </ProtectedRoute>
-                            }
-                          />
-                          <Route path="*" element={<NotFound />} />
-                        </Routes>
-                      </main>
-                      <Footer />
-                    </div>
-                    <Toaster />
-                    <Sonner />
-                  </TooltipProvider>
+                  <StaffProvider>
+                    <TooltipProvider>
+                      <div className="min-h-screen flex flex-col">
+                        <Navbar />
+                        <main className="flex-grow">
+                          <Routes>
+                            <Route path="/" element={<Home />} />
+                            <Route path="/about" element={<About />} />
+                            <Route path="/programs" element={<Programs />} />
+                            <Route path="/programs/education" element={<Education />} />
+                            <Route path="/programs/economic" element={<Economic />} />
+                            <Route path="/programs/health" element={<Health />} />
+                            <Route path="/programs/peace" element={<Peace />} />
+                            <Route path="/programs/sport-culture-arts" element={<SportCultureArts />} />
+                            <Route path="/programs/arts" element={<Arts />} />
+                            <Route path="/services" element={<Services />} />
+                            <Route path="/media" element={<Media />} />
+                            <Route path="/news" element={<NewsUpdates />} />
+                            <Route path="/resources" element={<Resources />} />
+                            <Route path="/contact" element={<Contact />} />
+                            <Route path="/login" element={<LoginModal />} />
+                            <Route path="/donate" element={<Donate />} />
+                            <Route path="/stories" element={<Stories />} />
+                            <Route path="/volunteer" element={<Volunteer />} />
+                            <Route path="/career" element={<Career />} />
+                            <Route path="/careers" element={<Career />} />
+                            <Route path="/blog/:id" element={<BlogPost />} />
+                            <Route path="/search" element={<Search />} />
+                            <Route path="/privacy" element={<Privacy />} />
+                            <Route path="/terms" element={<Terms />} />
+                            <Route path="/sitemap" element={<Sitemap />} />
+                            <Route path="/staff" element={<Staff />} />
+                            <Route path="/impact" element={<Impact />} />
+                            <Route
+                              path="/dashboard"
+                              element={
+                                <ProtectedRoute>
+                                  <Dashboard />
+                                </ProtectedRoute>
+                              }
+                            />
+                            <Route
+                              path="/dms"
+                              element={
+                                <ProtectedRoute>
+                                  <DMS />
+                                </ProtectedRoute>
+                              }
+                            />
+                            <Route
+                              path="/blog-management"
+                              element={
+                                <ProtectedRoute>
+                                  <BlogManagement />
+                                </ProtectedRoute>
+                              }
+                            />
+                            <Route
+                              path="/blog-editor/:id?"
+                              element={
+                                <ProtectedRoute>
+                                  <BlogEditor />
+                                </ProtectedRoute>
+                              }
+                            />
+                            <Route path="/image-manager" element={<ImageManager />} />
+                            <Route path="*" element={<NotFound />} />
+                          </Routes>
+                        </main>
+                        <Footer />
+                      </div>
+                      <Toaster />
+                      <Sonner />
+                    </TooltipProvider>
+                  </StaffProvider>
                 </PayPalProvider>
               </DonationProvider>
             </AuthProvider>

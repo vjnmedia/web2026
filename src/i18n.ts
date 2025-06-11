@@ -1,7 +1,7 @@
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
-import enTranslations from './locales/en.json';
-import frTranslations from './locales/fr.json';
+import enTranslation from './locales/en.json';
+import frTranslation from './locales/fr.json';
 
 // Initialize i18next
 i18n
@@ -9,10 +9,10 @@ i18n
   .init({
     resources: {
       en: {
-        translation: enTranslations
+        translation: enTranslation
       },
       fr: {
-        translation: frTranslations
+        translation: frTranslation
       }
     },
     lng: localStorage.getItem('language') || 'en',
@@ -41,6 +41,25 @@ i18n
     }
   });
 
+// These lines are no longer needed as translations are loaded synchronously
+// const loadTranslations = async () => {
+//   try {
+//     const [enTranslations, frTranslations] = await Promise.all([
+//       import('./locales/en.json'),
+//       import('./locales/fr.json')
+//     ]);
+
+//     i18n.addResourceBundle('en', 'translation', enTranslations.default, true, true);
+//     i18n.addResourceBundle('fr', 'translation', frTranslations.default, true, true);
+
+//     console.log('Translations loaded successfully');
+//   } catch (error) {
+//     console.error('Error loading translations:', error);
+//   }
+// };
+
+// loadTranslations();
+
 // Ensure translations are loaded before proceeding
 i18n.on('initialized', () => {
   console.log('i18n initialized with language:', i18n.language);
@@ -52,12 +71,6 @@ i18n.on('languageChanged', (lng) => {
   console.log('Language changed to:', lng);
   document.documentElement.lang = lng;
   localStorage.setItem('language', lng);
-});
-
-// Log the loaded translations for debugging
-console.log('Loaded translations:', {
-  en: enTranslations,
-  fr: frTranslations
 });
 
 export default i18n; 

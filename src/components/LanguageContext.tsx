@@ -9,7 +9,14 @@ interface LanguageContextType {
   changeLanguage: (language: string) => void;
 }
 
-const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
+const defaultContext: LanguageContextType = {
+  language: 'en',
+  setLanguage: () => {},
+  t: (key: string) => key,
+  changeLanguage: async () => {}
+};
+
+const LanguageContext = createContext<LanguageContextType>(defaultContext);
 
 export const LanguageProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [isInitialized, setIsInitialized] = useState(false);
@@ -67,10 +74,6 @@ export const LanguageProvider: React.FC<{ children: ReactNode }> = ({ children }
     t,
     changeLanguage
   };
-
-  if (!isInitialized) {
-    return null; // Don't render children until i18n is initialized
-  }
 
   return (
     <LanguageContext.Provider value={value}>

@@ -1,71 +1,103 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
-
-const slides = [
-  {
-    image: '/images/home-slider/youth.JPG',
-    title: 'Empowering Youth',
-    description: 'Building a better future through education and skills development'
-  },
-  {
-    image: '/images/home-slider/economic.jpg',
-    title: 'Economic Growth',
-    description: 'Supporting young entrepreneurs and business initiatives'
-  },
-  {
-    image: '/images/home-slider/educ.JPG',
-    title: 'Education',
-    description: 'Providing quality education and learning opportunities'
-  },
-  {
-    image: '/images/home-slider/peace.jpg',
-    title: 'Peace Building',
-    description: 'Fostering peace and reconciliation through youth leadership'
-  },
-  {
-    image: '/images/home-slider/karate.JPG',
-    title: 'Sports & Culture',
-    description: 'Nurturing talent and cultural expression through various programs'
-  }
-];
+import { sliderService, type SliderItem } from '@/services/sliderService';
+import { useLanguage } from '@/components/LanguageContext';
+import { toast } from 'sonner';
 
 const Hero = () => {
   const { t } = useTranslation();
+  const { language } = useLanguage();
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
   const [direction, setDirection] = useState(0);
+  const [imagesLoaded, setImagesLoaded] = useState<boolean[]>([]);
+  const [isTransitioning, setIsTransitioning] = useState(false);
+  const [slides, setSlides] = useState<SliderItem[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    loadSlides();
+  }, [language]);
+
+  const loadSlides = async () => {
+    try {
+      setIsLoading(true);
+      const data = await sliderService.getSliderItems(language);
+      setSlides(data);
+      setImagesLoaded(new Array(data.length).fill(false));
+    } catch (error) {
+      console.error('Error loading slides:', error);
+      toast.error(t('errors.slider.load'));
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  // Preload images with priority
+  const preloadImage = useCallback((index: number) => {
+    if (!slides[index]) return;
+    const img = new Image();
+    img.src = slides[index].image;
+    img.onload = () => {
+      setImagesLoaded(prev => {
+        const newState = [...prev];
+        newState[index] = true;
+        return newState;
+      });
+    };
+  }, [slides]);
+
+  // Preload current and next images
+  useEffect(() => {
+    if (slides.length === 0) return;
+    const nextIndex = (currentIndex + 1) % slides.length;
+    preloadImage(currentIndex);
+    preloadImage(nextIndex);
+  }, [currentIndex, preloadImage, slides]);
+
+  // Handle slide transitions
+  const handleSlideChange = useCallback((newIndex: number, newDirection: number) => {
+    if (isTransitioning || slides.length === 0) return;
+    setIsTransitioning(true);
+    setDirection(newDirection);
+    setCurrentIndex(newIndex);
+    setTimeout(() => setIsTransitioning(false), 500); // Match transition duration
+  }, [isTransitioning, slides]);
 
   // Auto-advance carousel
   useEffect(() => {
-    if (!isAutoPlaying) return;
+    if (!isAutoPlaying || isTransitioning || slides.length === 0) return;
     
     const timer = setInterval(() => {
-      setDirection(1);
-      setCurrentIndex((prevIndex) => (prevIndex + 1) % slides.length);
+      const nextIndex = (currentIndex + 1) % slides.length;
+      handleSlideChange(nextIndex, 1);
     }, 5000);
     
     return () => clearInterval(timer);
-  }, [isAutoPlaying]);
+  }, [isAutoPlaying, currentIndex, handleSlideChange, isTransitioning, slides]);
 
-  const nextSlide = () => {
+  const nextSlide = useCallback(() => {
+    if (slides.length === 0) return;
     setIsAutoPlaying(false);
-    setDirection(1);
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % slides.length);
-  };
+    const nextIndex = (currentIndex + 1) % slides.length;
+    handleSlideChange(nextIndex, 1);
+  }, [currentIndex, handleSlideChange, slides]);
 
-  const prevSlide = () => {
+  const prevSlide = useCallback(() => {
+    if (slides.length === 0) return;
     setIsAutoPlaying(false);
-    setDirection(-1);
-    setCurrentIndex((prevIndex) => (prevIndex - 1 + slides.length) % slides.length);
-  };
+    const prevIndex = (currentIndex - 1 + slides.length) % slides.length;
+    handleSlideChange(prevIndex, -1);
+  }, [currentIndex, handleSlideChange, slides]);
 
-  const goToSlide = (index: number) => {
+  const goToSlide = useCallback((index: number) => {
+    if (slides.length === 0) return;
     setIsAutoPlaying(false);
-    setDirection(index > currentIndex ? 1 : -1);
-    setCurrentIndex(index);
-  };
+    const newDirection = index > currentIndex ? 1 : -1;
+    handleSlideChange(index, newDirection);
+  }, [currentIndex, handleSlideChange, slides]);
 
   const slideVariants = {
     enter: (direction: number) => ({
@@ -83,6 +115,25 @@ const Hero = () => {
       opacity: 0
     })
   };
+
+  if (isLoading) {
+    return (
+      <div className="h-[80vh] flex items-center justify-center">
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-vjn-blue"></div>
+      </div>
+    );
+  }
+
+  if (slides.length === 0) {
+    return (
+      <div className="h-[80vh] flex items-center justify-center">
+        <div className="text-center">
+          <h2 className="text-2xl font-semibold mb-2">{t('slider.noSlides')}</h2>
+          <p className="text-gray-600">{t('slider.noSlidesMessage')}</p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <section className="relative h-[80vh] overflow-hidden">
@@ -114,45 +165,60 @@ const Hero = () => {
                 willChange: 'transform'
               }}
             >
-              <div className="absolute inset-0 bg-black/40">
-                <div className="container mx-auto px-4 h-full flex items-center">
-                  <div className="max-w-2xl text-white">
-                    <motion.h1 
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: 0.2 }}
-                      className="text-4xl md:text-6xl font-bold mb-4"
+              {/* Preload next image */}
+              <picture>
+                <source
+                  srcSet={slides[(currentIndex + 1) % slides.length].image_webp || slides[(currentIndex + 1) % slides.length].image}
+                  type="image/webp"
+                />
+                <img 
+                  src={slides[(currentIndex + 1) % slides.length].image}
+                  alt=""
+                  className="hidden"
+                  loading="eager"
+                  fetchPriority="high"
+                  decoding="async"
+                />
+              </picture>
+              
+              <div className="absolute inset-0 bg-black/40" />
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="max-w-2xl text-white">
+                  <motion.h1 
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.2 }}
+                    className="text-4xl md:text-6xl font-bold mb-4"
+                  >
+                    {slides[currentIndex].title}
+                  </motion.h1>
+                  <motion.p 
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.4 }}
+                    className="text-lg md:text-xl mb-8"
+                  >
+                    {slides[currentIndex].description}
+                  </motion.p>
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.6 }}
+                    className="flex gap-4"
+                  >
+                    <a 
+                      href="/programs" 
+                      className="bg-vjn-blue text-white px-6 py-3 rounded-md font-semibold hover:bg-vjn-light-blue transition-colors"
                     >
-                      {slides[currentIndex].title}
-                    </motion.h1>
-                    <motion.p 
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: 0.4 }}
-                      className="text-lg md:text-xl mb-8"
+                      {t('hero.explorePrograms')}
+                    </a>
+                    <a 
+                      href="/contact" 
+                      className="bg-transparent border-2 border-white text-white px-6 py-3 rounded-md font-semibold hover:bg-white/10 transition-colors"
                     >
-                      {slides[currentIndex].description}
-                    </motion.p>
-                    <motion.div
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: 0.6 }}
-                      className="flex gap-4"
-                    >
-                      <a 
-                        href="/programs" 
-                        className="bg-vjn-blue text-white px-6 py-3 rounded-md font-semibold hover:bg-vjn-light-blue transition-colors"
-                      >
-                        Explore Programs
-                      </a>
-                      <a 
-                        href="/contact" 
-                        className="bg-transparent border-2 border-white text-white px-6 py-3 rounded-md font-semibold hover:bg-white/10 transition-colors"
-                      >
-                        Get Involved
-                      </a>
-                    </motion.div>
-                  </div>
+                      {t('hero.getInvolved')}
+                    </a>
+                  </motion.div>
                 </div>
               </div>
             </div>
@@ -164,12 +230,14 @@ const Hero = () => {
       <button
         onClick={prevSlide}
         className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/20 hover:bg-white/30 text-white rounded-full p-2 transition-colors z-10"
+        aria-label="Previous slide"
       >
         <ChevronLeft className="h-6 w-6" />
       </button>
       <button
         onClick={nextSlide}
         className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/20 hover:bg-white/30 text-white rounded-full p-2 transition-colors z-10"
+        aria-label="Next slide"
       >
         <ChevronRight className="h-6 w-6" />
       </button>
@@ -183,6 +251,7 @@ const Hero = () => {
             className={`w-3 h-3 rounded-full transition-colors ${
               index === currentIndex ? 'bg-white' : 'bg-white/50 hover:bg-white/75'
             }`}
+            aria-label={`Go to slide ${index + 1}`}
           />
         ))}
       </div>

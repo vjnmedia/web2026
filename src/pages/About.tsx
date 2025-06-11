@@ -14,23 +14,24 @@ const About = () => {
   const { t } = useLanguage();
 
   return (
-    <div>
+    <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative bg-vjn-blue text-white py-16 md:py-24">
-        <div className="absolute inset-0 bg-gradient-to-br from-black/50 to-transparent z-10"></div>
-        <div 
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat" 
-          style={{ 
-            backgroundImage: `url('https://images.unsplash.com/photo-1517486808906-6ca8b3f8e1c1?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80')`,
-            filter: 'brightness(0.6)'
-          }}
-        ></div>
-        
-        <div className="container-custom relative z-20">
-          <h1 className="text-white">{t('about.title')}</h1>
-          <p className="text-lg md:text-xl text-gray-200 max-w-3xl">
-            {t('about.subtitle')}
-          </p>
+      <section className="relative bg-vjn-blue text-white py-20">
+        <div className="absolute inset-0 bg-black/30"></div>
+        <div className="container mx-auto px-4 relative z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="text-center"
+          >
+            <h1 className="text-4xl md:text-5xl font-bold mb-4">
+              {t('about.heroTitle', 'Our Story of Impact')}
+            </h1>
+            <p className="text-lg md:text-xl max-w-2xl mx-auto">
+              {t('about.heroSubtitle', 'Discover how Vision Jeunesse Nouvelle is transforming lives and building stronger communities')}
+            </p>
+          </motion.div>
         </div>
       </section>
 
@@ -194,31 +195,24 @@ const About = () => {
       >
         <div className="container-custom">
           <h2 className="text-center mb-12 text-gray-900">Our Founding Members</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {/* Member 1 */}
-            <div className="bg-vjn-gray p-6 rounded-lg shadow-md">
-              <h3 className="text-xl font-semibold mb-3 text-gray-900">Mr. Nzabonimpa Jean Bosco</h3>
-              <p className="text-gray-700 mb-4">Founder & Executive Director</p>
-              <p className="text-gray-700">
-                A visionary leader with over 20 years of experience in youth development and community empowerment.
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {/* Member 1: Brother Gabriel Lauzon */}
+            <div className="bg-vjn-gray p-6 rounded-lg shadow-md flex flex-col items-center">
+              <img src="/images/staff/gabriel.JPG" alt="Brother Gabriel Lauzon" className="w-32 h-32 rounded-full object-cover mb-4" />
+              <h3 className="text-xl font-semibold mb-3 text-gray-900">Brother Gabriel Lauzon</h3>
+              <p className="text-gray-700 mb-4 text-center">Co-Founder</p>
+              <p className="text-gray-700 text-center">
+                A dedicated member of the Brothers of Christian Instruction who played a pivotal role in establishing Vision Jeunesse Nouvelle in Kigali in 2002.
               </p>
             </div>
 
-            {/* Member 2 */}
-            <div className="bg-vjn-gray p-6 rounded-lg shadow-md">
-              <h3 className="text-xl font-semibold mb-3 text-gray-900">Mrs. Mukamana Marie Claire</h3>
-              <p className="text-gray-700 mb-4">Co-Founder & Program Director</p>
-              <p className="text-gray-700">
-                Dedicated to creating sustainable programs that empower young people and build stronger communities.
-              </p>
-            </div>
-
-            {/* Member 3 */}
-            <div className="bg-vjn-gray p-6 rounded-lg shadow-md">
-              <h3 className="text-xl font-semibold mb-3 text-gray-900">Mr. Nzabonimpa Jean Claude</h3>
-              <p className="text-gray-700 mb-4">Co-Founder & Technical Director</p>
-              <p className="text-gray-700">
-                Expert in vocational training and technical education, committed to developing practical skills in youth.
+            {/* Member 2: Father Epimaque Makuza */}
+            <div className="bg-vjn-gray p-6 rounded-lg shadow-md flex flex-col items-center">
+              <img src="/images/staff/epimaque.JPG" alt="Father Epimaque Makuza" className="w-32 h-32 rounded-full object-cover mb-4" />
+              <h3 className="text-xl font-semibold mb-3 text-gray-900">Father Epimaque Makuza</h3>
+              <p className="text-gray-700 mb-4 text-center">Co-Founder</p>
+              <p className="text-gray-700 text-center">
+                A visionary leader who co-founded VJN with Brother Gabriel Lauzon, laying the foundation for youth development and community empowerment in Rwanda.
               </p>
             </div>
           </div>

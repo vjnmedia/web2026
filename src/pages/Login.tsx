@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -6,7 +6,8 @@ import { Label } from '@/components/ui/label';
 import { useAuth } from '@/hooks/useAuth';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from '@/components/ui/dialog';
 import { Alert, AlertDescription } from '@/components/ui/alert';
-import { AlertCircle } from 'lucide-react';
+import { AlertCircle, Loader2 } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
 
 interface LoginProps {
   isOpen: boolean;
@@ -22,16 +23,29 @@ const Login = ({ isOpen, onClose }: LoginProps) => {
   const location = useLocation();
   const { login } = useAuth();
 
+  // Reset form when dialog opens/closes
+  useEffect(() => {
+    if (isOpen) {
+      setEmail('');
+      setPassword('');
+      setError(null);
+    }
+  }, [isOpen]);
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
     setError(null);
     
     try {
-      const data = await login(email, password);
-      // Close the dialog and navigate to dashboard
+      await login(email, password);
+      // Close the dialog immediately after successful login
       onClose();
-      navigate('/dashboard', { replace: true });
+      // Navigate after a short delay to ensure smooth transition
+      setTimeout(() => {
+        const from = location.state?.from || '/dashboard';
+        navigate(from, { replace: true });
+      }, 100);
     } catch (error: any) {
       // Handle specific error cases
       if (error.message.includes('Invalid login credentials')) {
@@ -63,58 +77,82 @@ const Login = ({ isOpen, onClose }: LoginProps) => {
     <Dialog open={isOpen} onOpenChange={handleClose}>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
-          <DialogTitle className="text-2xl font-bold text-center">Login</DialogTitle>
-          <DialogDescription>
+          <DialogTitle className="text-2xl font-bold text-center">Welcome Back</DialogTitle>
+          <DialogDescription className="text-center">
             Enter your credentials to access your account
           </DialogDescription>
         </DialogHeader>
-        <form onSubmit={handleSubmit} className="space-y-4">
-          {error && (
-            <Alert variant="destructive" className="mb-4">
-              <AlertCircle className="h-4 w-4" />
-              <AlertDescription>{error}</AlertDescription>
-            </Alert>
-          )}
-          <div>
-            <Label htmlFor="email">Email</Label>
-            <Input
-              id="email"
-              type="email"
-              value={email}
-              onChange={e => {
-                setEmail(e.target.value);
-                setError(null); // Clear error when user types
-              }}
-              required
-              placeholder="Enter your email"
-              className={error ? "border-red-500" : ""}
-              aria-describedby={error ? "login-error" : undefined}
-            />
-          </div>
-          <div>
-            <Label htmlFor="password">Password</Label>
-            <Input
-              id="password"
-              type="password"
-              value={password}
-              onChange={e => {
-                setPassword(e.target.value);
-                setError(null); // Clear error when user types
-              }}
-              required
-              placeholder="Enter your password"
-              className={error ? "border-red-500" : ""}
-              aria-describedby={error ? "login-error" : undefined}
-            />
-          </div>
-          <Button
-            type="submit"
-            className="w-full bg-vjn-blue hover:bg-vjn-light-blue"
-            disabled={isLoading}
+        <AnimatePresence mode="wait">
+          <motion.form
+            onSubmit={handleSubmit}
+            className="space-y-4"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.2 }}
           >
-            {isLoading ? 'Logging in...' : 'Login'}
-          </Button>
-        </form>
+            {error && (
+              <motion.div
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -10 }}
+              >
+                <Alert variant="destructive" className="mb-4">
+                  <AlertCircle className="h-4 w-4" />
+                  <AlertDescription>{error}</AlertDescription>
+                </Alert>
+              </motion.div>
+            )}
+            <div className="space-y-2">
+              <Label htmlFor="email">Email</Label>
+              <Input
+                id="email"
+                type="email"
+                value={email}
+                onChange={e => {
+                  setEmail(e.target.value);
+                  setError(null);
+                }}
+                required
+                placeholder="Enter your email"
+                className={error ? "border-red-500" : ""}
+                aria-describedby={error ? "login-error" : undefined}
+                disabled={isLoading}
+              />
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="password">Password</Label>
+              <Input
+                id="password"
+                type="password"
+                value={password}
+                onChange={e => {
+                  setPassword(e.target.value);
+                  setError(null);
+                }}
+                required
+                placeholder="Enter your password"
+                className={error ? "border-red-500" : ""}
+                aria-describedby={error ? "login-error" : undefined}
+                disabled={isLoading}
+              />
+            </div>
+            <Button
+              type="submit"
+              className="w-full bg-vjn-blue hover:bg-vjn-light-blue"
+              disabled={isLoading}
+            >
+              {isLoading ? (
+                <>
+                  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                  Logging in...
+                </>
+              ) : (
+                'Login'
+              )}
+            </Button>
+          </motion.form>
+        </AnimatePresence>
       </DialogContent>
     </Dialog>
   );

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Button } from '@/components/ui/button';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from '@/components/ui/dialog';
@@ -6,6 +6,9 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import { Edit, Trash2, PlusCircle } from 'lucide-react';
+import { ImageUpload } from '@/components/ImageUpload'; // Import ImageUpload component
+import { useStaff, StaffMember } from '@/contexts/StaffContext'; // Import useStaff and StaffMember
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 
 // Interface for Staff Member (should match database schema)
 interface StaffMember {
@@ -18,7 +21,22 @@ interface StaffMember {
   phone?: string; // Phone is not in this CSV, will be undefined
   email?: string;
   imageUrl?: string; // URL or path to the profile picture
+  isSeniorManagement?: boolean; // New field to distinguish senior management
 }
+
+// Define titles considered as senior management
+const seniorManagementTitles = [
+  'Executive director',
+  'Coordinator of Administration and Finance Services',
+  'Programs Coordinator',
+  'National coordinator/EU',
+  'Human Resource Officer',
+  'Dean of Studies',
+  'Accountant/MISEREOR',
+  'Project coordinator/Interpeace',
+  'Digital Transformation Officer/Y4Y',
+  'LA MENNAIS DIRECTOR'
+];
 
 // Data parsed from public/VJN staff.csv
 const csvData = `Display name,email,First name,Last name,Title,Department,Preferred data location
@@ -74,7 +92,7 @@ Uwankana,marie@visionjeunessenouvelle.org.rw,UWANKANA,Marie,Field officer/Econom
 Uwizeye,bienfait@visionjeunessenouvelle.org.rw,UWIZEYE,Bienfait,National coordinator/EU,VJN,
 Vanessa,v.nisingizwe@visionjeunessenouvelle.org.rw,NISINGIZWE RUGWIRO,Vanessa,Human Resources Officer and Logistician,Administration,
 Vedaste,v.niyitegeka@visionjeunessenouvelle.org.rw,NIYITEGEKA,Vedaste,Receptionist at VTC and FI,Education,
-Victoire,i.icyitegetse@visionjeunessenouvelle.org.rw,ICYITEGETSE,Victoire,Executive Assistant,Administration,
+Victoire,i.icyitegetse@visionjeunessenouvelle.org.rw,ICYITEGETSE,Victoire,Administrative Assistant,Administration,
 `;
 
 const parseCsv = (csvText: string): StaffMember[] => {
@@ -82,44 +100,198 @@ const parseCsv = (csvText: string): StaffMember[] => {
   const headers = lines[0].split(',');
   const data = lines.slice(1).map((line, index) => {
     const values = line.split(',');
+    const position = values[headers.indexOf('Title')] || '';
     const staff: StaffMember = {
       id: index + 1, // Generate simple ID
       displayName: values[headers.indexOf('Display name')] || '',
       firstName: values[headers.indexOf('First name')] || '',
       lastName: values[headers.indexOf('Last name')] || '',
-      position: values[headers.indexOf('Title')] || '',
+      position: position,
       department: values[headers.indexOf('Department')] || '',
       email: values[headers.indexOf('email')] || '',
+      isSeniorManagement: seniorManagementTitles.includes(position.trim()), // Check if position is in senior management titles
       // Phone is not in this CSV, so it will be undefined
       // imageUrl is a placeholder, will be undefined
     };
     return staff;
   }).filter(staff => staff.displayName || staff.firstName || staff.lastName); // Filter out empty rows
+  return data;
 };
 
 const staffData: StaffMember[] = parseCsv(csvData);
 
+interface AddEditStaffModalProps {
+  isOpen: boolean;
+  onClose: () => void;
+  formData: {
+    lastName: string;
+    firstName: string;
+    position: string;
+    department: string;
+    phone: string;
+    email: string;
+    imageUrl: string;
+  };
+  onInputChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onSave: () => void;
+  isEditing: boolean;
+  initialImageUrl?: string;
+  allDepartments: string[]; // Add prop for all departments
+}
+
+const AddEditStaffModal: React.FC<AddEditStaffModalProps> = ({
+  isOpen,
+  onClose,
+  formData,
+  onInputChange,
+  onSave,
+  isEditing,
+  initialImageUrl,
+  allDepartments // Destructure allDepartments
+}) => {
+  const { t } = useTranslation();
+
+  const handleImageUpload = (imageUrl: string) => {
+    onInputChange({ target: { name: 'imageUrl', value: imageUrl } } as React.ChangeEvent<HTMLInputElement>);
+  };
+
+  return (
+    <Dialog open={isOpen} onOpenChange={onClose}>
+      <DialogContent className="sm:max-w-[425px]">
+        <DialogHeader>
+          <DialogTitle>{isEditing ? t('dashboard.staff.editStaff', 'Edit Staff Member') : t('dashboard.staff.addStaff', 'Add New Staff Member')}</DialogTitle>
+        </DialogHeader>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 py-4">
+          <div className="col-span-1">
+            <Label htmlFor="firstName">{t('staff.firstName', 'First Name')}</Label>
+            <Input id="firstName" name="firstName" value={formData.firstName} onChange={onInputChange} />
+          </div>
+          <div className="col-span-1">
+            <Label htmlFor="lastName">{t('staff.lastName', 'Last Name')}</Label>
+            <Input id="lastName" name="lastName" value={formData.lastName} onChange={onInputChange} />
+          </div>
+          <div className="col-span-1">
+            <Label htmlFor="position">{t('staff.position', 'Position')}</Label>
+            <Input id="position" name="position" value={formData.position} onChange={onInputChange} />
+          </div>
+          <div className="col-span-1">
+            <Label htmlFor="department">{t('staff.department', 'Department')}</Label>
+            <Select onValueChange={(value) => onInputChange({ target: { name: 'department', value } } as React.ChangeEvent<HTMLInputElement>)} value={formData.department}>
+              <SelectTrigger>
+                <SelectValue placeholder="Select a department" />
+              </SelectTrigger>
+              <SelectContent>
+                {allDepartments.map(dept => (
+                  <SelectItem key={dept} value={dept}>{dept}</SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+          </div>
+          <div className="col-span-1">
+            <Label htmlFor="phone">{t('staff.phone', 'Phone')}</Label>
+            <Input id="phone" name="phone" value={formData.phone} onChange={onInputChange} />
+          </div>
+          <div className="col-span-1">
+            <Label htmlFor="email">{t('staff.email', 'Email')}</Label>
+            <Input id="email" name="email" value={formData.email} onChange={onInputChange} />
+          </div>
+          <div className="md:col-span-2">
+            <ImageUpload
+              onImageUpload={handleImageUpload}
+              initialImage={initialImageUrl}
+              bucketName="staff-photos" // Specify the bucket for staff photos
+              label={t('staff.image', 'Profile Image')}
+              description={t('staff.imageDescription', 'Upload a profile picture for the staff member.')}
+              aspectRatio={1/1} // Assuming square profile pictures
+              maxSize={2} // Max 2MB for profile pictures
+            />
+          </div>
+        </div>
+        <DialogFooter>
+          <Button onClick={onSave}>{isEditing ? t('saveChanges', 'Save changes') : t('addStaff', 'Add Staff')}</Button>
+        </DialogFooter>
+      </DialogContent>
+    </Dialog>
+  );
+};
+
 const StaffManagement = () => {
   const { t } = useTranslation();
-  const [staff, setStaff] = useState<StaffMember[]>(staffData); // Initialize with parsed data
+  const { staff, addStaff, updateStaff, deleteStaff, allDepartments, seniorManagementTitles } = useStaff(); // Use context
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editingStaff, setEditingStaff] = useState<StaffMember | null>(null);
   const [formData, setFormData] = useState({
     lastName: '',
     firstName: '',
     position: '',
-    department: '', // Added department to form data
+    department: '',
     phone: '',
     email: '',
     imageUrl: '',
   });
+  const [sortConfig, setSortConfig] = useState<{ key: keyof StaffMember; direction: 'ascending' | 'descending' | null }>({ key: 'isSeniorManagement', direction: 'descending' }); // Default sort by senior management descending
 
-  // --- Database/API Interaction (Placeholders) ---
-  useEffect(() => {
-    // TODO: Fetch staff data from your backend API on component mount
-    // This useEffect might be adjusted later when integrating with a backend
-    // Example: fetch('/api/staff').then(res => res.json()).then(data => setStaff(data));
-  }, []);
+  const sortedStaff = useMemo(() => {
+    let sortableStaff = [...staff];
+    if (sortConfig.key !== null) {
+      sortableStaff.sort((a, b) => {
+        if (sortConfig.key === 'isSeniorManagement') {
+          // Senior management always comes first
+          if (a.isSeniorManagement && !b.isSeniorManagement) return -1;
+          if (!a.isSeniorManagement && b.isSeniorManagement) return 1;
+        }
+
+        // Secondary sort by department
+        if (sortConfig.key === 'department' && a.department && b.department) {
+          const departmentA = a.department.toLowerCase();
+          const departmentB = b.department.toLowerCase();
+          if (departmentA < departmentB) return sortConfig.direction === 'ascending' ? -1 : 1;
+          if (departmentA > departmentB) return sortConfig.direction === 'ascending' ? 1 : -1;
+        }
+
+        // Tertiary sort by position (alphabetical)
+        if (sortConfig.key === 'position' && a.position && b.position) {
+          const positionA = a.position.toLowerCase();
+          const positionB = b.position.toLowerCase();
+          if (positionA < positionB) return sortConfig.direction === 'ascending' ? -1 : 1;
+          if (positionA > positionB) return sortConfig.direction === 'ascending' ? 1 : -1;
+        }
+
+        // Default alphabetical sort for other keys or if primary/secondary are equal
+        const aValue = a[sortConfig.key];
+        const bValue = b[sortConfig.key];
+
+        if (typeof aValue === 'string' && typeof bValue === 'string') {
+          if (aValue < bValue) {
+            return sortConfig.direction === 'ascending' ? -1 : 1;
+          }
+          if (aValue > bValue) {
+            return sortConfig.direction === 'ascending' ? 1 : -1;
+          }
+        }
+        return 0;
+      });
+    }
+    return sortableStaff;
+  }, [staff, sortConfig]);
+
+  const requestSort = (key: keyof StaffMember) => {
+    let direction: 'ascending' | 'descending' | null = 'ascending';
+    if (sortConfig.key === key && sortConfig.direction === 'ascending') {
+      direction = 'descending';
+    } else if (sortConfig.key === key && sortConfig.direction === 'descending') {
+        direction = null; // Cycle to no sort if already descending
+    }
+    setSortConfig({ key, direction });
+  };
+
+  const getSortIndicator = (key: keyof StaffMember) => {
+    if (sortConfig.key === key) {
+      if (sortConfig.direction === 'ascending') return ' ▲';
+      if (sortConfig.direction === 'descending') return ' ▼';
+    }
+    return '';
+  };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -128,45 +300,38 @@ const StaffManagement = () => {
 
   const handleAddStaff = () => {
     setEditingStaff(null);
-    setFormData({ lastName: '', firstName: '', position: '', department: '', phone: '', email: '', imageUrl: '' }); // Reset form with department
+    setFormData({ lastName: '', firstName: '', position: '', department: '', phone: '', email: '', imageUrl: '' });
     setIsModalOpen(true);
   };
 
-  const handleEditStaff = (staff: StaffMember) => {
-    setEditingStaff(staff);
+  const handleEditStaff = (staffMember: StaffMember) => {
+    setEditingStaff(staffMember);
     setFormData({
-      lastName: staff.lastName,
-      firstName: staff.firstName,
-      position: staff.position,
-      department: staff.department || '', // Populate department in form
-      phone: staff.phone || '',
-      email: staff.email || '',
-      imageUrl: staff.imageUrl || '',
+      lastName: staffMember.lastName,
+      firstName: staffMember.firstName,
+      position: staffMember.position,
+      department: staffMember.department || '',
+      phone: staffMember.phone || '',
+      email: staffMember.email || '',
+      imageUrl: staffMember.imageUrl || '',
     });
     setIsModalOpen(true);
   };
 
-  const handleDeleteStaff = (id: number) => {
-    // TODO: Implement delete logic via API
-    console.log('Deleting staff with id:', id);
-    setStaff(staff.filter(s => s.id !== id)); // Optimistic update
+  const handleDeleteStaff = async (id: number) => {
+    if (confirm('Are you sure you want to delete this staff member?')) {
+      await deleteStaff(id);
+    }
   };
 
-  const handleSaveStaff = () => {
+  const handleSaveStaff = async () => {
     if (editingStaff) {
-      // TODO: Implement update logic via API
-      console.log('Updating staff:', { ...editingStaff, ...formData });
-      setStaff(staff.map(s => s.id === editingStaff.id ? { ...s, ...formData, id: s.id } : s)); // Optimistic update
+      await updateStaff(editingStaff.id, formData);
     } else {
-      // TODO: Implement create logic via API
-      console.log('Adding new staff:', formData);
-      // Assuming backend returns new staff with ID
-      const newStaff = { ...formData, id: staff.length + 1 }; // Mock ID assignment
-      setStaff([...staff, newStaff]); // Optimistic update
+      await addStaff(formData);
     }
     setIsModalOpen(false);
   };
-  // -----------------------------------------
 
   return (
     <div className="container mx-auto px-4 py-8">
@@ -181,12 +346,12 @@ const StaffManagement = () => {
         <Table>
           <TableHeader>
             <TableRow>
-              <TableHead>#</TableHead>
-              <TableHead>{t('staff.displayName', 'Display Name')}</TableHead> {/* Display Name Column */}
-              <TableHead>{t('staff.firstName', 'First Name')}</TableHead>
-              <TableHead>{t('staff.lastName', 'Last Name')}</TableHead>
-              <TableHead>{t('staff.position', 'Position')}</TableHead>
-              <TableHead>{t('staff.department', 'Department')}</TableHead> {/* Department Column */}
+              <TableHead onClick={() => requestSort('id')} className="cursor-pointer"># {getSortIndicator('id')}</TableHead>
+              <TableHead onClick={() => requestSort('displayName')} className="cursor-pointer">{t('staff.displayName', 'Display Name')} {getSortIndicator('displayName')}</TableHead>
+              <TableHead onClick={() => requestSort('firstName')} className="cursor-pointer">{t('staff.firstName', 'First Name')} {getSortIndicator('firstName')}</TableHead>
+              <TableHead onClick={() => requestSort('lastName')} className="cursor-pointer">{t('staff.lastName', 'Last Name')} {getSortIndicator('lastName')}</TableHead>
+              <TableHead onClick={() => requestSort('position')} className="cursor-pointer">{t('staff.position', 'Position')} {getSortIndicator('position')}</TableHead>
+              <TableHead onClick={() => requestSort('department')} className="cursor-pointer">{t('staff.department', 'Department')} {getSortIndicator('department')}</TableHead>
               <TableHead>{t('staff.phone', 'Phone')}</TableHead>
               <TableHead>{t('staff.email', 'Email')}</TableHead>
               <TableHead>{t('staff.image', 'Image URL')}</TableHead>
@@ -194,14 +359,14 @@ const StaffManagement = () => {
             </TableRow>
           </TableHeader>
           <TableBody>
-            {staff.map((member) => (
-              <TableRow key={member.id}>
+            {sortedStaff.map((member) => (
+              <TableRow key={member.id} className={member.isSeniorManagement ? 'bg-blue-50/20 hover:bg-blue-100/30' : ''}>
                 <TableCell>{member.id}</TableCell>
-                <TableCell>{member.displayName}</TableCell> {/* Display Name Data */}
+                <TableCell>{member.displayName}</TableCell>
                 <TableCell>{member.firstName}</TableCell>
                 <TableCell>{member.lastName}</TableCell>
                 <TableCell>{member.position}</TableCell>
-                <TableCell>{member.department}</TableCell> {/* Department Data */}
+                <TableCell>{member.department}</TableCell>
                 <TableCell>{member.phone}</TableCell>
                 <TableCell>{member.email}</TableCell>
                 <TableCell>{member.imageUrl}</TableCell>
@@ -219,115 +384,16 @@ const StaffManagement = () => {
         </Table>
       </div>
 
-      {/* Add/Edit Staff Modal */}
-      <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
-        <DialogContent className="sm:max-w-[425px]">
-          <DialogHeader>
-            <DialogTitle>{editingStaff ? t('dashboard.staff.edit', 'Edit Staff') : t('dashboard.staff.add', 'Add New Staff')}</DialogTitle>
-          </DialogHeader>
-          <div className="grid gap-4 py-4">
-            <div className="grid grid-cols-4 items-center gap-4">
-              <Label htmlFor="displayName" className="text-right">
-                 {t('staff.displayName', 'Display Name')}
-              </Label>
-              <Input
-                id="displayName"
-                name="displayName"
-                value={formData.displayName}
-                onChange={handleInputChange}
-                className="col-span-3"
-              />
-            </div>
-            <div className="grid grid-cols-4 items-center gap-4">
-              <Label htmlFor="firstName" className="text-right">
-                {t('staff.firstName', 'First Name')}
-              </Label>
-              <Input
-                id="firstName"
-                name="firstName"
-                value={formData.firstName}
-                onChange={handleInputChange}
-                className="col-span-3"
-              />
-            </div>
-            <div className="grid grid-cols-4 items-center gap-4">
-              <Label htmlFor="lastName" className="text-right">
-                {t('staff.lastName', 'Last Name')}
-              </Label>
-              <Input
-                id="lastName"
-                name="lastName"
-                value={formData.lastName}
-                onChange={handleInputChange}
-                className="col-span-3"
-              />
-            </div>
-            <div className="grid grid-cols-4 items-center gap-4">
-              <Label htmlFor="position" className="text-right">
-                {t('staff.position', 'Position')}
-              </Label>
-              <Input
-                id="position"
-                name="position"
-                value={formData.position}
-                onChange={handleInputChange}
-                className="col-span-3"
-              />
-            </div>
-            <div className="grid grid-cols-4 items-center gap-4">
-              <Label htmlFor="department" className="text-right">
-                {t('staff.department', 'Department')}
-              </Label>
-              <Input
-                id="department"
-                name="department"
-                value={formData.department}
-                onChange={handleInputChange}
-                className="col-span-3"
-              />
-            </div>
-            <div className="grid grid-cols-4 items-center gap-4">
-              <Label htmlFor="phone" className="text-right">
-                {t('staff.phone', 'Phone')}
-              </Label>
-              <Input
-                id="phone"
-                name="phone"
-                value={formData.phone}
-                onChange={handleInputChange}
-                className="col-span-3"
-              />
-            </div>
-            <div className="grid grid-cols-4 items-center gap-4">
-              <Label htmlFor="email" className="text-right">
-                {t('staff.email', 'Email')}
-              </Label>
-              <Input
-                id="email"
-                name="email"
-                value={formData.email}
-                onChange={handleInputChange}
-                className="col-span-3"
-              />
-            </div>
-            <div className="grid grid-cols-4 items-center gap-4">
-              <Label htmlFor="imageUrl" className="text-right">
-                {t('staff.image', 'Image URL')}
-              </Label>
-              <Input
-                id="imageUrl"
-                name="imageUrl"
-                value={formData.imageUrl}
-                onChange={handleInputChange}
-                className="col-span-3"
-              />
-            </div>
-          </div>
-          <DialogFooter>
-            <Button onClick={handleSaveStaff}>{editingStaff ? t('save', 'Save changes') : t('add', 'Add')}</Button>
-          </DialogFooter>
-        </DialogContent>
-      </Dialog>
+      <AddEditStaffModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        formData={formData}
+        onInputChange={handleInputChange}
+        onSave={handleSaveStaff}
+        isEditing={editingStaff !== null}
+        initialImageUrl={editingStaff?.imageUrl}
+        allDepartments={allDepartments} // Pass allDepartments to the modal
+      />
     </div>
   );
 };

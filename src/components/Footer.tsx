@@ -2,6 +2,7 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import { FaFacebook, FaTwitter, FaInstagram, FaLinkedin } from 'react-icons/fa';
+import NewsletterSubscription from './NewsletterSubscription';
 
 const Footer: React.FC = () => {
   const { t } = useTranslation();
@@ -85,22 +86,10 @@ const Footer: React.FC = () => {
           </div>
 
           {/* Newsletter Section */}
-          <div>
-            <h3 className="text-xl font-semibold mb-4">{t('newsletter.title')}</h3>
-            <p className="text-gray-300 mb-4">{t('newsletter.description')}</p>
-            <form className="flex flex-col space-y-2">
-              <input
-                type="email"
-                placeholder={t('newsletter.emailPlaceholder')}
-                className="px-4 py-2 rounded bg-gray-800 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
-              />
-              <button
-                type="submit"
-                className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition-colors"
-              >
-                {t('newsletter.subscribe')}
-              </button>
-            </form>
+          <div className="col-span-1 lg:col-span-2">
+            <h3 className="text-xl font-semibold mb-4">{t('newsletter.title', 'Stay Updated')}</h3>
+            <p className="mb-4">{t('newsletter.description', 'Subscribe to our newsletter for updates and news.')}</p>
+            <NewsletterSubscription />
           </div>
         </div>
 

@@ -3,65 +3,108 @@
     "loading": "Loading...",
     "cancel": "Cancel",
     "save": "Save",
-    "adminSettings": {
-      "title": "Admin Settings",
-      "pages": "Pages",
-      "pageManagement": "Page Management",
-      "emailTemplates": "Email Templates",
-      "notificationsHelp": "Configure notification settings for your organization",
-      "userRoles": "User Roles",
-      "notificationPreferences": "Notification Preferences",
-      "backupDescription": "Create and manage backups of your system data",
-      "general": "General",
-      "users": "Users",
-      "security": "Security",
-      "email": "Email",
-      "system": "System",
-      "notifications": "Notifications",
-      "backup": "Backup",
-      "siteSettings": "Site Settings",
-      "siteName": "Site Name",
-      "siteDescription": "Site Description",
-      "defaultLanguage": "Default Language",
-      "theme": "Theme",
-      "maintenance": "Maintenance Mode",
-      "maintenanceHelp": "Enable maintenance mode to restrict access to the site",
-      "securityLevel": "Security Level",
-      "cache": "Cache",
-      "cacheHelp": "Enable caching to improve performance",
-      "backupFrequency": "Backup Frequency",
-      "backupNow": "Backup Now",
-      "backupHistory": "Backup History",
-      "backupDate": "Date",
-      "backupSize": "Size",
-      "backupType": "Type",
-      "backupStatus": "Status",
-      "restoreBackup": "Restore Backup",
-      "restoreBackupDescription": "Are you sure you want to restore this backup? This will overwrite current data.",
-      "addUser": "Add User",
-      "editUser": "Edit User",
-      "userName": "Name",
-      "userEmail": "Email",
-      "userRole": "Role",
-      "actions": "Actions",
-      "saveChanges": "Save Changes",
-      "resetSettings": "Reset Settings",
-      "confirmReset": "Are you sure you want to reset all settings?",
-      "settingsSaved": "Settings saved successfully",
-      "settingsReset": "Settings reset successfully",
-      "themeChanged": "Theme changed successfully",
-      "userAdded": "User added successfully",
-      "userUpdated": "User updated successfully",
-      "userDeleted": "User deleted successfully",
-      "backupCreated": "Backup created successfully",
-      "backupRestored": "Backup restored successfully",
-      "fetchUsersError": "Error fetching users",
-      "addUserError": "Error adding user",
-      "updateUserError": "Error updating user",
-      "deleteUserError": "Error deleting user",
-      "backupError": "Error creating backup",
-      "restoreError": "Error restoring backup",
-      "confirmDeleteUser": "Are you sure you want to delete this user?"
+    "profile": "Profile",
+    "projects": "Projects",
+    "youth": "Youth Talents",
+    "teams": "Teams",
+    "blog": "Blog",
+    "social": "Social Media",
+    "events": "Events",
+    "locations": "Locations",
+    "adminSettings": "Admin Settings",
+    "adminSettingsDescription": "Manage your website content and settings",
+    "users": "Users",
+    "usersDescription": "Manage user accounts and permissions",
+    "pages": "Pages",
+    "pagesDescription": "Create and edit website pages",
+    "slider": "Slider",
+    "sliderDescription": "Manage homepage slider content and images",
+    "media": "Media",
+    "mediaDescription": "Manage media files and images",
+    "settings": "Settings",
+    "settingsDescription": "Configure website settings",
+    "comingSoon": "Coming soon...",
+    "userManagement": "User Management",
+    "userManagementDescription": "Manage user accounts, roles, and permissions",
+    "pageManagement": "Page Management",
+    "pageManagementDescription": "Create and manage website pages and content",
+    "sliderManagement": "Slider Management",
+    "sliderManagementDescription": "Manage homepage slider content and images",
+    "mediaManagement": "Media Management",
+    "mediaManagementDescription": "Manage images, videos, and other media files",
+    "systemSettings": "System Settings",
+    "systemSettingsDescription": "Configure system-wide settings and preferences",
+    "settingsComingSoon": "System settings will be available soon",
+    "actions": {
+      "create": "Create",
+      "edit": "Edit",
+      "delete": "Delete",
+      "save": "Save",
+      "cancel": "Cancel",
+      "upload": "Upload",
+      "download": "Download",
+      "preview": "Preview"
+    },
+    "create": "Create",
+    "edit": "Edit",
+    "delete": "Delete",
+    "update": "Update",
+    "unauthorized": "Unauthorized Access",
+    "unauthorized.message": "You don't have permission to access this area",
+    "notificationsHelp": "Configure notification settings for your organization",
+    "emailTemplates": "Email Templates",
+    "notificationPreferences": "Notification Preferences",
+    "backupDescription": "Create and manage backups of your system data",
+    "general": "General",
+    "security": "Security",
+    "email": "Email",
+    "system": "System",
+    "notifications": "Notifications",
+    "backup": "Backup",
+    "siteSettings": "Site Settings",
+    "siteName": "Site Name",
+    "siteDescription": "Site Description",
+    "defaultLanguage": "Default Language",
+    "theme": "Theme",
+    "maintenance": "Maintenance Mode",
+    "maintenanceHelp": "Enable maintenance mode to restrict access to the site",
+    "securityLevel": "Security Level",
+    "cache": "Cache",
+    "cacheHelp": "Enable caching to improve performance",
+    "backupFrequency": "Backup Frequency",
+    "backupNow": "Backup Now",
+    "backupHistory": "Backup History",
+    "backupDate": "Date",
+    "backupSize": "Size",
+    "backupType": "Type",
+    "backupStatus": "Status",
+    "restoreBackup": "Restore Backup",
+    "restoreBackupDescription": "Are you sure you want to restore this backup? This will overwrite current data.",
+    "addUser": "Add User",
+    "editUser": "Edit User",
+    "userName": "Name",
+    "userEmail": "Email",
+    "userRole": "Role",
+    "saveChanges": "Save Changes",
+    "resetSettings": "Reset Settings",
+    "confirmReset": "Are you sure you want to reset all settings?",
+    "settingsSaved": "Settings saved successfully",
+    "settingsReset": "Settings reset successfully",
+    "themeChanged": "Theme changed successfully",
+    "userAdded": "User added successfully",
+    "userUpdated": "User updated successfully",
+    "userDeleted": "User deleted successfully",
+    "backupCreated": "Backup created successfully",
+    "backupRestored": "Backup restored successfully",
+    "fetchUsersError": "Error fetching users",
+    "addUserError": "Error adding user",
+    "updateUserError": "Error updating user",
+    "deleteUserError": "Error deleting user",
+    "backupError": "Error creating backup",
+    "restoreError": "Error restoring backup",
+    "confirmDeleteUser": "Are you sure you want to delete this user?",
+    "staff": {
+      "title": "Staff Management"
     }
   },
   "pages": {
@@ -96,12 +139,32 @@
     }
   },
   "errors": {
-    "unauthorized": "You are not authorized to access this page. Please log in with an admin or editor account.",
+    "unauthorized": "Unauthorized Access",
+    "unauthorized.message": "You don't have permission to access this area",
     "pages": {
       "load": "Error loading pages",
       "create": "Error creating page",
       "update": "Error updating page",
       "delete": "Error deleting page"
+    },
+    "slider": {
+      "load": "Failed to load slides",
+      "create": "Failed to create slide",
+      "update": "Failed to update slide",
+      "delete": "Failed to delete slide",
+      "reorder": "Failed to reorder slides"
+    },
+    "users": {
+      "load": "Failed to load users",
+      "create": "Failed to create user",
+      "update": "Failed to update user",
+      "delete": "Failed to delete user"
+    },
+    "media": {
+      "load": "Failed to load media files",
+      "upload": "Failed to upload media file",
+      "delete": "Failed to delete media file",
+      "download": "Failed to download media file"
     }
   },
   "success": {
@@ -109,11 +172,35 @@
       "create": "Page created successfully",
       "update": "Page updated successfully",
       "delete": "Page deleted successfully"
+    },
+    "slider": {
+      "create": "Slide created successfully",
+      "update": "Slide updated successfully",
+      "delete": "Slide deleted successfully",
+      "reorder": "Slides reordered successfully"
+    },
+    "users": {
+      "create": "User created successfully",
+      "update": "User updated successfully",
+      "delete": "User deleted successfully"
+    },
+    "media": {
+      "upload": "Media file uploaded successfully",
+      "delete": "Media file deleted successfully"
     }
   },
   "confirm": {
     "pages": {
       "delete": "Are you sure you want to delete this page?"
+    },
+    "slider": {
+      "delete": "Are you sure you want to delete this slide?"
+    },
+    "users": {
+      "delete": "Are you sure you want to delete this user?"
+    },
+    "media": {
+      "delete": "Are you sure you want to delete this media file? This action cannot be undone."
     }
   },
   "careers": {
@@ -122,27 +209,590 @@
     "opportunities": {
       "title": "Current Opportunities",
       "apply": "Apply Now",
-      "deadline": "Application Deadline"
+      "viewAll": "View All Openings"
     },
-    "whyJoin": {
-      "title": "Why Join VJN?",
-      "impact": {
-        "title": "Make an Impact",
-        "description": "Help transform the lives of young people in Rwanda through meaningful work."
+    "applyForm": {
+      "title": "Apply for a Position",
+      "name": "Your Name",
+      "email": "Your Email",
+      "phone": "Phone Number",
+      "resume": "Resume/CV",
+      "coverLetter": "Cover Letter",
+      "submit": "Submit Application"
+    },
+    "success": "Application submitted successfully!",
+    "error": "Failed to submit application. Please try again."
+  },
+  "profile": {
+    "title": "User Profile",
+    "description": "Manage your profile and preferences",
+    "tabs": {
+      "profile": "Profile",
+      "preferences": "Preferences"
+    },
+    "name": "Name",
+    "email": "Email",
+    "role": "Role",
+    "preferences": {
+      "theme": "Theme",
+      "themeDescription": "Choose your preferred theme",
+      "selectTheme": "Select theme",
+      "light": "Light",
+      "dark": "Dark",
+      "system": "System",
+      "language": "Language",
+      "languageDescription": "Choose your preferred language",
+      "selectLanguage": "Select language",
+      "notifications": "Notifications",
+      "notificationsDescription": "Enable or disable notifications"
+    },
+    "fetchError": "Error fetching profile data",
+    "userNotFound": "User profile not found",
+    "noUserId": "No user ID available",
+    "updateSuccess": "Profile updated successfully",
+    "updateError": "Error updating profile",
+    "preferencesUpdateSuccess": "Preferences updated successfully",
+    "preferencesUpdateError": "Error updating preferences",
+    "avatarUpdateSuccess": "Profile picture updated successfully",
+    "avatarUpdateError": "Error updating profile picture"
+  },
+  "home": {
+    "hero": {
+      "title": "Welcome to Jeune Avenir Connect",
+      "subtitle": "Connect, Inspire, Transform",
+      "description": "We are dedicated to empowering youth and fostering community development through education, entrepreneurship, and leadership.",
+      "cta": "Discover Our Programs",
+      "learnMore": "Learn More"
+    },
+    "programs": {
+      "title": "Our Programs",
+      "subtitle": "Explore our initiatives to empower youth",
+      "education": {
+        "title": "Education",
+        "description": "Educational programs to develop skills and knowledge"
       },
-      "growth": {
-        "title": "Professional Growth",
-        "description": "Access training, mentorship, and opportunities to develop your skills."
+      "economic": {
+        "title": "Economic Development",
+        "description": "Initiatives to promote entrepreneurship and job creation"
       },
-      "culture": {
-        "title": "Great Culture",
-        "description": "Join a diverse team of passionate individuals working towards a common goal."
+      "health": {
+        "title": "Health",
+        "description": "Health and well-being programs for youth"
+      },
+      "peace": {
+        "title": "Peace and Reconciliation",
+        "description": "Initiatives to promote peace and social cohesion"
+      },
+      "sportCultureArts": {
+        "title": "Sports, Culture & Arts Program",
+        "description": "Nurturing talents and preserving cultural heritage through sports and arts."
+      },
+      "education": {
+        "details": {
+          "history": "The Education & Vocational Training program was established by Vision Jeunesse Nouvelle in 2005. It began as a response to the critical need for accessible education and skill development among Rwandan youth, especially those affected by the 1994 Genocide against the Tutsi.",
+          "initialFocus": "Initially, the program focused on providing basic literacy and numeracy skills to out-of-school youth and adults. Over time, it expanded to include vocational training in various trades such as tailoring, carpentry, and hairdressing, responding to market demands.",
+          "partnerships": "VJN has partnered with several organizations, including UNICEF, USAID, and the Rwandan Ministry of Education, to enhance the quality and reach of its educational initiatives. These partnerships have enabled the program to provide scholarships, educational materials, and modern training facilities.",
+          "impact": "The program has successfully empowered thousands of youth, enabling them to secure employment, start their own businesses, and contribute to the economic development of their communities. It has also fostered a culture of continuous learning and innovation among participants."
+        },
+        "objectives": {
+          "main": "To provide quality education and vocational training that equips youth with essential skills for employment and entrepreneurship.",
+          "specific1": "Enhance literacy and numeracy skills among out-of-school youth and adults.",
+          "specific2": "Provide market-driven vocational training to improve employability and self-employment opportunities.",
+          "specific3": "Foster critical thinking, creativity, and problem-solving skills through innovative learning methods.",
+          "specific4": "Promote gender equality and inclusivity in education, ensuring equal opportunities for all."
+        },
+        "criteria": {
+          "vocational": {
+            "title": "Vocational Training Center",
+            "age": "Age: 16 years or above",
+            "education": "Completed Primary School (P6) or above",
+            "literacy": "Basic literacy skills",
+            "priority": "Vulnerable youth prioritized",
+            "gender": "Open to both genders"
+          },
+          "instructor": {
+            "title": "Literacy Instructors",
+            "residency": "Residency in the literacy zone",
+            "age": "Age: 21-50 years",
+            "education": "A' Level minimum",
+            "writing": "Proficiency in writing",
+            "volunteer": "Willingness to volunteer",
+            "languages": "Basic English and French skills"
+          },
+          "choir": {
+            "title": "Intama za Yezu Choir",
+            "age": "Youth age range",
+            "passion": "Passion for music",
+            "commitment": "Commitment to regular rehearsals",
+            "skills": "Basic vocal skills",
+            "faith": "Catholic faith",
+            "parish": "Parish affiliation"
+          }
+        },
+        "impact": {
+          "students": "Students Trained",
+          "courses": "Courses Offered"
+        }
       }
     },
-    "cta": {
-      "title": "Ready to Make a Difference?",
-      "description": "Join our team and help us create opportunities for young people in Rwanda.",
-      "contact": "Contact Us"
+    "impact": {
+      "title": "Our Impact",
+      "subtitle": "Changing lives, transforming communities",
+      "stats": {
+        "youth": "Youth Empowered",
+        "communities": "Communities Served",
+        "programs": "Active Programs",
+        "partners": "Partners"
+      }
+    },
+    "testimonials": {
+      "title": "Testimonials",
+      "subtitle": "What our beneficiaries say",
+      "readMore": "Read more testimonials"
     }
+  },
+  "about": {
+    "title": "About Us",
+    "mission": {
+      "title": "Our Mission",
+      "description": "To empower and uplift the youth by providing them with the necessary tools and opportunities to build a better future for themselves and their communities."
+    },
+    "vision": {
+      "title": "Our Vision",
+      "description": "A future where every young person has the opportunity to thrive, contribute to their community, and lead a fulfilling life."
+    },
+    "values": {
+      "title": "Our Values",
+      "description": "Integrity, Compassion, Empowerment, Collaboration, and Sustainability."
+    },
+    "team": {
+      "title": "Our Team",
+      "description": "Meet the dedicated individuals driving our mission."
+    }
+  },
+  "contact": {
+    "title": "Contact Us",
+    "description": "Have questions or want to get involved? Reach out to us!",
+    "form": {
+      "name": "Your Name",
+      "email": "Your Email",
+      "message": "Your Message",
+      "submit": "Send Message"
+    },
+    "success": "Message sent successfully!",
+    "error": "Failed to send message. Please try again."
+  },
+  "news": {
+    "title": "Latest News",
+    "viewAll": "View All News",
+    "description": "Stay updated with our latest news, events, and announcements.",
+    "followX": "Follow us on X"
+  },
+  "resources": {
+    "title": "Resources",
+    "description": "Explore our resources for youth empowerment and community development."
+  },
+  "services": {
+    "title": "Our Services",
+    "description": "Comprehensive services designed to empower youth and foster community development."
+  },
+  "media": {
+    "title": "Media Gallery",
+    "search": "Search media files...",
+    "upload": "Upload Media",
+    "noFiles": "No media files found",
+    "fileInfo": {
+      "name": "File Name",
+      "type": "File Type",
+      "size": "File Size",
+      "uploaded": "Uploaded On"
+    },
+    "messages": {
+      "uploadSuccess": "Media file uploaded successfully",
+      "deleteSuccess": "Media file deleted successfully",
+      "uploadError": "Failed to upload media file",
+      "deleteError": "Failed to delete media file",
+      "loadError": "Failed to load media files",
+      "downloadError": "Failed to download media file"
+    },
+    "confirmDelete": "Are you sure you want to delete this media file? This action cannot be undone."
+  },
+  "blog": {
+    "title": "Blog",
+    "recentPosts": "Recent Posts",
+    "readMore": "Read More",
+    "noPosts": "No blog posts available.",
+    "tags": "Tags",
+    "author": "Author",
+    "date": "Date",
+    "category": "Category",
+    "editor": {
+      "title": "Blog Editor",
+      "newPost": "New Blog Post",
+      "editPost": "Edit Blog Post",
+      "titleField": "Title",
+      "slugField": "Slug",
+      "categoryField": "Category",
+      "tagsField": "Tags (comma-separated)",
+      "statusField": "Status",
+      "featuredImageField": "Featured Image",
+      "contentField": "Content",
+      "excerptField": "Excerpt",
+      "publish": "Publish",
+      "saveDraft": "Save Draft",
+      "updatePost": "Update Post",
+      "deletePost": "Delete Post",
+      "confirmDelete": "Are you sure you want to delete this post?",
+      "successCreate": "Blog post created successfully!",
+      "successUpdate": "Blog post updated successfully!",
+      "successDelete": "Blog post deleted successfully!",
+      "errorCreate": "Failed to create blog post.",
+      "errorUpdate": "Failed to update blog post.",
+      "errorDelete": "Failed to delete blog post.",
+      "errorLoad": "Failed to load blog post.",
+      "errorUploadImage": "Failed to upload image.",
+      "imageOptimization": "Image will be optimized automatically.",
+      "selectCategory": "Select a category",
+      "enterTitle": "Enter post title",
+      "enterSlug": "Enter post slug",
+      "enterExcerpt": "Enter a brief excerpt",
+      "writeContent": "Start writing your content here..."
+    },
+    "status": {
+      "draft": "Draft",
+      "published": "Published",
+      "archived": "Archived"
+    },
+    "featured": "Featured",
+    "featuredPost": "Featured Post"
+  },
+  "sitemap": {
+    "title": "Sitemap",
+    "description": "A comprehensive list of all pages on our website."
+  },
+  "privacy": {
+    "title": "Privacy Policy",
+    "description": "Our commitment to protecting your privacy."
+  },
+  "terms": {
+    "title": "Terms & Conditions",
+    "description": "Legal terms governing the use of our services."
+  },
+  "donate": {
+    "title": "Make a Donation",
+    "description": "Your support helps us continue our mission of empowering youth and building stronger communities.",
+    "modal": {
+      "title": "Make a Donation",
+      "description": "Your support helps us continue our mission of empowering youth and building stronger communities.",
+      "amount": "Donation Amount",
+      "close": "Close",
+      "submit": "Donate Now"
+    },
+    "success": "Thank you for your donation!",
+    "error": "Failed to process donation. Please try again."
+  },
+  "impact": {
+    "title": "Our Impact",
+    "description": "See how your contributions are making a difference."
+  },
+  "volunteer": {
+    "title": "Volunteer with Us",
+    "description": "Join our team and make a difference in your community.",
+    "applyForm": {
+      "title": "Apply to Volunteer",
+      "name": "Your Name",
+      "email": "Your Email",
+      "phone": "Phone Number",
+      "interest": "Area of Interest",
+      "message": "Your Message",
+      "submit": "Submit Application"
+    },
+    "success": "Volunteer application submitted successfully!",
+    "error": "Failed to submit application. Please try again."
+  },
+  "hero": {
+    "explorePrograms": "Explore Our Programs",
+    "getInvolved": "Get Involved"
+  },
+  "programs": {
+    "whatWeOffer": "What We Offer",
+    "impactStories": "Impact Stories",
+    "impactStoriesText": "Discover the real-world impact of our programs through inspiring stories of change and empowerment.",
+    "getInvolved": "Get Involved",
+    "getInvolvedText": "Join our mission to empower youth and build a brighter future. Your support can make a profound difference.",
+    "volunteer": "Volunteer",
+    "donate": "Donate",
+    "contactUs": "Contact Us",
+    "relatedPrograms": "Related Programs",
+    "relatedProgramsText": "Explore other initiatives that align with our mission and amplify our impact.",
+    "viewAllPrograms": "View All Programs",
+    "backToAll": "Back to All Programs",
+    "overview": "Overview",
+    "learnMore": "Learn More",
+    "viewGallery": "View Gallery",
+    "hero": {
+      "title": "Our Programs",
+      "subtitle": "Empowering communities and transforming lives through our diverse range of impactful programs."
+    },
+    "education": {
+      "title": "Education Program",
+      "subtitle": "Empowering Through Education",
+      "description": "Empowering youth through quality education and skill development.",
+      "details": {
+        "history": "The Education & Vocational Training program was established by Vision Jeunesse Nouvelle in 2005. It began as a response to the critical need for accessible education and skill development among Rwandan youth, especially those affected by the 1994 Genocide against the Tutsi.",
+        "initialFocus": "Initially, the program focused on providing basic literacy and numeracy skills to out-of-school youth and adults. Over time, it expanded to include vocational training in various trades such as tailoring, carpentry, and hairdressing, responding to market demands.",
+        "partnerships": "VJN has partnered with several organizations, including UNICEF, USAID, and the Rwandan Ministry of Education, to enhance the quality and reach of its educational initiatives. These partnerships have enabled the program to provide scholarships, educational materials, and modern training facilities.",
+        "impact": "The program has successfully empowered thousands of youth, enabling them to secure employment, start their own businesses, and contribute to the economic development of their communities. It has also fostered a culture of continuous learning and innovation among participants.",
+        "title": "Program Details"
+      },
+      "objectives": {
+        "main": "To provide quality education and vocational training that equips youth with essential skills for employment and entrepreneurship.",
+        "specific1": "Enhance literacy and numeracy skills among out-of-school youth and adults.",
+        "specific2": "Provide market-driven vocational training to improve employability and self-employment opportunities.",
+        "specific3": "Foster critical thinking, creativity, and problem-solving skills through innovative learning methods.",
+        "specific4": "Promote gender equality and inclusivity in education, ensuring equal opportunities for all.",
+        "title": "Program Objectives"
+      },
+      "targetGroups": {
+        "title": "Target Groups",
+        "vocational": "Vocational Training",
+        "literacy": "Literacy & Numeracy",
+        "gold": "Gold Youth",
+        "library": "Library",
+        "pwd": "PWD Program"
+      },
+      "criteria": {
+        "title": "Selection Criteria",
+        "vocational": {
+          "title": "Vocational Training Center",
+          "age": "Age: 16 years or above",
+          "education": "Completed Primary School (P6) or above",
+          "literacy": "Basic literacy skills",
+          "priority": "Vulnerable youth prioritized",
+          "gender": "Open to both genders"
+        },
+        "instructor": {
+          "title": "Literacy Instructors",
+          "residency": "Residency in the literacy zone",
+          "age": "Age: 21-50 years",
+          "education": "A' Level minimum",
+          "writing": "Proficiency in writing",
+          "volunteer": "Willingness to volunteer",
+          "languages": "Basic English and French skills"
+        },
+        "choir": {
+          "title": "Intama za Yezu Choir",
+          "age": "Youth age range",
+          "passion": "Passion for music",
+          "commitment": "Commitment to regular rehearsals",
+          "skills": "Basic vocal skills",
+          "faith": "Catholic faith",
+          "parish": "Parish affiliation"
+        }
+      },
+      "impact": {
+        "students": "Students Trained",
+        "courses": "Courses Offered",
+        "employment": "Employment Rate"
+      },
+      "intro": {
+        "description": "Our Education Program is dedicated to empowering youth and communities through comprehensive learning opportunities. We combine traditional education with practical vocational training to create pathways for sustainable development and employment."
+      },
+      "context": {
+        "title": "Context & Challenges",
+        "paragraph1": "In Rwanda, the education sector faces critical barriers to providing quality, equitable learning opportunities. According to UNESCO's \"Institute for Statistics 2022\" report, Rwanda has 1,967,627 individuals who are illiterate, with females accounting for 1,164,074 of these totals. Local authorities report that the Rubavu District alone has approximately 47,000 illiterate residents spanning various age groups.",
+        "paragraph2": "These challenges are compounded by limited infrastructure, lack of trained teachers, and cultural or social barriers, which further hinder educational progress. Additionally, economic constraints and displacement prevent families from prioritizing education, leading to high dropout rates, illiteracy, and a lack of vocational skills among young people."
+      },
+      "cta": {
+        "title": "Get Involved",
+        "description": "Join us in our mission to provide quality education and vocational training to youth in Rwanda. Your support can make a difference.",
+        "volunteer": "Volunteer With Us",
+        "donate": "Support Our Programs"
+      }
+    },
+    "health": {
+      "title": "Health & Well-being Program",
+      "subtitle": "Promoting Youth Well-being",
+      "description": "Promoting youth well-being through comprehensive health services and education.",
+      "details": {
+        "history": "The Health Program was established by Vision Jeunesse Nouvelle in 2023. The idea to start this program came after identifying various health challenges faced by youth who lacked access to sufficient information and support services.",
+        "recognition": "VJN also recognized that many youth participating in recreational activities could face accidents requiring basic first aid. Additionally, many sports activities at VJN require medical staff to treat athletes.",
+        "addressingNeeds": "The program also addresses the needs of young mothers who lack sufficient knowledge about reproductive health and childcare. While various health services are provided to youth, additional services are needed to continue supporting youth health.",
+        "partnerships": "VJN has helped youth access various health services through training funded by Imbuto Foundation in the Baho neza, Mountain Movers, and Door to Door Campaign projects. The organization also supports young mothers and their parents through savings and credit groups with MISEREOR and Imbuto Foundation.",
+        "title": "Program Details"
+      },
+      "objectives": {
+        "main": "To improve the well-being of partners through various trainings, help them access sufficient health information, and provide various services to minimize the effects of poor health.",
+        "specific1": "To improve the well-being of partners through various trainings.",
+        "specific2": "To help them access sufficient health information.",
+        "specific3": "To provide various services to minimize the effects of poor health.",
+        "title": "Program Objectives"
+      },
+      "targetGroups": [
+        "Youth (13-30 years)",
+        "Young Mothers",
+        "Community Health Workers",
+        "Local Leaders"
+      ],
+      "activities": {
+        "healthEducation": {
+          "title": "Health Education Workshops",
+          "description": "Conducting workshops on reproductive health, hygiene, nutrition, and disease prevention."
+        },
+        "medicalCamps": {
+          "title": "Community Medical Camps",
+          "description": "Organizing free health screenings, consultations, and basic treatments in underserved communities."
+        },
+        "firstAid": {
+          "title": "First Aid Training",
+          "description": "Providing essential first aid skills to youth and community members."
+        },
+        "maternalChild": {
+          "title": "Maternal & Child Health Support",
+          "description": "Supporting young mothers with prenatal and postnatal care information, and childcare guidance."
+        },
+        "title": "Key Activities"
+      },
+      "cta": {
+        "title": "Get Involved",
+        "description": "Join us in our mission to improve health and well-being in communities. Your support can make a difference.",
+        "volunteer": "Volunteer With Us",
+        "donate": "Support Our Programs"
+      }
+    },
+    "sportCultureArts": {
+      "title": "Sport, Culture & Arts Program",
+      "description": "Fostering holistic youth development through sports, cultural activities, and arts.",
+      "background": "The Sport, Culture & Arts Program was established to provide a platform for youth to explore and develop their talents in sports, cultural activities, and arts. Recognizing the importance of creative expression and physical activity for holistic development, we offer various opportunities for young people to discover and nurture their abilities.",
+      "captions": {
+        "image1": "Traditional dance performance by youth",
+        "image2": "Youth engaging in a sports event"
+      }
+    },
+    "peace": {
+      "title": "Peace Building Program",
+      "subtitle": "Fostering Unity & Reconciliation",
+      "description": "Building bridges and fostering understanding through dialogue and community engagement.",
+      "details": {
+        "background": "The Peace Building program was established by Vision Jeunesse Nouvelle in 2005, in response to the aftermath of the 1994 Genocide against the Tutsi. Recognizing the deep divisions and trauma within communities, VJN initiated this program to promote healing, reconciliation, and peaceful coexistence.",
+        "earlyInitiatives": "Initially, the program focused on trauma healing workshops and dialogue sessions for genocide survivors and perpetrators, creating safe spaces for open communication and reconciliation. VJN also organized community-based initiatives to address historical grievances and foster mutual understanding.",
+        "partnerships": "Over the years, VJN has partnered with various national and international organizations, including Interpeace, USAID, and the National Unity and Reconciliation Commission (NURC), to implement peace education programs, conflict resolution training, and restorative justice initiatives.",
+        "impact": "The program has successfully fostered reconciliation and social cohesion in numerous communities, enabling individuals to overcome trauma, rebuild trust, and work together towards a shared future. It has also empowered youth to become agents of peace and positive change in their communities.",
+        "title": "Program Details"
+      },
+      "objectives": {
+        "main": "To promote sustainable peace and social cohesion through dialogue, reconciliation, and community engagement.",
+        "specific1": "Facilitate inter-group dialogue and reconciliation processes.",
+        "specific2": "Empower youth to become peace advocates and leaders.",
+        "specific3": "Strengthen community mechanisms for conflict resolution.",
+        "specific4": "Promote human rights and social justice.",
+        "title": "Program Objectives"
+      },
+      "targetGroups": [
+        "Youth",
+        "Community Leaders",
+        "Women and Girls",
+        "Returning Ex-Combatants"
+      ],
+      "activities": {
+        "dialogue": {
+          "title": "Inter-group Dialogue Sessions",
+          "description": "Organizing facilitated discussions between different community groups to address historical grievances and foster mutual understanding."
+        },
+        "peaceEducation": {
+          "title": "Peace Education Workshops",
+          "description": "Conducting workshops on conflict resolution, human rights, and non-violent communication for youth and community members."
+        },
+        "communityProjects": {
+          "title": "Community-based Peace Projects",
+          "description": "Implementing joint community projects that bring diverse groups together to work towards common goals, promoting reconciliation and social cohesion."
+        },
+        "youthLeadership": {
+          "title": "Youth Peace Leadership Training",
+          "description": "Training young people to become peace advocates and leaders in their communities, equipping them with the skills to mediate conflicts and promote positive social change."
+        },
+        "title": "Key Activities"
+      },
+      "cta": {
+        "title": "Get Involved",
+        "description": "Join us in our mission to promote peace and social cohesion in communities. Your support can make a difference.",
+        "volunteer": "Volunteer With Us",
+        "donate": "Support Our Programs"
+      }
+    },
+    "economic": {
+      "title": "Economic Empowerment Program",
+      "subtitle": "Building Sustainable Livelihoods",
+      "description": "Supporting youth entrepreneurship and economic development through training, mentorship, and resources.",
+      "details": {
+        "background": "The Economic Empowerment program was established in 2012 as the fourth branch of VJN, alongside Education, Peace Building, and Sports, Culture & Arts. Recognizing that many youth come from vulnerable families, orphans, and unemployed backgrounds, VJN established this program to enhance their capabilities.",
+        "initial": "The program started by supporting 120 orphans and vulnerable children through FHI 360, providing school fees, materials, food, and housing. These families were organized into six savings and credit groups in Rubavu District, Gisenyi, Rugerero, and Nyamyumba sectors.",
+        "expansion": "VJN has helped youth become self-employed through USAID-funded training in the HUGUKA DUKORE AKAZI KANOZE project. The organization also supports young mothers and their parents through savings and credit groups with MISEREOR and IMBUTO FOUNDATION.",
+        "current": "Currently, VJN has over 200 savings and credit groups across the country, expanding from the initial three sectors in Rubavu District.",
+        "title": "Program Details"
+      },
+      "objectives": {
+        "main": "To advance partners and provide youth with knowledge to help them find paid employment or become self-employed, aiming to reduce youth unemployment.",
+        "specific1": "Train youth with knowledge to help them face life challenges, find employment, or start profitable businesses.",
+        "specific2": "Enhance facilitators' knowledge to help organize youth into savings and credit groups, monitor them, and help them discover opportunities that can generate income.",
+        "specific3": "Encourage and facilitate youth to organize into savings and credit groups using technology to prevent conflicts among them.",
+        "specific4": "Help groups that have completed the savings phase to distribute their assets.",
+        "specific5": "Bring together implementing agencies and youth, especially the unemployed, to help them find paid employment and improve their interaction with VJN.",
+        "specific6": "Support youth with innovative and profitable projects through competitions.",
+        "specific7": "Encourage youth to participate in government programs.",
+        "specific8": "Visit and monitor partners' activities to support their sustainability.",
+        "specific9": "Establish exemplary income-generating activities within VJN for its learners.",
+        "title": "Program Objectives"
+      },
+      "targetGroups": {
+        "title": "Target Groups",
+        "direct": {
+          "facilitators": "Facilitators",
+          "youth": "Youth",
+          "adults": "Adults (both genders)",
+          "employed": "Employed and unemployed",
+          "disabled": "People with and without disabilities",
+          "title": "Direct Beneficiaries"
+        },
+        "indirect": {
+          "authorities": "Government authorities",
+          "financial": "Financial institutions",
+          "ngos": "NGOs",
+          "private": "Private sector",
+          "title": "Indirect Beneficiaries"
+        }
+      },
+      "activities": {
+        "training": {
+          "title": "Training Programs",
+          "description": "Providing vocational and entrepreneurial training to youth and adults."
+        },
+        "savingsGroups": {
+          "title": "Savings & Credit Groups",
+          "description": "Facilitating the formation and management of community savings and credit groups."
+        },
+        "mentorship": {
+          "title": "Mentorship & Business Development",
+          "description": "Offering mentorship and support for business plan development and implementation."
+        },
+        "marketAccess": {
+          "title": "Market Access & Linkages",
+          "description": "Connecting beneficiaries to markets and financial institutions."
+        },
+        "title": "Key Activities"
+      },
+      "cta": {
+        "title": "Get Involved",
+        "description": "Join us in our mission to promote economic empowerment and sustainable livelihoods. Your support can make a difference.",
+        "volunteer": "Volunteer With Us",
+        "donate": "Support Our Programs"
+      },
+      "intro": {
+        "description": "Our Economic Empowerment Program is designed to equip youth with the skills and resources needed to achieve financial independence and entrepreneurial success. We focus on vocational training, business development, and market access."
+      }
+    }
+  },
+  "sidebar": {
+    "title": "Our Programs"
   }
 } 

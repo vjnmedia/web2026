@@ -16,14 +16,14 @@ const Arts = () => {
   return (
     <ProgramDetail
       id="arts"
-      title={t('programs.arts')}
+      title={t('programs.arts.title')}
       subtitle={t('programs.arts.subtitle')}
       description={t('programs.arts.fullDesc')}
       details={artsDetails}
       icon={<Music size={48} />}
       color="bg-purple-50"
       iconColor="text-purple-500"
-      imageSrc="/images/programs/culture/arts.jpg"
+      imageSrc="/images/programs/culture/1O0A0313.JPG"
     />
   );
 };

@@ -2,7 +2,6 @@ import { useState, useCallback } from 'react';
 import { useDropzone } from 'react-dropzone';
 import { Button } from '@/components/ui/button';
 import { Upload, X } from 'lucide-react';
-import Image from 'next/image';
 
 interface ImageUploadProps {
   onImageUpload: (url: string) => void;
@@ -23,18 +22,22 @@ const ImageUpload = ({ onImageUpload, currentImage }: ImageUploadProps) => {
       const formData = new FormData();
       formData.append('file', file);
 
-      // In a real application, you would upload to your server or a service like Cloudinary
-      // For this example, we'll create a local URL
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        const base64data = reader.result as string;
-        setPreview(base64data);
-        onImageUpload(base64data);
-        setIsUploading(false);
-      };
-      reader.readAsDataURL(file);
+      // Upload to your server
+      const response = await fetch('/api/upload', {
+        method: 'POST',
+        body: formData,
+      });
+
+      if (!response.ok) {
+        throw new Error('Upload failed');
+      }
+
+      const data = await response.json();
+      setPreview(data.url);
+      onImageUpload(data.url);
     } catch (error) {
       console.error('Error uploading image:', error);
+    } finally {
       setIsUploading(false);
     }
   }, [onImageUpload]);
@@ -42,9 +45,10 @@ const ImageUpload = ({ onImageUpload, currentImage }: ImageUploadProps) => {
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
     onDrop,
     accept: {
-      'image/*': ['.png', '.jpg', '.jpeg', '.gif']
+      'image/*': ['.png', '.jpg', '.jpeg', '.gif', '.webp']
     },
-    maxFiles: 1
+    maxFiles: 1,
+    maxSize: 5 * 1024 * 1024 // 5MB
   });
 
   const removeImage = () => {
@@ -57,11 +61,10 @@ const ImageUpload = ({ onImageUpload, currentImage }: ImageUploadProps) => {
       {preview ? (
         <div className="relative">
           <div className="relative w-full h-48 rounded-lg overflow-hidden">
-            <Image
+            <img
               src={preview}
               alt="Preview"
-              fill
-              className="object-cover"
+              className="w-full h-full object-cover"
             />
           </div>
           <Button
@@ -87,7 +90,7 @@ const ImageUpload = ({ onImageUpload, currentImage }: ImageUploadProps) => {
               : 'Drag and drop an image, or click to select'}
           </p>
           <p className="text-xs text-gray-400 mt-1">
-            Supports: PNG, JPG, JPEG, GIF
+            Supports: PNG, JPG, JPEG, GIF, WebP (max 5MB)
           </p>
         </div>
       )}

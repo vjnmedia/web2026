@@ -1,5 +1,7 @@
 import React from 'react';
 import { ExternalLink, FileText, Cloud, Link2, FolderOpen } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 
 const onedriveLinks = [
   {
@@ -78,67 +80,92 @@ const vjnSystems = [
 ];
 
 const Resources: React.FC = () => {
+  const { t } = useTranslation();
+
   return (
-    <div className="min-h-screen bg-gradient-to-br from-vjn-light-blue to-white py-12 px-4 md:px-0">
-      <div className="max-w-3xl mx-auto">
-        <header className="mb-12 text-center">
-          <h1 className="text-4xl md:text-5xl font-extrabold text-vjn-blue mb-4">Resources & Links</h1>
-          <p className="text-lg text-gray-600">Find important documents, shared resources, and access other VJN systems.</p>
-        </header>
+    <div className="min-h-screen">
+      {/* Hero Section */}
+      <section className="relative bg-vjn-blue text-white py-20">
+        <div className="absolute inset-0 bg-black/30"></div>
+        <div className="container mx-auto px-4 relative z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="text-center"
+          >
+            <h1 className="text-4xl md:text-5xl font-bold mb-4">
+              {t('resources.heroTitle', 'Knowledge Hub')}
+            </h1>
+            <p className="text-lg md:text-xl max-w-2xl mx-auto">
+              {t('resources.heroSubtitle', 'Access tools, guides, and materials to support youth development and community engagement')}
+            </p>
+          </motion.div>
+        </div>
+      </section>
 
-        {/* Documents & Resources Section */}
-        <section className="mb-16">
-          <h2 className="text-2xl font-bold text-gray-800 flex items-center gap-2 mb-6">
-            <Cloud className="w-7 h-7 text-vjn-blue" /> Documents & Resources
-          </h2>
-          <div className="grid gap-6 md:grid-cols-2">
-            {onedriveLinks.map((doc, idx) => (
-              <a
-                key={idx}
-                href={doc.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group block bg-white rounded-2xl shadow-lg hover:shadow-2xl transition p-6 border border-gray-100 hover:border-vjn-blue"
-              >
-                <div className="flex items-center gap-4 mb-3">
-                  <FolderOpen className="w-8 h-8 text-vjn-blue group-hover:text-vjn-dark-blue transition" />
-                  <span className="text-lg font-semibold text-vjn-dark-blue group-hover:underline">
-                    {doc.name}
-                  </span>
-                  <ExternalLink className="w-4 h-4 text-gray-400 ml-auto" />
-                </div>
-                <p className="text-gray-500 text-sm">{doc.description}</p>
-              </a>
-            ))}
-          </div>
-        </section>
+      {/* Rest of the content */}
+      <div className="container mx-auto px-4 py-12">
+        <div className="max-w-3xl mx-auto">
+          <header className="mb-12 text-center">
+            <h1 className="text-4xl md:text-5xl font-extrabold text-vjn-blue mb-4">Resources & Links</h1>
+            <p className="text-lg text-gray-600">Find important documents, shared resources, and access other VJN systems.</p>
+          </header>
 
-        {/* Other VJN Systems Section */}
-        <section>
-          <h2 className="text-2xl font-bold text-gray-800 flex items-center gap-2 mb-6">
-            <Link2 className="w-7 h-7 text-vjn-blue" /> Other VJN Systems
-          </h2>
-          <div className="grid gap-6 md:grid-cols-2">
-            {vjnSystems.map((sys, idx) => (
-              <a
-                key={idx}
-                href={sys.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group block bg-white rounded-2xl shadow-lg hover:shadow-2xl transition p-6 border border-gray-100 hover:border-vjn-blue"
-              >
-                <div className="flex items-center gap-4 mb-3">
-                  <FileText className="w-8 h-8 text-vjn-blue group-hover:text-vjn-dark-blue transition" />
-                  <span className="text-lg font-semibold text-vjn-dark-blue group-hover:underline">
-                    {sys.name}
-                  </span>
-                  <ExternalLink className="w-4 h-4 text-gray-400 ml-auto" />
-                </div>
-                <p className="text-gray-500 text-sm">{sys.description}</p>
-              </a>
-            ))}
-          </div>
-        </section>
+          {/* Documents & Resources Section */}
+          <section className="mb-16">
+            <h2 className="text-2xl font-bold text-gray-800 flex items-center gap-2 mb-6">
+              <Cloud className="w-7 h-7 text-vjn-blue" /> Documents & Resources
+            </h2>
+            <div className="grid gap-6 md:grid-cols-2">
+              {onedriveLinks.map((doc, idx) => (
+                <a
+                  key={idx}
+                  href={doc.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group block bg-white rounded-2xl shadow-lg hover:shadow-2xl transition p-6 border border-gray-100 hover:border-vjn-blue"
+                >
+                  <div className="flex items-center gap-4 mb-3">
+                    <FolderOpen className="w-8 h-8 text-vjn-blue group-hover:text-vjn-dark-blue transition" />
+                    <span className="text-lg font-semibold text-vjn-dark-blue group-hover:underline">
+                      {doc.name}
+                    </span>
+                    <ExternalLink className="w-4 h-4 text-gray-400 ml-auto" />
+                  </div>
+                  <p className="text-gray-500 text-sm">{doc.description}</p>
+                </a>
+              ))}
+            </div>
+          </section>
+
+          {/* Other VJN Systems Section */}
+          <section>
+            <h2 className="text-2xl font-bold text-gray-800 flex items-center gap-2 mb-6">
+              <Link2 className="w-7 h-7 text-vjn-blue" /> Other VJN Systems
+            </h2>
+            <div className="grid gap-6 md:grid-cols-2">
+              {vjnSystems.map((sys, idx) => (
+                <a
+                  key={idx}
+                  href={sys.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group block bg-white rounded-2xl shadow-lg hover:shadow-2xl transition p-6 border border-gray-100 hover:border-vjn-blue"
+                >
+                  <div className="flex items-center gap-4 mb-3">
+                    <FileText className="w-8 h-8 text-vjn-blue group-hover:text-vjn-dark-blue transition" />
+                    <span className="text-lg font-semibold text-vjn-dark-blue group-hover:underline">
+                      {sys.name}
+                    </span>
+                    <ExternalLink className="w-4 h-4 text-gray-400 ml-auto" />
+                  </div>
+                  <p className="text-gray-500 text-sm">{sys.description}</p>
+                </a>
+              ))}
+            </div>
+          </section>
+        </div>
       </div>
     </div>
   );

@@ -15,6 +15,7 @@ import {
   Phone,
   MapPin
 } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 interface ServiceCard {
   icon: React.ReactNode;
@@ -155,77 +156,115 @@ const Services: React.FC = () => {
   );
 
   return (
-    <div className="container mx-auto px-4 py-8">
-      <div className="max-w-7xl mx-auto">
+    <div className="min-h-screen">
       {/* Hero Section */}
-        <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold mb-4">{t('services.title')}</h1>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            {t('services.subtitle')}
-          </p>
-        </div>
-
-        {/* Introduction */}
-        <div className="bg-gray-50 rounded-lg p-8 mb-12">
-          <p className="text-lg text-gray-700">
-            {t('services.introduction')}
+      <section className="relative bg-vjn-blue text-white py-20">
+        <div className="absolute inset-0 bg-black/30"></div>
+        <div className="container mx-auto px-4 relative z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="text-center"
+          >
+            <h1 className="text-4xl md:text-5xl font-bold mb-4">
+              {t('services.heroTitle', 'Empowering Communities Through Service')}
+            </h1>
+            <p className="text-lg md:text-xl max-w-2xl mx-auto">
+              {t('services.heroSubtitle', 'Comprehensive programs and support services designed to create lasting positive change')}
             </p>
-          </div>
-
-        {/* Services Sections */}
-        <ServiceSection title={t('services.sections.youth')} services={youthServices} />
-        <ServiceSection title={t('services.sections.vulnerable')} services={vulnerableServices} />
-        <ServiceSection title={t('services.sections.support')} services={supportServices} />
-
-        {/* Testimonials */}
-        <div className="mb-12">
-          <h2 className="text-2xl font-bold mb-6">{t('services.testimonials.title')}</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {testimonials.map((testimonial, index) => (
-              <div key={index} className="bg-white rounded-lg shadow-md p-6">
-                <div className="flex items-center mb-4">
-                  <img
-                    src={testimonial.image}
-                    alt={testimonial.author}
-                    className="w-16 h-16 rounded-full object-cover mr-4"
-                  />
-                  <div>
-                    <h3 className="font-semibold">{testimonial.author}</h3>
-                    <p className="text-gray-600">{testimonial.role}</p>
-                  </div>
-                </div>
-                <p className="text-gray-700 italic">"{testimonial.quote}"</p>
-              </div>
-            ))}
-          </div>
+          </motion.div>
         </div>
+      </section>
 
-        {/* CTA Section */}
-        <div className="bg-vjn-blue text-white rounded-lg p-8 text-center">
-          <h2 className="text-2xl font-bold mb-4">{t('services.cta.title')}</h2>
-          <p className="mb-6">{t('services.cta.subtitle')}</p>
-          <div className="flex flex-wrap justify-center gap-4">
-            <a
-              href="/contact"
-              className="bg-white text-vjn-blue px-6 py-3 rounded-md font-semibold hover:bg-gray-100 transition-colors flex items-center"
-            >
-              <Phone className="h-5 w-5 mr-2" />
-              {t('services.cta.contact')}
-            </a>
-            <a
-              href="/programs"
-              className="bg-white text-vjn-blue px-6 py-3 rounded-md font-semibold hover:bg-gray-100 transition-colors flex items-center"
-            >
-              {t('services.cta.join')}
-            </a>
-            <a
-              href="/centers"
-              className="bg-white text-vjn-blue px-6 py-3 rounded-md font-semibold hover:bg-gray-100 transition-colors flex items-center"
-            >
-              <MapPin className="h-5 w-5 mr-2" />
-              {t('services.cta.visit')}
-            </a>
+      {/* Introduction Section */}
+      <section className="py-16 bg-gray-50">
+        <div className="container mx-auto px-4">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="max-w-3xl mx-auto text-center"
+          >
+            <h2 className="text-2xl md:text-3xl font-semibold mb-6 text-gray-900">
+              {t('services.introTitle', 'Making a Difference in Our Community')}
+            </h2>
+            <p className="text-gray-600 mb-8 leading-relaxed">
+              {t('services.introduction')}
+            </p>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Main Content */}
+      <div className="container mx-auto px-4 py-12">
+        <div className="max-w-7xl mx-auto">
+          {/* Services Sections */}
+          <ServiceSection title={t('services.sections.youth')} services={youthServices} />
+          <ServiceSection title={t('services.sections.vulnerable')} services={vulnerableServices} />
+          <ServiceSection title={t('services.sections.support')} services={supportServices} />
+
+          {/* Testimonials */}
+          <div className="mb-12">
+            <h2 className="text-2xl font-bold mb-6">{t('services.testimonials.title')}</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {testimonials.map((testimonial, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.3, delay: index * 0.2 }}
+                  className="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-all"
+                >
+                  <div className="flex items-center mb-4">
+                    <img
+                      src={testimonial.image}
+                      alt={testimonial.author}
+                      className="w-16 h-16 rounded-full object-cover mr-4"
+                    />
+                    <div>
+                      <h3 className="font-semibold">{testimonial.author}</h3>
+                      <p className="text-gray-600">{testimonial.role}</p>
+                    </div>
+                  </div>
+                  <p className="text-gray-700 italic">"{testimonial.quote}"</p>
+                </motion.div>
+              ))}
+            </div>
           </div>
+
+          {/* CTA Section */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="bg-vjn-blue text-white rounded-lg p-8 text-center"
+          >
+            <h2 className="text-2xl font-bold mb-4">{t('services.cta.title')}</h2>
+            <p className="mb-6">{t('services.cta.subtitle')}</p>
+            <div className="flex flex-wrap justify-center gap-4">
+              <a
+                href="/contact"
+                className="bg-white text-vjn-blue px-6 py-3 rounded-md font-semibold hover:bg-gray-100 transition-colors flex items-center"
+              >
+                <Phone className="h-5 w-5 mr-2" />
+                {t('services.cta.contact')}
+              </a>
+              <a
+                href="/programs"
+                className="bg-white text-vjn-blue px-6 py-3 rounded-md font-semibold hover:bg-gray-100 transition-colors flex items-center"
+              >
+                {t('services.cta.join')}
+              </a>
+              <a
+                href="/centers"
+                className="bg-white text-vjn-blue px-6 py-3 rounded-md font-semibold hover:bg-gray-100 transition-colors flex items-center"
+              >
+                <MapPin className="h-5 w-5 mr-2" />
+                {t('services.cta.visit')}
+              </a>
+            </div>
+          </motion.div>
         </div>
       </div>
     </div>

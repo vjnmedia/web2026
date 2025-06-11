@@ -4,16 +4,17 @@
     "about": "About",
     "programs": "Programs",
     "services": "Services",
-    "media": "Media",
-    "news": "News Updates",
     "resources": "Resources",
+    "media": "Media",
     "community": "Community",
     "careers": "Careers",
+    "news": "News",
+    "contact": "Contact Us",
+    "impact": "Our Impact",
     "dms": "DMS",
     "login": "Login",
     "logout": "Logout",
-    "dashboard": "Dashboard",
-    "contact": "Contact Us"
+    "dashboard": "Dashboard"
   },
   "services": {
     "title": "Our Services – Building Lives, One Step at a Time",
@@ -344,38 +345,12 @@
         "detail4": "Community peace initiatives",
         "detail5": "Reconciliation workshops"
       },
-      "arts": {
-        "title": "Sports, Culture & Arts",
-        "description": "Nurturing creativity and cultural expression through sports, arts, and cultural activities.",
-        "readMore": "Learn More",
-        "fullPage": {
-          "title": "Where Talent Meets Transformation",
-          "intro": "We believe in the power of expression. Our Sports, Culture & Arts Program gives young people a platform to showcase their gifts while building confidence, discipline, and purpose through performance and play.",
-          "whatWeDo": {
-            "title": "What We Do",
-            "items": [
-              "Sports Leagues & Competitions: Football, volleyball, basketball, and athletics programs for youth.",
-              "Artistic Development: Music, dance, theater, and visual arts workshops for self-expression.",
-              "Cultural Celebrations: Events that preserve and promote traditional Rwandan and African culture.",
-              "Life Skills through Talent: Leadership, teamwork, and emotional resilience training through creative outlets."
-            ]
-          },
-          "whoItServes": {
-            "title": "Who It Serves",
-            "items": [
-              "Talented youth aged 10–30",
-              "Young people at risk of crime or isolation",
-              "Artists, athletes, and performers"
-            ]
-          },
-          "getInvolved": {
-            "title": "Get Involved",
-            "buttons": {
-              "joinTeam": "Join a Team or Club",
-              "sponsorPerformer": "Sponsor a Performer",
-              "attendEvent": "Attend an Event"
-            }
-          }
+      "sportCultureArts": {
+        "title": "Sport, Culture & Arts Program",
+        "description": "Fostering holistic youth development through sports, cultural activities, and arts.",
+        "captions": {
+          "image1": "Traditional dance performance by youth",
+          "image2": "Youth engaging in a sports event"
         }
       },
       "culture": {
@@ -483,32 +458,14 @@
     "description": "Your generous donation helps us continue our work and make a positive impact in the community. Every contribution, no matter the size, makes a difference.",
     "button": "Donate now"
   },
-  "donationModal": {
-    "title": "Make a Donation",
-    "subtitle": "Your support makes a difference",
-    "amount": "Donation Amount",
-    "currency": "Currency",
-    "paymentMethod": "Payment Method",
-    "paypalTab": "PayPal",
-    "mtnTab": "MTN Mobile Money",
-    "bankTab": "Bank Transfer",
-    "payMtn": "Pay with MTN Mobile Money",
-    "bankName": "Bank: Bank of Kigali",
-    "accountName": "Account Name: VJN Rwanda",
-    "accountNumber": "Account Number: 0000000000",
-    "swiftCode": "Swift Code: BKIGRWRW",
-    "branch": "Branch: Kigali Main Branch",
-    "getBankDetails": "Get Bank Details",
-    "donate": "Donate Now",
-    "cancel": "Cancel",
-    "description": "Your contribution will help us continue our mission of empowering Rwandan youth. Please enter the amount you would like to donate.",
-    "amountLabel": "Donation Amount (RWF)",
-    "amountPlaceholder": "Enter amount",
-    "paypalDescription": "You will be redirected to PayPal to complete your payment securely.",
-    "phoneNumberLabel": "MTN Phone Number",
-    "phoneNumberPlaceholder": "e.g., 078XXXXXXX",
-    "emailLabel": "Email Address",
-    "emailPlaceholder": "Enter your email"
+  "donation": {
+    "modal": {
+      "title": "Make a Donation",
+      "close": "Close",
+      "description": "Your support helps us continue our mission of empowering youth and building stronger communities.",
+      "amount": "Donation Amount",
+      "submit": "Donate Now"
+    }
   },
   "common": {
     "menu": {
@@ -793,59 +750,58 @@
     "conclusion": "Conclusion"
   },
   "programs": {
-    "title": "Our Programs",
-    "subtitle": "Discover our comprehensive programs designed to empower youth and create lasting change in our communities",
     "education": {
       "title": "Education & Vocational Training",
-      "description": "Providing quality education and vocational training to equip youth with essential skills for future success.",
-      "readMore": "Learn More"
+      "description": "Providing quality education and vocational training to equip youth with essential skills for future success."
     },
     "economic": {
       "title": "Economic Empowerment",
-      "description": "Supporting youth entrepreneurship and economic development through training, mentorship, and resources.",
-      "readMore": "Learn More"
+      "description": "Supporting youth entrepreneurship and economic development through training, mentorship, and resources."
     },
     "health": {
       "title": "Health & Well-being",
-      "description": "Promoting physical and mental health through education, awareness, and access to healthcare services.",
-      "readMore": "Learn More"
+      "description": "Promoting physical and mental health through education, awareness, and access to healthcare services."
     },
     "peace": {
       "title": "Peace Building",
-      "description": "Building bridges and fostering understanding through dialogue and community engagement.",
-      "readMore": "Learn More",
-      "subtitle": "Building bridges and fostering understanding",
-      "fullDesc": "Our peace building program focuses on creating sustainable peace through dialogue, education, and community engagement.",
-      "detail1": "Cross-cultural dialogue and exchange programs",
-      "detail2": "Conflict resolution and mediation training",
-      "detail3": "Youth leadership development",
-      "detail4": "Community peace initiatives",
-      "detail5": "Reconciliation workshops"
+      "description": "Building bridges and fostering understanding through dialogue and community engagement."
     },
-    "arts": {
-      "title": "Sports, Culture & Arts",
-      "description": "Nurturing creativity and cultural expression through sports, arts, and cultural activities.",
-      "readMore": "Learn More"
+    "sportCultureArts": {
+      "title": "Sport, Culture & Arts Program",
+      "description": "Fostering holistic youth development through sports, cultural activities, and arts.",
+      "captions": {
+        "image1": "Traditional dance performance by youth",
+        "image2": "Youth engaging in a sports event"
+      }
+    },
+    "learnMore": "Learn More",
+    "viewAllPrograms": "View All Programs",
+    "totalPrograms": "5 Programs Available",
+    "stats": {
+      "programs": "Programs",
+      "beneficiaries": "Beneficiaries",
+      "years": "Years of Impact"
+    },
+    "intro": {
+      "title": "Empowering Youth Through Comprehensive Programs",
+      "description": "Our programs are designed to address the diverse needs of young people in Rwanda, providing them with the tools, skills, and support they need to succeed. Through education, health services, sports, and cultural activities, we create opportunities for personal growth, community engagement, and sustainable development.",
+      "learnMore": "Learn More About Us",
+      "getInvolved": "Get Involved"
     },
     "cta": {
       "title": "Join Our Mission",
-      "subtitle": "Contact us today and become part of a growing movement to shape a better future",
-      "join": "Join Us",
-      "contact": "Contact Us",
-      "support": "Support Us"
+      "description": "Be part of our journey to empower youth and create positive change in our community. Your support can make a difference.",
+      "volunteer": "Volunteer With Us",
+      "donate": "Support Our Programs"
     },
-    "backToAll": "Back to All Programs",
-    "whatWeOffer": "What We Offer",
-    "impactStories": "Impact Stories",
-    "impactStoriesText": "Discover how our programs are making a difference in the lives of young people and communities.",
+    "images": "images",
+    "overview": "Overview",
     "getInvolved": "Get Involved",
-    "getInvolvedText": "Join us in our mission to empower youth and create lasting change in our communities.",
+    "getInvolvedText": "Join us in our mission to support youth through our programs. Your involvement can make a significant difference.",
     "volunteer": "Volunteer",
     "donate": "Donate",
     "contactUs": "Contact Us",
-    "relatedPrograms": "Related Programs",
-    "relatedProgramsText": "Explore other programs that might interest you",
-    "viewAllPrograms": "View All Programs"
+    "backToAll": "Back to all programs"
   },
   "stories": {
     "title": "Impact Stories",
@@ -968,7 +924,109 @@
       "themeChanged": "Theme changed successfully",
       "settingsSaved": "Settings saved successfully",
       "settingsReset": "Settings reset successfully",
-      "confirmReset": "Are you sure you want to reset these settings?"
+      "confirmReset": "Are you sure you want to reset these settings?",
+      "pageManagement": "Page Management",
+      "pages": "Pages",
+      "pagesHelp": "Manage website pages and content",
+      "addPage": "Add Page",
+      "editPage": "Edit Page",
+      "deletePage": "Delete Page",
+      "pageTitle": "Page Title",
+      "pageSlug": "Page URL Slug",
+      "pageContent": "Content",
+      "pageStatus": "Status",
+      "pageDraft": "Draft",
+      "pagePublished": "Published",
+      "pageTemplate": "Template",
+      "pageMetaTitle": "Meta Title",
+      "pageMetaDescription": "Meta Description",
+      "pageAdded": "Page added successfully",
+      "pageUpdated": "Page updated successfully",
+      "pageDeleted": "Page deleted successfully",
+      "confirmDeletePage": "Are you sure you want to delete this page?",
+      "noPages": "No pages found",
+      "searchPages": "Search pages",
+      "lastModified": "Last Modified",
+      "modifiedBy": "Modified By",
+      "emailTemplates": {
+        "title": "Email Templates",
+        "description": "Manage and customize system email templates",
+        "addTemplate": "Add Template",
+        "editTemplate": "Edit Template",
+        "deleteTemplate": "Delete Template",
+        "templateName": "Template Name",
+        "subject": "Subject",
+        "body": "Email Body",
+        "variables": "Available Variables",
+        "preview": "Preview Template",
+        "sendTest": "Send Test Email",
+        "categories": {
+          "user": "User Notifications",
+          "system": "System Notifications",
+          "marketing": "Marketing",
+          "custom": "Custom Templates"
+        },
+        "templates": {
+          "welcome": "Welcome Email",
+          "passwordReset": "Password Reset",
+          "accountVerification": "Account Verification",
+          "backupComplete": "Backup Complete",
+          "systemAlert": "System Alert",
+          "newsletter": "Newsletter"
+        },
+        "placeholders": {
+          "userName": "{userName}",
+          "userEmail": "{userEmail}",
+          "siteName": "{siteName}",
+          "resetLink": "{resetLink}",
+          "verificationLink": "{verificationLink}",
+          "date": "{date}",
+          "time": "{time}"
+        },
+        "templateAdded": "Email template added successfully",
+        "templateUpdated": "Email template updated successfully",
+        "templateDeleted": "Email template deleted successfully",
+        "confirmDeleteTemplate": "Are you sure you want to delete this template?",
+        "testEmailSent": "Test email sent successfully",
+        "noTemplates": "No email templates found",
+        "searchTemplates": "Search templates"
+      },
+      "notifications": {
+        "title": "Notifications",
+        "description": "Configure system notification settings",
+        "emailNotifications": "Email Notifications",
+        "pushNotifications": "Push Notifications",
+        "inAppNotifications": "In-App Notifications",
+        "smsNotifications": "SMS Notifications",
+        "categories": {
+          "system": "System Notifications",
+          "security": "Security Alerts",
+          "updates": "Updates & Maintenance",
+          "user": "User Activity",
+          "backup": "Backup & Recovery"
+        },
+        "settings": {
+          "enabled": "Enabled",
+          "disabled": "Disabled",
+          "frequency": "Notification Frequency",
+          "immediate": "Immediate",
+          "hourly": "Hourly Digest",
+          "daily": "Daily Digest",
+          "weekly": "Weekly Digest"
+        },
+        "preferences": {
+          "title": "Notification Preferences",
+          "systemAlerts": "System Alerts",
+          "securityAlerts": "Security Alerts",
+          "maintenanceAlerts": "Maintenance Alerts",
+          "backupAlerts": "Backup Alerts",
+          "userAlerts": "User Activity Alerts"
+        },
+        "notificationsHelp": "Configure how and when you receive system notifications. Enable or disable different notification types and set their frequency.",
+        "settingsSaved": "Notification settings saved successfully",
+        "testNotification": "Send Test Notification",
+        "testNotificationSent": "Test notification sent successfully"
+      }
     },
     "projectsManagement": "Projects Management",
     "addProject": "Add Project",
@@ -1202,5 +1260,228 @@
     "preferencesUpdateError": "Error updating preferences",
     "avatarUpdateSuccess": "Profile picture updated successfully",
     "avatarUpdateError": "Error updating profile picture"
+  },
+  "contact": {
+    "heroTitle": "Get in Touch",
+    "heroSubtitle": "Have questions? We're here to help. Reach out to us and be part of our mission",
+    "form": {
+      "title": "Send us a message",
+      "name": "Your Name",
+      "namePlaceholder": "Enter your name",
+      "email": "Your Email",
+      "emailPlaceholder": "Enter your email",
+      "message": "Message",
+      "messagePlaceholder": "Enter your message",
+      "submit": "Send Message",
+      "sending": "Sending...",
+      "error": {
+        "nameRequired": "Name is required",
+        "emailRequired": "Email is required",
+        "emailInvalid": "Invalid email address",
+        "messageRequired": "Message is required",
+        "title": "Error",
+        "description": "There was a problem with your submission."
+      },
+      "success": {
+        "title": "Message sent!",
+        "description": "We'll get back to you as soon as possible."
+      }
+    },
+    "info": {
+      "title": "Contact Information",
+      "address": "Address",
+      "addressLine1": "Rubavu District, Gisenyi Sector",
+      "addressLine2": "Nengo Cell, Gikarani Village",
+      "country": "Rwanda",
+      "phone": "Phone",
+      "email": "Email",
+      "mapTitle": "Vision Jeunesse Nouvelle Location Map"
+    },
+    "faq": {
+      "title": "Frequently Asked Questions",
+      "subtitle": "Find answers to common questions about our organization and programs.",
+      "q1": {
+        "title": "How can I volunteer with VJN?",
+        "answer": "You can apply to volunteer through our Careers page. We welcome both local and international volunteers with various skills and backgrounds."
+      },
+      "q2": {
+        "title": "How is my donation used?",
+        "answer": "Your donations directly support our programs for youth empowerment, including education initiatives, entrepreneurship training, and peace-building activities."
+      },
+      "q3": {
+        "title": "Can my organization partner with VJN?",
+        "answer": "Yes, we welcome partnerships with organizations that share our mission. Please contact us with your partnership proposal, and our team will get back to you."
+      },
+      "q4": {
+        "title": "Where do your programs operate?",
+        "answer": "Our programs operate primarily in the Rubavu District, with our headquarters in Gisenyi. We collaborate with partners across Rwanda to extend our reach."
+      }
+    }
+  },
+  "impact": {
+    "hero": {
+      "title": "Our Impact",
+      "subtitle": "Transforming lives and building stronger communities through youth empowerment"
+    },
+    "metrics": {
+      "youthServed": "Youth Served",
+      "communities": "Communities Impacted",
+      "success": "Program Success Rate",
+      "initiatives": "Youth Initiatives"
+    },
+    "stories": {
+      "title": "Success Stories",
+      "subtitle": "Meet the inspiring individuals who have transformed their lives through our programs",
+      "role": {
+        "entrepreneur": "Youth Entrepreneur",
+        "manufacturer": "Small Industry Owner",
+        "farmer": "Agricultural Entrepreneur",
+        "technician": "Electronics Entrepreneur"
+      },
+      "program": {
+        "livestock": "Livestock Program",
+        "industry": "Homemade Industry",
+        "agriculture": "Agricultural Program",
+        "technical": "Technical Training"
+      },
+      "hakizimana": {
+        "quote": "Through VJN's livestock program, I started a successful poultry business. Now I manage a thriving chicken farm that provides both eggs and meat to our local community.",
+        "impact": "From a program participant to a successful farmer, Erast's poultry business has become a model for youth in agriculture."
+      },
+      "david": {
+        "quote": "VJN's entrepreneurship training gave me the skills to start my soap production business. Today, I produce quality soap products that serve our community's needs while creating employment opportunities.",
+        "impact": "David's soap production business has grown to employ other youth and contributes to local economic development."
+      },
+      "olivier": {
+        "quote": "The agricultural training and support from VJN helped me establish my farming enterprise. I've learned modern farming techniques and business management skills.",
+        "impact": "Olivier has become a successful farmer, implementing modern agricultural practices and inspiring other youth to consider farming as a viable career."
+      },
+      "abdoulah": {
+        "quote": "VJN's technical training program equipped me with the skills to start my electronics repair business. Now I provide essential services to my community while building a sustainable enterprise.",
+        "impact": "Abdoulah's electronics business has grown into a trusted service provider, demonstrating the success of youth in technical enterprises."
+      }
+    },
+    "annual": {
+      "title": "2023 Impact Highlights",
+      "subtitle": "Key achievements and milestones from our programs",
+      "education": {
+        "title": "Education & Skills",
+        "point1": "200+ youth completed vocational training",
+        "point2": "85% employment rate among graduates",
+        "point3": "3 new training programs launched"
+      },
+      "economic": {
+        "title": "Economic Empowerment",
+        "point1": "150+ youth-led businesses established",
+        "point2": "25 successful GSLA groups formed",
+        "point3": "90% loan repayment rate achieved"
+      },
+      "health": {
+        "title": "Health & Well-being",
+        "point1": "1000+ youth reached through health education",
+        "point2": "50 new peer educators trained",
+        "point3": "5 health awareness campaigns conducted"
+      },
+      "peace": {
+        "title": "Peace Building",
+        "point1": "20 community peace initiatives launched",
+        "point2": "300+ youth trained in conflict resolution",
+        "point3": "15 cross-community dialogues facilitated"
+      },
+      "sportCultureArts": {
+        "title": "Sports, Culture & Arts",
+        "point1": "10 cultural events organized with 5000+ attendees",
+        "point2": "8 sports teams formed across different disciplines",
+        "point3": "3 art exhibitions showcasing youth talent"
+      }
+    },
+    "cta": {
+      "title": "Be Part of Our Impact",
+      "description": "Join us in creating positive change. Whether through volunteering, donating, or partnering, your support makes a difference.",
+      "volunteer": "Volunteer With Us",
+      "donate": "Make a Donation"
+    }
+  },
+  "career": {
+    "hero": {
+      "title": "Join Our Mission",
+      "subtitle": "Build your career while making a difference in the lives of young people"
+    },
+    "openings": {
+      "title": "Current Opportunities",
+      "viewDetails": "View Details",
+      "apply": "Apply Now"
+    },
+    "benefits": {
+      "title": "Why Work With Us",
+      "health": {
+        "title": "Health & Wellness",
+        "description": "Comprehensive health coverage and wellness programs for you and your family."
+      },
+      "learning": {
+        "title": "Professional Development",
+        "description": "Continuous learning opportunities through workshops, training, and education support."
+      },
+      "impact": {
+        "title": "Global Impact",
+        "description": "Be part of meaningful initiatives that create positive change in communities."
+      },
+      "culture": {
+        "title": "Inclusive Culture",
+        "description": "Work in a diverse, supportive environment that values every team member's contribution."
+      }
+    },
+    "process": {
+      "title": "Application Process",
+      "step1": {
+        "title": "Submit Application",
+        "description": "Fill out the online application form and upload your CV and cover letter."
+      },
+      "step2": {
+        "title": "Initial Review",
+        "description": "Our team will review your application and assess your qualifications."
+      },
+      "step3": {
+        "title": "Interview Process",
+        "description": "Selected candidates will be invited for interviews and assessments."
+      },
+      "step4": {
+        "title": "Final Decision",
+        "description": "Successful candidates will receive an offer letter and onboarding information."
+      }
+    },
+    "contact": {
+      "title": "Have Questions?",
+      "description": "Contact our HR team for any questions about our current opportunities or application process.",
+      "button": "Contact HR Team"
+    },
+    "application": {
+      "title": "Apply for {{position}}",
+      "firstName": "First Name",
+      "lastName": "Last Name",
+      "email": "Email",
+      "phone": "Phone",
+      "address": "Address",
+      "language": "Preferred Language",
+      "selectLanguage": "Select language",
+      "education": "Education",
+      "educationPlaceholder": "List your educational background",
+      "experience": "Work Experience",
+      "experiencePlaceholder": "Describe your relevant work experience",
+      "coverLetter": "Cover Letter",
+      "coverLetterPlaceholder": "Tell us why you would be a good fit for this position",
+      "resume": "Resume/CV",
+      "resumeHelp": "Accepted formats: PDF, DOC, DOCX",
+      "submit": "Submit Application",
+      "submitting": "Submitting...",
+      "success": {
+        "title": "Application Submitted",
+        "description": "Thank you for your application. We will review it and get back to you soon."
+      },
+      "error": {
+        "title": "Submission Failed",
+        "description": "There was an error submitting your application. Please try again."
+      }
+    }
   }
 } 

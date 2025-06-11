@@ -533,7 +533,7 @@ const Home: React.FC = () => {
         <div className="absolute inset-0 z-0">
           <div className="absolute inset-0 bg-gradient-to-r from-vjn-blue/90 to-vjn-light-blue/90 z-10" />
           <img
-            src="/images/hero-bg.jpg"
+            src="/images/home-slider/youth.JPG"
             alt="VJN Youth Programs"
             className="w-full h-full object-cover"
           />
@@ -893,20 +893,27 @@ const Home: React.FC = () => {
                 <h2 className="text-4xl font-bold mb-8">Our Location</h2>
                 <div className="relative h-[500px] rounded-2xl overflow-hidden shadow-xl">
                   <iframe
-                    src="https://www.google.com/maps/embed/place/Vision+Jeunesse+Nouvelle/@-1.702211,29.2571873,17z/data=!3m1!4b1!4m6!3m5!1s0x19dd050a47fb11e7:0xe550726afa8eb90a!8m2!3d-1.702211!4d29.2597622!16s%2Fg%2F11c52m6znk?entry=ttu"
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3987.5064444799146!2d29.257187315302952!3d-1.7022109986683071!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x19dd050a47fb11e7%3A0xe550726afa8eb90a!2sVision%20Jeunesse%20Nouvelle!5e0!3m2!1sen!2srw!4v1647856231584!5m2!1sen!2srw"
                     width="100%"
                     height="100%"
                     style={{ border: 0 }}
                     allowFullScreen
                     loading="lazy"
                     referrerPolicy="no-referrer-when-downgrade"
+                    title="Vision Jeunesse Nouvelle Location"
+                    className="hover:opacity-95 transition-opacity duration-300"
                   ></iframe>
                 </div>
-                <div className="mt-6 text-center">
-                  <p className="text-gray-600 flex items-center justify-center">
-                    <Globe className="h-5 w-5 mr-2" />
-                    Located in Gisenyi, Rubavu District, Western Province, Rwanda
-                  </p>
+                <div className="mt-6">
+                  <div className="bg-white p-4 rounded-lg shadow-md">
+                    <p className="text-gray-600 flex items-center justify-center font-medium">
+                      <Globe className="h-5 w-5 mr-2 text-vjn-blue" />
+                      Located in Gisenyi, Rubavu District, Western Province, Rwanda
+                    </p>
+                    <p className="text-sm text-gray-500 text-center mt-2">
+                      Click the map to view in full screen or get directions
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>

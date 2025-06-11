@@ -1,0 +1,696 @@
+{
+  "common": {
+    "readMore": "Lire la suite",
+    "learnMore": "En savoir plus",
+    "contactUs": "Contactez-nous",
+    "donate": "Faire un don",
+    "volunteer": "Devenir bénévole",
+    "search": "Rechercher",
+    "menu": "Menu",
+    "close": "Fermer",
+    "loading": "Chargement...",
+    "error": "Une erreur est survenue",
+    "success": "Opération réussie",
+    "save": "Enregistrer",
+    "cancel": "Annuler",
+    "delete": "Supprimer",
+    "edit": "Modifier",
+    "create": "Créer",
+    "submit": "Soumettre",
+    "back": "Retour",
+    "next": "Suivant",
+    "previous": "Précédent",
+    "yes": "Oui",
+    "no": "Non",
+    "confirm": "Confirmer",
+    "actions": "Actions",
+    "status": "Statut",
+    "date": "Date",
+    "time": "Heure",
+    "location": "Lieu",
+    "description": "Description",
+    "details": "Détails",
+    "more": "Plus",
+    "less": "Moins",
+    "all": "Tout",
+    "none": "Aucun",
+    "select": "Sélectionner",
+    "upload": "Télécharger",
+    "download": "Télécharger",
+    "preview": "Aperçu",
+    "send": "Envoyer",
+    "reset": "Réinitialiser",
+    "filter": "Filtrer",
+    "sort": "Trier",
+    "view": "Voir",
+    "hide": "Masquer",
+    "show": "Afficher",
+    "required": "Requis",
+    "optional": "Optionnel",
+    "searchPlaceholder": "Rechercher...",
+    "noResults": "Aucun résultat trouvé",
+    "noData": "Aucune donnée disponible",
+    "loadingMore": "Chargement de plus...",
+    "endOfList": "Fin de la liste",
+    "errorLoading": "Erreur lors du chargement",
+    "tryAgain": "Réessayer",
+    "refresh": "Actualiser",
+    "copy": "Copier",
+    "copied": "Copié !",
+    "share": "Partager",
+    "email": "Email",
+    "phone": "Téléphone",
+    "address": "Adresse",
+    "website": "Site web",
+    "social": "Réseaux sociaux",
+    "follow": "Suivre",
+    "subscribe": "S'abonner",
+    "unsubscribe": "Se désabonner",
+    "settings": "Paramètres",
+    "profile": "Profil",
+    "account": "Compte",
+    "logout": "Déconnexion",
+    "login": "Connexion",
+    "register": "S'inscrire",
+    "forgotPassword": "Mot de passe oublié ?",
+    "resetPassword": "Réinitialiser le mot de passe",
+    "changePassword": "Changer le mot de passe",
+    "currentPassword": "Mot de passe actuel",
+    "newPassword": "Nouveau mot de passe",
+    "confirmPassword": "Confirmer le mot de passe",
+    "passwordMismatch": "Les mots de passe ne correspondent pas",
+    "passwordRequirements": "Le mot de passe doit contenir au moins 8 caractères, une majuscule, une minuscule, un chiffre et un caractère spécial",
+    "invalidEmail": "Email invalide",
+    "invalidPhone": "Numéro de téléphone invalide",
+    "invalidUrl": "URL invalide",
+    "requiredField": "Ce champ est requis",
+    "minLength": "Minimum {{count}} caractères",
+    "maxLength": "Maximum {{count}} caractères",
+    "minValue": "Valeur minimum : {{count}}",
+    "maxValue": "Valeur maximum : {{count}}",
+    "invalidFormat": "Format invalide",
+    "serverError": "Erreur serveur",
+    "networkError": "Erreur réseau",
+    "unauthorized": "Non autorisé",
+    "forbidden": "Accès interdit",
+    "notFound": "Non trouvé",
+    "badRequest": "Requête invalide",
+    "conflict": "Conflit",
+    "tooManyRequests": "Trop de requêtes",
+    "maintenance": "Maintenance en cours",
+    "offline": "Hors ligne",
+    "online": "En ligne",
+    "busy": "Occupé",
+    "available": "Disponible",
+    "pending": "En attente",
+    "processing": "En cours de traitement",
+    "completed": "Terminé",
+    "failed": "Échoué",
+    "cancelled": "Annulé",
+    "scheduled": "Planifié",
+    "inProgress": "En cours",
+    "onHold": "En attente",
+    "draft": "Brouillon",
+    "published": "Publié",
+    "unpublished": "Non publié",
+    "archived": "Archivé",
+    "deleted": "Supprimé",
+    "restored": "Restauré",
+    "expired": "Expiré",
+    "active": "Actif",
+    "inactive": "Inactif",
+    "enabled": "Activé",
+    "disabled": "Désactivé",
+    "verified": "Vérifié",
+    "unverified": "Non vérifié",
+    "approved": "Approuvé",
+    "rejected": "Rejeté",
+    "blocked": "Bloqué",
+    "unblocked": "Débloqué",
+    "hidden": "Masqué",
+    "visible": "Visible",
+    "private": "Privé",
+    "public": "Public",
+    "internal": "Interne",
+    "external": "Externe",
+    "language": {
+      "en": "English",
+      "fr": "Français"
+    }
+  },
+  "nav": {
+    "home": "Accueil",
+    "about": "À propos",
+    "programs": "Programmes",
+    "services": "Services",
+    "media": "Médias",
+    "news": "Actualités",
+    "resources": "Ressources",
+    "contact": "Contact",
+    "donate": "Faire un don",
+    "volunteer": "Devenir bénévole",
+    "login": "Connexion",
+    "logout": "Déconnexion",
+    "dashboard": "Tableau de bord",
+    "profile": "Profil",
+    "settings": "Paramètres",
+    "language": "Langue",
+    "theme": "Thème",
+    "search": "Rechercher",
+    "menu": "Menu",
+    "close": "Fermer"
+  },
+  "home": {
+    "hero": {
+      "title": "Bienvenue sur Jeune Avenir Connect",
+      "subtitle": "Connecter, Inspirer, Transformer",
+      "description": "Nous sommes dédiés à l'autonomisation des jeunes et au développement communautaire à travers l'éducation, l'entrepreneuriat et le leadership.",
+      "cta": "Découvrir nos programmes",
+      "learnMore": "En savoir plus"
+    },
+    "programs": {
+      "title": "Nos Programmes",
+      "subtitle": "Découvrez nos initiatives pour l'autonomisation des jeunes",
+      "education": {
+        "title": "Éducation",
+        "description": "Programmes éducatifs pour développer les compétences et les connaissances"
+      },
+      "economic": {
+        "title": "Développement Économique",
+        "description": "Initiatives pour promouvoir l'entrepreneuriat et la création d'emplois"
+      },
+      "health": {
+        "title": "Santé",
+        "description": "Programmes de santé et de bien-être pour les jeunes"
+      },
+      "peace": {
+        "title": "Paix et Réconciliation",
+        "description": "Initiatives pour promouvoir la paix et la cohésion sociale"
+      }
+    },
+    "impact": {
+      "title": "Notre Impact",
+      "subtitle": "Changer des vies, transformer des communautés",
+      "stats": {
+        "youth": "Jeunes Autonomisés",
+        "communities": "Communautés Servies",
+        "programs": "Programmes Actifs",
+        "partners": "Partenaires"
+      }
+    },
+    "testimonials": {
+      "title": "Témoignages",
+      "subtitle": "Ce que disent nos bénéficiaires",
+      "readMore": "Lire plus de témoignages"
+    },
+    "news": {
+      "title": "Dernières Actualités",
+      "subtitle": "Restez informé de nos dernières nouvelles",
+      "readMore": "Lire toutes les actualités"
+    },
+    "cta": {
+      "title": "Rejoignez Notre Mission",
+      "subtitle": "Ensemble, nous pouvons faire la différence",
+      "donate": "Faire un don",
+      "volunteer": "Devenir bénévole"
+    }
+  },
+  "about": {
+    "title": "À Propos de Nous",
+    "mission": {
+      "title": "Notre Mission",
+      "description": "Autonomiser les jeunes et transformer les communautés à travers l'éducation, l'entrepreneuriat et le leadership."
+    },
+    "vision": {
+      "title": "Notre Vision",
+      "description": "Un monde où chaque jeune a les opportunités et les ressources nécessaires pour réaliser son plein potentiel."
+    },
+    "values": {
+      "title": "Nos Valeurs",
+      "integrity": "Intégrité",
+      "excellence": "Excellence",
+      "innovation": "Innovation",
+      "collaboration": "Collaboration",
+      "sustainability": "Durabilité"
+    },
+    "team": {
+      "title": "Notre Équipe",
+      "subtitle": "Rencontrez les personnes derrière notre mission",
+      "readMore": "En savoir plus sur notre équipe"
+    },
+    "history": {
+      "title": "Notre Histoire",
+      "description": "Découvrez notre parcours et notre impact au fil des années."
+    },
+    "partners": {
+      "title": "Nos Partenaires",
+      "subtitle": "Organisations qui partagent notre vision",
+      "becomePartner": "Devenir partenaire"
+    }
+  },
+  "programs": {
+    "title": "Nos Programmes",
+    "subtitle": "Découvrez nos initiatives pour l'autonomisation des jeunes",
+    "education": {
+      "title": "Éducation",
+      "description": "Programmes éducatifs pour développer les compétences et les connaissances"
+    },
+    "economic": {
+      "title": "Développement Économique",
+      "description": "Initiatives pour promouvoir l'entrepreneuriat et la création d'emplois"
+    },
+    "health": {
+      "title": "Santé",
+      "description": "Programmes de santé et de bien-être pour les jeunes"
+    },
+    "peace": {
+      "title": "Paix et Réconciliation",
+      "description": "Initiatives pour promouvoir la paix et la cohésion sociale"
+    },
+    "sportCultureArts": {
+      "title": "Sport, Culture & Arts",
+      "description": "Programmes pour promouvoir le développement holistique à travers le sport, la culture et les arts"
+    }
+  },
+  "contact": {
+    "title": "Contactez-nous",
+    "description": "Des questions ou envie de vous impliquer ? Contactez-nous !",
+    "form": {
+      "name": "Votre Nom",
+      "email": "Votre Email",
+      "message": "Votre Message",
+      "submit": "Envoyer le Message"
+    },
+    "success": "Message envoyé avec succès !",
+    "error": "Échec de l'envoi du message. Veuillez réessayer."
+  },
+  "news": {
+    "title": "Dernières Nouvelles",
+    "viewAll": "Voir toutes les actualités"
+  },
+  "resources": {
+    "title": "Ressources",
+    "description": "Explorez nos ressources pour l'autonomisation des jeunes et le développement communautaire."
+  },
+  "services": {
+    "title": "Nos Services",
+    "description": "Des services complets conçus pour autonomiser les jeunes et favoriser le développement communautaire."
+  },
+  "media": {
+    "title": "Galerie Média",
+    "search": "Rechercher des fichiers média...",
+    "upload": "Télécharger un Média",
+    "noFiles": "Aucun fichier média trouvé",
+    "fileInfo": {
+      "name": "Nom du Fichier",
+      "type": "Type de Fichier",
+      "size": "Taille du Fichier",
+      "uploaded": "Téléchargé le"
+    },
+    "messages": {
+      "uploadSuccess": "Fichier média téléchargé avec succès",
+      "deleteSuccess": "Fichier média supprimé avec succès",
+      "uploadError": "Échec du téléchargement du fichier média",
+      "deleteError": "Échec de la suppression du fichier média",
+      "loadError": "Échec du chargement des fichiers média",
+      "downloadError": "Échec du téléchargement du fichier média"
+    },
+    "confirmDelete": "Êtes-vous sûr de vouloir supprimer ce fichier média ? Cette action est irréversible."
+  },
+  "blog": {
+    "title": "Blog",
+    "recentPosts": "Articles Récents",
+    "readMore": "Lire la suite",
+    "noPosts": "Aucun article de blog disponible.",
+    "tags": "Tags",
+    "author": "Auteur",
+    "date": "Date",
+    "category": "Catégorie",
+    "editor": {
+      "title": "Éditeur de Blog",
+      "newPost": "Nouvel Article de Blog",
+      "editPost": "Modifier l'Article de Blog",
+      "titleField": "Titre",
+      "slugField": "Slug",
+      "categoryField": "Catégorie",
+      "tagsField": "Tags (séparés par des virgules)",
+      "statusField": "Statut",
+      "featuredImageField": "Image à la Une",
+      "contentField": "Contenu",
+      "excerptField": "Extrait",
+      "publish": "Publier",
+      "saveDraft": "Enregistrer le Brouillon",
+      "updatePost": "Mettre à Jour l'Article",
+      "deletePost": "Supprimer l'Article",
+      "confirmDelete": "Êtes-vous sûr de vouloir supprimer cet article ?",
+      "successCreate": "Article de blog créé avec succès !",
+      "successUpdate": "Article de blog mis à jour avec succès !",
+      "successDelete": "Article de blog supprimé avec succès !",
+      "errorCreate": "Échec de la création de l'article de blog.",
+      "errorUpdate": "Échec de la mise à jour de l'article de blog.",
+      "errorDelete": "Échec de la suppression de l'article de blog.",
+      "errorLoad": "Échec du chargement de l'article de blog.",
+      "errorUploadImage": "Échec du téléchargement de l'image.",
+      "imageOptimization": "L'image sera optimisée automatiquement.",
+      "selectCategory": "Sélectionner une catégorie",
+      "enterTitle": "Saisir le titre de l'article",
+      "enterSlug": "Saisir le slug de l'article",
+      "enterExcerpt": "Saisir un bref extrait",
+      "writeContent": "Commencez à écrire votre contenu ici..."
+    },
+    "status": {
+      "draft": "Brouillon",
+      "published": "Publié",
+      "archived": "Archivé"
+    },
+    "featured": "En Vedette",
+    "featuredPost": "Article en Vedette"
+  },
+  "sitemap": {
+    "title": "Plan du Site",
+    "description": "Une liste complète de toutes les pages de notre site web."
+  },
+  "privacy": {
+    "title": "Politique de Confidentialité",
+    "description": "Notre engagement à protéger votre vie privée."
+  },
+  "terms": {
+    "title": "Conditions Générales",
+    "description": "Conditions légales régissant l'utilisation de nos services."
+  },
+  "donate": {
+    "title": "Faire un Don",
+    "description": "Votre soutien nous aide à poursuivre notre mission d'autonomisation des jeunes et de construction de communautés plus fortes.",
+    "modal": {
+      "title": "Faire un Don",
+      "description": "Votre soutien nous aide à poursuivre notre mission d'autonomisation des jeunes et de construction de communautés plus fortes.",
+      "amount": "Montant du Don",
+      "close": "Fermer",
+      "submit": "Faire un Don Maintenant"
+    },
+    "success": "Merci pour votre don !",
+    "error": "Échec du traitement du don. Veuillez réessayer."
+  },
+  "impact": {
+    "title": "Notre Impact",
+    "description": "Voyez comment vos contributions font la différence."
+  },
+  "volunteer": {
+    "title": "Faire du Bénévolat avec Nous",
+    "description": "Rejoignez notre équipe et faites une différence dans votre communauté.",
+    "applyForm": {
+      "title": "Postuler pour faire du Bénévolat",
+      "name": "Votre Nom",
+      "email": "Votre Email",
+      "phone": "Numéro de Téléphone",
+      "interest": "Domaine d'Intérêt",
+      "message": "Votre Message",
+      "submit": "Envoyer la Demande"
+    },
+    "success": "Demande de bénévolat soumise avec succès !",
+    "error": "Échec de la soumission de la demande. Veuillez réessayer."
+  },
+  "careers": {
+    "title": "Rejoignez Notre Équipe",
+    "subtitle": "Faites la différence dans la vie des jeunes tout en développant votre carrière",
+    "opportunities": {
+      "title": "Opportunités Actuelles",
+      "apply": "Postuler Maintenant",
+      "viewAll": "Voir toutes les offres"
+    },
+    "applyForm": {
+      "title": "Postuler pour un Poste",
+      "name": "Votre Nom",
+      "email": "Votre Email",
+      "phone": "Numéro de Téléphone",
+      "resume": "CV",
+      "coverLetter": "Lettre de Motivation",
+      "submit": "Soumettre la Candidature"
+    },
+    "success": "Candidature soumise avec succès !",
+    "error": "Échec de la soumission de la candidature. Veuillez réessayer."
+  },
+  "profile": {
+    "title": "Profil Utilisateur",
+    "description": "Gérez votre profil et vos préférences",
+    "tabs": {
+      "profile": "Profil",
+      "preferences": "Préférences"
+    },
+    "name": "Nom",
+    "email": "Email",
+    "role": "Rôle",
+    "preferences": {
+      "theme": "Thème",
+      "themeDescription": "Choisissez votre thème préféré",
+      "selectTheme": "Sélectionner un thème",
+      "light": "Clair",
+      "dark": "Sombre",
+      "system": "Système",
+      "language": "Langue",
+      "languageDescription": "Choisissez votre langue préférée",
+      "selectLanguage": "Sélectionner une langue",
+      "notifications": "Notifications",
+      "notificationsDescription": "Activer ou désactiver les notifications"
+    },
+    "fetchError": "Erreur lors de la récupération des données du profil",
+    "userNotFound": "Profil utilisateur non trouvé",
+    "noUserId": "Aucun ID utilisateur disponible",
+    "updateSuccess": "Profil mis à jour avec succès",
+    "updateError": "Erreur lors de la mise à jour du profil",
+    "preferencesUpdateSuccess": "Préférences mises à jour avec succès",
+    "preferencesUpdateError": "Erreur lors de la mise à jour des préférences",
+    "avatarUpdateSuccess": "Photo de profil mise à jour avec succès",
+    "avatarUpdateError": "Erreur lors de la mise à jour de la photo de profil"
+  },
+  "admin": {
+    "dashboard": {
+      "title": "Tableau de Bord",
+      "welcome": "Bienvenue dans l'interface d'administration",
+      "quickStats": "Statistiques Rapides",
+      "totalUsers": "Total Utilisateurs",
+      "totalPosts": "Total Articles",
+      "totalComments": "Total Commentaires",
+      "recentActivity": "Activité Récente",
+      "viewAll": "Voir Tout",
+      "lastLogin": "Dernière Connexion",
+      "systemStatus": "État du Système",
+      "online": "En Ligne",
+      "offline": "Hors Ligne",
+      "maintenance": "Maintenance"
+    },
+    "slider": {
+      "title": "Gestion du Slider",
+      "addSlide": "Ajouter un Slide",
+      "editSlide": "Modifier le Slide",
+      "deleteSlide": "Supprimer le Slide",
+      "moveUp": "Monter",
+      "moveDown": "Descendre",
+      "image": "Image",
+      "slideTitle": "Titre",
+      "subtitle": "Sous-titre",
+      "description": "Description",
+      "link": "Lien",
+      "linkText": "Texte du lien",
+      "order": "Ordre",
+      "status": "Statut",
+      "actions": "Actions",
+      "saveSlide": "Enregistrer",
+      "cancel": "Annuler",
+      "deleteSlideAction": "Supprimer",
+      "confirmDelete": "Êtes-vous sûr de vouloir supprimer ce slide ?",
+      "uploadImage": "Télécharger une image",
+      "dragDrop": "Glissez-déposez une image ici ou cliquez pour sélectionner",
+      "maxSize": "Taille maximale : {{size}}MB",
+      "imageRequirements": "Format : JPG, PNG, GIF. Dimensions recommandées : 1920x1080px",
+      "success": {
+        "added": "Slide ajouté avec succès",
+        "updated": "Slide mis à jour avec succès",
+        "deleted": "Slide supprimé avec succès",
+        "reordered": "Ordre des slides mis à jour avec succès"
+      },
+      "error": {
+        "add": "Erreur lors de l'ajout du slide",
+        "update": "Erreur lors de la mise à jour du slide",
+        "delete": "Erreur lors de la suppression du slide",
+        "reorder": "Erreur lors de la mise à jour de l'ordre des slides",
+        "upload": "Erreur lors du téléchargement de l'image"
+      }
+    },
+    "blog": {
+      "title": "Gestion du Blog",
+      "addPost": "Nouvel Article",
+      "editPost": "Modifier l'Article",
+      "deletePost": "Supprimer l'Article",
+      "draft": "Brouillon",
+      "published": "Publié",
+      "scheduled": "Planifié",
+      "archived": "Archivé",
+      "postTitle": "Titre",
+      "content": "Contenu",
+      "excerpt": "Extrait",
+      "author": "Auteur",
+      "category": "Catégorie",
+      "tags": "Tags",
+      "featuredImage": "Image à la Une",
+      "publishDate": "Date de Publication",
+      "status": "Statut",
+      "actions": "Actions",
+      "savePost": "Enregistrer",
+      "publish": "Publier",
+      "unpublish": "Dépublier",
+      "schedule": "Planifier",
+      "deletePostAction": "Supprimer",
+      "confirmDelete": "Êtes-vous sûr de vouloir supprimer cet article ?",
+      "success": {
+        "added": "Article ajouté avec succès",
+        "updated": "Article mis à jour avec succès",
+        "deleted": "Article supprimé avec succès",
+        "published": "Article publié avec succès",
+        "unpublished": "Article dépublié avec succès"
+      },
+      "error": {
+        "add": "Erreur lors de l'ajout de l'article",
+        "update": "Erreur lors de la mise à jour de l'article",
+        "delete": "Erreur lors de la suppression de l'article",
+        "publish": "Erreur lors de la publication de l'article",
+        "unpublish": "Erreur lors de la dépublication de l'article"
+      }
+    },
+    "media": {
+      "title": "Gestion des Médias",
+      "upload": "Télécharger",
+      "library": "Bibliothèque",
+      "search": "Rechercher",
+      "filter": "Filtrer",
+      "sort": "Trier",
+      "view": "Voir",
+      "deleteMedia": "Supprimer",
+      "edit": "Modifier",
+      "download": "Télécharger",
+      "share": "Partager",
+      "name": "Nom",
+      "type": "Type",
+      "size": "Taille",
+      "dimensions": "Dimensions",
+      "uploadDate": "Date de téléchargement",
+      "lastModified": "Dernière modification",
+      "dragDrop": "Glissez-déposez des fichiers ici ou cliquez pour sélectionner",
+      "maxSize": "Taille maximale par fichier : {{size}}MB",
+      "allowedTypes": "Types de fichiers autorisés : {{types}}",
+      "success": {
+        "uploaded": "Fichier(s) téléchargé(s) avec succès",
+        "deleted": "Fichier(s) supprimé(s) avec succès",
+        "updated": "Fichier(s) mis à jour avec succès"
+      },
+      "error": {
+        "upload": "Erreur lors du téléchargement",
+        "delete": "Erreur lors de la suppression",
+        "update": "Erreur lors de la mise à jour"
+      }
+    },
+    "users": {
+      "title": "Gestion des Utilisateurs",
+      "addUser": "Ajouter un Utilisateur",
+      "editUser": "Modifier l'Utilisateur",
+      "deleteUser": "Supprimer l'Utilisateur",
+      "name": "Nom",
+      "email": "Email",
+      "role": "Rôle",
+      "status": "Statut",
+      "lastLogin": "Dernière Connexion",
+      "actions": "Actions",
+      "saveUser": "Enregistrer",
+      "cancelAction": "Annuler",
+      "deleteUserAction": "Supprimer",
+      "confirmDelete": "Êtes-vous sûr de vouloir supprimer cet utilisateur ?",
+      "roles": {
+        "admin": "Administrateur",
+        "editor": "Éditeur",
+        "author": "Auteur",
+        "contributor": "Contributeur",
+        "subscriber": "Abonné"
+      },
+      "statuses": {
+        "active": "Actif",
+        "inactive": "Inactif",
+        "suspended": "Suspendu",
+        "pending": "En attente"
+      },
+      "success": {
+        "added": "Utilisateur ajouté avec succès",
+        "updated": "Utilisateur mis à jour avec succès",
+        "deleted": "Utilisateur supprimé avec succès"
+      },
+      "error": {
+        "add": "Erreur lors de l'ajout de l'utilisateur",
+        "update": "Erreur lors de la mise à jour de l'utilisateur",
+        "delete": "Erreur lors de la suppression de l'utilisateur"
+      }
+    },
+    "settings": {
+      "title": "Paramètres",
+      "general": "Général",
+      "appearance": "Apparence",
+      "security": "Sécurité",
+      "notifications": "Notifications",
+      "integrations": "Intégrations",
+      "save": "Enregistrer",
+      "cancel": "Annuler",
+      "reset": "Réinitialiser",
+      "success": {
+        "saved": "Paramètres enregistrés avec succès",
+        "reset": "Paramètres réinitialisés avec succès"
+      },
+      "error": {
+        "save": "Erreur lors de l'enregistrement des paramètres",
+        "reset": "Erreur lors de la réinitialisation des paramètres"
+      }
+    },
+    "common": {
+      "search": "Rechercher",
+      "filter": "Filtrer",
+      "sort": "Trier",
+      "view": "Voir",
+      "edit": "Modifier",
+      "delete": "Supprimer",
+      "saveChanges": "Enregistrer",
+      "cancelAction": "Annuler",
+      "confirm": "Confirmer",
+      "back": "Retour",
+      "next": "Suivant",
+      "previous": "Précédent",
+      "loading": "Chargement...",
+      "noResults": "Aucun résultat trouvé",
+      "error": "Une erreur est survenue",
+      "success": "Opération réussie",
+      "warning": "Attention",
+      "info": "Information",
+      "confirmDeleteItem": "Êtes-vous sûr de vouloir supprimer cet élément ?",
+      "confirmAction": "Êtes-vous sûr de vouloir effectuer cette action ?",
+      "yes": "Oui",
+      "no": "Non",
+      "close": "Fermer",
+      "reset": "Réinitialiser",
+      "apply": "Appliquer",
+      "clear": "Effacer",
+      "select": "Sélectionner",
+      "upload": "Télécharger",
+      "download": "Télécharger",
+      "preview": "Aperçu",
+      "status": "Statut",
+      "actions": "Actions",
+      "date": "Date",
+      "time": "Heure",
+      "type": "Type",
+      "size": "Taille",
+      "name": "Nom",
+      "description": "Description",
+      "details": "Détails",
+      "more": "Plus",
+      "less": "Moins",
+      "all": "Tout",
+      "none": "Aucun"
+    }
+  }
+} 
