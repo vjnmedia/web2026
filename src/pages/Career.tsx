@@ -141,7 +141,7 @@ const Career = () => {
             transition={{ duration: 0.5 }}
             className="text-center"
           >
-            <h1 className="text-4xl md:text-5xl font-bold mb-4">
+            <h1 className="text-4xl md:text-5xl font-bold mb-4 text-green-600">
               {t('career.hero.title', 'Join Our Mission')}
             </h1>
             <p className="text-xl md:text-2xl max-w-2xl mx-auto">

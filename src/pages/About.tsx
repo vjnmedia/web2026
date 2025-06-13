@@ -80,7 +80,7 @@ const About = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
             {/* Mission */}
             <div className="bg-white p-8 rounded-lg shadow-md">
-              <h3 className="text-2xl font-bold mb-4 text-vjn-blue">{t('about.mission')}</h3>
+              <h3 className="text-2xl font-bold mb-4 text-green-600">{t('about.mission')}</h3>
               <p className="text-gray-700">
                 {t('about.mission.text')}
               </p>
@@ -98,7 +98,7 @@ const About = () => {
             
             {/* Vision */}
             <div className="bg-white p-8 rounded-lg shadow-md">
-              <h3 className="text-2xl font-bold mb-4 text-vjn-blue">{t('about.vision')}</h3>
+              <h3 className="text-2xl font-bold mb-4 text-green-600">{t('about.vision')}</h3>
               <p className="mb-4 text-gray-700">
                 {t('about.vision.text')}
               </p>
@@ -126,7 +126,7 @@ const About = () => {
         className="section bg-white"
       >
         <div className="container-custom">
-          <h2 className="text-center mb-12 text-gray-900">Key Achievements in 23 Years</h2>
+          <h2 className="text-center mb-12 text-green-600">Key Achievements in 23 Years</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {/* VTC Training */}
             <div className="bg-vjn-gray p-6 rounded-lg shadow-md">
@@ -194,7 +194,7 @@ const About = () => {
         className="section bg-white"
       >
         <div className="container-custom">
-          <h2 className="text-center mb-12 text-gray-900">Our Founding Members</h2>
+          <h2 className="text-center mb-12 text-green-600">Our Founding Members</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {/* Member 1: Brother Gabriel Lauzon */}
             <div className="bg-vjn-gray p-6 rounded-lg shadow-md flex flex-col items-center">
@@ -244,7 +244,7 @@ const About = () => {
         className="section bg-vjn-gray"
       >
         <div className="container-custom">
-          <h2 className="text-center mb-12 text-gray-900">Our Journey & Impact</h2>
+          <h2 className="text-center mb-12 text-green-600">Our Journey & Impact</h2>
           
           <div className="relative max-w-3xl mx-auto">
             <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-vjn-blue"></div>

@@ -215,7 +215,9 @@
     "hero": {
       "title": "Empowering Youth for a Better Tomorrow",
       "subtitle": "Building a brighter future through education, economic empowerment, and community development",
-      "cta": "Get Involved"
+      "cta": "Get Involved",
+      "explorePrograms": "Explore Programs",
+      "getInvolved": "Get Involved"
     },
     "about": {
       "description": "Vision Jeunesse Nouvelle (VJN) is a youth-led organization founded in 2005, dedicated to empowering young people across Rwanda and the region through comprehensive programs in education, economic development, health, peace building, and arts.",
@@ -387,12 +389,43 @@
     },
     "beneficiaries": {
       "title": "Who We Serve",
+      "description": "At Vision Jeunesse Nouvelle, we serve the heartbeat of the nation—those with dreams that deserve a fighting chance, and voices that demand to be heard. From the streets of Rubavu to the farthest refugee camps, we walk with:",
       "list": [
-        "Children, youth, and adults",
-        "Refugees and disaster victims",
-        "People living with HIV/AIDS",
-        "Prisoners and vulnerable individuals",
-        "Parents and community members"
+        {
+          "icon": "✨",
+          "title": "Youth and Adolescents",
+          "description": "In and out of school, we empower young minds to think critically, act peacefully, and lead change."
+        },
+        {
+          "icon": "👶",
+          "title": "Teen Mothers",
+          "description": "We stand with young girls facing unplanned pregnancies, offering support, dignity, and pathways to reclaim their future."
+        },
+        {
+          "icon": "🧬",
+          "title": "People Affected & Infected with HIV/AIDS",
+          "description": "We serve with empathy and action—reducing stigma, promoting health, and building communities of care."
+        },
+        {
+          "icon": "🧑‍🔧",
+          "title": "Young Entrepreneurs",
+          "description": "Through training and mentorship, we help youth turn ideas into income and build self-reliant futures."
+        },
+        {
+          "icon": "🎨",
+          "title": "Talented Youth from Early Age",
+          "description": "We nurture raw talent in music, sports, art, and culture—starting early, dreaming big, and shining bright."
+        },
+        {
+          "icon": "🧍",
+          "title": "Vulnerable & Marginalized Groups",
+          "description": "Including refugee communities and at-risk youth—because everyone deserves opportunity, not just the lucky few."
+        },
+        {
+          "icon": "🕊️",
+          "title": "Peacebuilders & Change Agents",
+          "description": "We support youth-led peace initiatives that heal divisions, strengthen unity, and rewrite the future of the Great Lakes Region."
+        }
       ]
     },
     "opportunities": {
@@ -436,6 +469,39 @@
         "careers": "Careers",
         "contact": "Contact"
       }
+    },
+    "getInTouch": {
+      "title": "Get in Touch",
+      "subtitle": "We'd love to hear from you. Reach out to us for any questions or collaboration opportunities.",
+      "description": "Contact us via phone, email, or social media. Our team is ready to assist you.",
+      "contactInfo": {
+        "title": "Contact Information",
+        "address": "Rubavu District, Gisenyi Sector, Nengo Cell, Gikarani Village",
+        "phone": "+250 785 403 435 / +250 788 892 826",
+        "email": "visionjeunesse2050@gmail.com"
+      },
+      "socialMedia": {
+        "title": "Follow Us",
+        "facebook": "Facebook",
+        "twitter": "Twitter",
+        "instagram": "Instagram",
+        "linkedin": "LinkedIn"
+      },
+      "buttons": {
+        "contact": "Contact Us",
+        "donate": "Donate",
+        "volunteer": "Volunteer"
+      }
+    },
+    "whoWeAre": {
+      "title": "Who We Are",
+      "description": "We are Vision Jeunesse Nouvelle—a community-driven organization rooted in faith, resilience, and a deep belief in the potential of youth.\n\nFounded in 2002 by the Brothers of Christian Instruction (FIC), we are more than just an NGO—we are a movement committed to transforming lives and shaping a more peaceful, empowered, and creative generation.",
+      "missionTitle": "\uD83C\uDFAF Our Mission",
+      "mission": "To develop talents and capacities that promote human dignity, peace, and sustainable development—one youth at a time.",
+      "visionTitle": "\uD83D\uDC41\uFE0F Our Vision",
+      "vision": "A renewed, dynamic, and productive population in good physical, moral, and spiritual health, building a brighter future for all.",
+      "differentTitle": "\uD83E\uDDE9 What Makes Us Different",
+      "different": "We reach across borders—serving both Rwandan youth and those in refugee communities.\n\nWe build peace through dialogue, arts, sports, and youth-led action.\n\nWe invest in skills, self-reliance, and long-term transformation, not just short-term aid.\n\nWe believe talent is not a luxury—it's a calling. We develop it from a very young age.\n\nFrom Gisenyi to Mahama, from peace camps to business trainings, we walk beside the youth—never ahead, never behind—always together.\n\nWe are VJN.\nA voice for the voiceless. A home for the hopeful. A platform for purpose."
     }
   },
   "about": {

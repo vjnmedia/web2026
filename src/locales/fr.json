@@ -190,6 +190,21 @@
       "search": "Rechercher des actualités...",
       "date": "Filtrer par date",
       "category": "Filtrer par catégorie"
+    },
+    "item1": {
+      "title": "Le Camp de Paix Jeunesse Autonomise 150 Étudiants Rwandais",
+      "excerpt": "Dialogue transfrontalier, culture et leadership",
+      "date": "15 Mars 2024"
+    },
+    "item2": {
+      "title": "VJN Lance un Nouveau Centre de Formation à Nyundo",
+      "excerpt": "Formation de la nouvelle génération en soudure et hôtellerie",
+      "date": "10 Mars 2024"
+    },
+    "item3": {
+      "title": "Lutter Contre les MNT à Travers la Danse et le Sport",
+      "excerpt": "Notre campagne de santé créative fait bouger les choses—littéralement",
+      "date": "5 Mars 2024"
     }
   },
   "resources": {
@@ -255,9 +270,9 @@
   },
   "home": {
     "hero": {
-      "title": "Autonomiser les Jeunes pour un Meilleur Demain",
-      "subtitle": "Construire un avenir meilleur grâce à l'éducation, l'autonomisation économique et le développement communautaire",
-      "cta": "S'impliquer"
+      "title": "Transformer des vies, Construire l'avenir",
+      "subtitle": "Autonomiser les jeunes à travers l'éducation, le développement économique, la santé et la consolidation de la paix",
+      "cta": "Découvrir nos programmes"
     },
     "about": {
       "description": "Vision Jeunesse Nouvelle (VJN) est une organisation dirigée par des jeunes, fondée en 2005, dédiée à l'autonomisation des jeunes à travers le Rwanda et la région grâce à des programmes complets en éducation, développement économique, santé, construction de la paix et arts.",
@@ -265,7 +280,27 @@
     },
     "programs": {
       "title": "Nos Programmes",
-      "subtitle": "Découvrez nos programmes complets conçus pour autonomiser les jeunes et créer un changement durable dans nos communautés",
+      "subtitle": "Des solutions holistiques pour l'autonomisation des jeunes",
+      "education": {
+        "title": "Éducation",
+        "description": "Nous fournissons une formation professionnelle, un soutien à l'alphabétisation et une éducation spécialisée pour aider les jeunes à accéder à un emploi significatif et à une croissance personnelle."
+      },
+      "economic": {
+        "title": "Autonomisation Économique",
+        "description": "Nous équipons les jeunes entrepreneurs avec des compétences commerciales, une éducation financière et des connexions aux coopératives et aux opportunités de marché."
+      },
+      "health": {
+        "title": "Promotion de la Santé",
+        "description": "À travers des campagnes de sensibilisation et l'éducation par les pairs, nous promouvons la santé sexuelle et reproductive, la prévention du VIH/SIDA et le bien-être mental."
+      },
+      "peace": {
+        "title": "Consolidation de la Paix",
+        "description": "Nos initiatives de paix dirigées par les jeunes se concentrent sur le dialogue, la consolidation de la paix numérique, la médiation des conflits et la collaboration régionale."
+      },
+      "culture": {
+        "title": "Sports, Culture & Arts",
+        "description": "Nous découvrons et développons les talents des jeunes dans les sports, la musique et les arts visuels, créant des espaces pour l'expression de soi et la guérison communautaire."
+      },
       "cta": {
         "title": "Rejoignez Notre Mission",
         "subtitle": "Contactez-nous aujourd'hui et devenez partie intégrante d'un mouvement croissant pour façonner un meilleur avenir",
@@ -273,10 +308,6 @@
         "contact": "Contactez-nous",
         "support": "Soutenez-nous"
       },
-      "education": {
-        "title": "Éducation & Formation Professionnelle",
-        "description": "Offrir une éducation de qualité et une formation professionnelle pour doter les jeunes des compétences essentielles pour leur réussite future.",
-        "readMore": "En Savoir Plus",
         "fullPage": {
           "title": "Autonomiser les Esprits, Façonner l'Avenir",
           "intro": "Chez VJN, nous croyons que l'éducation va au-delà de la scolarité—c'est une porte d'entrée vers la dignité, l'indépendance et le but. Notre Programme d'Éducation cible les jeunes de familles à faible revenu et sans emploi, leur offrant les connaissances et les compétences nécessaires pour réussir dans la vie et le travail.",
@@ -307,168 +338,76 @@
           }
         }
       },
-      "economic": {
-        "title": "Autonomisation Économique",
-        "description": "Soutenir l'entrepreneuriat des jeunes et le développement économique par la formation, le mentorat et les ressources.",
-        "readMore": "En Savoir Plus",
-        "fullPage": {
-          "title": "Développer des Compétences pour la Liberté Financière",
-          "intro": "Dans un monde de défis économiques croissants, notre Programme d'Autonomisation Économique équipe les jeunes des outils pour échapper à la pauvreté et construire des avenirs prospères. Des bases de la création d'entreprise à l'enregistrement des coopératives, nous préparons les jeunes entrepreneurs à réussir.",
-          "whatWeDo": {
-            "title": "Ce que nous faisons",
-            "items": [
-              "Formation à l'Entrepreneuriat : Couvrant la planification d'entreprise, le marketing, le commerce électronique et le service client.",
-              "Formation GSLA : Soutien aux Associations d'Épargne et de Crédit comme véhicules de développement local.",
-              "Liens avec le Marché : Nous connectons les jeunes producteurs avec les acheteurs, les coopératives et les foires commerciales.",
-              "Droit des Affaires & Finance Numérique : Alphabétisation juridique de base et accès au banking numérique."
-            ]
-          },
-          "whoItServes": {
-            "title": "Qui nous servons",
-            "items": [
-              "Jeunes de 18 à 35 ans",
-              "Jeunes femmes et hommes dans les secteurs informels",
-              "Coopératives communautaires"
-            ]
-          },
-          "getInvolved": {
-            "title": "S'impliquer",
-            "buttons": {
-              "applyTraining": "Postuler à la Formation",
-              "supportBusiness": "Soutenir une Entreprise",
-              "partner": "Partenariat"
-            }
-          }
-        }
-      },
-      "health": {
-        "title": "Santé & Bien-être",
-        "description": "Promouvoir la santé physique et mentale par l'éducation, la sensibilisation et l'accès aux services de santé.",
-        "readMore": "En Savoir Plus",
-        "fullPage": {
-          "title": "Jeunesse Informée, Communautés Plus Saines",
-          "intro": "Une bonne santé est le fondement de sociétés fortes. À travers notre Programme de Santé, VJN autonomise les jeunes pour se protéger, diffuser la sensibilisation et combattre la stigmatisation autour de la santé sexuelle et reproductive.",
-          "whatWeDo": {
-            "title": "Ce que nous faisons",
-            "items": [
-              "Services de Santé Adaptés aux Jeunes : Partenariat avec des cliniques et des écoles pour un accès inclusif.",
-              "Formation des Éducateurs Pairs : Mobilisation des jeunes pour éduquer sur le VIH/SIDA, les IST et les droits reproductifs.",
-              "Campagnes de Sensibilisation : Axées sur la planification familiale, la santé mentale, l'obésité et l'abus de substances.",
-              "Réponse à la Pandémie : Éducation COVID-19 et pratiques de sécurité pour les groupes de jeunes."
-            ]
-          },
-          "whoItServes": {
-            "title": "Qui nous servons",
-            "items": [
-              "Adolescents de 10 à 24 ans",
-              "Jeunes scolarisés et déscolarisés",
-              "Communautés confrontées à la désinformation en santé"
-            ]
-          },
-          "getInvolved": {
-            "title": "S'impliquer",
-            "buttons": {
-              "becomeEducator": "Devenir Éducateur Pair",
-              "requestWorkshop": "Demander un Atelier",
-              "donateSupplies": "Donner des Fournitures Médicales"
-            }
-          }
-        }
-      },
-      "peace": {
-        "title": "Construction de la Paix",
-        "description": "Construire des ponts et favoriser la compréhension par le dialogue et l'engagement communautaire.",
-        "readMore": "En Savoir Plus",
-        "subtitle": "Construire des ponts et favoriser la compréhension",
-        "fullDesc": "Notre programme de construction de la paix se concentre sur la création d'une paix durable par le dialogue, l'éducation et l'engagement communautaire.",
-        "detail1": "Programmes de dialogue et d'échange interculturels",
-        "detail2": "Formation à la résolution de conflits et à la médiation",
-        "detail3": "Développement du leadership des jeunes",
-        "detail4": "Initiatives de paix communautaires",
-        "detail5": "Ateliers de réconciliation"
-      },
-      "culture": {
-        "title": "Sports, Culture & Arts",
-        "description": "Nous découvrons et développons les talents des jeunes dans les sports, la musique et les arts visuels, créant des espaces d'expression personnelle et de guérison communautaire."
-      },
-      "finalCta": {
-        "title": "Intéressé par l'un de nos programmes ? Vous souhaitez amener VJN dans votre communauté ?",
-        "subtitle": "Construisons l'avenir ensemble—une compétence, une voix, un objectif à la fois.",
-        "buttons": {
-          "contact": "Contactez-nous",
-          "partner": "Partenariat",
-          "donate": "Faire un Don"
-        }
-      }
-    },
     "impact": {
       "title": "Notre Impact",
-      "description": "Grâce à nos programmes, nous avons touché des milliers de jeunes, leur fournissant les outils et les opportunités dont ils ont besoin pour réussir."
+      "subtitle": "Transformer des vies, une communauté à la fois",
+      "beneficiaries": {
+        "title": "Bénéficiaires",
+        "description": "Enfants, jeunes et adultes"
+      },
+      "communities": {
+        "title": "Communautés",
+        "description": "Plus de 50 districts au Rwanda"
+      },
+      "partners": {
+        "title": "Partenaires",
+        "description": "Organisations locales et internationales"
+      },
+      "success": {
+        "title": "Taux de Réussite",
+        "description": "Plus de 90% des participants"
+      }
     },
     "news": {
-      "title": "Dernières Nouvelles & Mises à Jour",
-      "readMore": "Lire Plus",
-      "item1": {
-        "title": "Nouveau Centre de Jeunesse à Nyundo",
-        "excerpt": "Élargir notre portée pour servir plus de jeunes dans la Province de l'Ouest",
-        "date": "15 Mars 2024"
-      },
-      "item2": {
-        "title": "Succès de l'Atelier de Construction de la Paix",
-        "excerpt": "Plus de 100 jeunes leaders formés à la résolution de conflits et au dialogue communautaire",
-        "date": "10 Mars 2024"
+      "title": "Dernières Actualités",
+      "subtitle": "Restez informé de nos dernières activités",
+      "readMore": "Lire Plus"
+    },
+    "newsletter": {
+      "title": "Restez Connecté",
+      "subtitle": "Inscrivez-vous à notre newsletter pour recevoir les dernières nouvelles et opportunités",
+      "placeholder": "Votre adresse e-mail",
+      "button": "S'inscrire",
+      "success": "Merci de vous être inscrit !",
+      "error": "Une erreur s'est produite. Veuillez réessayer."
+    },
+    "cta": {
+      "title": "Rejoignez Notre Mission",
+      "subtitle": "Ensemble, nous pouvons créer un avenir meilleur pour les jeunes",
+      "button": "Devenir Partenaire"
+    },
+    "whoWeAre": {
+      "title": "Qui Sommes-Nous",
+      "subtitle": "Une organisation dirigée par des jeunes, dédiée à l'autonomisation et au développement communautaire",
+      "description": "Vision Jeunesse Nouvelle (VJN) est une organisation à but non lucratif qui œuvre pour l'autonomisation des jeunes à travers l'éducation, le développement économique, les initiatives de santé et la consolidation de la paix. Notre mission est de créer des opportunités durables pour les jeunes et de construire des communautés plus fortes.",
+      "values": {
+        "title": "Nos Valeurs",
+        "empowerment": "Autonomisation",
+        "inclusion": "Inclusion",
+        "innovation": "Innovation",
+        "sustainability": "Durabilité"
       }
     },
-    "beneficiaries": {
-      "title": "Qui Nous Servons",
-      "list": [
-        "Enfants, jeunes et adultes",
-        "Réfugiés et victimes de catastrophes",
-        "Personnes vivant avec le VIH/SIDA",
-        "Prisonniers et personnes vulnérables",
-        "Parents et membres de la communauté"
-      ]
-    },
-    "opportunities": {
-      "title": "Opportunités de Carrière & Formation",
-      "apply": "Postuler Maintenant",
-      "viewAll": "Voir Toutes les Opportunités",
-      "item1": {
-        "title": "Coordinateur de Programme Jeunesse",
-        "type": "Temps plein",
-        "location": "Kigali"
+    "getInTouch": {
+      "title": "Contactez-Nous",
+      "subtitle": "Nous sommes là pour vous aider",
+      "description": "Que vous souhaitiez vous impliquer, faire un don ou simplement en savoir plus sur notre travail, n'hésitez pas à nous contacter.",
+      "contactInfo": {
+        "address": "District de Rubavu, Secteur de Gisenyi, Cellule de Nengo, Village de Gikarani",
+        "phone": "+250 785 403 435 / 788 892 826",
+        "email": "visionjeunesse2050@gmail.com"
       },
-      "item2": {
-        "title": "Atelier de Construction de la Paix",
-        "type": "Formation",
-        "location": "Nyundo"
-      }
-    },
-    "repository": {
-      "title": "Répertoire des Groupes de Jeunes",
-      "description": "Accédez à notre base de données complète de groupes et organisations de jeunes. Enregistrez votre groupe pour vous connecter avec d'autres et accéder aux ressources.",
-      "access": "Accéder au Répertoire",
-      "register": "Enregistrer un Groupe de Jeunes"
-    },
-    "partner": {
-      "title": "Partenariat",
-      "description": "Rejoignez-nous dans notre mission d'autonomiser les jeunes et de construire des communautés plus fortes. Votre soutien peut avoir un impact durable.",
-      "becomePartner": "Devenir Partenaire",
-      "donate": "Faire un Don"
-    },
-    "contact": {
-      "title": "Informations de Contact",
-      "phone": "+250 785 403 435 / 788 892 826",
-      "email": "visionjeunesse2050@gmail.com",
-      "address": "District de Rubavu, Secteur de Gisenyi, Cellule de Nengo, Village de Gikarani",
-      "quickLinks": "Liens Rapides",
-      "links": {
-        "about": "À Propos",
-        "programs": "Programmes",
-        "services": "Services",
-        "news": "Actualités",
-        "careers": "Carrières",
-        "contact": "Contact"
+      "socialMedia": {
+        "title": "Suivez-Nous",
+        "facebook": "Facebook",
+        "twitter": "Twitter",
+        "instagram": "Instagram",
+        "linkedin": "LinkedIn"
+      },
+      "buttons": {
+        "contact": "Nous Contacter",
+        "donate": "Faire un Don",
+        "volunteer": "Devenir Bénévole"
       }
     }
   },

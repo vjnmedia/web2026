@@ -3,7 +3,7 @@ import { useLanguage } from '@/components/LanguageContext';
 import { motion } from 'framer-motion';
 import { BarChart2, Users, Globe, Sparkles } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
-import { useDonation } from '@/components/DonationContext';
+import { useDonation } from '@/contexts/DonationContext';
 
 interface ImpactMetric {
   icon: React.ReactNode;
@@ -108,7 +108,7 @@ const Impact = () => {
             transition={{ duration: 0.6 }}
             className="text-center"
           >
-            <h1 className="text-4xl md:text-5xl font-bold mb-4">
+            <h1 className="text-4xl md:text-5xl font-bold mb-4 text-green-600">
               {t('impact.hero.title', 'Our Impact')}
             </h1>
             <p className="text-lg md:text-xl max-w-2xl mx-auto">
@@ -131,7 +131,7 @@ const Impact = () => {
                 className="bg-white p-6 rounded-lg shadow-lg text-center"
               >
                 <div className="flex justify-center mb-4">{metric.icon}</div>
-                <h3 className="text-3xl font-bold text-vjn-blue mb-2">{metric.number}</h3>
+                <h3 className="text-3xl font-bold text-green-600 mb-2">{metric.number}</h3>
                 <p className="text-gray-600">{metric.label}</p>
               </motion.div>
             ))}
@@ -143,7 +143,7 @@ const Impact = () => {
       <section className="py-16">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-4">
+            <h2 className="text-3xl font-bold mb-4 text-green-600">
               {t('impact.stories.title', 'Success Stories')}
             </h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
@@ -168,7 +168,7 @@ const Impact = () => {
                   />
                 </div>
                 <div className="p-6">
-                  <h3 className="text-xl font-semibold mb-2">{story.name}</h3>
+                  <h3 className="text-xl font-semibold mb-2 text-green-600">{story.name}</h3>
                   <p className="text-vjn-blue mb-1">{story.role}</p>
                   <p className="text-gray-500 text-sm mb-4">{story.program}</p>
                   <blockquote className="text-gray-600 italic mb-4">
@@ -188,7 +188,7 @@ const Impact = () => {
       <section className="py-16 bg-vjn-blue text-white">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-4">
+            <h2 className="text-3xl font-bold mb-4 text-green-600">
               {t('impact.annual.title', '2023 Impact Highlights')}
             </h2>
             <p className="max-w-2xl mx-auto">

@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Mail, Phone, Search } from 'lucide-react';
+import { Linkedin, Youtube, Music2 } from 'lucide-react';
 import { Input } from '@/components/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { useStaff, StaffMember } from '@/contexts/StaffContext'; // Import useStaff and StaffMember type
@@ -50,41 +51,31 @@ const Staff = () => {
 
     // Custom sorting logic
     staffToShow.sort((a, b) => {
-      // 1. Executive Director at the very top
-      const aIsExecutiveDirector = a.position.toLowerCase().includes('executive director');
-      const bIsExecutiveDirector = b.position.toLowerCase().includes('executive director');
-
-      if (aIsExecutiveDirector && !bIsExecutiveDirector) return -1;
-      if (!aIsExecutiveDirector && bIsExecutiveDirector) return 1;
-
-      // 2. Program Coordinator and Director of Finance (or similar) next
-      const aIsSecondTier = a.position.toLowerCase().includes('program coordinator') || a.position.toLowerCase().includes('finance and administration assistant') || a.position.toLowerCase().includes('managing director of lamennais ltd');
-      const bIsSecondTier = b.position.toLowerCase().includes('program coordinator') || b.position.toLowerCase().includes('finance and administration assistant') || b.position.toLowerCase().includes('managing director of lamennais ltd');
-
-      if (aIsExecutiveDirector && bIsExecutiveDirector) {
-        // If both are Executive Directors, sort alphabetically by last name
+      // 1. General Director (position ends with **) at the very top
+      const aIsGeneralDirector = a.position.trim().endsWith('**');
+      const bIsGeneralDirector = b.position.trim().endsWith('**');
+      if (aIsGeneralDirector && !bIsGeneralDirector) return -1;
+      if (!aIsGeneralDirector && bIsGeneralDirector) return 1;
+      if (aIsGeneralDirector && bIsGeneralDirector) {
+        // If both are general directors, sort alphabetically by last name
         return (a.lastName || '').localeCompare(b.lastName || '');
       }
 
-      if (aIsSecondTier && !bIsSecondTier) return -1;
-      if (!aIsSecondTier && bIsSecondTier) return 1;
-
-      if (aIsSecondTier && bIsSecondTier) {
-        // If both are second tier, sort alphabetically by position, then by last name
-        const positionCompare = (a.position || '').localeCompare(b.position || '');
-        if (positionCompare !== 0) return positionCompare;
-        return (a.lastName || '').localeCompare(b.lastName || '');
+      // 2. Department Head (position ends with * but not **) comes next within department
+      const aIsDeptHead = a.position.trim().endsWith('*') && !a.position.trim().endsWith('**');
+      const bIsDeptHead = b.position.trim().endsWith('*') && !b.position.trim().endsWith('**');
+      if (a.department === b.department) {
+        if (aIsDeptHead && !bIsDeptHead) return -1;
+        if (!aIsDeptHead && bIsDeptHead) return 1;
+        if (aIsDeptHead && bIsDeptHead) {
+          // If both are department heads, sort alphabetically by last name
+          return (a.lastName || '').localeCompare(b.lastName || '');
+        }
+        // Otherwise, sort others alphabetically by displayName or lastName
+        return (a.displayName || a.lastName || '').localeCompare(b.displayName || b.lastName || '');
       }
-      
-      // Default sorting: senior management first (from context), then department, then position
-      if (a.isSeniorManagement && !b.isSeniorManagement) return -1;
-      if (!a.isSeniorManagement && b.isSeniorManagement) return 1;
-
-      if (a.department && b.department) {
-        const departmentCompare = a.department.localeCompare(b.department);
-        if (departmentCompare !== 0) return departmentCompare;
-      }
-      return (a.position || '').localeCompare(b.position || '');
+      // Otherwise, sort by department
+      return (a.department || '').localeCompare(b.department || '');
     });
 
     return staffToShow;
@@ -221,8 +212,14 @@ const Staff = () => {
                               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/30 to-transparent"></div>
                             </CardHeader>
                             <CardContent className="pt-6 text-center">
-                              <CardTitle className="text-xl font-bold text-gray-900 mb-1">
+                              <CardTitle className="text-xl font-bold text-gray-900 mb-1 flex items-center justify-center gap-2">
                                 {member.displayName || `${member.firstName} ${member.lastName}`}
+                                {member.position.trim().endsWith('**') && (
+                                  <span className="ml-2 px-2 py-0.5 rounded bg-yellow-500 text-white text-xs font-semibold">Executive Director</span>
+                                )}
+                                {member.position.trim().endsWith('*') && !member.position.trim().endsWith('**') && (
+                                  <span className="ml-2 px-2 py-0.5 rounded bg-blue-600 text-white text-xs font-semibold">Department Head</span>
+                                )}
                               </CardTitle>
                               <p className="text-gray-900 font-semibold mb-2">{member.position}</p>
                               {member.department && (
@@ -238,6 +235,19 @@ const Staff = () => {
                                   <a href={`tel:${member.phone}`} className="hover:text-vjn-blue transition-colors">
                                     <Phone size={18} />
                                   </a>
+                                )}
+                                {member.socialUsername && (
+                                  <>
+                                    <a href={`https://www.linkedin.com/in/${member.socialUsername}`} target="_blank" rel="noopener noreferrer" className="hover:text-vjn-blue transition-colors">
+                                      <Linkedin size={18} />
+                                    </a>
+                                    <a href={`https://www.tiktok.com/@${member.socialUsername}`} target="_blank" rel="noopener noreferrer" className="hover:text-vjn-blue transition-colors">
+                                      <Music2 size={18} />
+                                    </a>
+                                    <a href={`https://www.youtube.com/@${member.socialUsername}`} target="_blank" rel="noopener noreferrer" className="hover:text-vjn-blue transition-colors">
+                                      <Youtube size={18} />
+                                    </a>
+                                  </>
                                 )}
                               </div>
                             </CardContent>

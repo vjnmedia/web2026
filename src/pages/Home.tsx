@@ -30,7 +30,9 @@ import {
   Star,
   Globe,
   Calendar,
-  ChevronDown
+  ChevronDown,
+  Youtube,
+  YoutubeIcon
 } from 'lucide-react';
 import Hero from "@/components/Hero";
 import { supabase } from '@/lib/supabase';
@@ -192,66 +194,65 @@ const Home: React.FC = () => {
   const programs = [
     {
       icon: <GraduationCap className="h-8 w-8 text-vjn-blue" />,
-      title: "Education",
-      description: "We provide vocational training, literacy support, and special education to help youth access meaningful employment and personal growth.",
+      title: t('home.programs.education.title'),
+      description: t('home.programs.education.description'),
       link: '/programs/education'
     },
     {
       icon: <DollarSign className="h-8 w-8 text-vjn-blue" />,
-      title: "Economic Empowerment",
-      description: "We equip young entrepreneurs with business skills, financial literacy, and connections to cooperatives and market opportunities.",
+      title: t('home.programs.economic.title'),
+      description: t('home.programs.economic.description'),
       link: '/programs/economic'
     },
     {
       icon: <Heart className="h-8 w-8 text-vjn-blue" />,
-      title: "Health Promotion",
-      description: "Through awareness campaigns and peer education, we promote sexual and reproductive health, HIV/AIDS prevention, and mental well-being.",
+      title: t('home.programs.health.title'),
+      description: t('home.programs.health.description'),
       link: '/programs/health'
     },
     {
       icon: <Shield className="h-8 w-8 text-vjn-blue" />,
-      title: "Peace Building",
-      description: "Our youth-led peace initiatives focus on dialogue, digital peacebuilding, conflict mediation, and regional collaboration.",
+      title: t('home.programs.peace.title'),
+      description: t('home.programs.peace.description'),
       link: '/programs/peace'
     },
     {
       icon: <Trophy className="h-8 w-8 text-vjn-blue" />,
-      title: "Sports, Culture & Arts",
-      description: "We uncover and develop youth talent in sports, music, and visual arts, creating spaces for self-expression and community healing.",
+      title: t('home.programs.culture.title'),
+      description: t('home.programs.culture.description'),
       link: '/programs/culture'
     }
   ];
 
   const news = [
     {
-      title: "Youth Peace Camp Empowers 150 Rwandan Students",
-      excerpt: "Cross-border dialogue meets culture and leadership.",
-      date: "March 15, 2024",
+      title: t('home.news.item1.title'),
+      excerpt: t('home.news.item1.excerpt'),
+      date: t('home.news.item1.date'),
       image: "/images/peace-camp.jpg",
       link: '/news/1'
     },
     {
-      title: "VJN Launches New Vocational Center in Nyundo",
-      excerpt: "Training the next generation in welding and hospitality.",
-      date: "March 10, 2024",
+      title: t('home.news.item2.title'),
+      excerpt: t('home.news.item2.excerpt'),
+      date: t('home.news.item2.date'),
       image: "/images/vocational-center.jpg",
       link: '/news/2'
     },
     {
-      title: "Fighting NCDs Through Dance and Sport",
-      excerpt: "Our creative health campaign is making moves—literally.",
-      date: "March 5, 2024",
+      title: t('home.news.item3.title'),
+      excerpt: t('home.news.item3.excerpt'),
+      date: t('home.news.item3.date'),
       image: "/images/health-dance.jpg",
       link: '/news/3'
     }
   ];
 
   const beneficiaries = [
-    "Children, youth, and adults",
-    "Vulnerable individuals",
-    "Refugees and disaster victims",
-    "Prisoners and ex-offenders",
-    "People living with or affected by HIV/AIDS"
+    t('home.impact.beneficiaries.description'),
+    t('home.impact.communities.description'),
+    t('home.impact.partners.description'),
+    t('home.impact.success.description')
   ];
 
   const partners = [
@@ -546,10 +547,10 @@ const Home: React.FC = () => {
             className="max-w-4xl mx-auto text-center"
           >
             <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight">
-              Empowering Youth, Building Tomorrow
+             Strengthening Youth for a better future
             </h1>
             <p className="text-xl md:text-2xl text-white/90 mb-12 leading-relaxed">
-              Join Vision Jeunesse Nouvelle in creating opportunities for young people to thrive and make a difference in their communities.
+           Vision Jeunesse Nouvelle is creating opportunities for young people to thrive and make a difference in their communities.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
               <motion.a
@@ -558,7 +559,7 @@ const Home: React.FC = () => {
                 href="/programs"
                 className="bg-white text-vjn-blue px-8 py-4 rounded-full font-semibold hover:bg-white/90 transition-all duration-300 shadow-lg hover:shadow-xl"
               >
-                Explore Programs
+                {t('hero.explorePrograms', 'Explore Programs')}
                 <ChevronRight className="h-5 w-5 ml-2 inline-block" />
               </motion.a>
               <motion.a
@@ -567,7 +568,7 @@ const Home: React.FC = () => {
                 href="/donate"
                 className="bg-transparent border-2 border-white text-white px-8 py-4 rounded-full font-semibold hover:bg-white/10 transition-all duration-300"
               >
-                Support Our Mission
+                {t('hero.getInvolved', 'Get Involved')}
               </motion.a>
             </div>
           </motion.div>
@@ -590,59 +591,36 @@ const Home: React.FC = () => {
         </motion.div>
       </motion.section>
 
-      {/* Who We Are Section Enhancement */}
-      <motion.section 
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-        variants={staggerContainer}
-        className="py-24 bg-white relative overflow-hidden"
-      >
-        {/* Background Pattern */}
-        <div className="absolute inset-0 opacity-5">
-          <div className="absolute inset-0" style={{
-            backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23000000' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-            backgroundSize: '60px 60px'
-          }}></div>
-        </div>
+      {/* Who We Are Section */}
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-4">
+          <h2 className="text-3xl font-bold text-center mb-4 text-green-600">{t('home.whoWeAre.title')}</h2>
+          <p className="text-xl text-center text-gray-600 mb-12 whitespace-pre-line">{t('home.whoWeAre.description')}</p>
 
-        <div className="container mx-auto px-4 relative">
-          <div className="max-w-4xl mx-auto">
-            <motion.h2 
-              variants={fadeInUp}
-              className="text-4xl md:text-5xl font-bold text-center mb-8"
-            >
-              Who We Are
-            </motion.h2>
-            <motion.p 
-              variants={fadeInUp}
-              className="text-xl text-gray-700 mb-12 text-center leading-relaxed"
-            >
-              Vision Jeunesse Nouvelle (VJN) is a non-governmental organization founded in Gisenyi, Rwanda, by the Brothers of Christian Instruction. Our mission is to develop youth potential and nurture moral, physical, and spiritual growth for a peaceful and productive society.
-            </motion.p>
-            <motion.div 
-              variants={fadeInUp}
-              className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center"
-            >
-              <div className="p-6 rounded-2xl bg-gray-50 hover:bg-gray-100 transition-all duration-300">
-                <Users2 className="h-12 w-12 text-vjn-blue mx-auto mb-4" />
-                <h3 className="text-xl font-semibold mb-2">Our Mission</h3>
-                <p className="text-gray-600">Empowering youth through education, skills development, and community engagement.</p>
+          <div className="max-w-5xl mx-auto flex flex-col gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <div className="bg-vjn-blue rounded-2xl shadow-lg p-8 flex flex-col items-center text-center">
+                <h3 className="text-2xl font-semibold text-white mb-2">{t('home.whoWeAre.missionTitle')}</h3>
+                <p className="text-lg text-white whitespace-pre-line">{t('home.whoWeAre.mission')}</p>
               </div>
-              <div className="p-6 rounded-2xl bg-gray-50 hover:bg-gray-100 transition-all duration-300">
-                <Building2 className="h-12 w-12 text-vjn-blue mx-auto mb-4" />
-                <h3 className="text-xl font-semibold mb-2">Our Vision</h3>
-                <p className="text-gray-600">Creating a society where every young person can reach their full potential.</p>
+              <div className="bg-vjn-blue rounded-2xl shadow-lg p-8 flex flex-col items-center text-center">
+                <h3 className="text-2xl font-semibold text-white mb-2">{t('home.whoWeAre.visionTitle')}</h3>
+                <p className="text-lg text-white whitespace-pre-line">{t('home.whoWeAre.vision')}</p>
               </div>
-              <div className="p-6 rounded-2xl bg-gray-50 hover:bg-gray-100 transition-all duration-300">
-                <Handshake className="h-12 w-12 text-vjn-blue mx-auto mb-4" />
-                <h3 className="text-xl font-semibold mb-2">Our Values</h3>
-                <p className="text-gray-600">Integrity, compassion, and commitment to sustainable development.</p>
-              </div>
-            </motion.div>
+            </div>
+            <div className="bg-vjn-blue rounded-2xl shadow-lg p-8 flex flex-col items-center text-left">
+              <h3 className="text-2xl font-semibold text-white mb-2 text-center">{t('home.whoWeAre.differentTitle')}</h3>
+              <ul className="list-disc list-inside text-lg text-white space-y-2">
+                {t('home.whoWeAre.different').split(/\n\n|\./).map((item, idx) => {
+                  const trimmed = item.trim();
+                  if (!trimmed) return null;
+                  return <li key={idx}>{trimmed}</li>;
+                })}
+              </ul>
+            </div>
           </div>
         </div>
-      </motion.section>
+      </section>
 
       {/* Core Programs Section Enhancement */}
       <motion.section 
@@ -655,7 +633,7 @@ const Home: React.FC = () => {
         <div className="container mx-auto px-4">
           <motion.h2 
             variants={fadeInUp}
-            className="text-4xl md:text-5xl font-bold text-center mb-16"
+            className="text-4xl md:text-5xl font-bold text-center mb-16 text-green-600"
           >
             Our Core Programs
           </motion.h2>
@@ -780,16 +758,22 @@ const Home: React.FC = () => {
         <div className="container mx-auto px-4">
           <motion.h2 
             variants={fadeInUp}
-            className="text-4xl md:text-5xl font-bold text-center text-white mb-16"
+            className="text-4xl md:text-5xl font-bold text-center text-white mb-8"
           >
-            Who We Serve
+            {t('home.beneficiaries.title')}
           </motion.h2>
+          <motion.p
+            variants={fadeInUp}
+            className="text-xl text-center text-white/90 mb-16 max-w-4xl mx-auto"
+          >
+            {t('home.beneficiaries.description')}
+          </motion.p>
           <motion.div 
             variants={fadeInUp}
-            className="max-w-4xl mx-auto"
+            className="max-w-6xl mx-auto"
           >
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {beneficiaries.map((item, index) => (
+              {(t('home.beneficiaries.list', { returnObjects: true }) as any[]).map((item, index) => (
                 <motion.div
                   key={index}
                   initial={{ opacity: 0, y: 20 }}
@@ -797,11 +781,12 @@ const Home: React.FC = () => {
                   transition={{ delay: index * 0.1 }}
                   className="bg-white/10 backdrop-blur-lg p-6 rounded-2xl border border-white/20 hover:bg-white/20 transition-all duration-300"
                 >
-                  <div className="flex items-center">
-                    <div className="p-3 rounded-full bg-white/20 mr-4">
-                      <Users2 className="h-6 w-6 text-white" />
+                  <div className="flex flex-col">
+                    <div className="flex items-center mb-4">
+                      <span className="text-3xl mr-3">{item.icon}</span>
+                      <h3 className="text-white text-xl font-semibold">{item.title}</h3>
                     </div>
-                    <span className="text-white text-lg">{item}</span>
+                    <p className="text-white/90">{item.description}</p>
                   </div>
                 </motion.div>
               ))}
@@ -809,6 +794,61 @@ const Home: React.FC = () => {
           </motion.div>
         </div>
       </motion.section>
+
+      {/* Get in Touch Section */}
+      <section className="py-16 bg-gray-50">
+        <div className="container mx-auto px-4">
+          <h2 className="text-3xl font-bold text-center mb-4 text-green-600">{t('home.getInTouch.title')}</h2>
+          <p className="text-xl text-center text-gray-600 mb-8">{t('home.getInTouch.subtitle')}</p>
+          <p className="text-lg text-gray-700 mb-8 max-w-3xl mx-auto">{t('home.getInTouch.description')}</p>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12">
+            <div>
+              <h3 className="text-xl font-semibold mb-4">{t('home.getInTouch.contactInfo.title')}</h3>
+              <p className="mb-2">{t('home.getInTouch.contactInfo.address')}</p>
+              <p className="mb-2">{t('home.getInTouch.contactInfo.phone')}</p>
+              <p className="mb-2">{t('home.getInTouch.contactInfo.email')}</p>
+            </div>
+            <div>
+              <h3 className="text-xl font-semibold mb-4">{t('home.getInTouch.socialMedia.title')}</h3>
+              <div className="flex space-x-4 justify-center mt-8">
+                <a href="#" className="bg-white rounded-full p-3 shadow hover:bg-vjn-blue/10 transition-colors">
+                  <Facebook className="h-5 w-5 text-vjn-blue" />
+                </a>
+                <a href="#" className="bg-white rounded-full p-3 shadow hover:bg-vjn-blue/10 transition-colors">
+                  <Twitter className="h-5 w-5 text-vjn-blue" />
+                </a>
+                <a href="#" className="bg-white rounded-full p-3 shadow hover:bg-vjn-blue/10 transition-colors">
+                  <Instagram className="h-5 w-5 text-vjn-blue" />
+                </a>
+                <a href="https://www.linkedin.com/in/visionjeunesse2" target="_blank" rel="noopener noreferrer" className="bg-white rounded-full p-3 shadow hover:bg-vjn-blue/10 transition-colors">
+                  <Linkedin className="h-5 w-5 text-vjn-blue" />
+                </a>
+                <a href="https://www.tiktok.com/@visionjeunesse2" target="_blank" rel="noopener noreferrer" className="bg-white rounded-full p-3 shadow hover:bg-vjn-blue/10 transition-colors flex items-center justify-center">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-5 w-5 text-vjn-blue" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M16.5 3v2.25A4.75 4.75 0 0 0 21 10v1.25A7.75 7.75 0 1 1 9.25 3H11A6.75 6.75 0 1 0 17.75 10V3h-1.25z" />
+                  </svg>
+                </a>
+                <a href="https://www.youtube.com/@visionjeunesse2" target="_blank" rel="noopener noreferrer" className="bg-white rounded-full p-3 shadow hover:bg-vjn-blue/10 transition-colors">
+                  <YoutubeIcon className="h-5 w-5 text-vjn-blue" />
+                </a>
+              </div>
+            </div>
+          </div>
+          
+          <div className="flex justify-center space-x-4 mt-8">
+            <button className="bg-vjn-blue text-white px-6 py-2 rounded-lg hover:bg-vjn-blue-dark">
+              {t('home.getInTouch.buttons.contact')}
+            </button>
+            <button className="bg-vjn-green text-white px-6 py-2 rounded-lg hover:bg-vjn-green-dark">
+              {t('home.getInTouch.buttons.donate')}
+            </button>
+            <button className="bg-vjn-orange text-white px-6 py-2 rounded-lg hover:bg-vjn-orange-dark">
+              {t('home.getInTouch.buttons.volunteer')}
+            </button>
+          </div>
+        </div>
+      </section>
 
       {/* Contact Section Enhancement */}
       <motion.section 
@@ -844,8 +884,8 @@ const Home: React.FC = () => {
                     <Phone className="h-8 w-8 text-vjn-blue mr-4" />
                     <div>
                       <p className="font-semibold text-lg mb-1">Phone</p>
-                      <p className="text-gray-600">+250 785 403 435</p>
-                      <p className="text-gray-600">+250 788 892 826</p>
+                      <p className="text-gray-600">+250 784 847 218</p>
+                      <p className="text-gray-600">+250 783 999 243</p>
                     </div>
                   </motion.div>
                   <motion.div 

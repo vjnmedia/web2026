@@ -70,7 +70,7 @@ const Sitemap: React.FC = () => {
         className="container mx-auto px-4"
       >
         <div className="max-w-4xl mx-auto">
-          <h1 className="text-4xl font-bold mb-8">Sitemap</h1>
+          <h1 className="text-4xl font-bold mb-8 text-green-600">Sitemap</h1>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {sitemapData.map((section, index) => (
@@ -79,7 +79,7 @@ const Sitemap: React.FC = () => {
                 variants={fadeInUp}
                 className="bg-white rounded-2xl shadow-lg p-6"
               >
-                <h2 className="text-xl font-semibold mb-4 text-vjn-blue">
+                <h2 className="text-xl font-semibold mb-4 text-green-600">
                   {section.title}
                 </h2>
                 <ul className="space-y-2">

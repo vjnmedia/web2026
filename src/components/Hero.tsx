@@ -153,18 +153,14 @@ const Hero = () => {
             }}
             className="absolute w-full h-full"
           >
-            <div 
-              className="w-full h-full bg-cover bg-center bg-no-repeat"
-              style={{ 
-                backgroundImage: `url(${slides[currentIndex].image})`,
-                imageRendering: 'crisp-edges',
-                WebkitBackfaceVisibility: 'hidden',
-                backfaceVisibility: 'hidden',
-                transform: 'translateZ(0)',
-                WebkitTransform: 'translateZ(0)',
-                willChange: 'transform'
-              }}
-            >
+            <div className="w-full h-full relative flex items-center justify-center overflow-hidden">
+              <img
+                src={slides[currentIndex].image}
+                alt={slides[currentIndex].title || ''}
+                className="w-full h-full min-w-full min-h-full object-cover object-center select-none pointer-events-none"
+                style={{ maxHeight: '80vh' }}
+                draggable={false}
+              />
               {/* Preload next image */}
               <picture>
                 <source
@@ -181,14 +177,14 @@ const Hero = () => {
                 />
               </picture>
               
-              <div className="absolute inset-0 bg-black/40" />
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="max-w-2xl text-white">
+              <div className="absolute inset-0 bg-black/30 z-10" />
+              <div className="absolute left-1/2 bottom-8 transform -translate-x-1/2 z-20 w-full flex justify-center">
+                <div className="relative flex flex-col items-center justify-center max-w-3xl w-full mx-auto bg-black/40 rounded-lg px-4 py-6 backdrop-blur-md">
                   <motion.h1 
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.2 }}
-                    className="text-4xl md:text-6xl font-bold mb-4"
+                    className="text-4xl md:text-6xl font-bold mb-4 text-white text-center"
                   >
                     {slides[currentIndex].title}
                   </motion.h1>
@@ -196,29 +192,10 @@ const Hero = () => {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.4 }}
-                    className="text-lg md:text-xl mb-8"
+                    className="text-lg md:text-xl mb-8 text-white text-center"
                   >
                     {slides[currentIndex].description}
                   </motion.p>
-                  <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.6 }}
-                    className="flex gap-4"
-                  >
-                    <a 
-                      href="/programs" 
-                      className="bg-vjn-blue text-white px-6 py-3 rounded-md font-semibold hover:bg-vjn-light-blue transition-colors"
-                    >
-                      {t('hero.explorePrograms')}
-                    </a>
-                    <a 
-                      href="/contact" 
-                      className="bg-transparent border-2 border-white text-white px-6 py-3 rounded-md font-semibold hover:bg-white/10 transition-colors"
-                    >
-                      {t('hero.getInvolved')}
-                    </a>
-                  </motion.div>
                 </div>
               </div>
             </div>

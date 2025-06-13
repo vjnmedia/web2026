@@ -86,7 +86,7 @@ const Footer: React.FC = () => {
           </div>
 
           {/* Newsletter Section */}
-          <div className="col-span-1 lg:col-span-2">
+          <div className="col-span-1">
             <h3 className="text-xl font-semibold mb-4">{t('newsletter.title', 'Stay Updated')}</h3>
             <p className="mb-4">{t('newsletter.description', 'Subscribe to our newsletter for updates and news.')}</p>
             <NewsletterSubscription />

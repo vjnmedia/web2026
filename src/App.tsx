@@ -8,7 +8,7 @@ import { Routes, Route, useNavigate, useLocation } from "react-router-dom";
 import { LanguageProvider } from "./components/LanguageContext";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import { AuthProvider } from '@/hooks/useAuth';
-import { DonationProvider } from '@/components/DonationContext';
+import { DonationProvider } from '@/contexts/DonationContext';
 import PayPalProvider from '@/components/PayPalProvider';
 import { StaffProvider } from '@/contexts/StaffContext';
 import Navbar from "./components/Navbar";
@@ -30,7 +30,6 @@ import ProtectedRoute from '@/components/ProtectedRoute';
 import BlogManagement from '@/pages/BlogManagement';
 import BlogEditor from '@/components/blog/BlogEditor';
 import Media from './pages/Media';
-import NewsUpdates from './pages/NewsUpdates';
 import Resources from './pages/Resources';
 import Staff from '@/pages/Staff';
 import BlogPost from '@/pages/BlogPost';
@@ -45,7 +44,9 @@ import Terms from "./pages/Terms";
 import Sitemap from "./pages/Sitemap";
 import Impact from "./pages/Impact";
 import Career from './pages/Career';
-import Arts from './pages/programs/Arts';
+import BlogPosts from './pages/BlogPosts';
+import ProjectsManagement from '@/components/dashboard/ProjectsManagement';
+import News from './pages/News';
 
 // Loading component for Suspense
 const LoadingFallback = () => (
@@ -90,10 +91,10 @@ const App = () => {
         <ThemeProvider>
           <LanguageProvider>
             <AuthProvider>
-              <DonationProvider>
-                <PayPalProvider>
-                  <StaffProvider>
-                    <TooltipProvider>
+              <PayPalProvider>
+                <StaffProvider>
+                  <TooltipProvider>
+                    <DonationProvider>
                       <div className="min-h-screen flex flex-col">
                         <Navbar />
                         <main className="flex-grow">
@@ -106,14 +107,13 @@ const App = () => {
                             <Route path="/programs/health" element={<Health />} />
                             <Route path="/programs/peace" element={<Peace />} />
                             <Route path="/programs/sport-culture-arts" element={<SportCultureArts />} />
-                            <Route path="/programs/arts" element={<Arts />} />
                             <Route path="/services" element={<Services />} />
                             <Route path="/media" element={<Media />} />
-                            <Route path="/news" element={<NewsUpdates />} />
+                            <Route path="/news" element={<News />} />
                             <Route path="/resources" element={<Resources />} />
                             <Route path="/contact" element={<Contact />} />
                             <Route path="/login" element={<LoginModal />} />
-                            <Route path="/donate" element={<Donate />} />
+                            <Route path="/donate" element={<PayPalProvider><Donate /></PayPalProvider>} />
                             <Route path="/stories" element={<Stories />} />
                             <Route path="/volunteer" element={<Volunteer />} />
                             <Route path="/career" element={<Career />} />
@@ -142,6 +142,14 @@ const App = () => {
                               }
                             />
                             <Route
+                              path="/dms/project-management"
+                              element={
+                                <ProtectedRoute>
+                                  <ProjectsManagement />
+                                </ProtectedRoute>
+                              }
+                            />
+                            <Route
                               path="/blog-management"
                               element={
                                 <ProtectedRoute>
@@ -165,10 +173,10 @@ const App = () => {
                       </div>
                       <Toaster />
                       <Sonner />
-                    </TooltipProvider>
-                  </StaffProvider>
-                </PayPalProvider>
-              </DonationProvider>
+                    </DonationProvider>
+                  </TooltipProvider>
+                </StaffProvider>
+              </PayPalProvider>
             </AuthProvider>
           </LanguageProvider>
         </ThemeProvider>

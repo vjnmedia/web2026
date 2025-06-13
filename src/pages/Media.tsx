@@ -71,7 +71,7 @@ const Media: React.FC = () => {
             transition={{ duration: 0.6 }}
             className="text-center"
           >
-            <h1 className="text-4xl md:text-5xl font-bold mb-4">
+            <h1 className="text-4xl md:text-5xl font-bold mb-4 text-green-600">
               {t('media.heroTitle', 'Media & Gallery')}
             </h1>
             <p className="text-lg md:text-xl max-w-2xl mx-auto">

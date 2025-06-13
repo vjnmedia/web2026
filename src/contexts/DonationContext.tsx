@@ -2,6 +2,7 @@ import React, { createContext, useContext, useState } from 'react';
 import DonationModal from '@/components/DonationModal';
 
 interface DonationContextType {
+  isDonationModalOpen: boolean;
   openDonationModal: () => void;
   closeDonationModal: () => void;
 }
@@ -9,15 +10,26 @@ interface DonationContextType {
 const DonationContext = createContext<DonationContextType | undefined>(undefined);
 
 export const DonationProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isDonationModalOpen, setIsDonationModalOpen] = useState(false);
 
-  const openDonationModal = () => setIsOpen(true);
-  const closeDonationModal = () => setIsOpen(false);
+  const openDonationModal = () => {
+    setIsDonationModalOpen(true);
+  };
+
+  const closeDonationModal = () => {
+    setIsDonationModalOpen(false);
+  };
 
   return (
-    <DonationContext.Provider value={{ openDonationModal, closeDonationModal }}>
+    <DonationContext.Provider
+      value={{
+        isDonationModalOpen,
+        openDonationModal,
+        closeDonationModal,
+      }}
+    >
       {children}
-      <DonationModal isOpen={isOpen} onClose={closeDonationModal} />
+      <DonationModal isOpen={isDonationModalOpen} onClose={closeDonationModal} />
     </DonationContext.Provider>
   );
 };

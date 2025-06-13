@@ -132,18 +132,18 @@ const Services: React.FC = () => {
 
   const ServiceSection = ({ title, services }: { title: string; services: ServiceCard[] }) => (
     <div className="mb-12">
-      <h2 className="text-2xl font-bold mb-6">{title}</h2>
+      <h2 className="text-2xl font-bold mb-6 text-green-600">{title}</h2>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {services.map((service, index) => (
           <div key={index} className="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow">
             <div className="flex items-center mb-4">
               {service.icon}
-              <h3 className="text-xl font-semibold ml-3">{service.title}</h3>
+              <h3 className="text-xl font-semibold ml-3 text-gray-900">{service.title}</h3>
             </div>
-            <p className="text-gray-600 mb-4">{service.description}</p>
+            <p className="text-gray-700 mb-4">{service.description}</p>
             <ul className="space-y-2">
               {service.items.map((item, idx) => (
-                <li key={idx} className="flex items-start">
+                <li key={idx} className="flex items-start text-gray-800">
                   <ArrowRight className="h-4 w-4 text-vjn-blue mt-1 mr-2 flex-shrink-0" />
                   <span>{item}</span>
                 </li>
@@ -167,7 +167,7 @@ const Services: React.FC = () => {
             transition={{ duration: 0.6 }}
             className="text-center"
           >
-            <h1 className="text-4xl md:text-5xl font-bold mb-4">
+            <h1 className="text-4xl md:text-5xl font-bold mb-4 text-green-600">
               {t('services.heroTitle', 'Empowering Communities Through Service')}
             </h1>
             <p className="text-lg md:text-xl max-w-2xl mx-auto">
@@ -186,7 +186,7 @@ const Services: React.FC = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="max-w-3xl mx-auto text-center"
           >
-            <h2 className="text-2xl md:text-3xl font-semibold mb-6 text-gray-900">
+            <h2 className="text-2xl md:text-3xl font-semibold mb-6 text-green-600">
               {t('services.introTitle', 'Making a Difference in Our Community')}
             </h2>
             <p className="text-gray-600 mb-8 leading-relaxed">
@@ -206,7 +206,7 @@ const Services: React.FC = () => {
 
           {/* Testimonials */}
           <div className="mb-12">
-            <h2 className="text-2xl font-bold mb-6">{t('services.testimonials.title')}</h2>
+            <h2 className="text-2xl font-bold mb-6 text-green-600">{t('services.testimonials.title')}</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {testimonials.map((testimonial, index) => (
                 <motion.div
@@ -240,14 +240,14 @@ const Services: React.FC = () => {
             transition={{ duration: 0.6 }}
             className="bg-vjn-blue text-white rounded-lg p-8 text-center"
           >
-            <h2 className="text-2xl font-bold mb-4">{t('services.cta.title')}</h2>
-            <p className="mb-6">{t('services.cta.subtitle')}</p>
+            <h2 className="text-2xl font-bold mb-4 text-white">{t('services.cta.title')}</h2>
+            <p className="mb-6 text-white">{t('services.cta.subtitle')}</p>
             <div className="flex flex-wrap justify-center gap-4">
               <a
                 href="/contact"
                 className="bg-white text-vjn-blue px-6 py-3 rounded-md font-semibold hover:bg-gray-100 transition-colors flex items-center"
               >
-                <Phone className="h-5 w-5 mr-2" />
+                <Phone className="h-5 w-5 mr-2 text-vjn-blue" />
                 {t('services.cta.contact')}
               </a>
               <a
@@ -260,7 +260,7 @@ const Services: React.FC = () => {
                 href="/centers"
                 className="bg-white text-vjn-blue px-6 py-3 rounded-md font-semibold hover:bg-gray-100 transition-colors flex items-center"
               >
-                <MapPin className="h-5 w-5 mr-2" />
+                <MapPin className="h-5 w-5 mr-2 text-vjn-blue" />
                 {t('services.cta.visit')}
               </a>
             </div>
