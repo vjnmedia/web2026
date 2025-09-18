@@ -170,12 +170,12 @@ const BlogPost: React.FC = () => {
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
           <h2 className="text-2xl font-bold mb-4">{t('blog.notFound', 'Post not found')}</h2>
-          <button
+        <button
             onClick={() => navigate('/news')}
             className="text-vjn-blue hover:text-vjn-blue-dark"
-          >
+        >
             {t('blog.backToNews', 'Back to News')}
-          </button>
+        </button>
         </div>
       </div>
     );
@@ -192,13 +192,13 @@ const BlogPost: React.FC = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <button
+          <button
               onClick={() => navigate('/news')}
               className="flex items-center text-white mb-8 hover:text-gray-200 transition-colors"
-            >
+          >
               <ArrowLeft className="w-5 h-5 mr-2" />
               {t('blog.backToNews', 'Back to News')}
-            </button>
+          </button>
             <h1 className="text-4xl md:text-5xl font-bold mb-4">{post.title}</h1>
             <div className="flex items-center gap-6 text-sm">
               <span className="flex items-center gap-2">
@@ -248,7 +248,7 @@ const BlogPost: React.FC = () => {
               <button onClick={handlePrint} className="flex items-center gap-2 text-gray-600 hover:text-vjn-blue transition-colors">
                 <Printer className="w-5 h-5" /> {t('blog.print', 'Print')}
               </button>
-            </div>
+          </div>
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.6, delay: 0.4 }} className="prose prose-lg max-w-none text-gray-900">
               {renderFormattedContent(post.content)}
             </motion.div>
@@ -262,10 +262,10 @@ const BlogPost: React.FC = () => {
                   <li key={p.id}>
                     <button onClick={() => navigate(`/blog/${p.id}`)} className="text-vjn-blue hover:underline text-left w-full truncate">
                       {p.title}
-                    </button>
-                  </li>
-                ))}
-              </ul>
+                      </button>
+                    </li>
+                  ))}
+                </ul>
             </div>
             <div className="bg-white rounded-xl shadow-lg p-6 mb-8">
               <h3 className="font-bold text-xl mb-4 text-vjn-blue">{t('blog.share', 'Share')}</h3>
@@ -274,7 +274,7 @@ const BlogPost: React.FC = () => {
                 <a href={`https://twitter.com/intent/tweet?url=${window.location.href}&text=${encodeURIComponent(post.title)}`} target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:text-blue-600"><Twitter className="w-6 h-6" /></a>
                 <a href={`https://www.linkedin.com/shareArticle?mini=true&url=${window.location.href}&title=${encodeURIComponent(post.title)}`} target="_blank" rel="noopener noreferrer" className="text-blue-700 hover:text-blue-900"><Linkedin className="w-6 h-6" /></a>
                 <button onClick={handleCopyLink} className="text-gray-600 hover:text-vjn-blue"><Copy className="w-6 h-6" /></button>
-              </div>
+          </div>
             </div>
             {categories.length > 0 && (
               <div className="bg-white rounded-xl shadow-lg p-6 mb-8">
@@ -284,7 +284,7 @@ const BlogPost: React.FC = () => {
                     <li key={cat} className="bg-vjn-blue/10 text-vjn-blue px-3 py-1 rounded-full text-sm">{cat}</li>
                   ))}
                 </ul>
-              </div>
+          </div>
             )}
           </aside>
         </div>

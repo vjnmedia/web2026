@@ -1,0 +1,576 @@
+/* Accessibility and Performance Enhancements */
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .high-contrast {
+    --vjn-blue: #0000ff;
+    --vjn-light-blue: #0066cc;
+    --vjn-green: #00aa00;
+    --vjn-orange: #ff6600;
+    --gray-600: #000000;
+    --gray-500: #333333;
+    --gray-400: #666666;
+  }
+
+  .high-contrast button,
+  .high-contrast a,
+  .high-contrast input,
+  .high-contrast select,
+  .high-contrast textarea {
+    border: 2px solid currentColor;
+  }
+
+  .high-contrast .bg-gray-100 {
+    background-color: #ffffff;
+    color: #000000;
+  }
+
+  .high-contrast .text-gray-600 {
+    color: #000000;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .reduce-motion *,
+  .reduce-motion *::before,
+  .reduce-motion *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .reduce-motion .animate-spin {
+    animation: none;
+  }
+
+  .reduce-motion .animate-pulse {
+    animation: none;
+  }
+
+  .reduce-motion .animate-bounce {
+    animation: none;
+  }
+}
+
+/* Focus management */
+.focus-visible:focus {
+  outline: 2px solid #1e40af;
+  outline-offset: 2px;
+}
+
+/* Skip links */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 6px;
+  background: #1e40af;
+  color: white;
+  padding: 8px;
+  text-decoration: none;
+  border-radius: 4px;
+  z-index: 1000;
+  transition: top 0.3s;
+}
+
+.skip-link:focus {
+  top: 6px;
+}
+
+/* Screen reader only content */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Focus indicators for keyboard navigation */
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid #1e40af;
+  outline-offset: 2px;
+}
+
+/* High contrast focus indicators */
+@media (prefers-contrast: high) {
+  button:focus-visible,
+  a:focus-visible,
+  input:focus-visible,
+  select:focus-visible,
+  textarea:focus-visible,
+  [tabindex]:focus-visible {
+    outline: 3px solid #000000;
+    outline-offset: 3px;
+  }
+}
+
+/* Loading states */
+.loading {
+  position: relative;
+  overflow: hidden;
+}
+
+.loading::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.4),
+    transparent
+  );
+  animation: loading 1.5s infinite;
+}
+
+@keyframes loading {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+/* Skeleton loading animations */
+@keyframes skeleton-loading {
+  0% {
+    background-position: -200px 0;
+  }
+  100% {
+    background-position: calc(200px + 100%) 0;
+  }
+}
+
+.skeleton {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200px 100%;
+  animation: skeleton-loading 1.5s infinite;
+}
+
+/* Image optimization */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+img[loading="lazy"] {
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+img[loading="lazy"].loaded {
+  opacity: 1;
+}
+
+/* Performance optimizations */
+.will-change-transform {
+  will-change: transform;
+}
+
+.will-change-opacity {
+  will-change: opacity;
+}
+
+.gpu-accelerated {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+/* Print styles */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+
+  .print-only {
+    display: block !important;
+  }
+
+  * {
+    background: transparent !important;
+    color: black !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
+  a,
+  a:visited {
+    text-decoration: underline;
+  }
+
+  a[href]:after {
+    content: " (" attr(href) ")";
+  }
+
+  abbr[title]:after {
+    content: " (" attr(title) ")";
+  }
+
+  .ir a:after,
+  a[href^="javascript:"]:after,
+  a[href^="#"]:after {
+    content: "";
+  }
+
+  pre,
+  blockquote {
+    border: 1px solid #999;
+    page-break-inside: avoid;
+  }
+
+  thead {
+    display: table-header-group;
+  }
+
+  tr,
+  img {
+    page-break-inside: avoid;
+  }
+
+  img {
+    max-width: 100% !important;
+  }
+
+  p,
+  h2,
+  h3 {
+    orphans: 3;
+    widows: 3;
+  }
+
+  h2,
+  h3 {
+    page-break-after: avoid;
+  }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  .dark-mode {
+    --bg-primary: #1a1a1a;
+    --bg-secondary: #2d2d2d;
+    --text-primary: #ffffff;
+    --text-secondary: #cccccc;
+    --border-color: #404040;
+  }
+}
+
+/* Reduced data mode */
+@media (prefers-reduced-data: reduce) {
+  .reduce-data img {
+    display: none;
+  }
+
+  .reduce-data video {
+    display: none;
+  }
+
+  .reduce-data .bg-image {
+    background-image: none !important;
+  }
+}
+
+/* Touch device optimizations */
+@media (hover: none) and (pointer: coarse) {
+  .touch-optimized button,
+  .touch-optimized a,
+  .touch-optimized input,
+  .touch-optimized select {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  .touch-optimized .hover\:scale-105:hover {
+    transform: none;
+  }
+}
+
+/* Mobile-first responsive improvements */
+@media (max-width: 768px) {
+  /* Improve touch targets */
+  button, a, input, select, textarea {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  /* Better spacing for mobile */
+  .mobile-spacing {
+    padding: 1rem;
+  }
+
+  /* Improved text readability */
+  .mobile-text {
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+
+  /* Better card layouts for mobile */
+  .mobile-card {
+    margin-bottom: 1rem;
+    padding: 1.5rem;
+  }
+
+  /* Improved button sizing */
+  .mobile-button {
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    border-radius: 0.5rem;
+  }
+
+  /* Better form inputs */
+  .mobile-input {
+    padding: 0.75rem;
+    font-size: 1rem;
+    border-radius: 0.5rem;
+  }
+
+  /* Improved grid layouts */
+  .mobile-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  /* Better image sizing */
+  .mobile-image {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+
+  /* Improved navigation */
+  .mobile-nav {
+    padding: 0.5rem;
+  }
+
+  /* Better hero sections */
+  .mobile-hero {
+    padding: 2rem 1rem;
+    text-align: center;
+  }
+
+  .mobile-hero h1 {
+    font-size: 2rem;
+    line-height: 1.2;
+  }
+
+  .mobile-hero p {
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+}
+
+/* Tablet optimizations */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .tablet-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+
+  .tablet-spacing {
+    padding: 1.5rem;
+  }
+}
+
+/* Desktop optimizations */
+@media (min-width: 1025px) {
+  .desktop-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+
+  .desktop-spacing {
+    padding: 2rem;
+  }
+}
+
+/* Error states */
+.error {
+  border-color: #dc2626;
+  background-color: #fef2f2;
+}
+
+.error:focus {
+  outline-color: #dc2626;
+  box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.1);
+}
+
+/* Success states */
+.success {
+  border-color: #16a34a;
+  background-color: #f0fdf4;
+}
+
+.success:focus {
+  outline-color: #16a34a;
+  box-shadow: 0 0 0 3px rgba(22, 163, 74, 0.1);
+}
+
+/* Warning states */
+.warning {
+  border-color: #d97706;
+  background-color: #fffbeb;
+}
+
+.warning:focus {
+  outline-color: #d97706;
+  box-shadow: 0 0 0 3px rgba(217, 119, 6, 0.1);
+}
+
+/* Information states */
+.info {
+  border-color: #2563eb;
+  background-color: #eff6ff;
+}
+
+.info:focus {
+  outline-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+/* CSS Variables for navbar height and design system */
+:root {
+  --navbar-height: 5rem; /* 80px - matches h-20 class */
+  
+  /* VJN Brand Colors */
+  --vjn-primary: #1e40af;      /* VJN Blue */
+  --vjn-secondary: #059669;    /* VJN Green */
+  --vjn-accent: #f59e0b;       /* VJN Orange */
+  --vjn-light-blue: #3b82f6;   /* Light Blue */
+  --vjn-dark-blue: #1e3a8a;    /* Dark Blue */
+  --vjn-light-green: #10b981;  /* Light Green */
+  --vjn-dark-green: #047857;   /* Dark Green */
+  
+  /* Neutral Colors */
+  --neutral-50: #f9fafb;
+  --neutral-100: #f3f4f6;
+  --neutral-200: #e5e7eb;
+  --neutral-300: #d1d5db;
+  --neutral-400: #9ca3af;
+  --neutral-500: #6b7280;
+  --neutral-600: #4b5563;
+  --neutral-700: #374151;
+  --neutral-800: #1f2937;
+  --neutral-900: #111827;
+  
+  /* Status Colors */
+  --success: #10b981;
+  --warning: #f59e0b;
+  --error: #ef4444;
+  --info: #3b82f6;
+}
+
+/* Navbar offset utilities */
+.navbar-offset {
+  margin-top: var(--navbar-height);
+}
+
+.navbar-offset-sm {
+  margin-top: 4rem; /* 64px - smaller offset */
+}
+
+.navbar-offset-lg {
+  margin-top: 6rem; /* 96px - larger offset */
+}
+
+/* Full height sections that account for navbar */
+.full-height-with-navbar {
+  min-height: calc(100vh - var(--navbar-height));
+}
+
+.hero-height-with-navbar {
+  height: calc(80vh - var(--navbar-height));
+  min-height: calc(80vh - var(--navbar-height));
+}
+
+/* Ensure images in hero sections are properly positioned */
+.hero-image {
+  object-position: center center;
+  object-fit: cover;
+  min-height: 100%;
+  min-width: 100%;
+  width: 100%;
+  height: 100%;
+}
+
+/* Full height slider with no cropping */
+.hero-slider {
+  height: 80vh;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.hero-slider img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+}
+
+/* Caption section below slider */
+.hero-caption {
+  background: white;
+  padding: 3rem 1rem;
+}
+
+.hero-caption h1 {
+  color: var(--vjn-blue);
+  font-size: 3rem;
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+}
+
+.hero-caption p {
+  color: #374151;
+  font-size: 1.25rem;
+  margin-bottom: 2rem;
+  line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+  .hero-caption h1 {
+    font-size: 2rem;
+  }
+  
+  .hero-caption p {
+    font-size: 1rem;
+  }
+}
+
+/* Text truncation utilities */
+.line-clamp-1 {
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}

@@ -1,4 +1,4 @@
-import { Trophy, Users, Target, Clock, Award, Globe, Heart, Shield, BookOpen, ChevronRight } from 'lucide-react';
+import { Trophy, Users, Target, Clock, Award, Globe, Heart, Shield, BookOpen, ChevronRight, Mic, Palette, Activity, Download } from 'lucide-react';
 import ProgramDetail from '@/components/ProgramDetail';
 import { useLanguage } from '@/components/LanguageContext';
 import { Button } from '@/components/ui/button';
@@ -242,48 +242,74 @@ const SportCultureArts = () => {
 
         {/* Main Content */}
         <div className="flex-1">
-          {/* Hero Section */}
-          <section className="relative mb-2 rounded-md overflow-hidden h-64 lg:h-80">
-            <img
-              src="/images/programs/culture/1O0A0313.JPG"
-              alt="Sport, Culture & Arts Program"
-              className="absolute inset-0 w-full h-full object-cover"
-            />
-            <div className="absolute inset-0 bg-blue-900/70 z-10" />
-            <div className="relative z-20 p-4 text-white">
-              <div className="max-w-3xl">
-                <div className="inline-block p-1 bg-blue-600/30 rounded-full mb-2">
+          {/* Full-width Hero Header Section */}
+          <section className="w-full bg-vjn-blue py-16 md:py-20 mb-4 text-center">
+            <div className="container mx-auto px-4">
+              <h1 className="text-4xl md:text-5xl font-bold mb-3 text-green-600">
+                {t('programs.sportCultureArts.title', 'Sport, Culture & Arts Program')}
+              </h1>
+              <h2 className="text-2xl md:text-3xl font-semibold mb-2 text-white">
+                {t('programs.sportCultureArts.subtitle', 'Empowering Youth Through Sport, Culture & Arts')}
+              </h2>
+              <p className="text-lg md:text-xl max-w-2xl mx-auto text-white">
+                {t('programs.sportCultureArts.intro.description', 'Our Sport, Culture & Arts Program empowers youth by nurturing their talents, promoting healthy lifestyles, and fostering cultural pride and creativity through diverse activities and events.')}
+              </p>
+            </div>
+          </section>
+
+          {/* Download Brochure Button */}
+          <div className="mb-4 flex justify-end">
+            <a
+              href="/downloads/brochures/Sports_culture_arts.pdf"
+              download
+              className="inline-flex items-center px-4 py-2 bg-yellow-600 text-white rounded hover:bg-yellow-700 transition"
+            >
+              <Download className="mr-2 w-4 h-4" />
+              Download Brochure
+            </a>
+          </div>
+
+          {/* Program Highlights Section */}
+          <section className="bg-gradient-to-br from-yellow-50 to-white rounded-md shadow-xs p-2 mb-1">
+            <h2 className="text-lg md:text-xl font-bold mb-1 flex items-center text-gray-900">
+              <Award className="h-4 w-4 mr-1 text-yellow-600" />
+              {t('programs.keyHighlights.title', 'Program Highlights')}
+            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-1">
+              <div className="bg-white rounded-md p-2 text-center shadow-xs hover:shadow-sm transition-shadow">
+                <div className="text-yellow-600 mb-0.5 flex justify-center">
+                  <Users className="h-5 w-5" />
+                </div>
+                <div className="text-lg font-bold text-gray-900 mb-0.5">3000+</div>
+                <div className="text-gray-700 text-sm">Youth Engaged</div>
+              </div>
+              <div className="bg-white rounded-md p-2 text-center shadow-xs hover:shadow-sm transition-shadow">
+                <div className="text-yellow-600 mb-0.5 flex justify-center">
+                  <Mic className="h-5 w-5" />
+                </div>
+                <div className="text-lg font-bold text-gray-900 mb-0.5">60+</div>
+                <div className="text-gray-700 text-sm">Talents Promoted</div>
+              </div>
+              <div className="bg-white rounded-md p-2 text-center shadow-xs hover:shadow-sm transition-shadow">
+                <div className="text-yellow-600 mb-0.5 flex justify-center">
                   <Trophy className="h-5 w-5" />
                 </div>
-                <h1 className="text-3xl font-bold mb-3">
-                  {t('programs.sportCultureArts.title', 'Sport, Culture & Arts Program')}
-                </h1>
-                <p className="text-base mb-4 text-blue-100 leading-relaxed">
-                  {t('programs.sportCultureArts.intro.description', 'Our Sport, Culture & Arts Program promotes holistic youth development by fostering physical well-being, creativity, and social harmony. We provide diverse opportunities for young people to engage in sports, cultural activities, and artistic expression.')}
-                </p>
-                <div className="flex flex-wrap gap-2">
-                  <div className="flex items-center space-x-1 bg-white/10 backdrop-blur-sm px-2 py-1 rounded-full">
-                    <Users className="h-3.5 w-3.5" />
-                    <div>
-                      <div className="text-base font-bold">5000+</div>
-                      <div className="text-xs text-blue-100">Participants</div>
-                    </div>
-                  </div>
-                  <div className="flex items-center space-x-1 bg-white/10 backdrop-blur-sm px-2 py-1 rounded-full">
-                    <Globe className="h-3.5 w-3.5" />
-                    <div>
-                      <div className="text-base font-bold">10+</div>
-                      <div className="text-xs text-blue-100">Disciplines</div>
-                    </div>
-                  </div>
-                  <div className="flex items-center space-x-1 bg-white/10 backdrop-blur-sm px-2 py-1 rounded-full">
-                    <Heart className="h-3.5 w-3.5" />
-                    <div>
-                      <div className="text-base font-bold">5+</div>
-                      <div className="text-xs text-blue-100">Annual Events</div>
-                    </div>
-                  </div>
+                <div className="text-lg font-bold text-gray-900 mb-0.5">15+</div>
+                <div className="text-gray-700 text-sm">Awards Won</div>
+              </div>
+              <div className="bg-white rounded-md p-2 text-center shadow-xs hover:shadow-sm transition-shadow">
+                <div className="text-yellow-600 mb-0.5 flex justify-center">
+                  <Palette className="h-5 w-5" />
                 </div>
+                <div className="text-lg font-bold text-gray-900 mb-0.5">1800+</div>
+                <div className="text-gray-700 text-sm">Creative Arts Participants</div>
+              </div>
+              <div className="bg-white rounded-md p-2 text-center shadow-xs hover:shadow-sm transition-shadow">
+                <div className="text-yellow-600 mb-0.5 flex justify-center">
+                  <Activity className="h-5 w-5" />
+                </div>
+                <div className="text-lg font-bold text-gray-900 mb-0.5">25+</div>
+                <div className="text-gray-700 text-sm">Active Sports Teams</div>
               </div>
             </div>
           </section>

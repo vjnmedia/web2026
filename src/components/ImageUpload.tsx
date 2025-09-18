@@ -49,7 +49,24 @@ export function ImageUpload({
 
     useEffect(() => {
         setPreview(initialImage || null);
-    }, [initialImage]);
+        
+        // Test Supabase connection and bucket
+        const testSupabaseConnection = async () => {
+            try {
+                console.log('ImageUpload: Testing Supabase connection...');
+                const { data, error } = await supabase.storage.from(bucketName).list('', { limit: 1 });
+                if (error) {
+                    console.error('ImageUpload: Supabase bucket test failed:', error);
+                } else {
+                    console.log('ImageUpload: Supabase bucket test successful:', data);
+                }
+            } catch (err) {
+                console.error('ImageUpload: Supabase connection test error:', err);
+            }
+        };
+        
+        testSupabaseConnection();
+    }, [initialImage, bucketName]);
 
     const validateImage = async (file: File): Promise<boolean> => {
         return new Promise((resolve) => {
@@ -122,6 +139,8 @@ export function ImageUpload({
         const file = acceptedFiles[0];
         if (!file) return;
 
+        console.log('ImageUpload: File selected:', file.name, file.size, file.type);
+
         // Reset states
         setValidationError(null);
         setUploadProgress(0);
@@ -145,6 +164,9 @@ export function ImageUpload({
         setIsUploading(true);
 
         try {
+            console.log('ImageUpload: Starting upload process...');
+            console.log('ImageUpload: Supabase URL:', supabase.supabaseUrl);
+            console.log('ImageUpload: Bucket name:', bucketName);
             // Optimize image before upload
             const optimizedBlob = await optimizeImage(file);
             const optimizedFile = new File([optimizedBlob], file.name, { type: 'image/jpeg' });
@@ -155,6 +177,7 @@ export function ImageUpload({
             const filePath = `${bucketName}/${fileName}`;
 
             // Upload original image with progress tracking
+            console.log('ImageUpload: Uploading to path:', filePath);
             const { error: uploadError, data } = await supabase.storage
                 .from(bucketName)
                 .upload(filePath, optimizedFile, {
@@ -163,7 +186,11 @@ export function ImageUpload({
                     }
                 });
 
-            if (uploadError) throw uploadError;
+            console.log('ImageUpload: Upload result:', { uploadError, data });
+            if (uploadError) {
+                console.error('ImageUpload: Upload error:', uploadError);
+                throw uploadError;
+            }
 
             // Get public URL
             const { data: { publicUrl } } = supabase.storage
@@ -209,8 +236,14 @@ export function ImageUpload({
             onImageUpload(publicUrl, webpUrl);
             toast.success('Image uploaded successfully!');
         } catch (error) {
-            console.error('Error uploading image:', error);
-            toast.error('Image upload failed.');
+            console.error('ImageUpload: Error uploading image:', error);
+            console.error('ImageUpload: Error details:', {
+                message: error.message,
+                status: error.status,
+                statusText: error.statusText,
+                error: error.error
+            });
+            toast.error(`Image upload failed: ${error.message || 'Unknown error'}`);
         } finally {
             setIsUploading(false);
         }
@@ -220,7 +253,7 @@ export function ImageUpload({
         onDrop,
         accept: { 'image/*': ['.jpeg', '.png', '.jpg', '.gif', '.webp'] },
         multiple: false,
-        noClick: true,
+        noClick: false, // Changed from true to false to allow clicking
     });
 
     const removeImage = () => {
@@ -251,7 +284,7 @@ export function ImageUpload({
                 </div>
             ) : (
                 <div
-                    {...getRootProps({ onClick: open })}
+                    {...getRootProps()}
                     className={cn(
                         "flex flex-col items-center justify-center p-6 border-2 border-dashed rounded-md cursor-pointer",
                         "transition-colors duration-200",

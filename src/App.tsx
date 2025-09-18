@@ -1,5 +1,6 @@
 import './i18n';
 import React, { Suspense, useState, useEffect } from 'react';
+import { HelmetProvider } from 'react-helmet-async';
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -11,6 +12,8 @@ import { AuthProvider } from '@/hooks/useAuth';
 import { DonationProvider } from '@/contexts/DonationContext';
 import PayPalProvider from '@/components/PayPalProvider';
 import { StaffProvider } from '@/contexts/StaffContext';
+import ErrorBoundary from '@/components/ErrorBoundary';
+import { SkipToMainContent, HighContrastMode, ReducedMotion } from '@/components/Accessibility';
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Home from "./pages/Home";
@@ -35,6 +38,7 @@ import Staff from '@/pages/Staff';
 import BlogPost from '@/pages/BlogPost';
 import Donate from './pages/Donate';
 import Stories from './pages/Stories';
+import Partners from './pages/Partners';
 import SportCultureArts from "./pages/programs/SportCultureArts";
 import Volunteer from "./pages/Volunteer";
 import ImageManager from './pages/ImageManager';
@@ -47,6 +51,7 @@ import Career from './pages/Career';
 import BlogPosts from './pages/BlogPosts';
 import ProjectsManagement from '@/components/dashboard/ProjectsManagement';
 import News from './pages/News';
+import Events from './pages/Events';
 
 // Loading component for Suspense
 const LoadingFallback = () => (
@@ -83,105 +88,125 @@ const LoginModal = () => {
 };
 
 const App = () => {
-  const [queryClient] = useState(() => new QueryClient());
+  const [queryClient] = useState(() => new QueryClient({
+    defaultOptions: {
+      queries: {
+        retry: 3,
+        retryDelay: (attemptIndex) => Math.min(1000 * 2 ** attemptIndex, 30000),
+        staleTime: 5 * 60 * 1000, // 5 minutes
+        cacheTime: 10 * 60 * 1000, // 10 minutes
+      },
+    },
+  }));
 
   return (
-    <Suspense fallback={<LoadingFallback />}>
-      <QueryClientProvider client={queryClient}>
-        <ThemeProvider>
-          <LanguageProvider>
-            <AuthProvider>
-              <PayPalProvider>
-                <StaffProvider>
-                  <TooltipProvider>
-                    <DonationProvider>
-                      <div className="min-h-screen flex flex-col">
-                        <Navbar />
-                        <main className="flex-grow">
-                          <Routes>
-                            <Route path="/" element={<Home />} />
-                            <Route path="/about" element={<About />} />
-                            <Route path="/programs" element={<Programs />} />
-                            <Route path="/programs/education" element={<Education />} />
-                            <Route path="/programs/economic" element={<Economic />} />
-                            <Route path="/programs/health" element={<Health />} />
-                            <Route path="/programs/peace" element={<Peace />} />
-                            <Route path="/programs/sport-culture-arts" element={<SportCultureArts />} />
-                            <Route path="/services" element={<Services />} />
-                            <Route path="/media" element={<Media />} />
+    <ErrorBoundary>
+      <HelmetProvider>
+        <HighContrastMode>
+          <ReducedMotion>
+            <Suspense fallback={<LoadingFallback />}>
+              <QueryClientProvider client={queryClient}>
+                <ThemeProvider>
+                  <LanguageProvider>
+                    <AuthProvider>
+                      <PayPalProvider>
+                        <StaffProvider>
+                          <TooltipProvider>
+                            <DonationProvider>
+                            <div className="min-h-screen flex flex-col">
+                              <SkipToMainContent />
+                              <Navbar />
+                              <main id="main-content" className="flex-grow" role="main" tabIndex={-1}>
+                        <Routes>
+                          <Route path="/" element={<Home />} />
+                          <Route path="/about" element={<About />} />
+                          <Route path="/programs" element={<Programs />} />
+                          <Route path="/programs/education" element={<Education />} />
+                          <Route path="/programs/economic" element={<Economic />} />
+                          <Route path="/programs/health" element={<Health />} />
+                          <Route path="/programs/peace" element={<Peace />} />
+                          <Route path="/programs/sport-culture-arts" element={<SportCultureArts />} />
+                          <Route path="/events" element={<Events />} />
+                          <Route path="/services" element={<Services />} />
+                          <Route path="/media" element={<Media />} />
                             <Route path="/news" element={<News />} />
-                            <Route path="/resources" element={<Resources />} />
-                            <Route path="/contact" element={<Contact />} />
-                            <Route path="/login" element={<LoginModal />} />
+                          <Route path="/resources" element={<Resources />} />
+                          <Route path="/contact" element={<Contact />} />
+                          <Route path="/login" element={<LoginModal />} />
                             <Route path="/donate" element={<PayPalProvider><Donate /></PayPalProvider>} />
-                            <Route path="/stories" element={<Stories />} />
-                            <Route path="/volunteer" element={<Volunteer />} />
-                            <Route path="/career" element={<Career />} />
-                            <Route path="/careers" element={<Career />} />
-                            <Route path="/blog/:id" element={<BlogPost />} />
-                            <Route path="/search" element={<Search />} />
-                            <Route path="/privacy" element={<Privacy />} />
-                            <Route path="/terms" element={<Terms />} />
-                            <Route path="/sitemap" element={<Sitemap />} />
-                            <Route path="/staff" element={<Staff />} />
-                            <Route path="/impact" element={<Impact />} />
-                            <Route
-                              path="/dashboard"
-                              element={
-                                <ProtectedRoute>
-                                  <Dashboard />
-                                </ProtectedRoute>
-                              }
-                            />
-                            <Route
-                              path="/dms"
-                              element={
-                                <ProtectedRoute>
-                                  <DMS />
-                                </ProtectedRoute>
-                              }
-                            />
-                            <Route
-                              path="/dms/project-management"
-                              element={
-                                <ProtectedRoute>
-                                  <ProjectsManagement />
-                                </ProtectedRoute>
-                              }
-                            />
-                            <Route
-                              path="/blog-management"
-                              element={
-                                <ProtectedRoute>
-                                  <BlogManagement />
-                                </ProtectedRoute>
-                              }
-                            />
-                            <Route
-                              path="/blog-editor/:id?"
-                              element={
-                                <ProtectedRoute>
-                                  <BlogEditor />
-                                </ProtectedRoute>
-                              }
-                            />
-                            <Route path="/image-manager" element={<ImageManager />} />
-                            <Route path="*" element={<NotFound />} />
-                          </Routes>
-                        </main>
-                        <Footer />
-                      </div>
-                      <Toaster />
-                      <Sonner />
-                    </DonationProvider>
-                  </TooltipProvider>
-                </StaffProvider>
-              </PayPalProvider>
-            </AuthProvider>
-          </LanguageProvider>
-        </ThemeProvider>
-      </QueryClientProvider>
-    </Suspense>
+                          <Route path="/stories" element={<Stories />} />
+                          <Route path="/partners" element={<Partners />} />
+                          <Route path="/volunteer" element={<Volunteer />} />
+                          <Route path="/career" element={<Career />} />
+                          <Route path="/careers" element={<Career />} />
+                          <Route path="/blog/:id" element={<BlogPost />} />
+                          <Route path="/search" element={<Search />} />
+                          <Route path="/privacy" element={<Privacy />} />
+                          <Route path="/terms" element={<Terms />} />
+                          <Route path="/sitemap" element={<Sitemap />} />
+                          <Route path="/staff" element={<Staff />} />
+                          <Route path="/impact" element={<Impact />} />
+                          <Route
+                            path="/dashboard"
+                            element={
+                              <ProtectedRoute>
+                                <Dashboard />
+                              </ProtectedRoute>
+                            }
+                          />
+                          <Route
+                            path="/dms"
+                            element={
+                              <ProtectedRoute>
+                                <DMS />
+                              </ProtectedRoute>
+                            }
+                          />
+                          <Route
+                            path="/dms/project-management"
+                            element={
+                              <ProtectedRoute>
+                                <ProjectsManagement />
+                              </ProtectedRoute>
+                            }
+                          />
+                          <Route
+                            path="/blog-management"
+                            element={
+                              <ProtectedRoute>
+                                <BlogManagement />
+                              </ProtectedRoute>
+                            }
+                          />
+                          <Route
+                            path="/blog-editor/:id?"
+                            element={
+                              <ProtectedRoute>
+                                <BlogEditor />
+                              </ProtectedRoute>
+                            }
+                          />
+                          <Route path="/image-manager" element={<ImageManager />} />
+                          <Route path="*" element={<NotFound />} />
+                        </Routes>
+                              </main>
+                              <Footer />
+                            </div>
+                            <Toaster />
+                            <Sonner />
+                            </DonationProvider>
+                          </TooltipProvider>
+                        </StaffProvider>
+                      </PayPalProvider>
+                    </AuthProvider>
+                  </LanguageProvider>
+                </ThemeProvider>
+              </QueryClientProvider>
+            </Suspense>
+          </ReducedMotion>
+        </HighContrastMode>
+      </HelmetProvider>
+    </ErrorBoundary>
   );
 };
 

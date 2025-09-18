@@ -35,7 +35,7 @@ i18n
     fallbackNS: 'translation',
     load: 'languageOnly',
     preload: ['en', 'fr'],
-    saveMissing: true,
+    saveMissing: false,
     missingKeyHandler: (lng, ns, key, fallbackValue) => {
       console.warn(`Missing translation key: ${key} for language: ${lng}`);
     }
@@ -63,6 +63,8 @@ i18n
 // Ensure translations are loaded before proceeding
 i18n.on('initialized', () => {
   console.log('i18n initialized with language:', i18n.language);
+  console.log('Available resources:', i18n.getResourceBundle('en', 'translation'));
+  console.log('Slider translations:', i18n.getResourceBundle('en', 'translation')?.slider);
   document.documentElement.lang = i18n.language;
 });
 

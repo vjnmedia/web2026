@@ -3,6 +3,7 @@
     "home": "Home",
     "about": "About",
     "programs": "Programs",
+    "events": "Events",
     "services": "Services",
     "resources": "Resources",
     "media": "Media",
@@ -11,10 +12,67 @@
     "news": "News",
     "contact": "Contact Us",
     "impact": "Our Impact",
+    "partners": "Partners",
     "dms": "DMS",
     "login": "Login",
     "logout": "Logout",
-    "dashboard": "Dashboard"
+            "dashboard": "Dashboard",
+        "media": "Media",
+        "mediaDescription": "Manage media content and uploads",
+        "settings": "Settings",
+        "settingsDescription": "Configure system settings and preferences",
+        "comingSoon": "Coming Soon",
+        "adminSettingsDescription": "Manage admin settings and configurations",
+        "users": "Users",
+        "pages": "Pages",
+        "slider": "Slider",
+        "medi": "Media"
+      },
+  "slider": {
+    "previous": "Previous",
+    "next": "Next",
+    "goToSlide": "Go to slide",
+    "learnMore": "Learn More",
+    "getInvolved": "Get Involved",
+    "noSlides": "No slides available",
+    "noSlidesMessage": "Please check your database connection or add some slides.",
+    "create": "Create Slider Item",
+    "edit": "Edit Slider Item",
+    "title": "Title",
+    "titlePlaceholder": "Enter slider title",
+    "description": "Description",
+    "descriptionPlaceholder": "Enter slider description",
+    "image": "Image",
+    "language": "Language",
+    "active": "Active",
+    "order": "Order",
+    "actions": "Actions",
+    "noItems": "No slider items found",
+    "addNew": "Add New Slider Item",
+    "dragDrop": "Drag 'n' drop an image here, or click to select one",
+    "maxSize": "Max size: 5MB",
+    "uploadImage": "Upload Image"
+  },
+  "events": {
+    "title": "Discover Our Events",
+    "subtitle": "Join us in creating positive change through our diverse range of events and activities.",
+    "searchPlaceholder": "Search events...",
+    "allYears": "All Years",
+    "upcoming": "Upcoming Events",
+    "past": "Past Events",
+    "noUpcoming": "No upcoming events",
+    "noUpcomingDesc": "Check back soon for new events!",
+    "noPast": "No past events",
+    "noPastDesc": "No past events found.",
+    "featured": "Featured",
+    "joinNow": "Join Now",
+    "addToCalendar": "Add to Google Calendar",
+    "readRecap": "Read Recap",
+    "eventCompleted": "Event Completed",
+    "participants": "participants",
+    "getInvolved": "Want to Get Involved?",
+    "getInvolvedDesc": "Join our next event and be part of the movement.",
+    "seeAllEvents": "See All Events"
   },
   "services": {
     "title": "Our Services – Building Lives, One Step at a Time",
@@ -51,7 +109,18 @@
           "Reproductive health, HIV/AIDS, family planning",
           "Obesity and NCD prevention",
           "Trained peer educators and youth-friendly services"
-        ]
+        ],
+        "activities": {
+          "title": "Key Activities",
+          "training": "Health Education & Training",
+          "trainingDesc": "Workshops and seminars on reproductive health, mental health, and first aid for youth and community members.",
+          "support": "Support Services",
+          "supportDesc": "Provision of mental health support, psychosocial counseling, and mobile GBV clinic services.",
+          "advocacy": "Advocacy & Outreach",
+          "advocacyDesc": "Advocating for youth health rights and connecting families to health institutions and authorities.",
+          "community": "Community Engagement",
+          "communityDesc": "Engaging youth and parents in savings groups, community therapy, and awareness campaigns."
+        }
       },
       "talent": {
         "title": "Talent & Skills Development",
@@ -265,6 +334,11 @@
               "visitCenter": "Visit a Center"
             }
           }
+        },
+        "impact": {
+          "students": "Students Trained",
+          "courses": "Courses Offered",
+          "employment": "Employment Rate"
         }
       },
       "economic": {
@@ -299,6 +373,11 @@
               "partner": "Partner with Us"
             }
           }
+        },
+        "highlights": {
+          "youth": "Youth Empowered",
+          "trades": "Vocational Trades",
+          "employment": "Employment Rate"
         }
       },
       "health": {
@@ -333,6 +412,11 @@
               "donateSupplies": "Donate Medical Supplies"
             }
           }
+        },
+        "highlights": {
+          "beneficiaries": "Beneficiaries",
+          "initiatives": "Health Initiatives",
+          "partners": "Partners"
         }
       },
       "peace": {
@@ -345,7 +429,12 @@
         "detail2": "Conflict resolution and mediation training",
         "detail3": "Youth leadership development",
         "detail4": "Community peace initiatives",
-        "detail5": "Reconciliation workshops"
+        "detail5": "Reconciliation workshops",
+        "highlights": {
+          "participants": "Participants",
+          "initiatives": "Initiatives",
+          "partnerships": "Partnerships"
+        }
       },
       "sportCultureArts": {
         "title": "Sport, Culture & Arts Program",
@@ -353,6 +442,11 @@
         "captions": {
           "image1": "Traditional dance performance by youth",
           "image2": "Youth engaging in a sports event"
+        },
+        "highlights": {
+          "participants": "Participants",
+          "disciplines": "Disciplines",
+          "events": "Annual Events"
         }
       },
       "culture": {
@@ -371,7 +465,19 @@
     },
     "impact": {
       "title": "Our Impact",
-      "description": "Through our programs, we've reached thousands of young people, providing them with the tools and opportunities they need to succeed."
+      "description": "Through our programs, we've reached thousands of young people, providing them with the tools and opportunities they need to succeed.",
+      "beneficiaries": {
+        "description": "We serve youth from diverse backgrounds, including out-of-school youth, vulnerable adolescents, and people with disabilities."
+      },
+      "communities": {
+        "description": "Our programs reach communities across Rwanda and the Great Lakes region, fostering peace and development."
+      },
+      "partners": {
+        "description": "We work with local organizations, government agencies, and international partners to maximize our impact."
+      },
+      "success": {
+        "description": "Our programs have achieved high success rates with 85% employment rate among graduates and 90% loan repayment rate."
+      }
     },
     "news": {
       "title": "Latest News & Updates",
@@ -385,6 +491,11 @@
         "title": "Peace Building Workshop Success",
         "excerpt": "Over 100 youth leaders trained in conflict resolution and community dialogue",
         "date": "March 10, 2024"
+      },
+      "item3": {
+        "title": "Youth Entrepreneurship Program Launch",
+        "excerpt": "New program to support young entrepreneurs with training and funding opportunities",
+        "date": "March 5, 2024"
       }
     },
     "beneficiaries": {
@@ -826,11 +937,130 @@
     },
     "health": {
       "title": "Health & Well-being",
-      "description": "Promoting physical and mental health through education, awareness, and access to healthcare services."
+      "description": "Promoting physical and mental health through education, awareness, and access to healthcare services.",
+      "subtitle": "Promoting Youth Well-being",
+      "intro": {
+        "description": "Our Health Program is dedicated to promoting holistic well-being among youth and communities. We focus on preventive education, access to health services, and fostering healthy lifestyles to ensure a vibrant and resilient future."
+      },
+      "highlights": {
+        "beneficiaries": "Beneficiaries",
+        "initiatives": "Health Initiatives",
+        "partners": "Partners"
+      },
+      "details": {
+        "title": "Program Details",
+        "background": "The Health program was established by Vision Jeunesse Nouvelle in 2023. The idea to start this program came after identifying various health challenges faced by youth who lacked access to sufficient information and support services.",
+        "recreation": "VJN also recognized that many youth participating in recreational activities could face accidents requiring basic first aid. Additionally, many sports activities at VJN require medical staff to treat athletes.",
+        "youngMothers": "The program also addresses the needs of young mothers who lack sufficient knowledge about reproductive health and childcare. While various health services are provided to youth, additional services are needed to continue supporting youth health.",
+        "partners": "VJN has helped youth access various health services through training funded by Imbuto Foundation in the Baho neza, Mountain Movers, and Door to Door Campaign projects. The organization also supports young mothers and their parents through savings and credit groups with MISEREOR and Imbuto Foundation."
+      },
+      "objectives": {
+        "title": "Program Objectives",
+        "main": "To improve the well-being of partners through various trainings, help them access sufficient health information, and provide various services to minimize the effects of poor health.",
+        "specific1": "Provide training to enhance youth knowledge about health-related matters.",
+        "specific2": "Help youth access basic health services and provide counseling to help them maintain good health.",
+        "specific3": "Advocate for youth in various institutions.",
+        "specific4": "Connect parents and children from families with conflicts related to young mothers.",
+        "specific5": "Help youth reduce the effects of poor health."
+      },
+      "targetGroups": {
+        "title": "Target Groups"
+      },
+      "target": {
+        "direct": {
+          "youth": "Youth",
+          "adults": "Adults",
+          "disabled": "People with disabilities"
+        },
+        "indirect": {
+          "authorities": "Government authorities",
+          "health": "Health institutions",
+          "ngos": "NGOs"
+        }
+      },
+      "services": {
+        "training": {
+          "title": "Training Programs"
+        },
+        "support": {
+          "title": "Support Services",
+          "mental": "Mental Health Services for Young Mothers",
+          "firstAid": "Basic First Aid Services",
+          "mobile": "Mobile GBV Clinic Support",
+          "psychosocial": "Psychosocial Support"
+        }
+      }
     },
     "peace": {
-      "title": "Peace Building",
-      "description": "Building bridges and fostering understanding through dialogue and community engagement."
+      "title": "Peace Building Program",
+      "subtitle": "Building Peace Through Youth Empowerment",
+      "description": "Our program addresses the root causes of conflict by equipping youth with tools for conflict resolution and promoting a culture of peace in Rwanda and the Great Lakes region.",
+      "intro": {
+        "description": "Our Peace Building Program is dedicated to fostering social cohesion and reconciliation among youth. We promote dialogue, conflict resolution, and inter-community understanding to build a more peaceful and inclusive society."
+      },
+      "details": {
+        "title": "Program Details",
+        "history": "The Peace Building program was established by Vision Jeunesse Nouvelle in 2012, recognizing the persistent conflicts in the Great Lakes region and the need for youth empowerment to foster peace. Initially, efforts focused on resolving family conflicts and addressing trauma among youth in the Western Province.",
+        "expansion": "Over time, the program expanded to include training in peace education, conflict resolution, and leadership skills. VJN has partnered with various organizations, including AEGIS TRUST, NEVER AGAIN RWANDA, and HROC (Healing and Rebuilding Our Communities), to implement its peace initiatives.",
+        "impact": "The program has successfully trained over 1,000 young people and community leaders in peace building techniques, enabling them to mediate conflicts and promote reconciliation in their communities."
+      },
+      "objectives": {
+        "title": "Program Objectives",
+        "main": "To empower youth with conflict resolution skills and promote a culture of peace in the Great Lakes region.",
+        "specific1": "Equip youth with knowledge and skills to resolve conflicts peacefully.",
+        "specific2": "Promote reconciliation and social cohesion among communities.",
+        "specific3": "Advocate for youth participation in peace-building processes.",
+        "specific4": "Provide psychosocial support to victims of conflict and trauma."
+      },
+      "targetGroups": {
+        "title": "Target Groups"
+      },
+      "target": {
+        "direct": {
+          "youth": "Youth (15-30 years)",
+          "leaders": "Community Leaders",
+          "families": "Families affected by conflict"
+        },
+        "indirect": {
+          "localAuthorities": "Local Government Authorities",
+          "schools": "Schools and Educational Institutions",
+          "religious": "Religious Institutions",
+          "csos": "Civil Society Organizations"
+        }
+      },
+      "criteria": {
+        "title": "Selection Criteria",
+        "age": "Age: 15-30 years",
+        "commitment": "Commitment to peace-building",
+        "leadership": "Leadership potential",
+        "community": "Actively involved in community activities",
+        "willingness": "Willingness to learn and share knowledge"
+      },
+      "approaches": {
+        "title": "Our Approaches",
+        "education": {
+          "title": "Peace Education and Training",
+          "description": "Conducting workshops and seminars on conflict resolution, mediation, and non-violent communication."
+        },
+        "dialogue": {
+          "title": "Dialogue and Reconciliation",
+          "description": "Facilitating community dialogues and reconciliation forums to address past grievances and build trust."
+        },
+        "capacity": {
+          "title": "Capacity Building",
+          "description": "Training community leaders and youth in peace-building methodologies and leadership."
+        },
+        "psychosocial": {
+          "title": "Psychosocial Support",
+          "description": "Providing counseling and trauma healing sessions to individuals and families affected by conflict."
+        }
+      },
+      "cta": {
+        "title": "Get Involved",
+        "description": "Join us in our mission to promote peace and social cohesion in communities. Your support can make a difference.",
+        "volunteer": "Volunteer With Us",
+        "donate": "Support Our Programs"
+      }
     },
     "sportCultureArts": {
       "title": "Sport, Culture & Arts Program",
@@ -867,7 +1097,10 @@
     "volunteer": "Volunteer",
     "donate": "Donate",
     "contactUs": "Contact Us",
-    "backToAll": "Back to all programs"
+    "backToAll": "Back to all programs",
+    "keyHighlights": {
+      "title": "Program Highlights"
+    }
   },
   "stories": {
     "title": "Impact Stories",
@@ -1292,7 +1525,10 @@
     "addUserError": "Failed to add user",
     "updateUserError": "Failed to update user",
     "deleteUserError": "Failed to delete user",
-    "confirmDeleteUser": "Are you sure you want to delete this user?"
+    "confirmDeleteUser": "Are you sure you want to delete this user?",
+    "staff": {
+      "title": "Staff Management"
+    }
   },
   "profile": {
     "title": "User Profile",
@@ -1557,5 +1793,43 @@
     "startDate": "Start:",
     "viewProject": "View Project",
     "noExternalLink": "No external link"
+  },
+  "errors": {
+    "slider": {
+      "load": "Failed to load slider items",
+      "create": "Failed to create slider item",
+      "update": "Failed to update slider item",
+      "delete": "Failed to delete slider item",
+      "imageRequired": "Image is required"
+    }
+  },
+  "success": {
+    "slider": {
+      "create": "Slider item created successfully",
+      "update": "Slider item updated successfully",
+      "delete": "Slider item deleted successfully"
+    }
+  },
+  "donationModal": {
+    "title": "Make a Donation",
+    "description": "Your contribution will help us continue our mission of empowering Rwandan youth. Please enter the amount you would like to donate.",
+    "amountLabel": "Donation Amount (RWF)",
+    "amountPlaceholder": "Enter amount",
+    "paypalTab": "PayPal",
+    "mtnTab": "MTN Mobile Money",
+    "bankTab": "Bank Transfer",
+    "paypalDescription": "You will be redirected to PayPal to complete your payment securely.",
+    "phoneNumberLabel": "MTN Phone Number",
+    "phoneNumberPlaceholder": "e.g., 078XXXXXXX",
+    "payMtn": "Pay with MTN Mobile Money",
+    "emailLabel": "Email Address",
+    "emailPlaceholder": "Enter your email",
+    "bankName": "Bank: Bank of Kigali",
+    "accountName": "Account Name: VJN Rwanda",
+    "accountNumber": "Account Number: 0000000000",
+    "swiftCode": "Swift Code: BKIGRWRW",
+    "branch": "Branch: Kigali Main Branch",
+    "getBankDetails": "Get Bank Details",
+    "cancel": "Cancel"
   }
 } 

@@ -3,6 +3,7 @@
     "home": "Accueil",
     "about": "À Propos",
     "programs": "Programmes",
+    "events": "Événements",
     "services": "Services",
     "resources": "Ressources",
     "media": "Médias",
@@ -11,10 +12,67 @@
     "news": "Actualités",
     "contact": "Nous Contacter",
     "impact": "Notre Impact",
+    "partners": "Partenaires",
     "dms": "DMS",
     "login": "Connexion",
     "logout": "Déconnexion",
-    "dashboard": "Tableau de Bord"
+    "dashboard": "Tableau de Bord",
+    "media": "Médias",
+    "mediaDescription": "Gérer le contenu multimédia et les téléchargements",
+    "settings": "Paramètres",
+    "settingsDescription": "Configurer les paramètres système et les préférences",
+    "comingSoon": "Bientôt disponible",
+    "adminSettingsDescription": "Gérer les paramètres d'administration et les configurations",
+    "users": "Utilisateurs",
+    "pages": "Pages",
+    "slider": "Diaporama",
+    "medi": "Médias"
+  },
+  "slider": {
+    "previous": "Précédent",
+    "next": "Suivant",
+    "goToSlide": "Aller à la diapositive",
+    "learnMore": "En Savoir Plus",
+    "getInvolved": "S'Impliquer",
+    "noSlides": "Aucune diapositive disponible",
+    "noSlidesMessage": "Veuillez vérifier votre connexion à la base de données ou ajouter des diapositives.",
+    "create": "Créer un élément de diaporama",
+    "edit": "Modifier l'élément de diaporama",
+    "title": "Titre",
+    "titlePlaceholder": "Entrez le titre du diaporama",
+    "description": "Description",
+    "descriptionPlaceholder": "Entrez la description du diaporama",
+    "image": "Image",
+    "language": "Langue",
+    "active": "Actif",
+    "order": "Ordre",
+    "actions": "Actions",
+    "noItems": "Aucun élément de diaporama trouvé",
+    "addNew": "Ajouter un nouvel élément de diaporama",
+    "dragDrop": "Glissez-déposez une image ici, ou cliquez pour en sélectionner une",
+    "maxSize": "Taille max : 5 Mo",
+    "uploadImage": "Télécharger une image"
+  },
+  "events": {
+    "title": "Découvrez Nos Événements",
+    "subtitle": "Rejoignez-nous pour créer un changement positif à travers notre gamme diversifiée d'événements et d'activités.",
+    "searchPlaceholder": "Rechercher des événements...",
+    "allYears": "Toutes les Années",
+    "upcoming": "Événements à Venir",
+    "past": "Événements Passés",
+    "noUpcoming": "Aucun événement à venir",
+    "noUpcomingDesc": "Revenez bientôt pour de nouveaux événements !",
+    "noPast": "Aucun événement passé",
+    "noPastDesc": "Aucun événement passé trouvé.",
+    "featured": "Mis en Avant",
+    "joinNow": "Rejoindre Maintenant",
+    "addToCalendar": "Ajouter au Calendrier Google",
+    "readRecap": "Lire le Récapitulatif",
+    "eventCompleted": "Événement Terminé",
+    "participants": "participants",
+    "getInvolved": "Voulez-vous Vous Impliquer ?",
+    "getInvolvedDesc": "Rejoignez notre prochain événement et faites partie du mouvement.",
+    "seeAllEvents": "Voir Tous les Événements"
   },
   "services": {
     "title": "Nos Services – Construire des vies, une étape à la fois",
@@ -995,6 +1053,22 @@
       "title": "Des Questions ?",
       "description": "Contactez notre équipe RH pour toute question concernant nos opportunités actuelles ou le processus de candidature.",
       "button": "Contacter l'Équipe RH"
+    }
+  },
+  "errors": {
+    "slider": {
+      "load": "Échec du chargement des éléments de diaporama",
+      "create": "Échec de la création de l'élément de diaporama",
+      "update": "Échec de la mise à jour de l'élément de diaporama",
+      "delete": "Échec de la suppression de l'élément de diaporama",
+      "imageRequired": "L'image est requise"
+    }
+  },
+  "success": {
+    "slider": {
+      "create": "Élément de diaporama créé avec succès",
+      "update": "Élément de diaporama mis à jour avec succès",
+      "delete": "Élément de diaporama supprimé avec succès"
     }
   }
 } 

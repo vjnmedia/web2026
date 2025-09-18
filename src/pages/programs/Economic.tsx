@@ -1,4 +1,4 @@
-import { TrendingUp, Users, Target, Clock, Award, Globe, Heart, Shield, BookOpen, ChevronRight, Briefcase } from 'lucide-react';
+import { TrendingUp, Users, Target, Clock, Award, Globe, Heart, Shield, BookOpen, ChevronRight, Briefcase, Hammer, DollarSign, FileText, UserCheck, Download } from 'lucide-react';
 import ProgramDetail from '@/components/ProgramDetail';
 import { useLanguage } from '@/components/LanguageContext';
 import { Button } from '@/components/ui/button';
@@ -102,48 +102,74 @@ const Economic = () => {
 
         {/* Main Content */}
         <div className="flex-1">
-          {/* Hero Section */}
-          <section className="relative mb-2 rounded-md overflow-hidden h-64 lg:h-80">
-            <img
-              src="/images/programs/economic/Gh-xYUVXoAAsibq.jpg"
-              alt="Economic Empowerment Program"
-              className="absolute inset-0 w-full h-full object-cover"
-            />
-            <div className="absolute inset-0 bg-green-900/70 z-10" />
-            <div className="relative z-20 p-4 text-white">
-              <div className="max-w-3xl">
-                <div className="inline-block p-1 bg-green-600/30 rounded-full mb-2">
-                  <Briefcase className="h-5 w-5" />
+          {/* Full-width Hero Header Section */}
+          <section className="w-full bg-vjn-blue py-16 md:py-20 mb-4 text-center">
+            <div className="container mx-auto px-4">
+              <h1 className="text-4xl md:text-5xl font-bold mb-3 text-green-600">
+                {t('programs.economic.title', 'Economic Empowerment Program')}
+              </h1>
+              <h2 className="text-2xl md:text-3xl font-semibold mb-2 text-white">
+                {t('programs.economic.subtitle', 'Building Sustainable Livelihoods')}
+              </h2>
+              <p className="text-lg md:text-xl max-w-2xl mx-auto text-white">
+                {t('programs.economic.intro.description', 'Our Economic Empowerment Program is designed to equip youth with the skills and resources needed to achieve financial independence and entrepreneurial success. We focus on vocational training, business development, and market access.')}
+              </p>
+            </div>
+          </section>
+
+          {/* Download Brochure Button */}
+          <div className="mb-4 flex justify-end">
+            <a
+              href="/downloads/brochures/economic_empowerment.pdf"
+              download
+              className="inline-flex items-center px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700 transition"
+            >
+              <Download className="mr-2 w-4 h-4" />
+              Download Brochure
+            </a>
+          </div>
+
+          {/* Program Highlights Section */}
+          <section className="bg-gradient-to-br from-green-50 to-white rounded-md shadow-xs p-2 mb-1">
+            <h2 className="text-lg md:text-xl font-bold mb-1 flex items-center text-gray-900">
+              <Award className="h-4 w-4 mr-1 text-green-600" />
+              {t('programs.keyHighlights.title', 'Program Highlights')}
+            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-1">
+              <div className="bg-white rounded-md p-2 text-center shadow-xs hover:shadow-sm transition-shadow">
+                <div className="text-green-600 mb-0.5 flex justify-center">
+                  <Hammer className="h-5 w-5" />
                 </div>
-                <h1 className="text-3xl font-bold mb-3">
-                  {t('programs.economic.title', 'Economic Empowerment Program')}
-                </h1>
-                <p className="text-base mb-4 text-green-100 leading-relaxed">
-                  {t('programs.economic.intro.description', 'Our Economic Empowerment Program is designed to equip youth with the skills and resources needed to achieve financial independence and entrepreneurial success. We focus on vocational training, business development, and market access.')}
-                </p>
-                <div className="flex flex-wrap gap-2">
-                  <div className="flex items-center space-x-1 bg-white/10 backdrop-blur-sm px-2 py-1 rounded-full">
-                    <Users className="h-3.5 w-3.5" />
-                    <div>
-                      <div className="text-base font-bold">1500+</div>
-                      <div className="text-xs text-green-100">Youth Empowered</div>
-                    </div>
-                  </div>
-                  <div className="flex items-center space-x-1 bg-white/10 backdrop-blur-sm px-2 py-1 rounded-full">
-                    <Target className="h-3.5 w-3.5" />
-                    <div>
-                      <div className="text-base font-bold">8+</div>
-                      <div className="text-xs text-green-100">Vocational Trades</div>
-                    </div>
-                  </div>
-                  <div className="flex items-center space-x-1 bg-white/10 backdrop-blur-sm px-2 py-1 rounded-full">
-                    <Award className="h-3.5 w-3.5" />
-                    <div>
-                      <div className="text-base font-bold">90%</div>
-                      <div className="text-xs text-green-100">Employment Rate</div>
-                    </div>
-                  </div>
+                <div className="text-lg font-bold text-gray-900 mb-0.5">1700+</div>
+                <div className="text-gray-700 text-sm">Youth Trained</div>
+              </div>
+              <div className="bg-white rounded-md p-2 text-center shadow-xs hover:shadow-sm transition-shadow">
+                <div className="text-green-600 mb-0.5 flex justify-center">
+                  <DollarSign className="h-5 w-5" />
                 </div>
+                <div className="text-lg font-bold text-gray-900 mb-0.5">220+</div>
+                <div className="text-gray-700 text-sm">GSLA Groups Formed</div>
+              </div>
+              <div className="bg-white rounded-md p-2 text-center shadow-xs hover:shadow-sm transition-shadow">
+                <div className="text-green-600 mb-0.5 flex justify-center">
+                  <FileText className="h-5 w-5" />
+                </div>
+                <div className="text-lg font-bold text-gray-900 mb-0.5">60+</div>
+                <div className="text-gray-700 text-sm">Cooperatives Registered</div>
+              </div>
+              <div className="bg-white rounded-md p-2 text-center shadow-xs hover:shadow-sm transition-shadow">
+                <div className="text-green-600 mb-0.5 flex justify-center">
+                  <TrendingUp className="h-5 w-5" />
+                </div>
+                <div className="text-lg font-bold text-gray-900 mb-0.5">80%+</div>
+                <div className="text-gray-700 text-sm">Improved Livelihoods</div>
+              </div>
+              <div className="bg-white rounded-md p-2 text-center shadow-xs hover:shadow-sm transition-shadow">
+                <div className="text-green-600 mb-0.5 flex justify-center">
+                  <UserCheck className="h-5 w-5" />
+                </div>
+                <div className="text-lg font-bold text-gray-900 mb-0.5">100+</div>
+                <div className="text-gray-700 text-sm">Mentorship Sessions</div>
               </div>
             </div>
           </section>

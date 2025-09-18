@@ -196,6 +196,55 @@ const Services: React.FC = () => {
         </div>
       </section>
 
+      {/* Public Services Section */}
+      <section className="mb-16">
+        <h2 className="text-2xl font-bold mb-6 text-vjn-blue text-center">VJN Public Services</h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {/* VJN Library */}
+          <div className="bg-white rounded-lg shadow-md p-6 flex flex-col items-center text-center hover:shadow-lg transition-shadow">
+            <img src="/images/placeholder.svg" alt="VJN Library" className="w-20 h-20 mb-4" />
+            <h3 className="text-xl font-semibold mb-2 text-vjn-blue">VJN Library</h3>
+            <p className="text-gray-700 mb-4">Access a wide range of books, digital resources, and research tools for youth and the community.</p>
+            <a href="https://library.visionjeunessenouvelle.org.rw" target="_blank" rel="noopener noreferrer" className="inline-block px-4 py-2 bg-vjn-blue text-white rounded hover:bg-vjn-dark-blue transition">Visit Site</a>
+          </div>
+          {/* VJN Record */}
+          <div className="bg-white rounded-lg shadow-md p-6 flex flex-col items-center text-center hover:shadow-lg transition-shadow">
+            <img src="/images/placeholder.svg" alt="VJN Record" className="w-20 h-20 mb-4" />
+            <h3 className="text-xl font-semibold mb-2 text-vjn-blue">VJN Record</h3>
+            <p className="text-gray-700 mb-4">Access VJN records, archives, and important documents for reference and research.</p>
+            <a href="https://record.visionjeunessenouvelle.org.rw" target="_blank" rel="noopener noreferrer" className="inline-block px-4 py-2 bg-vjn-blue text-white rounded hover:bg-vjn-dark-blue transition">Visit Site</a>
+          </div>
+          {/* VTC */}
+          <div className="bg-white rounded-lg shadow-md p-6 flex flex-col items-center text-center hover:shadow-lg transition-shadow">
+            <img src="/images/placeholder.svg" alt="VTC" className="w-20 h-20 mb-4" />
+            <h3 className="text-xl font-semibold mb-2 text-vjn-blue">VTC</h3>
+            <p className="text-gray-700 mb-4">Vocational Training Center offering technical and professional courses for youth and adults.</p>
+            <a href="https://vtc.visionjeunessenouvelle.org.rw" target="_blank" rel="noopener noreferrer" className="inline-block px-4 py-2 bg-vjn-blue text-white rounded hover:bg-vjn-dark-blue transition">Visit Site</a>
+          </div>
+          {/* VJN African Stars Band */}
+          <div className="bg-white rounded-lg shadow-md p-6 flex flex-col items-center text-center hover:shadow-lg transition-shadow">
+            <img src="/images/placeholder.svg" alt="VJN African Stars Band" className="w-20 h-20 mb-4" />
+            <h3 className="text-xl font-semibold mb-2 text-vjn-blue">VJN African Stars Band</h3>
+            <p className="text-gray-700 mb-4">Live band and orchestra for events, providing musical entertainment for all occasions.</p>
+            <a href="https://band.visionjeunessenouvelle.org.rw" target="_blank" rel="noopener noreferrer" className="inline-block px-4 py-2 bg-vjn-blue text-white rounded hover:bg-vjn-dark-blue transition">Visit Site</a>
+          </div>
+          {/* Traditional Dance Ballet (Iyizire) */}
+          <div className="bg-white rounded-lg shadow-md p-6 flex flex-col items-center text-center hover:shadow-lg transition-shadow">
+            <img src="/images/placeholder.svg" alt="Iyizire Ballet" className="w-20 h-20 mb-4" />
+            <h3 className="text-xl font-semibold mb-2 text-vjn-blue">Iyizire Traditional Dance Ballet</h3>
+            <p className="text-gray-700 mb-4">Traditional dance ballet for events and weddings, showcasing Rwandan culture and heritage.</p>
+            <a href="https://iyizire.visionjeunessenouvelle.org.rw" target="_blank" rel="noopener noreferrer" className="inline-block px-4 py-2 bg-vjn-blue text-white rounded hover:bg-vjn-dark-blue transition">Visit Site</a>
+          </div>
+          {/* Events Halls */}
+          <div className="bg-white rounded-lg shadow-md p-6 flex flex-col items-center text-center hover:shadow-lg transition-shadow">
+            <img src="/images/placeholder.svg" alt="Events Halls" className="w-20 h-20 mb-4" />
+            <h3 className="text-xl font-semibold mb-2 text-vjn-blue">Events Halls</h3>
+            <p className="text-gray-700 mb-4">Spacious and modern halls for weddings, conferences, and various events, accommodating different needs.</p>
+            <a href="https://events.visionjeunessenouvelle.org.rw" target="_blank" rel="noopener noreferrer" className="inline-block px-4 py-2 bg-vjn-blue text-white rounded hover:bg-vjn-dark-blue transition">Visit Site</a>
+          </div>
+        </div>
+      </section>
+
       {/* Main Content */}
       <div className="container mx-auto px-4 py-12">
         <div className="max-w-7xl mx-auto">

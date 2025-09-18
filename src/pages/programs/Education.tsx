@@ -1,4 +1,4 @@
-import { GraduationCap, BookOpen, Users, Target, Clock, Award, Calendar, MapPin, Building2, Globe, Shield, ChevronRight, CheckCircle2, Briefcase } from 'lucide-react';
+import { GraduationCap, BookOpen, Users, Target, Clock, Award, Calendar, MapPin, Building2, Globe, Shield, ChevronRight, CheckCircle2, Briefcase, UserCheck, Download } from 'lucide-react';
 import ProgramDetail from '@/components/ProgramDetail';
 import { useLanguage } from '@/components/LanguageContext';
 import { Button } from '@/components/ui/button';
@@ -74,48 +74,74 @@ const Education = () => {
 
         {/* Main Content */}
         <div className="flex-1">
-          {/* Hero Section */}
-          <section className="relative mb-2 rounded-md overflow-hidden h-64 lg:h-80">
-            <img
-              src="/images/programs/education/IMG_9525.JPG"
-              alt="Education Program"
-              className="absolute inset-0 w-full h-full object-cover"
-            />
-            <div className="absolute inset-0 bg-blue-900/70 z-10" />
-            <div className="relative z-20 p-4 text-white">
-              <div className="max-w-3xl">
-                <div className="inline-block p-1 bg-blue-600/30 rounded-full mb-2">
+          {/* Full-width Hero Header Section */}
+          <section className="w-full bg-vjn-blue py-16 md:py-20 mb-4 text-center">
+            <div className="container mx-auto px-4">
+              <h1 className="text-4xl md:text-5xl font-bold mb-3 text-green-600">
+                {t('programs.education.title', 'Education & Vocational Training Program')}
+              </h1>
+              <h2 className="text-2xl md:text-3xl font-semibold mb-2 text-white">
+                {t('programs.education.subtitle', 'Empowering Through Education')}
+              </h2>
+              <p className="text-lg md:text-xl max-w-2xl mx-auto text-white">
+                {t('programs.education.intro.description', 'Our Education Program is dedicated to empowering youth and communities through comprehensive learning opportunities. We combine traditional education with practical vocational training to create pathways for sustainable development and employment.')}
+              </p>
+            </div>
+          </section>
+
+          {/* Download Brochure Button */}
+          <div className="mb-4 flex justify-end">
+            <a
+              href="/downloads/brochures/Education.pdf"
+              download
+              className="inline-flex items-center px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition"
+            >
+              <Download className="mr-2 w-4 h-4" />
+              Download Brochure
+            </a>
+          </div>
+
+          {/* Program Highlights Section */}
+          <section className="bg-gradient-to-br from-blue-50 to-white rounded-md shadow-xs p-2 mb-1">
+            <h2 className="text-lg md:text-xl font-bold mb-1 flex items-center text-gray-900">
+              <Award className="h-4 w-4 mr-1 text-blue-600" />
+              {t('programs.keyHighlights.title', 'Program Highlights')}
+            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-1">
+              <div className="bg-white rounded-md p-2 text-center shadow-xs hover:shadow-sm transition-shadow">
+                <div className="text-blue-600 mb-0.5 flex justify-center">
                   <GraduationCap className="h-5 w-5" />
                 </div>
-                <h1 className="text-3xl font-bold mb-3">
-                  {t('programs.education.title', 'Education & Vocational Training Program')}
-                </h1>
-                <p className="text-base mb-4 text-blue-100 leading-relaxed">
-                  {t('programs.education.intro.description', 'Our Education Program is dedicated to empowering youth and communities through comprehensive learning opportunities. We combine traditional education with practical vocational training to create pathways for sustainable development and employment.')}
-                </p>
-                <div className="flex flex-wrap gap-2">
-                  <div className="flex items-center space-x-1 bg-white/10 backdrop-blur-sm px-2 py-1 rounded-full">
-                    <Users className="h-3.5 w-3.5" />
-                    <div>
-                      <div className="text-base font-bold">1000+</div>
-                      <div className="text-xs text-blue-100">Students</div>
-                    </div>
-                  </div>
-                  <div className="flex items-center space-x-1 bg-white/10 backdrop-blur-sm px-2 py-1 rounded-full">
-                    <Building2 className="h-3.5 w-3.5" />
-                    <div>
-                      <div className="text-base font-bold">6</div>
-                      <div className="text-xs text-blue-100">Programs</div>
-                    </div>
-                  </div>
-                  <div className="flex items-center space-x-1 bg-white/10 backdrop-blur-sm px-2 py-1 rounded-full">
-                    <MapPin className="h-3.5 w-3.5" />
-                    <div>
-                      <div className="text-base font-bold">15+</div>
-                      <div className="text-xs text-blue-100">Locations</div>
-                    </div>
-                  </div>
+                <div className="text-lg font-bold text-gray-900 mb-0.5">1300+</div>
+                <div className="text-gray-700 text-sm">Children Supported</div>
+              </div>
+              <div className="bg-white rounded-md p-2 text-center shadow-xs hover:shadow-sm transition-shadow">
+                <div className="text-blue-600 mb-0.5 flex justify-center">
+                  <UserCheck className="h-5 w-5" />
                 </div>
+                <div className="text-lg font-bold text-gray-900 mb-0.5">400+</div>
+                <div className="text-gray-700 text-sm">Parents Trained</div>
+              </div>
+              <div className="bg-white rounded-md p-2 text-center shadow-xs hover:shadow-sm transition-shadow">
+                <div className="text-blue-600 mb-0.5 flex justify-center">
+                  <BookOpen className="h-5 w-5" />
+                </div>
+                <div className="text-lg font-bold text-gray-900 mb-0.5">20+</div>
+                <div className="text-gray-700 text-sm">Life Skills Sessions</div>
+              </div>
+              <div className="bg-white rounded-md p-2 text-center shadow-xs hover:shadow-sm transition-shadow">
+                <div className="text-blue-600 mb-0.5 flex justify-center">
+                  <Shield className="h-5 w-5" />
+                </div>
+                <div className="text-lg font-bold text-gray-900 mb-0.5">70+</div>
+                <div className="text-gray-700 text-sm">Protection Cases Followed</div>
+              </div>
+              <div className="bg-white rounded-md p-2 text-center shadow-xs hover:shadow-sm transition-shadow">
+                <div className="text-blue-600 mb-0.5 flex justify-center">
+                  <Users className="h-5 w-5" />
+                </div>
+                <div className="text-lg font-bold text-gray-900 mb-0.5">10+</div>
+                <div className="text-gray-700 text-sm">Child Clubs Formed</div>
               </div>
             </div>
           </section>

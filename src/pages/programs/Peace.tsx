@@ -1,4 +1,4 @@
-import { Heart, Users, Target, Clock, Award, Globe, Shield, BookOpen, ChevronRight, Handshake } from 'lucide-react';
+import { Heart, Users, Target, Clock, Award, Globe, Shield, BookOpen, ChevronRight, Handshake, Film, Tent, Mic, Radio, Download } from 'lucide-react';
 import ProgramDetail from '@/components/ProgramDetail';
 import { useLanguage } from '@/components/LanguageContext';
 import { Button } from '@/components/ui/button';
@@ -77,48 +77,74 @@ const Peace = () => {
 
         {/* Main Content */}
         <div className="flex-1">
-          {/* Hero Section with Background Image */}
-          <section className="relative mb-2 rounded-md overflow-hidden h-64 lg:h-80">
-            <img
-              src="/images/programs/peace/IMG_9336.JPG"
-              alt="Peace Building Program"
-              className="absolute inset-0 w-full h-full object-cover"
-            />
-            <div className="absolute inset-0 bg-purple-900/70 z-10" />
-            <div className="relative z-20 p-4 text-white">
-              <div className="max-w-3xl">
-                <div className="inline-block p-1 bg-purple-600/30 rounded-full mb-2">
-                  <Shield className="h-5 w-5" />
+          {/* Full-width Hero Header Section */}
+          <section className="w-full bg-vjn-blue py-16 md:py-20 mb-4 text-center">
+            <div className="container mx-auto px-4">
+              <h1 className="text-4xl md:text-5xl font-bold mb-3 text-green-600">
+                {t('programs.peace.title', 'Peace Building Program')}
+              </h1>
+              <h2 className="text-2xl md:text-3xl font-semibold mb-2 text-white">
+                {t('programs.peace.subtitle', 'Building Peace Through Youth Empowerment')}
+              </h2>
+              <p className="text-lg md:text-xl max-w-2xl mx-auto text-white">
+                {t('programs.peace.intro.description', 'Our Peace Building Program is dedicated to fostering social cohesion and reconciliation among youth. We promote dialogue, conflict resolution, and inter-community understanding to build a more peaceful and inclusive society.')}
+              </p>
+            </div>
+          </section>
+
+          {/* Download Brochure Button */}
+          <div className="mb-4 flex justify-end">
+            <a
+              href="/downloads/brochures/peacebuilding.pdf"
+              download
+              className="inline-flex items-center px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition"
+            >
+              <Download className="mr-2 w-4 h-4" />
+              Download Brochure
+            </a>
+          </div>
+
+          {/* Program Highlights Section */}
+          <section className="bg-gradient-to-br from-blue-50 to-white rounded-md shadow-xs p-2 mb-1">
+            <h2 className="text-lg md:text-xl font-bold mb-1 flex items-center text-gray-900">
+              <Award className="h-4 w-4 mr-1 text-blue-600" />
+              {t('programs.keyHighlights.title', 'Program Highlights')}
+            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-1">
+              <div className="bg-white rounded-md p-2 text-center shadow-xs hover:shadow-sm transition-shadow">
+                <div className="text-blue-600 mb-0.5 flex justify-center">
+                  <Users className="h-5 w-5" />
                 </div>
-                <h1 className="text-3xl font-bold mb-3">
-                  {t('programs.peace.title', 'Peace Building Program')}
-                </h1>
-                <p className="text-base mb-4 text-purple-100 leading-relaxed">
-                  {t('programs.peace.intro.description', 'Our Peace Building Program is dedicated to fostering social cohesion and reconciliation among youth. We promote dialogue, conflict resolution, and inter-community understanding to build a more peaceful and inclusive society.')}
-                </p>
-                <div className="flex flex-wrap gap-2">
-                  <div className="flex items-center space-x-1 bg-white/10 backdrop-blur-sm px-2 py-1 rounded-full">
-                    <Users className="h-3.5 w-3.5" />
-                    <div>
-                      <div className="text-base font-bold">2500+</div>
-                      <div className="text-xs text-purple-100">Participants</div>
-                    </div>
-                  </div>
-                  <div className="flex items-center space-x-1 bg-white/10 backdrop-blur-sm px-2 py-1 rounded-full">
-                    <Handshake className="h-3.5 w-3.5" />
-                    <div>
-                      <div className="text-base font-bold">7+</div>
-                      <div className="text-xs text-purple-100">Initiatives</div>
-                    </div>
-                  </div>
-                  <div className="flex items-center space-x-1 bg-white/10 backdrop-blur-sm px-2 py-1 rounded-full">
-                    <Globe className="h-3.5 w-3.5" />
-                    <div>
-                      <div className="text-base font-bold">12+</div>
-                      <div className="text-xs text-purple-100">Partnerships</div>
-                    </div>
-                  </div>
+                <div className="text-lg font-bold text-gray-900 mb-0.5">6000+</div>
+                <div className="text-gray-700 text-sm">Youth Reached</div>
+              </div>
+              <div className="bg-white rounded-md p-2 text-center shadow-xs hover:shadow-sm transition-shadow">
+                <div className="text-blue-600 mb-0.5 flex justify-center">
+                  <Film className="h-5 w-5" />
                 </div>
+                <div className="text-lg font-bold text-gray-900 mb-0.5">120+</div>
+                <div className="text-gray-700 text-sm">Films Screened</div>
+              </div>
+              <div className="bg-white rounded-md p-2 text-center shadow-xs hover:shadow-sm transition-shadow">
+                <div className="text-blue-600 mb-0.5 flex justify-center">
+                  <Tent className="h-5 w-5" />
+                </div>
+                <div className="text-lg font-bold text-gray-900 mb-0.5">14+</div>
+                <div className="text-gray-700 text-sm">Peace Camps Held</div>
+              </div>
+              <div className="bg-white rounded-md p-2 text-center shadow-xs hover:shadow-sm transition-shadow">
+                <div className="text-blue-600 mb-0.5 flex justify-center">
+                  <Mic className="h-5 w-5" />
+                </div>
+                <div className="text-lg font-bold text-gray-900 mb-0.5">500+</div>
+                <div className="text-gray-700 text-sm">Trained Peace Leaders</div>
+              </div>
+              <div className="bg-white rounded-md p-2 text-center shadow-xs hover:shadow-sm transition-shadow">
+                <div className="text-blue-600 mb-0.5 flex justify-center">
+                  <Radio className="h-5 w-5" />
+                </div>
+                <div className="text-lg font-bold text-gray-900 mb-0.5">5+</div>
+                <div className="text-gray-700 text-sm">Peace Radio Programs</div>
               </div>
             </div>
           </section>
@@ -188,8 +214,18 @@ const Peace = () => {
               {t('programs.peace.targetGroups.title', 'Target Groups')}
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-1.5">
-              {targetGroups.map((group, index) => (
-                <div key={index} className="flex items-start space-x-1.5 bg-white p-2.5 rounded-sm shadow-xs hover:shadow-sm transition-shadow border border-red-100 group">
+              {/* Direct Target Groups */}
+              {targetGroups.direct.map((group, index) => (
+                <div key={`direct-${index}`} className="flex items-start space-x-1.5 bg-white p-2.5 rounded-sm shadow-xs hover:shadow-sm transition-shadow border border-red-100 group">
+                  <div className="flex-shrink-0 w-5 h-5 rounded-full bg-red-100 flex items-center justify-center group-hover:bg-red-600 transition-colors">
+                    <Clock className="h-4 w-4 text-red-600 group-hover:text-white" />
+                  </div>
+                  <p className="text-gray-700 text-sm">{group}</p>
+                </div>
+              ))}
+              {/* Indirect Target Groups */}
+              {targetGroups.indirect.map((group, index) => (
+                <div key={`indirect-${index}`} className="flex items-start space-x-1.5 bg-white p-2.5 rounded-sm shadow-xs hover:shadow-sm transition-shadow border border-red-100 group">
                   <div className="flex-shrink-0 w-5 h-5 rounded-full bg-red-100 flex items-center justify-center group-hover:bg-red-600 transition-colors">
                     <Clock className="h-4 w-4 text-red-600 group-hover:text-white" />
                   </div>

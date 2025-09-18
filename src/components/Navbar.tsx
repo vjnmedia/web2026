@@ -185,6 +185,12 @@ const ResourcesDropdown: React.FC = () => {
           >
             <div className="py-2">
               <Link
+                to="/news"
+                className="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-vjn-blue transition-colors duration-300"
+              >
+                {t('nav.news')}
+              </Link>
+              <Link
                 to="/media"
                 className="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-vjn-blue transition-colors duration-300"
               >
@@ -282,10 +288,10 @@ const Navbar = () => {
   const mainNavItems = [
     { name: t('nav.home', 'Home'), href: '/' },
     { name: t('nav.about', 'About'), href: '/about' },
-    { name: t('nav.services', 'Services'), href: '/services' },
-    { name: t('nav.news', 'News'), href: '/news' },
-    { name: t('nav.contact', 'Contact Us'), href: '/contact' },
-    { name: t('nav.impact', 'Our Impact'), href: '/impact' }
+    { name: t('nav.events', 'Events'), href: '/events' },
+    { name: t('nav.impact', 'Our Impact'), href: '/impact' },
+    { name: t('nav.partners', 'Partners'), href: '/partners' },
+    { name: t('nav.services', 'Services'), href: '/services' }
   ];
 
   if (user?.role === 'admin') {
@@ -554,6 +560,13 @@ const Navbar = () => {
                   <div className="px-3 py-2">
                     <div className="text-base font-medium text-gray-700">{t('nav.resources')}</div>
                     <div className="pl-4 space-y-1 mt-2">
+                      <Link
+                        to="/news"
+                        className="block px-3 py-2 text-sm text-gray-600 hover:text-vjn-blue hover:bg-gray-50 rounded-md"
+                        onClick={toggleMobileMenu}
+                      >
+                        {t('nav.news')}
+                      </Link>
                       <Link
                         to="/media"
                         className="block px-3 py-2 text-sm text-gray-600 hover:text-vjn-blue hover:bg-gray-50 rounded-md"

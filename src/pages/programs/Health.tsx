@@ -1,4 +1,4 @@
-import { Heart, Users, Target, Clock, Award, Globe, Shield, BookOpen, ChevronRight, CheckCircle2 } from 'lucide-react';
+import { Heart, Users, Target, Clock, Award, Globe, Shield, BookOpen, ChevronRight, CheckCircle2, Brain, Droplet, Download } from 'lucide-react';
 import ProgramDetail from '@/components/ProgramDetail';
 import { useLanguage } from '@/components/LanguageContext';
 import { Button } from '@/components/ui/button';
@@ -62,6 +62,29 @@ const Health = () => {
     }
   ];
 
+  const activities = [
+    {
+      icon: <BookOpen className="w-4 h-4" />,
+      title: t('programs.health.activities.training', 'Health Education & Training'),
+      description: t('programs.health.activities.trainingDesc', 'Workshops and seminars on reproductive health, mental health, and first aid for youth and community members.')
+    },
+    {
+      icon: <Shield className="w-4 h-4" />,
+      title: t('programs.health.activities.support', 'Support Services'),
+      description: t('programs.health.activities.supportDesc', 'Provision of mental health support, psychosocial counseling, and mobile GBV clinic services.')
+    },
+    {
+      icon: <Globe className="w-4 h-4" />,
+      title: t('programs.health.activities.advocacy', 'Advocacy & Outreach'),
+      description: t('programs.health.activities.advocacyDesc', 'Advocating for youth health rights and connecting families to health institutions and authorities.')
+    },
+    {
+      icon: <Users className="w-4 h-4" />,
+      title: t('programs.health.activities.community', 'Community Engagement'),
+      description: t('programs.health.activities.communityDesc', 'Engaging youth and parents in savings groups, community therapy, and awareness campaigns.')
+    }
+  ];
+
   return (
     <div className="max-w-6xl mx-auto px-6 py-2">
       <div className="flex flex-col lg:flex-row gap-1">
@@ -72,48 +95,74 @@ const Health = () => {
 
         {/* Main Content */}
         <div className="flex-1">
-          {/* Hero Section */}
-          <section className="relative mb-2 rounded-md overflow-hidden h-64 lg:h-80">
-            <img
-              src="/images/programs/health/IMG_5140.JPG"
-              alt="Health & Well-being Program"
-              className="absolute inset-0 w-full h-full object-cover"
-            />
-            <div className="absolute inset-0 bg-red-900/70 z-10" />
-            <div className="relative z-20 p-4 text-white">
-              <div className="max-w-3xl">
-                <div className="inline-block p-1 bg-red-600/30 rounded-full mb-2">
+          {/* Full-width Hero Header Section */}
+          <section className="w-full bg-vjn-blue py-16 md:py-20 mb-4 text-center">
+            <div className="container mx-auto px-4">
+              <h1 className="text-4xl md:text-5xl font-bold mb-3 text-green-600">
+                {t('programs.health.title', 'Health & Well-being Program')}
+              </h1>
+              <h2 className="text-2xl md:text-3xl font-semibold mb-2 text-white">
+                {t('programs.health.subtitle', 'Promoting Youth Well-being')}
+              </h2>
+              <p className="text-lg md:text-xl max-w-2xl mx-auto text-white">
+                {t('programs.health.intro.description', 'Our Health Program is dedicated to promoting holistic well-being among youth and communities. We focus on preventive education, access to health services, and fostering healthy lifestyles to ensure a vibrant and resilient future.')}
+              </p>
+            </div>
+          </section>
+
+          {/* Download Brochure Button */}
+          <div className="mb-4 flex justify-end">
+            <a
+              href="/downloads/brochures/Health.pdf"
+              download
+              className="inline-flex items-center px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700 transition"
+            >
+              <Download className="mr-2 w-4 h-4" />
+              Download Brochure
+            </a>
+          </div>
+
+          {/* Program Highlights Section */}
+          <section className="bg-gradient-to-br from-red-50 to-white rounded-md shadow-xs p-2 mb-1">
+            <h2 className="text-lg md:text-xl font-bold mb-1 flex items-center text-gray-900">
+              <Award className="h-4 w-4 mr-1 text-red-600" />
+              {t('programs.keyHighlights.title', 'Program Highlights')}
+            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-1">
+              <div className="bg-white rounded-md p-2 text-center shadow-xs hover:shadow-sm transition-shadow">
+                <div className="text-red-600 mb-0.5 flex justify-center">
+                  <Users className="h-5 w-5" />
+                </div>
+                <div className="text-lg font-bold text-gray-900 mb-0.5">3000+</div>
+                <div className="text-gray-700 text-sm">Beneficiaries</div>
+              </div>
+              <div className="bg-white rounded-md p-2 text-center shadow-xs hover:shadow-sm transition-shadow">
+                <div className="text-red-600 mb-0.5 flex justify-center">
                   <Heart className="h-5 w-5" />
                 </div>
-                <h1 className="text-3xl font-bold mb-3">
-                  {t('programs.health.title', 'Health & Well-being Program')}
-                </h1>
-                <p className="text-base mb-4 text-red-100 leading-relaxed">
-                  {t('programs.health.intro.description', 'Our Health Program is dedicated to promoting holistic well-being among youth and communities. We focus on preventive education, access to health services, and fostering healthy lifestyles to ensure a vibrant and resilient future.')}
-                </p>
-                <div className="flex flex-wrap gap-2">
-                  <div className="flex items-center space-x-1 bg-white/10 backdrop-blur-sm px-2 py-1 rounded-full">
-                    <Users className="h-3.5 w-3.5" />
-                    <div>
-                      <div className="text-base font-bold">3000+</div>
-                      <div className="text-xs text-red-100">Beneficiaries</div>
-                    </div>
-                  </div>
-                  <div className="flex items-center space-x-1 bg-white/10 backdrop-blur-sm px-2 py-1 rounded-full">
-                    <Globe className="h-3.5 w-3.5" />
-                    <div>
-                      <div className="text-base font-bold">5+</div>
-                      <div className="text-xs text-red-100">Health Initiatives</div>
-                    </div>
-                  </div>
-                  <div className="flex items-center space-x-1 bg-white/10 backdrop-blur-sm px-2 py-1 rounded-full">
-                    <Award className="h-3.5 w-3.5" />
-                    <div>
-                      <div className="text-base font-bold">10+</div>
-                      <div className="text-xs text-red-100">Partners</div>
-                    </div>
-                  </div>
+                <div className="text-lg font-bold text-gray-900 mb-0.5">5+</div>
+                <div className="text-gray-700 text-sm">Health Initiatives</div>
+              </div>
+              <div className="bg-white rounded-md p-2 text-center shadow-xs hover:shadow-sm transition-shadow">
+                <div className="text-red-600 mb-0.5 flex justify-center">
+                  <Award className="h-5 w-5" />
                 </div>
+                <div className="text-lg font-bold text-gray-900 mb-0.5">10+</div>
+                <div className="text-gray-700 text-sm">Partners</div>
+              </div>
+              <div className="bg-white rounded-md p-2 text-center shadow-xs hover:shadow-sm transition-shadow">
+                <div className="text-red-600 mb-0.5 flex justify-center">
+                  <Brain className="h-5 w-5" />
+                </div>
+                <div className="text-lg font-bold text-gray-900 mb-0.5">20+</div>
+                <div className="text-gray-700 text-sm">Mental Wellness Workshops</div>
+              </div>
+              <div className="bg-white rounded-md p-2 text-center shadow-xs hover:shadow-sm transition-shadow">
+                <div className="text-red-600 mb-0.5 flex justify-center">
+                  <Droplet className="h-5 w-5" />
+                </div>
+                <div className="text-lg font-bold text-gray-900 mb-0.5">2500+</div>
+                <div className="text-gray-700 text-sm">Girls Reached on SRHR</div>
               </div>
             </div>
           </section>
@@ -183,7 +232,7 @@ const Health = () => {
               {t('programs.health.targetGroups.title', 'Target Groups')}
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-1.5">
-              {targetGroups.map((group, index) => (
+              {(targetGroups.direct.concat(targetGroups.indirect)).map((group, index) => (
                 <div key={index} className="flex items-start space-x-1.5 bg-white p-2.5 rounded-sm shadow-xs hover:shadow-sm transition-shadow border border-green-100 group">
                   <div className="flex-shrink-0 w-5 h-5 rounded-full bg-green-100 flex items-center justify-center group-hover:bg-green-600 transition-colors">
                     <Clock className="h-4 w-4 text-green-600 group-hover:text-white" />

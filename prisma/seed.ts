@@ -11,7 +11,7 @@ async function main() {
       author: 'Admin',
       status: 'published',
       category: 'News',
-      tags: ['welcome', 'introduction'],
+      tags: 'welcome,introduction',
       imageUrl: 'https://example.com/welcome.jpg',
       publishedAt: new Date(),
     },
@@ -21,7 +21,7 @@ async function main() {
       author: 'Admin',
       status: 'draft',
       category: 'Events',
-      tags: ['events', 'calendar'],
+      tags: 'events,calendar',
       imageUrl: 'https://example.com/events.jpg',
     },
   ];
@@ -29,6 +29,30 @@ async function main() {
   for (const post of posts) {
     await prisma.blogPost.create({
       data: post,
+    });
+  }
+
+  // Create sample staff members
+  const staff = [
+    {
+      name: 'John Doe',
+      email: 'john@example.com',
+      role: 'Manager',
+      phone: '123-456-7890',
+      department: 'Operations',
+    },
+    {
+      name: 'Jane Smith',
+      email: 'jane@example.com',
+      role: 'Developer',
+      phone: '098-765-4321',
+      department: 'IT',
+    },
+  ];
+
+  for (const member of staff) {
+    await prisma.staff.create({
+      data: member,
     });
   }
 

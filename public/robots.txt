@@ -1,14 +1,29 @@
-User-agent: Googlebot
-Allow: /
-
-User-agent: Bingbot
-Allow: /
-
-User-agent: Twitterbot
-Allow: /
-
-User-agent: facebookexternalhit
-Allow: /
-
 User-agent: *
 Allow: /
+
+# Sitemap
+Sitemap: https://visionjeunessenouvelle.org.rw/sitemap.xml
+
+# Crawl-delay for respectful crawling
+Crawl-delay: 1
+
+# Disallow admin and private areas
+Disallow: /dashboard/
+Disallow: /dms/
+Disallow: /blog-management/
+Disallow: /blog-editor/
+Disallow: /image-manager/
+Disallow: /api/
+Disallow: /admin/
+
+# Allow important pages
+Allow: /programs/
+Allow: /events/
+Allow: /news/
+Allow: /media/
+Allow: /resources/
+Allow: /about/
+Allow: /contact/
+Allow: /donate/
+Allow: /volunteer/
+Allow: /career/
