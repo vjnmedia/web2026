@@ -1126,7 +1126,13 @@
   "staff": {
     "title": "Our Staff",
     "searchPlaceholder": "Search staff...",
-    "filterByDepartment": "Filter by Department"
+    "filterByDepartment": "Filter by Department",
+    "heroTitle": "Meet Our Dedicated Team",
+    "heroSubtitle": "Together, we work towards empowering youth and building stronger communities",
+    "introTitle": "Passionate Professionals Making a Difference",
+    "introText": "Our team consists of dedicated professionals from diverse backgrounds, united by a common goal: to create positive change in our community. Each member brings unique expertise and perspective to our mission of youth empowerment and community development.",
+    "unspecifiedDepartment": "Unspecified Department",
+    "noStaffFound": "No staff members found matching your criteria."
   },
   "dashboard": {
     "title": "Dashboard",

@@ -36,24 +36,24 @@ const Footer: React.FC = () => {
             <h3 className="text-xl font-semibold mb-4">{t('footer.usefulLinks.title')}</h3>
             <ul className="space-y-2">
               <li>
-                <Link to="/about" className="text-gray-300 hover:text-white transition-colors">
-                  {t('footer.usefulLinks.about')}
-                </Link>
+                <a href="https://ims.visionjeunessenouvelle.org.rw" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-white transition-colors">
+                  INVENTORY
+                </a>
               </li>
               <li>
-                <Link to="/programs" className="text-gray-300 hover:text-white transition-colors">
-                  {t('footer.usefulLinks.programs')}
-                </Link>
+                <a href="https://chat.visionjeunessenouvelle.org.rw" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-white transition-colors">
+                  FILES
+                </a>
               </li>
               <li>
-                <Link to="/services" className="text-gray-300 hover:text-white transition-colors">
-                  {t('footer.usefulLinks.services')}
-                </Link>
+                <a href="https://booking.visionjeunessenouvelle.org.rw" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-white transition-colors">
+                  BOOKING
+                </a>
               </li>
               <li>
-                <Link to="/contact" className="text-gray-300 hover:text-white transition-colors">
-                  {t('footer.usefulLinks.contact')}
-                </Link>
+                <a href="https://visionjeunessenouvelle.org.rw/staff" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-white transition-colors">
+                  STAFF
+                </a>
               </li>
             </ul>
           </div>

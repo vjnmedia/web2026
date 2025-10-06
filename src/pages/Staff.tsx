@@ -116,7 +116,7 @@ const Staff = () => {
       </section>
 
       {/* Introduction Section */}
-      <section className="py-16 bg-gray-50">
+      <section className="py-16 bg-gray-50 dark:bg-gray-900">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -124,10 +124,10 @@ const Staff = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="max-w-3xl mx-auto text-center"
           >
-            <h2 className="text-2xl md:text-3xl font-semibold mb-6 text-gray-900">
+            <h2 className="text-2xl md:text-3xl font-semibold mb-6 text-gray-900 dark:text-gray-100">
               {t('staff.introTitle', 'Passionate Professionals Making a Difference')}
             </h2>
-            <p className="text-gray-600 mb-8 leading-relaxed">
+            <p className="text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">
               {t('staff.introText', 'Our team consists of dedicated professionals from diverse backgrounds, united by a common goal: to create positive change in our community. Each member brings unique expertise and perspective to our mission of youth empowerment and community development.')}
             </p>
           </motion.div>
@@ -173,14 +173,14 @@ const Staff = () => {
               <p>{error}</p>
             </div>
           ) : filteredStaff.length === 0 ? (
-            <div className="text-center py-8 text-gray-600">
+            <div className="text-center py-8 text-gray-600 dark:text-gray-300">
               <p>{t('staff.noStaffFound', 'No staff members found matching your criteria.')}</p>
             </div>
           ) : (
             <div className="space-y-8">
               {Object.entries(groupedStaff).map(([department, members]) => (
                 <Collapsible key={department} defaultOpen={true}>
-                  <CollapsibleTrigger className="flex justify-between items-center w-full px-4 py-3 bg-gray-100 rounded-md shadow-sm hover:bg-gray-200 transition-colors duration-200 text-left text-lg font-semibold text-gray-800">
+                  <CollapsibleTrigger className="flex justify-between items-center w-full px-4 py-3 bg-gray-100 dark:bg-gray-800 rounded-md shadow-sm hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-200 text-left text-lg font-semibold text-gray-800 dark:text-gray-100">
                     {department} ({members.length})
                     <ChevronDown className="h-5 w-5 transition-transform duration-200 data-[state=open]:rotate-180" />
                   </CollapsibleTrigger>
@@ -193,7 +193,7 @@ const Staff = () => {
                     >
                       {members.map((member) => (
                         <motion.div variants={itemVariants} key={member.id}>
-                          <Card className="overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
+                          <Card className="overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 bg-card text-card-foreground">
                             <CardHeader className="p-0 relative h-48 bg-vjn-blue flex items-center justify-center">
                               {member.imageUrl ? (
                                 <Avatar className="w-32 h-32 border-4 border-white shadow-md z-10">
@@ -212,7 +212,7 @@ const Staff = () => {
                               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/30 to-transparent"></div>
                             </CardHeader>
                             <CardContent className="pt-6 text-center">
-                              <CardTitle className="text-xl font-bold text-gray-900 mb-1 flex items-center justify-center gap-2">
+                              <CardTitle className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-1 flex items-center justify-center gap-2">
                                 {member.displayName || `${member.firstName} ${member.lastName}`}
                                 {member.position.trim().endsWith('**') && (
                                   <span className="ml-2 px-2 py-0.5 rounded bg-yellow-500 text-white text-xs font-semibold">Executive Director</span>
@@ -221,30 +221,30 @@ const Staff = () => {
                                   <span className="ml-2 px-2 py-0.5 rounded bg-blue-600 text-white text-xs font-semibold">Department Head</span>
                                 )}
                               </CardTitle>
-                              <p className="text-gray-900 font-semibold mb-2">{member.position}</p>
+                              <p className="text-gray-900 dark:text-gray-100 font-semibold mb-2">{member.position}</p>
                               {member.department && (
-                                <p className="text-gray-900 text-sm mb-2">{member.department}</p>
+                                <p className="text-gray-900 dark:text-gray-200 text-sm mb-2">{member.department}</p>
                               )}
-                              <div className="flex items-center justify-center space-x-4 text-gray-700">
+                              <div className="flex items-center justify-center space-x-4 text-gray-700 dark:text-gray-300">
                                 {member.email && (
-                                  <a href={`mailto:${member.email}`} className="hover:text-vjn-blue transition-colors">
+                                  <a href={`mailto:${member.email}`} className="hover:text-vjn-blue dark:hover:text-blue-400 transition-colors">
                                     <Mail size={18} />
                                   </a>
                                 )}
                                 {member.phone && (
-                                  <a href={`tel:${member.phone}`} className="hover:text-vjn-blue transition-colors">
+                                  <a href={`tel:${member.phone}`} className="hover:text-vjn-blue dark:hover:text-blue-400 transition-colors">
                                     <Phone size={18} />
                                   </a>
                                 )}
                                 {member.socialUsername && (
                                   <>
-                                    <a href={`https://www.linkedin.com/in/${member.socialUsername}`} target="_blank" rel="noopener noreferrer" className="hover:text-vjn-blue transition-colors">
+                                    <a href={`https://www.linkedin.com/in/${member.socialUsername}`} target="_blank" rel="noopener noreferrer" className="hover:text-vjn-blue dark:hover:text-blue-400 transition-colors">
                                       <Linkedin size={18} />
                                     </a>
-                                    <a href={`https://www.tiktok.com/@${member.socialUsername}`} target="_blank" rel="noopener noreferrer" className="hover:text-vjn-blue transition-colors">
+                                    <a href={`https://www.tiktok.com/@${member.socialUsername}`} target="_blank" rel="noopener noreferrer" className="hover:text-vjn-blue dark:hover:text-blue-400 transition-colors">
                                       <Music2 size={18} />
                                     </a>
-                                    <a href={`https://www.youtube.com/@${member.socialUsername}`} target="_blank" rel="noopener noreferrer" className="hover:text-vjn-blue transition-colors">
+                                    <a href={`https://www.youtube.com/@${member.socialUsername}`} target="_blank" rel="noopener noreferrer" className="hover:text-vjn-blue dark:hover:text-blue-400 transition-colors">
                                       <Youtube size={18} />
                                     </a>
                                   </>

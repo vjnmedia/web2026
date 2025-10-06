@@ -46,6 +46,7 @@ const EventsManagement: React.FC = () => {
   const [deleteId, setDeleteId] = useState<number | null>(null);
   const [formError, setFormError] = useState('');
   const [isUploading, setIsUploading] = useState(false);
+  const [imageUrlError, setImageUrlError] = useState('');
 
   // Filtered events
   const filtered = events.filter(e =>
@@ -137,6 +138,27 @@ const EventsManagement: React.FC = () => {
         setIsUploading(false);
       }
     }
+  };
+
+  const handleImageUrlChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value.trim();
+    setForm(f => ({ ...f, imageUrl: value }));
+    setImageUrlError('');
+    if (value) {
+      const isValid = /^(https?:\/\/|\/)/i.test(value);
+      if (!isValid) {
+        setImageUrlError('Enter a valid URL starting with http(s):// or /.');
+      }
+      setCoverPreview(value);
+    } else {
+      setCoverPreview('');
+    }
+  };
+
+  const clearCover = () => {
+    setForm(f => ({ ...f, imageUrl: '' }));
+    setCoverPreview('');
+    setImageUrlError('');
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -374,6 +396,30 @@ const EventsManagement: React.FC = () => {
                 />
                 {isUploading && (
                   <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-vjn-blue"></div>
+                )}
+                {(coverPreview || form.imageUrl) && (
+                  <Button type="button" variant="secondary" onClick={clearCover}>
+                    Remove
+                  </Button>
+                )}
+              </div>
+              <div className="mt-3">
+                <div className="text-xs text-gray-500 mb-1">Or paste an image URL</div>
+                <div className="flex items-center gap-2">
+                  <Input 
+                    name="imageUrl"
+                    placeholder="https://example.com/image.jpg or /uploads/events/image.jpg"
+                    value={form.imageUrl}
+                    onChange={handleImageUrlChange}
+                  />
+                  {form.imageUrl && /^(https?:\/\/)/i.test(form.imageUrl) && (
+                    <a href={form.imageUrl} target="_blank" rel="noreferrer" className="p-2 text-vjn-blue hover:underline">
+                      <ExternalLink className="h-5 w-5" />
+                    </a>
+                  )}
+                </div>
+                {imageUrlError && (
+                  <div className="text-xs text-red-500 mt-1">{imageUrlError}</div>
                 )}
               </div>
               {coverPreview && (
