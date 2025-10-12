@@ -38,6 +38,62 @@ export interface Database {
           updated_at?: string
         }
       }
+      staff: {
+        Row: {
+          id: number
+          display_name: string | null
+          first_name: string
+          last_name: string
+          position: string
+          department: string | null
+          email: string | null
+          phone: string | null
+          image_url: string | null
+          bio: string | null
+          start_date: string | null
+          location: string | null
+          is_senior_management: boolean
+          social_username: string | null
+          created_at: string
+          updated_at: string
+        }
+        Insert: {
+          id?: number
+          display_name?: string | null
+          first_name: string
+          last_name: string
+          position: string
+          department?: string | null
+          email?: string | null
+          phone?: string | null
+          image_url?: string | null
+          bio?: string | null
+          start_date?: string | null
+          location?: string | null
+          is_senior_management?: boolean
+          social_username?: string | null
+          created_at?: string
+          updated_at?: string
+        }
+        Update: {
+          id?: number
+          display_name?: string | null
+          first_name?: string
+          last_name?: string
+          position?: string
+          department?: string | null
+          email?: string | null
+          phone?: string | null
+          image_url?: string | null
+          bio?: string | null
+          start_date?: string | null
+          location?: string | null
+          is_senior_management?: boolean
+          social_username?: string | null
+          created_at?: string
+          updated_at?: string
+        }
+      }
       user_preferences: {
         Row: {
           user_id: string
@@ -60,6 +116,77 @@ export interface Database {
           theme?: string
           language?: string
           notifications_enabled?: boolean
+          created_at?: string
+          updated_at?: string
+        }
+      }
+      events: {
+        Row: {
+          id: number
+          title: string
+          description: string
+          date: string
+          time: string
+          location: string
+          category: string
+          status: 'Upcoming' | 'Past' | 'Draft' | 'Archived'
+          featured: boolean
+          image_url: string | null
+          slug: string
+          participants: number | null
+          tags: any
+          cta_text: string | null
+          cta_link: string | null
+          rsvp_link: string | null
+          google_calendar_link: string | null
+          created_by: string | null
+          updated_by: string | null
+          created_at: string
+          updated_at: string
+        }
+        Insert: {
+          id?: number
+          title: string
+          description: string
+          date: string
+          time: string
+          location: string
+          category: string
+          status?: 'Upcoming' | 'Past' | 'Draft' | 'Archived'
+          featured?: boolean
+          image_url?: string | null
+          slug: string
+          participants?: number | null
+          tags?: any
+          cta_text?: string | null
+          cta_link?: string | null
+          rsvp_link?: string | null
+          google_calendar_link?: string | null
+          created_by?: string | null
+          updated_by?: string | null
+          created_at?: string
+          updated_at?: string
+        }
+        Update: {
+          id?: number
+          title?: string
+          description?: string
+          date?: string
+          time?: string
+          location?: string
+          category?: string
+          status?: 'Upcoming' | 'Past' | 'Draft' | 'Archived'
+          featured?: boolean
+          image_url?: string | null
+          slug?: string
+          participants?: number | null
+          tags?: any
+          cta_text?: string | null
+          cta_link?: string | null
+          rsvp_link?: string | null
+          google_calendar_link?: string | null
+          created_by?: string | null
+          updated_by?: string | null
           created_at?: string
           updated_at?: string
         }

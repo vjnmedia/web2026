@@ -278,7 +278,13 @@
     "title": "Stay Connected",
     "description": "Subscribe to receive updates about our programs, events, and opportunities to get involved.",
     "emailPlaceholder": "Your email address",
-    "subscribe": "Join Now"
+    "subscribe": "Join Now",
+    "subscribing": "Subscribing...",
+    "success": "You're subscribed!",
+    "successMessage": "Thanks for subscribing. Please check your inbox.",
+    "error": "Subscription failed",
+    "errorMessage": "We couldn't process your subscription.",
+    "blogOptIn": "Also send me new blog posts"
   },
   "home": {
     "hero": {

@@ -145,17 +145,11 @@ export default function ImageManager() {
 
     return (
         <div className="space-y-6">
-            <div className="flex justify-between items-center">
-                <div className="flex-1 max-w-sm">
-                    <div className="relative">
-                        <Search className="absolute left-2 top-2.5 h-4 w-4 text-gray-500" />
-                        <Input
-                            placeholder={t('media.search')}
-                            value={searchQuery}
-                            onChange={(e) => setSearchQuery(e.target.value)}
-                            className="pl-8"
-                        />
-                    </div>
+            {/* Header */}
+            <div className="flex items-center justify-between">
+                <div>
+                    <h3 className="text-lg font-semibold text-gray-900">Media Management</h3>
+                    <p className="text-sm text-gray-600">Upload and manage media files</p>
                 </div>
                 <Button
                     onClick={() => setIsUploadDialogOpen(true)}
@@ -164,6 +158,19 @@ export default function ImageManager() {
                     <Plus className="mr-2 h-4 w-4" />
                     {t('media.upload')}
                 </Button>
+            </div>
+
+            {/* Search */}
+            <div className="flex-1 max-w-sm">
+                <div className="relative">
+                    <Search className="absolute left-2 top-2.5 h-4 w-4 text-gray-500" />
+                    <Input
+                        placeholder={t('media.search')}
+                        value={searchQuery}
+                        onChange={(e) => setSearchQuery(e.target.value)}
+                        className="pl-8"
+                    />
+                </div>
             </div>
 
             {isLoading ? (

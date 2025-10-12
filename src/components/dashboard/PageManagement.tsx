@@ -138,8 +138,12 @@ export function PageManagement() {
 
     return (
         <div className="space-y-6">
-            <div className="flex justify-between items-center">
-                <h2 className="text-2xl font-bold">{t('pages.management')}</h2>
+            {/* Header */}
+            <div className="flex items-center justify-between">
+                <div>
+                    <h3 className="text-lg font-semibold text-gray-900">Page Management</h3>
+                    <p className="text-sm text-gray-600">Create and manage content pages</p>
+                </div>
                 <Button onClick={() => resetForm()} className="bg-vjn-blue hover:bg-vjn-light-blue">
                     <Plus className="mr-2 h-4 w-4" />
                     {isEditing ? t('common.cancel') : t('pages.create')}

@@ -31,13 +31,20 @@ const isSupabaseConfigured = () => {
   return supabaseUrl && supabaseAnonKey && supabaseUrl !== 'https://your-project.supabase.co' && supabaseAnonKey !== 'your-anon-key';
 };
 
+// Helper function to determine event status based on date
+const getEventStatus = (date: string, time: string): 'Upcoming' | 'Past' => {
+  const now = new Date();
+  const eventDateTime = new Date(`${date}T${time || '00:00:00'}`);
+  return eventDateTime >= now ? 'Upcoming' : 'Past';
+};
+
 // Mock events for fallback when Supabase is not configured
 const mockEvents: Event[] = [
   {
     id: 1,
     title: 'Youth Leadership Summit',
     description: 'A summit bringing together young leaders from across Rwanda to discuss leadership, innovation, and community impact.',
-    date: '2024-08-15',
+    date: '2025-08-15',
     time: '09:00 AM',
     location: 'Kigali Convention Center',
     category: 'Leadership',
@@ -54,7 +61,7 @@ const mockEvents: Event[] = [
     id: 2,
     title: 'Peace Building Workshop',
     description: 'Interactive workshop focused on peace-building skills and conflict resolution for youth.',
-    date: '2024-07-20',
+    date: '2025-07-20',
     time: '02:00 PM',
     location: 'VJN Headquarters',
     category: 'Peacebuilding',
@@ -88,7 +95,7 @@ const mockEvents: Event[] = [
     id: 4,
     title: 'Sports Tournament Finals',
     description: 'Finals of the annual youth sports tournament featuring football, basketball, and volleyball.',
-    date: '2024-09-05',
+    date: '2025-09-05',
     time: '03:00 PM',
     location: 'Amahoro Stadium',
     category: 'Sports',
@@ -101,54 +108,77 @@ const mockEvents: Event[] = [
     createdAt: '2024-01-01T00:00:00Z',
     updatedAt: '2024-01-01T00:00:00Z',
   },
+  {
+    id: 5,
+    title: 'Digital Skills Training',
+    description: 'Comprehensive training program on digital literacy and computer skills for youth.',
+    date: '2024-12-15',
+    time: '09:00 AM',
+    location: 'VJN Training Center',
+    category: 'Education',
+    status: 'Past',
+    featured: false,
+    imageUrl: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=600&q=80',
+    slug: 'digital-skills-training',
+    participants: 75,
+    tags: ['education', 'digital', 'training'],
+    createdAt: '2024-01-01T00:00:00Z',
+    updatedAt: '2024-01-01T00:00:00Z',
+  },
+  {
+    id: 6,
+    title: 'Environmental Awareness Campaign',
+    description: 'Community campaign to raise awareness about environmental protection and sustainability.',
+    date: '2025-04-22',
+    time: '10:00 AM',
+    location: 'Kimisagara Park',
+    category: 'Environment',
+    status: 'Upcoming',
+    featured: true,
+    imageUrl: 'https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&w=600&q=80',
+    slug: 'environmental-awareness-campaign',
+    participants: 150,
+    tags: ['environment', 'sustainability', 'awareness'],
+    createdAt: '2024-01-01T00:00:00Z',
+    updatedAt: '2024-01-01T00:00:00Z',
+  },
 ];
+
+// Helper function to correct event status based on current date
+const correctEventStatus = (events: Event[]): Event[] => {
+  return events.map(event => {
+    const correctStatus = getEventStatus(event.date, event.time);
+    return {
+      ...event,
+      status: correctStatus
+    };
+  });
+};
 
 export const eventService = {
   // Get all events
   getAllEvents: async (): Promise<Event[]> => {
-    if (!isSupabaseConfigured()) {
-      console.warn('Using mock events data - Supabase not configured');
-      return mockEvents;
-    }
-
+    // Always fetch from our server to guarantee DB source
     try {
-      const { data, error } = await supabase
-        .from('events')
-        .select(eventColumns)
-        .order('featured', { ascending: false })
-        .order('date', { ascending: true });
-      if (error) throw error;
-      return data || [];
+      const res = await fetch('/api/events');
+      if (!res.ok) throw new Error('Failed');
+      const data = await res.json();
+      // Correct statuses based on current date
+      return correctEventStatus(data || []);
     } catch (error) {
-      console.error('Error fetching events from Supabase:', error);
-      console.warn('Falling back to mock events data');
-      return mockEvents;
+      console.error('Error fetching events from server:', error);
+      return correctEventStatus(mockEvents);
     }
   },
 
   // Get upcoming events with automatic status filtering
   getUpcomingEvents: async (): Promise<Event[]> => {
-    if (!isSupabaseConfigured()) {
-      console.warn('Using mock upcoming events data - Supabase not configured');
-      return mockEvents.filter(event => event.status === 'Upcoming');
-    }
-
     try {
-      // First, update any outdated events
-      await eventService.updateOutdatedEvents();
-      
-      const { data, error } = await supabase
-        .from('events')
-        .select(eventColumns)
-        .eq('status', 'Upcoming')
-        .order('featured', { ascending: false })
-        .order('date', { ascending: true });
-      if (error) throw error;
-      return data || [];
+      const allEvents = await eventService.getAllEvents();
+      return allEvents.filter(event => event.status === 'Upcoming');
     } catch (error) {
-      console.error('Error fetching upcoming events from Supabase:', error);
-      console.warn('Falling back to mock upcoming events data');
-      return mockEvents.filter(event => event.status === 'Upcoming');
+      console.error('Error fetching upcoming events:', error);
+      return correctEventStatus(mockEvents).filter(event => event.status === 'Upcoming');
     }
   },
 
@@ -179,90 +209,57 @@ export const eventService = {
     }
   },
 
+  // Utility function to get correct event status based on date
+  getCorrectEventStatus: (date: string, time: string): 'Upcoming' | 'Past' => {
+    return getEventStatus(date, time);
+  },
+
   // Get past events
   getPastEvents: async (): Promise<Event[]> => {
-    if (!isSupabaseConfigured()) {
-      console.warn('Using mock past events data - Supabase not configured');
-      return mockEvents.filter(event => event.status === 'Past');
-    }
-
     try {
-      const { data, error } = await supabase
-        .from('events')
-        .select(eventColumns)
-        .eq('status', 'Past')
-        .order('date', { ascending: false });
-      if (error) throw error;
-      return data || [];
+      const allEvents = await eventService.getAllEvents();
+      return allEvents.filter(event => event.status === 'Past');
     } catch (error) {
-      console.error('Error fetching past events from Supabase:', error);
-      console.warn('Falling back to mock past events data');
-      return mockEvents.filter(event => event.status === 'Past');
+      console.error('Error fetching past events:', error);
+      return correctEventStatus(mockEvents).filter(event => event.status === 'Past');
     }
   },
 
   // Get events by category
   getEventsByCategory: async (category: string): Promise<Event[]> => {
-    if (!isSupabaseConfigured()) {
-      console.warn('Using mock events data by category - Supabase not configured');
-      return mockEvents.filter(event => event.category === category);
-    }
-
     try {
-      const { data, error } = await supabase
-        .from('events')
-        .select(eventColumns)
-        .eq('category', category)
-        .order('date', { ascending: true });
-      if (error) throw error;
+      const res = await fetch(`/api/events?category=${encodeURIComponent(category)}`);
+      if (!res.ok) throw new Error('Failed');
+      const data = await res.json();
       return data || [];
     } catch (error) {
-      console.error('Error fetching events by category from Supabase:', error);
-      console.warn('Falling back to mock events data by category');
+      console.error('Error fetching events by category from server:', error);
       return mockEvents.filter(event => event.category === category);
     }
   },
 
   // Get single event by id
   getEvent: async (id: number): Promise<Event | null> => {
-    if (!isSupabaseConfigured()) {
-      console.warn('Using mock event data - Supabase not configured');
-      return mockEvents.find(event => event.id === id) || null;
-    }
-
     try {
-      const { data, error } = await supabase
-        .from('events')
-        .select(eventColumns)
-        .eq('id', id)
-        .single();
-      if (error) throw error;
+      const res = await fetch(`/api/events/${id}`);
+      if (!res.ok) throw new Error('Failed');
+      const data = await res.json();
       return data || null;
     } catch (error) {
-      console.error('Error fetching event by id from Supabase:', error);
-      console.warn('Falling back to mock event data');
+      console.error('Error fetching event by id from server:', error);
       return mockEvents.find(event => event.id === id) || null;
     }
   },
 
   // Get event by slug
   getEventBySlug: async (slug: string): Promise<Event | null> => {
-    if (!isSupabaseConfigured()) {
-      console.warn('Using mock event data by slug - Supabase not configured');
-      return mockEvents.find(event => event.slug === slug) || null;
-    }
-
     try {
-      const { data, error } = await supabase
-        .from('events')
-        .select(eventColumns)
-        .eq('slug', slug)
-        .single();
-      if (error) throw error;
+      const res = await fetch(`/api/events/slug/${encodeURIComponent(slug)}`);
+      if (!res.ok) throw new Error('Failed');
+      const data = await res.json();
       return data || null;
     } catch (error) {
-      console.error('Error fetching event by slug from Supabase:', error);
-      console.warn('Falling back to mock event data by slug');
+      console.error('Error fetching event by slug from server:', error);
       return mockEvents.find(event => event.slug === slug) || null;
     }
   },
@@ -289,8 +286,8 @@ export const eventService = {
       .replace(/[^a-z0-9]+/g, '-')
       .replace(/(^-|-$)/g, '');
     const now = new Date().toISOString();
-    // Ensure tags is a string
-    const tags = Array.isArray(event.tags) ? JSON.stringify(event.tags) : (event.tags || '[]');
+    // Ensure tags is an array (Supabase jsonb)
+    const tags = Array.isArray(event.tags) ? event.tags : (event.tags || []);
     // Build the payload
     const payload: any = {
       title: event.title,
@@ -318,12 +315,17 @@ export const eventService = {
     );
     // Log for debugging
     console.log('Creating event with payload:', payload);
-    const { data, error } = await supabase
-      .from('events')
-      .insert([payload])
-      .select(eventColumns)
-      .single();
-    if (error) throw error;
+    // Use secure server endpoint instead of direct Supabase insert
+    const response = await fetch('/api/events', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    });
+    if (!response.ok) {
+      const err = await response.json().catch(() => ({}));
+      throw new Error(err.message || 'Failed to create event');
+    }
+    const data = await response.json();
     return data;
   },
 
@@ -364,22 +366,23 @@ export const eventService = {
     }
     event.updated_at = new Date().toISOString();
     // Ensure tags is a string
-    if (event.tags && Array.isArray(event.tags)) {
-      event.tags = JSON.stringify(event.tags);
-    }
+    // Keep tags as array for Supabase jsonb
     // Remove undefined fields
     Object.keys(event).forEach(
       (key) => event[key as keyof typeof event] === undefined && delete event[key as keyof typeof event]
     );
     // Log the payload for debugging
     console.log('Updating event with payload:', event);
-    const { data, error } = await supabase
-      .from('events')
-      .update(event)
-      .eq('id', id)
-      .select(eventColumns)
-      .single();
-    if (error) throw error;
+    const response = await fetch(`/api/events/${id}`, {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(event),
+    });
+    if (!response.ok) {
+      const err = await response.json().catch(() => ({}));
+      throw new Error(err.message || 'Failed to update event');
+    }
+    const data = await response.json();
     return data;
   },
 
@@ -391,11 +394,11 @@ export const eventService = {
       return;
     }
 
-    const { error } = await supabase
-      .from('events')
-      .delete()
-      .eq('id', id);
-    if (error) throw error;
+    const response = await fetch(`/api/events/${id}`, { method: 'DELETE' });
+    if (!response.ok && response.status !== 204) {
+      const err = await response.json().catch(() => ({}));
+      throw new Error(err.message || 'Failed to delete event');
+    }
   },
 
   // Upload event image to Supabase Storage

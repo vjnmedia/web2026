@@ -34,7 +34,7 @@ const Hero = () => {
     try {
       setIsLoading(true);
       console.log('Loading slides for language:', language);
-      const data = await sliderService.getSliderItems(language);
+      const data = await sliderService.getSliders(language);
       console.log('Loaded slides:', data);
       
       // Fallback to mock data if no slides from database
@@ -58,8 +58,10 @@ const Hero = () => {
         setSlides(fallbackSlides);
         setImagesLoaded(new Array(fallbackSlides.length).fill(false));
       } else {
+        console.log('Setting slides:', data);
         setSlides(data);
         setImagesLoaded(new Array(data.length).fill(false));
+        console.log('Slides set, length:', data.length);
       }
     } catch (error) {
       console.error('Error loading slides:', error);
@@ -127,14 +129,30 @@ const Hero = () => {
 
   // Auto-play functionality
   useEffect(() => {
-    if (!isAutoPlaying || slides.length <= 1) return;
+    console.log('Auto-play effect:', { isAutoPlaying, slidesLength: slides.length });
+    if (!isAutoPlaying || slides.length <= 1) {
+      console.log('Auto-play disabled:', { isAutoPlaying, slidesLength: slides.length });
+      return;
+    }
 
+    console.log('Starting auto-play interval');
     const interval = setInterval(() => {
+      console.log('Auto-play tick, current index:', currentIndex);
       setCurrentIndex(prev => (prev + 1) % slides.length);
     }, 5000);
 
-    return () => clearInterval(interval);
-  }, [isAutoPlaying, slides.length]);
+    return () => {
+      console.log('Clearing auto-play interval');
+      clearInterval(interval);
+    };
+  }, [isAutoPlaying, slides.length, currentIndex]);
+
+  // Reset auto-play when slides change
+  useEffect(() => {
+    if (slides.length > 1) {
+      setIsAutoPlaying(true);
+    }
+  }, [slides.length]);
 
   const goToNext = useCallback(() => {
     if (isTransitioning) return;
@@ -243,7 +261,7 @@ const Hero = () => {
                 alt=""
                 className="hidden"
                 loading="eager"
-                fetchPriority="high"
+                fetchpriority="high"
                 decoding="async"
               />
             </picture>

@@ -115,7 +115,12 @@ export function UserManagement() {
 
     return (
         <div className="space-y-6">
-            <div className="flex justify-between items-center">
+            {/* Header */}
+            <div className="flex items-center justify-between">
+                <div>
+                    <h3 className="text-lg font-semibold text-gray-900">User Management</h3>
+                    <p className="text-sm text-gray-600">Manage user accounts and permissions</p>
+                </div>
                 <Button
                     onClick={() => {
                         resetForm();

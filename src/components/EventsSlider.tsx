@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Calendar, MapPin, Users, CheckCircle, XCircle, Clock } from 'lucide-react';
-import { eventService, Event } from '@/services/eventService';
+import { supabaseEventService } from '@/services/supabaseEventService';
+import { Event } from '@/services/eventService';
 
 const statusColor = (status: string) => {
   if (status === 'Upcoming') return 'text-vjn-green';
@@ -53,8 +54,8 @@ const EventsSlider: React.FC = () => {
       setIsLoading(true);
       setError(null);
       
-      // Get all events from the database
-      const allEvents = await eventService.getAllEvents();
+      // Get all events from Supabase
+      const allEvents = await supabaseEventService.getAllEvents();
       
       // Filter for truly upcoming events (not just status-based)
       const upcomingEvents = filterUpcomingEvents(allEvents);

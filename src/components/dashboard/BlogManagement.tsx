@@ -1,14 +1,21 @@
 import { useState, useEffect } from 'react';
-import { Card } from '@/components/ui/card';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogTrigger } from '@/components/ui/dialog';
+import { Label } from '@/components/ui/label';
+import { Textarea } from '@/components/ui/textarea';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { Badge } from '@/components/ui/badge';
+import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle } from '@/components/ui/alert-dialog';
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from '@/components/ui/dialog';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
-import { Plus, Edit, Trash2, Eye } from 'lucide-react';
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import { Plus, Edit, Trash2, Send, Eye, Search, Filter, Calendar, User, Globe, MoreHorizontal, ExternalLink } from 'lucide-react';
 import { supabase } from '@/lib/supabase';
 import { toast } from 'sonner';
 import { useLanguage } from '@/components/LanguageContext';
 import RichTextEditor from '@/components/ui/rich-text-editor';
+import { format } from 'date-fns';
 
 interface Blog {
   id: number;
@@ -25,7 +32,14 @@ const BlogManagement = () => {
   const [blogs, setBlogs] = useState<Blog[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
+  const [isSendingLatest, setIsSendingLatest] = useState(false);
+  const [sendingPostId, setSendingPostId] = useState<number | null>(null);
   const [selectedBlog, setSelectedBlog] = useState<Blog | null>(null);
+  const [searchTerm, setSearchTerm] = useState('');
+  const [statusFilter, setStatusFilter] = useState('all');
+  const [languageFilter, setLanguageFilter] = useState('all');
+  const [deleteDialogOpen, setDeleteDialogOpen] = useState(false);
+  const [blogToDelete, setBlogToDelete] = useState<Blog | null>(null);
   const [formData, setFormData] = useState({
     title: '',
     content: '',
@@ -37,6 +51,14 @@ const BlogManagement = () => {
   useEffect(() => {
     fetchBlogs();
   }, []);
+
+  // Filter blogs based on search and filters
+  const filteredBlogs = blogs.filter(blog => {
+    const matchesSearch = blog.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                         blog.content.toLowerCase().includes(searchTerm.toLowerCase());
+    const matchesLanguage = languageFilter === 'all' || blog.language === languageFilter;
+    return matchesSearch && matchesLanguage;
+  });
 
   const fetchBlogs = async () => {
     try {
@@ -52,6 +74,42 @@ const BlogManagement = () => {
       toast.error('Failed to fetch blogs');
     } finally {
       setIsLoading(false);
+    }
+  };
+
+  const sendLatestToSubscribers = async () => {
+    if (isSendingLatest) return;
+    setIsSendingLatest(true);
+    try {
+      const res = await fetch('/api/newsletter/send-latest', { method: 'POST' });
+      if (!res.ok) throw new Error('Failed');
+      const data = await res.json();
+      toast.success(data.message || 'Sent latest post to subscribers');
+    } catch (err) {
+      console.error('send-latest error', err);
+      toast.error('Failed to send latest post');
+    } finally {
+      setIsSendingLatest(false);
+    }
+  };
+
+  const sendPostToSubscribers = async (postId: number) => {
+    if (sendingPostId) return;
+    setSendingPostId(postId);
+    try {
+      const res = await fetch('/api/newsletter/send-post', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ postId })
+      });
+      if (!res.ok) throw new Error('Failed');
+      const data = await res.json();
+      toast.success(data.message || 'Sent to subscribers');
+    } catch (err) {
+      console.error('send-post error', err);
+      toast.error('Failed to send this post');
+    } finally {
+      setSendingPostId(null);
     }
   };
 
@@ -213,6 +271,30 @@ const BlogManagement = () => {
             </form>
           </DialogContent>
         </Dialog>
+        <div className="flex items-center gap-2">
+          <AlertDialog>
+            <AlertDialogTrigger asChild>
+              <Button variant="secondary" disabled={isSendingLatest}>
+                <Send className="w-4 h-4 mr-2" />
+                {isSendingLatest ? 'Sending…' : 'Email Latest Post'}
+              </Button>
+            </AlertDialogTrigger>
+            <AlertDialogContent>
+              <AlertDialogHeader>
+                <AlertDialogTitle>Send latest blog post?</AlertDialogTitle>
+                <AlertDialogDescription>
+                  This will email the most recent published blog post to all subscribers who opted in to receive blog updates.
+                </AlertDialogDescription>
+              </AlertDialogHeader>
+              <AlertDialogFooter>
+                <AlertDialogCancel>Cancel</AlertDialogCancel>
+                <AlertDialogAction onClick={sendLatestToSubscribers}>
+                  Confirm Send
+                </AlertDialogAction>
+              </AlertDialogFooter>
+            </AlertDialogContent>
+          </AlertDialog>
+        </div>
       </div>
 
       <Card>
@@ -236,6 +318,32 @@ const BlogManagement = () => {
                     <Button variant="ghost" size="icon" onClick={() => handleEdit(blog)}>
                       <Edit className="w-4 h-4" />
                     </Button>
+                    <AlertDialog>
+                      <AlertDialogTrigger asChild>
+                        <Button
+                          variant="ghost"
+                          size="icon"
+                          title="Email this post to subscribers"
+                          disabled={sendingPostId === blog.id}
+                        >
+                          <Send className="w-4 h-4" />
+                        </Button>
+                      </AlertDialogTrigger>
+                      <AlertDialogContent>
+                        <AlertDialogHeader>
+                          <AlertDialogTitle>Send this blog post?</AlertDialogTitle>
+                          <AlertDialogDescription>
+                            This will email "{blog.title}" to all subscribers who opted in to receive blog updates.
+                          </AlertDialogDescription>
+                        </AlertDialogHeader>
+                        <AlertDialogFooter>
+                          <AlertDialogCancel>Cancel</AlertDialogCancel>
+                          <AlertDialogAction onClick={() => sendPostToSubscribers(blog.id)}>
+                            {sendingPostId === blog.id ? 'Sending…' : 'Confirm Send'}
+                          </AlertDialogAction>
+                        </AlertDialogFooter>
+                      </AlertDialogContent>
+                    </AlertDialog>
                     <Button variant="ghost" size="icon" onClick={() => handleDelete(blog.id)}>
                       <Trash2 className="w-4 h-4" />
                     </Button>

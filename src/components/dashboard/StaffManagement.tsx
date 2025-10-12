@@ -5,138 +5,63 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from '
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
-import { Edit, Trash2, PlusCircle } from 'lucide-react';
-import { ImageUpload } from '@/components/ImageUpload'; // Import ImageUpload component
-import { useStaff, StaffMember } from '@/contexts/StaffContext'; // Import useStaff and StaffMember
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Badge } from '@/components/ui/badge';
+import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle } from '@/components/ui/alert-dialog';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-
-// Interface for Staff Member (should match database schema)
-interface StaffMember {
-  id: number; // We'll generate IDs based on the data
-  displayName: string; // New field from CSV
-  firstName: string;
-  lastName: string; // Corrected mapping
-  position: string; // Mapped from 'Title'
-  department?: string; // New field from CSV
-  phone?: string; // Phone is not in this CSV, will be undefined
-  email?: string;
-  imageUrl?: string; // URL or path to the profile picture
-  isSeniorManagement?: boolean; // New field to distinguish senior management
-}
-
-// Define titles considered as senior management
-const seniorManagementTitles = [
-  'Executive director',
-  'Coordinator of Administration and Finance Services',
-  'Programs Coordinator',
-  'National coordinator/EU',
-  'Human Resource Officer',
-  'Dean of Studies',
-  'Accountant/MISEREOR',
-  'Project coordinator/Interpeace',
-  'Digital Transformation Officer/Y4Y',
-  'LA MENNAIS DIRECTOR'
-];
-
-// Data parsed from public/VJN staff.csv
-const csvData = `Display name,email,First name,Last name,Title,Department,Preferred data location
-Abdoulah,a.uwimana@visionjeunessenouvelle.org.rw,UWIMANA,Abdoulah,Facilitator Intern,Education,
-Abdulkalim,m.mvunabandi@visionjeunessenouvelle.org.rw,MVUNABANDI,Abdulkalim,Assistant Technician,Sport culture and arts,
-Adrien,a.hashakimana@visionjeunessenouvelle.org.rw,HASHAKIMANA,Adrien,School Director,Education,
-Akabibi,a.akabibi@visionjeunessenouvelle.org.rw,AKABIBI,Adia,Communication and Visibility,VJN,
-Ally Mustapha,a.mustapha@visionjeunessenou Nouvelle.org.rw,RWANGO,Ally Mustapha,Field Officer and Driver,Economic strengthening,
-Amiel,a.manirakiza@visionjeunessenouvelle.org.rw,MANIRAKIZA,Amiel,Assistant Librarian and FI,Education,
-BAMURANGE Juliene,b.juliene@visionjeunessenouvelle.org.rw,BAMURANGE,Juliene,Field Officer,Peace building,
-Bienfait,b.uwizeye@visionjeunessenouvelle.org.rw,UWIZEYE,Bienfait,Programs Coordinator,Administration,
-Brother Callixte,callixte@visionjeunessenouvelle.org.rw,Callixte,HABIYAREMYE,LA MENNAIS DIRECTOR,LAMENNAIS,
-Celestin,c.nshimiyimana@visionjeunessenouvelle.org.rw,NSHIMIYIMANA,Celestin,Teacher in Automobile,Education,
-Christine,c.uwizerimana@visionjeunessenouvelle.org.rw,UWIZERIMANA,Christine,Teacher in tailoring,Education,
-COMMUNICATION,communication@visionjeunessenouvelle.org.rw,,,,,
-Deborah,d.muhire@visionjeunessenouvelle.org.rw,MUHIRE,Deborah,Teacher in beauty and Hair dressing,Education,
-Dusengimana,theophile@visionjeunessenouvelle.org.rw,DUSENGIMANA,Theophile,Ass.Finances and Aministration,VJN,
-Emmanuel,e.iradukunda@visionjeunessenouvelle.org.rw,IRADUKUNDA,Emmanuel,Coordinator of Administration and Finance Services,General service,
-Gisele,g.ishimwe@visionjeunessenouvelle.org.rw,ISHIMWE,Gisele,Receptionist at VJN HQ and FI,Education,
-HABIYAREMYE Callixte,c.habiyaremye@visionjeunessenouvelle.org.rw,HABIYAREMYE,Callixte,,,
-Hagenimana  Jean de DIeu,hagenimana@visionjeunessenouvelle.org.rw,Hagenimana,Jean de DIeu,,,
-Hashakimana Adrien,adrien@visionjeunessenouvelle.org.rw,Hashakimana,Adrien,,,
-ICYITEGETSE Victoire,v.icyitegetse@visionjeunessenouvelle.org.rw,ICYITEGETSE,Victoire,Administrative Assistant,Administration,
-IRADUKUNDA Diane,d.iradukunda@visionjeunessenouvelle.org.rw,IRADUKUNDA,Diane,,,
-Iragena,pascal@visionjeunessenouvelle.org.rw,IRAGENA,PASCAL,Accountant/MISEREOR,VJN,
-Ismael,m.mpawenimana@visionjeunessenouvelle.org.rw,MPAWENIMANA,Ismael,Field Officer,Economic strengthening,
-Izerimana Raphael,r.izerimana@visionjeunessenouvelle.org.rw,Izerimana,Raphael,,,
-Jean Baptiste,n.baptiste@visionjeunessenouvelle.org.rw,NKUBITO,Jean Baptiste,Teacher of Children with disabilities,Education,
-Julienne,b.bamurange@visionjeunessenouvelle.org.rw,BAMURANGE,Julienne,Field Officer,Peace building,
-Kezia,k.uwizuru@visionjeunessenouvelle.org.rw,UWIZURU,Kezia,Teacher in tailoring,Education,
-Marie,m.uwankana@visionjeunessenouvelle.org.rw,UWANKANA,Marie,Accountant,Finance,
-Mukaremezo,m.mukaremezo@visionjeunessenouvelle.org.rw,MUKAREMEZO,Mediatrice,Programs Coordinator,VJN,
-Ndakengerwa,m.ndakengerwa@visionjeunessenouvelle.org.rw,NDAKENGERWA,Moise,Project coordinator/Interpeace,VJN,
-Nisingizwe Rugwiro,v.rugwiro@visionjeunessenouvelle.org.rw,NISINGIZWE RUGWIRO,Vanessa,Human Resource Officer,VJN,
-Niyitegeka Mbonyurugo,b.niyitegeka@visionjeunessenouvelle.org.rw,NIYITEGEKA MBONYURUGO,Jean Bosco,Dean of Studies,VJN,
-Nsanzubuhoro,philimin@visionjeunessenouvelle.org.rw,NSANZUBUHORO,Philimin,Field officer/Misereor,VJN,
-Nsengiyaremye,quatremoteurs@visionjeunessenouvelle.org.rw,NSENGIYAREMYE,Quatremoteurs Faustin,Field officer/Alphabetisation&Evangelization,VJN,
-Nyirashyerezo Viviane,viviane@visionjeunessenouvelle.org.rw,Nyirashyerezo,Viviane,,,
-Nzitukuze,lionel@visionjeunessenouvelle.org.rw,NZITUKUZE,Lionel,Coordinator/GOPA,VJN,
-ODILE NIYIGENA,o.niyigena@visionjeunessenouvelle.org.rw,ODILE,NIYIGENA,,,
-Pascal,i.iragena@visionjeunessenouvelle.org.rw,IRAGENA,Pascal,Maintenance Officer,Administration,
-Patrick,p.nkusi@visionjeunessenouvelle.org.rw,NKUSI,Patrick,Local Peace Advisor,Peace building,
-Patrick,p.ntawusenyurwe@visionjeunessenouvelle.org.rw,NTAWUSENYURWE,Patrick,Studio Producer,Sport culture and arts,
-Patrick,n.ndacyayisenga@visionjeunessenouvelle.org.rw,NDACYAYISENGA,Patrick,Teacher in welding,Education,
-Ringuyeneza,v.ringuyeneza@visionjeunessenouvelle.org.rw,RINGUYENEZA,Vital,Executive director,VJN,
-Segikwiye Venuste,v.segikwiye@visionjeunessenouvelle.org.rw,Segikwiye,Venuste,,,
-Thogne DUSENGIMANA,dusengimana@visionjeunessenouvelle.org.rw,Thogne,DUSENGIMANA,,,
-Thophile,d.dusengimana@visionjeunessenouvelle.org.rw,DUSENGIMANA,Thophile,Finance and Administration Assistant,Finance,
-Thierry,t.izere@visionjeunessenouvelle.org.rw,IZERE,Thierry,Dean of Studies,Education,
-Umurerwa,d.umurerwa@visionjeunessenouvelle.org.rw,UMURERWA,Divine,Digital Transformation Officer/Y4Y,VJN,
-Umutoni,r.umutoni@visionjeunessenouvelle.org.rw,UMUTONI,Redempta,Receptionist,VJN,
-Uwankana,marie@visionjeunessenouvelle.org.rw,UWANKANA,Marie,Field officer/Economic Strengthening ,VJN,
-Uwizeye,bienfait@visionjeunessenouvelle.org.rw,UWIZEYE,Bienfait,National coordinator/EU,VJN,
-Vanessa,v.nisingizwe@visionjeunessenouvelle.org.rw,NISINGIZWE RUGWIRO,Vanessa,Human Resources Officer and Logistician,Administration,
-Vedaste,v.niyitegeka@visionjeunessenouvelle.org.rw,NIYITEGEKA,Vedaste,Receptionist at VTC and FI,Education,
-Victoire,i.icyitegetse@visionjeunessenouvelle.org.rw,ICYITEGETSE,Victoire,Administrative Assistant,Administration,
-`;
-
-const parseCsv = (csvText: string): StaffMember[] => {
-  const lines = csvText.trim().split('\n');
-  const headers = lines[0].split(',');
-  const data = lines.slice(1).map((line, index) => {
-    const values = line.split(',');
-    const position = values[headers.indexOf('Title')] || '';
-    const staff: StaffMember = {
-      id: index + 1, // Generate simple ID
-      displayName: values[headers.indexOf('Display name')] || '',
-      firstName: values[headers.indexOf('First name')] || '',
-      lastName: values[headers.indexOf('Last name')] || '',
-      position: position,
-      department: values[headers.indexOf('Department')] || '',
-      email: values[headers.indexOf('email')] || '',
-      isSeniorManagement: seniorManagementTitles.includes(position.trim()), // Check if position is in senior management titles
-      // Phone is not in this CSV, so it will be undefined
-      // imageUrl is a placeholder, will be undefined
-    };
-    return staff;
-  }).filter(staff => staff.displayName || staff.firstName || staff.lastName); // Filter out empty rows
-  return data;
-};
-
-const staffData: StaffMember[] = parseCsv(csvData);
+import { Switch } from '@/components/ui/switch';
+import { Textarea } from '@/components/ui/textarea';
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import { 
+  Edit, 
+  Trash2, 
+  PlusCircle, 
+  Search, 
+  Filter, 
+  Download, 
+  Upload, 
+  Eye, 
+  Mail, 
+  Phone, 
+  MapPin, 
+  Calendar,
+  Users,
+  Building,
+  Crown,
+  MoreHorizontal,
+  CheckCircle,
+  XCircle,
+  AlertCircle
+} from 'lucide-react';
+import { ImageUpload } from '@/components/ui/ImageUpload';
+import { supabaseStaffService } from '@/services/supabaseStaffService';
+import { useStaff, StaffMember } from '@/contexts/StaffContext';
+import { toast } from 'sonner';
+import { format } from 'date-fns';
 
 interface AddEditStaffModalProps {
   isOpen: boolean;
   onClose: () => void;
   formData: {
-    lastName: string;
+    displayName: string;
     firstName: string;
+    lastName: string;
     position: string;
     department: string;
     phone: string;
     email: string;
     imageUrl: string;
+    isSeniorManagement: boolean;
+    bio?: string;
+    startDate?: string;
+    location?: string;
   };
-  onInputChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onInputChange: (field: string, value: any) => void;
   onSave: () => void;
   isEditing: boolean;
   initialImageUrl?: string;
-  allDepartments: string[]; // Add prop for all departments
+  allDepartments: string[];
+  allPositions: string[];
 }
 
 const AddEditStaffModal: React.FC<AddEditStaffModalProps> = ({
@@ -147,68 +72,192 @@ const AddEditStaffModal: React.FC<AddEditStaffModalProps> = ({
   onSave,
   isEditing,
   initialImageUrl,
-  allDepartments // Destructure allDepartments
+  allDepartments,
+  allPositions
 }) => {
   const { t } = useTranslation();
 
   const handleImageUpload = (imageUrl: string) => {
-    onInputChange({ target: { name: 'imageUrl', value: imageUrl } } as React.ChangeEvent<HTMLInputElement>);
+    onInputChange('imageUrl', imageUrl);
+  };
+
+  const isFormValid = () => {
+    return formData.firstName.trim() && 
+           formData.lastName.trim() && 
+           formData.position.trim() && 
+           formData.email.trim() &&
+           formData.email.includes('@');
   };
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="sm:max-w-[425px]">
+      <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
         <DialogHeader>
-          <DialogTitle>{isEditing ? t('dashboard.staff.editStaff', 'Edit Staff Member') : t('dashboard.staff.addStaff', 'Add New Staff Member')}</DialogTitle>
+          <DialogTitle className="text-2xl font-bold">
+            {isEditing ? 'Edit Staff Member' : 'Add New Staff Member'}
+          </DialogTitle>
         </DialogHeader>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 py-4">
-          <div className="col-span-1">
-            <Label htmlFor="firstName">{t('staff.firstName', 'First Name')}</Label>
-            <Input id="firstName" name="firstName" value={formData.firstName} onChange={onInputChange} />
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 py-4">
+          {/* Left Column - Basic Info */}
+          <div className="space-y-4">
+            <div className="text-lg font-semibold text-gray-900 mb-4">Basic Information</div>
+            
+            <div className="grid grid-cols-2 gap-4">
+              <div>
+                <Label htmlFor="firstName">First Name *</Label>
+                <Input 
+                  id="firstName" 
+                  value={formData.firstName} 
+                  onChange={(e) => onInputChange('firstName', e.target.value)}
+                  placeholder="Enter first name"
+                />
+              </div>
+              <div>
+                <Label htmlFor="lastName">Last Name *</Label>
+                <Input 
+                  id="lastName" 
+                  value={formData.lastName} 
+                  onChange={(e) => onInputChange('lastName', e.target.value)}
+                  placeholder="Enter last name"
+                />
+              </div>
+            </div>
+
+            <div>
+              <Label htmlFor="displayName">Display Name</Label>
+              <Input 
+                id="displayName" 
+                value={formData.displayName} 
+                onChange={(e) => onInputChange('displayName', e.target.value)}
+                placeholder="How this person should be displayed"
+              />
+            </div>
+
+            <div>
+              <Label htmlFor="email">Email Address *</Label>
+              <Input 
+                id="email" 
+                type="email"
+                value={formData.email} 
+                onChange={(e) => onInputChange('email', e.target.value)}
+                placeholder="Enter email address"
+              />
+            </div>
+
+            <div>
+              <Label htmlFor="phone">Phone Number</Label>
+              <Input 
+                id="phone" 
+                value={formData.phone} 
+                onChange={(e) => onInputChange('phone', e.target.value)}
+                placeholder="Enter phone number"
+              />
+            </div>
+
+            <div>
+              <Label htmlFor="position">Position *</Label>
+              <Select 
+                value={formData.position} 
+                onValueChange={(value) => onInputChange('position', value)}
+              >
+                <SelectTrigger>
+                  <SelectValue placeholder="Select a position" />
+                </SelectTrigger>
+                <SelectContent>
+                  {allPositions.map(position => (
+                    <SelectItem key={position} value={position}>{position}</SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            </div>
+
+            <div>
+              <Label htmlFor="department">Department</Label>
+              <Select 
+                value={formData.department} 
+                onValueChange={(value) => onInputChange('department', value)}
+              >
+                <SelectTrigger>
+                  <SelectValue placeholder="Select a department" />
+                </SelectTrigger>
+                <SelectContent>
+                  {allDepartments.map(dept => (
+                    <SelectItem key={dept} value={dept}>{dept}</SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            </div>
           </div>
-          <div className="col-span-1">
-            <Label htmlFor="lastName">{t('staff.lastName', 'Last Name')}</Label>
-            <Input id="lastName" name="lastName" value={formData.lastName} onChange={onInputChange} />
-          </div>
-          <div className="col-span-1">
-            <Label htmlFor="position">{t('staff.position', 'Position')}</Label>
-            <Input id="position" name="position" value={formData.position} onChange={onInputChange} />
-          </div>
-          <div className="col-span-1">
-            <Label htmlFor="department">{t('staff.department', 'Department')}</Label>
-            <Select onValueChange={(value) => onInputChange({ target: { name: 'department', value } } as React.ChangeEvent<HTMLInputElement>)} value={formData.department}>
-              <SelectTrigger>
-                <SelectValue placeholder="Select a department" />
-              </SelectTrigger>
-              <SelectContent>
-                {allDepartments.map(dept => (
-                  <SelectItem key={dept} value={dept}>{dept}</SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
-          </div>
-          <div className="col-span-1">
-            <Label htmlFor="phone">{t('staff.phone', 'Phone')}</Label>
-            <Input id="phone" name="phone" value={formData.phone} onChange={onInputChange} />
-          </div>
-          <div className="col-span-1">
-            <Label htmlFor="email">{t('staff.email', 'Email')}</Label>
-            <Input id="email" name="email" value={formData.email} onChange={onInputChange} />
-          </div>
-          <div className="md:col-span-2">
-            <ImageUpload
-              onImageUpload={handleImageUpload}
-              initialImage={initialImageUrl}
-              bucketName="staff-photos" // Specify the bucket for staff photos
-              label={t('staff.image', 'Profile Image')}
-              description={t('staff.imageDescription', 'Upload a profile picture for the staff member.')}
-              aspectRatio={1/1} // Assuming square profile pictures
-              maxSize={2} // Max 2MB for profile pictures
-            />
+
+          {/* Right Column - Additional Info & Image */}
+          <div className="space-y-4">
+            <div className="text-lg font-semibold text-gray-900 mb-4">Additional Information</div>
+            
+            <div>
+              <Label htmlFor="startDate">Start Date</Label>
+              <Input 
+                id="startDate" 
+                type="date"
+                value={formData.startDate} 
+                onChange={(e) => onInputChange('startDate', e.target.value)}
+              />
+            </div>
+
+            <div>
+              <Label htmlFor="location">Location</Label>
+              <Input 
+                id="location" 
+                value={formData.location} 
+                onChange={(e) => onInputChange('location', e.target.value)}
+                placeholder="Enter work location"
+              />
+            </div>
+
+            <div>
+              <Label htmlFor="bio">Bio</Label>
+              <Textarea 
+                id="bio" 
+                value={formData.bio} 
+                onChange={(e) => onInputChange('bio', e.target.value)}
+                placeholder="Brief description of the staff member"
+                rows={3}
+              />
+            </div>
+
+            <div className="flex items-center space-x-2">
+              <Switch
+                id="isSeniorManagement"
+                checked={formData.isSeniorManagement}
+                onCheckedChange={(checked) => onInputChange('isSeniorManagement', checked)}
+              />
+              <Label htmlFor="isSeniorManagement">Senior Management</Label>
+            </div>
+
+            <div>
+              <ImageUpload
+                onImageUpload={handleImageUpload}
+                initialImage={initialImageUrl}
+                label="Profile Photo"
+                description="Upload a professional photo"
+                aspectRatio={1}
+                maxSize={2}
+              />
+            </div>
           </div>
         </div>
-        <DialogFooter>
-          <Button onClick={onSave}>{isEditing ? t('saveChanges', 'Save changes') : t('addStaff', 'Add Staff')}</Button>
+
+        <DialogFooter className="flex justify-between">
+          <Button variant="outline" onClick={onClose}>
+            Cancel
+          </Button>
+          <Button 
+            onClick={onSave} 
+            disabled={!isFormValid()}
+            className="bg-blue-600 hover:bg-blue-700"
+          >
+            {isEditing ? 'Update Staff Member' : 'Add Staff Member'}
+          </Button>
         </DialogFooter>
       </DialogContent>
     </Dialog>
@@ -217,173 +266,504 @@ const AddEditStaffModal: React.FC<AddEditStaffModalProps> = ({
 
 const StaffManagement = () => {
   const { t } = useTranslation();
-  const { staff, addStaff, updateStaff, deleteStaff, allDepartments, seniorManagementTitles } = useStaff(); // Use context
+  const { staff, loading, error, addStaff, updateStaff, deleteStaff, fetchStaff, allDepartments, seniorManagementTitles } = useStaff();
+  
+  // State management
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editingStaff, setEditingStaff] = useState<StaffMember | null>(null);
+  const [deleteDialogOpen, setDeleteDialogOpen] = useState(false);
+  const [staffToDelete, setStaffToDelete] = useState<StaffMember | null>(null);
+  const [searchTerm, setSearchTerm] = useState('');
+  const [departmentFilter, setDepartmentFilter] = useState('all');
+  const [positionFilter, setPositionFilter] = useState('all');
+  const [seniorManagementFilter, setSeniorManagementFilter] = useState('all');
+  const [viewMode, setViewMode] = useState<'table' | 'cards'>('cards');
+  
   const [formData, setFormData] = useState({
-    lastName: '',
+    displayName: '',
     firstName: '',
+    lastName: '',
     position: '',
     department: '',
     phone: '',
     email: '',
     imageUrl: '',
+    isSeniorManagement: false,
+    bio: '',
+    startDate: '',
+    location: ''
   });
-  const [sortConfig, setSortConfig] = useState<{ key: keyof StaffMember; direction: 'ascending' | 'descending' | null }>({ key: 'isSeniorManagement', direction: 'descending' }); // Default sort by senior management descending
 
-  const sortedStaff = useMemo(() => {
-    let sortableStaff = [...staff];
-    if (sortConfig.key !== null) {
-      sortableStaff.sort((a, b) => {
-        if (sortConfig.key === 'isSeniorManagement') {
-          // Senior management always comes first
-          if (a.isSeniorManagement && !b.isSeniorManagement) return -1;
-          if (!a.isSeniorManagement && b.isSeniorManagement) return 1;
-        }
+  // Get all unique positions from staff data
+  const allPositions = useMemo(() => {
+    const positions = new Set(staff.map(member => member.position).filter(Boolean));
+    return Array.from(positions).sort();
+  }, [staff]);
 
-        // Secondary sort by department
-        if (sortConfig.key === 'department' && a.department && b.department) {
-          const departmentA = a.department.toLowerCase();
-          const departmentB = b.department.toLowerCase();
-          if (departmentA < departmentB) return sortConfig.direction === 'ascending' ? -1 : 1;
-          if (departmentA > departmentB) return sortConfig.direction === 'ascending' ? 1 : -1;
-        }
+  // Filter and sort staff
+  const filteredAndSortedStaff = useMemo(() => {
+    let filtered = staff.filter(member => {
+      const matchesSearch = 
+        member.firstName.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        member.lastName.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        member.displayName.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        member.email.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        member.position.toLowerCase().includes(searchTerm.toLowerCase());
+      
+      const matchesDepartment = departmentFilter === 'all' || member.department === departmentFilter;
+      const matchesPosition = positionFilter === 'all' || member.position === positionFilter;
+      const matchesSeniorManagement = 
+        seniorManagementFilter === 'all' || 
+        (seniorManagementFilter === 'senior' && member.isSeniorManagement) ||
+        (seniorManagementFilter === 'regular' && !member.isSeniorManagement);
 
-        // Tertiary sort by position (alphabetical)
-        if (sortConfig.key === 'position' && a.position && b.position) {
-          const positionA = a.position.toLowerCase();
-          const positionB = b.position.toLowerCase();
-          if (positionA < positionB) return sortConfig.direction === 'ascending' ? -1 : 1;
-          if (positionA > positionB) return sortConfig.direction === 'ascending' ? 1 : -1;
-        }
+      return matchesSearch && matchesDepartment && matchesPosition && matchesSeniorManagement;
+    });
 
-        // Default alphabetical sort for other keys or if primary/secondary are equal
-        const aValue = a[sortConfig.key];
-        const bValue = b[sortConfig.key];
+    // Sort: Senior management first, then by department, then by name
+    return filtered.sort((a, b) => {
+      if (a.isSeniorManagement && !b.isSeniorManagement) return -1;
+      if (!a.isSeniorManagement && b.isSeniorManagement) return 1;
+      
+      if (a.department && b.department && a.department !== b.department) {
+        return a.department.localeCompare(b.department);
+      }
+      
+      return a.firstName.localeCompare(b.firstName);
+    });
+  }, [staff, searchTerm, departmentFilter, positionFilter, seniorManagementFilter]);
 
-        if (typeof aValue === 'string' && typeof bValue === 'string') {
-          if (aValue < bValue) {
-            return sortConfig.direction === 'ascending' ? -1 : 1;
-          }
-          if (aValue > bValue) {
-            return sortConfig.direction === 'ascending' ? 1 : -1;
-          }
-        }
-        return 0;
-      });
-    }
-    return sortableStaff;
-  }, [staff, sortConfig]);
+  // Statistics
+  const stats = useMemo(() => {
+    const total = staff.length;
+    const senior = staff.filter(m => m.isSeniorManagement).length;
+    const departments = new Set(staff.map(m => m.department).filter(Boolean)).size;
+    const withPhotos = staff.filter(m => m.imageUrl).length;
+    
+    return { total, senior, departments, withPhotos };
+  }, [staff]);
 
-  const requestSort = (key: keyof StaffMember) => {
-    let direction: 'ascending' | 'descending' | null = 'ascending';
-    if (sortConfig.key === key && sortConfig.direction === 'ascending') {
-      direction = 'descending';
-    } else if (sortConfig.key === key && sortConfig.direction === 'descending') {
-        direction = null; // Cycle to no sort if already descending
-    }
-    setSortConfig({ key, direction });
-  };
-
-  const getSortIndicator = (key: keyof StaffMember) => {
-    if (sortConfig.key === key) {
-      if (sortConfig.direction === 'ascending') return ' ▲';
-      if (sortConfig.direction === 'descending') return ' ▼';
-    }
-    return '';
-  };
-
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
+  const handleInputChange = (field: string, value: any) => {
+    setFormData(prev => ({ ...prev, [field]: value }));
   };
 
   const handleAddStaff = () => {
     setEditingStaff(null);
-    setFormData({ lastName: '', firstName: '', position: '', department: '', phone: '', email: '', imageUrl: '' });
+    setFormData({
+      displayName: '',
+      firstName: '',
+      lastName: '',
+      position: '',
+      department: '',
+      phone: '',
+      email: '',
+      imageUrl: '',
+      isSeniorManagement: false,
+      bio: '',
+      startDate: '',
+      location: ''
+    });
     setIsModalOpen(true);
   };
 
   const handleEditStaff = (staffMember: StaffMember) => {
     setEditingStaff(staffMember);
     setFormData({
-      lastName: staffMember.lastName,
-      firstName: staffMember.firstName,
-      position: staffMember.position,
+      displayName: staffMember.displayName || '',
+      firstName: staffMember.firstName || '',
+      lastName: staffMember.lastName || '',
+      position: staffMember.position || '',
       department: staffMember.department || '',
       phone: staffMember.phone || '',
       email: staffMember.email || '',
       imageUrl: staffMember.imageUrl || '',
+      isSeniorManagement: staffMember.isSeniorManagement || false,
+      bio: '',
+      startDate: '',
+      location: ''
     });
     setIsModalOpen(true);
   };
 
-  const handleDeleteStaff = async (id: number) => {
-    if (confirm('Are you sure you want to delete this staff member?')) {
-      await deleteStaff(id);
+  const handleDeleteStaff = (staffMember: StaffMember) => {
+    setStaffToDelete(staffMember);
+    setDeleteDialogOpen(true);
+  };
+
+  const confirmDelete = async () => {
+    if (staffToDelete) {
+      try {
+        await deleteStaff(staffToDelete.id);
+        toast.success('Staff member deleted successfully');
+        setDeleteDialogOpen(false);
+        setStaffToDelete(null);
+      } catch (error) {
+        toast.error('Failed to delete staff member');
+      }
     }
   };
 
   const handleSaveStaff = async () => {
-    if (editingStaff) {
-      await updateStaff(editingStaff.id, formData);
-    } else {
-      await addStaff(formData);
+    try {
+      if (editingStaff) {
+        await updateStaff(editingStaff.id, formData);
+        toast.success('Staff member updated successfully');
+      } else {
+        await addStaff(formData);
+        toast.success('Staff member added successfully');
+      }
+      setIsModalOpen(false);
+    } catch (error) {
+      toast.error('Failed to save staff member');
     }
-    setIsModalOpen(false);
   };
 
+  const exportToCSV = () => {
+    const csvContent = [
+      ['Name', 'Email', 'Position', 'Department', 'Phone', 'Senior Management'],
+      ...filteredAndSortedStaff.map(member => [
+        `${member.firstName} ${member.lastName}`,
+        member.email || '',
+        member.position || '',
+        member.department || '',
+        member.phone || '',
+        member.isSeniorManagement ? 'Yes' : 'No'
+      ])
+    ].map(row => row.join(',')).join('\n');
+
+    const blob = new Blob([csvContent], { type: 'text/csv' });
+    const url = window.URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'staff-directory.csv';
+    a.click();
+    window.URL.revokeObjectURL(url);
+    
+    toast.success('Staff directory exported successfully');
+  };
+
+  // Show loading state
+  if (loading) {
+    return (
+      <div className="flex items-center justify-center h-64">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
+          <p className="text-gray-600">Loading staff directory...</p>
+        </div>
+      </div>
+    );
+  }
+
+  // Show error state
+  if (error) {
+    return (
+      <div className="flex items-center justify-center h-64">
+        <div className="text-center">
+          <AlertCircle className="h-12 w-12 text-red-500 mx-auto mb-4" />
+          <h3 className="text-lg font-medium text-gray-900 mb-2">Error Loading Staff</h3>
+          <p className="text-gray-600 mb-4">{error}</p>
+          <Button onClick={fetchStaff} variant="outline">
+            Try Again
+          </Button>
+        </div>
+      </div>
+    );
+  }
+
   return (
-    <div className="container mx-auto px-4 py-8">
-      <h1 className="text-3xl font-bold mb-6">{t('dashboard.staff.title', 'Manage Staff')}</h1>
-
-      <Button className="mb-4" onClick={handleAddStaff}>
-        <PlusCircle className="mr-2" size={18} />
-        {t('dashboard.staff.add', 'Add New Staff')}
-      </Button>
-
-      <div className="overflow-x-auto">
-        <Table>
-          <TableHeader>
-            <TableRow>
-              <TableHead onClick={() => requestSort('id')} className="cursor-pointer"># {getSortIndicator('id')}</TableHead>
-              <TableHead onClick={() => requestSort('displayName')} className="cursor-pointer">{t('staff.displayName', 'Display Name')} {getSortIndicator('displayName')}</TableHead>
-              <TableHead onClick={() => requestSort('firstName')} className="cursor-pointer">{t('staff.firstName', 'First Name')} {getSortIndicator('firstName')}</TableHead>
-              <TableHead onClick={() => requestSort('lastName')} className="cursor-pointer">{t('staff.lastName', 'Last Name')} {getSortIndicator('lastName')}</TableHead>
-              <TableHead onClick={() => requestSort('position')} className="cursor-pointer">{t('staff.position', 'Position')} {getSortIndicator('position')}</TableHead>
-              <TableHead onClick={() => requestSort('department')} className="cursor-pointer">{t('staff.department', 'Department')} {getSortIndicator('department')}</TableHead>
-              <TableHead>{t('staff.phone', 'Phone')}</TableHead>
-              <TableHead>{t('staff.email', 'Email')}</TableHead>
-              <TableHead>{t('staff.image', 'Image URL')}</TableHead>
-              <TableHead>{t('actions', 'Actions')}</TableHead>
-            </TableRow>
-          </TableHeader>
-          <TableBody>
-            {sortedStaff.map((member) => (
-              <TableRow key={member.id} className={member.isSeniorManagement ? 'bg-blue-50/20 hover:bg-blue-100/30' : ''}>
-                <TableCell>{member.id}</TableCell>
-                <TableCell>{member.displayName}</TableCell>
-                <TableCell>{member.firstName}</TableCell>
-                <TableCell>{member.lastName}</TableCell>
-                <TableCell>{member.position}</TableCell>
-                <TableCell>{member.department}</TableCell>
-                <TableCell>{member.phone}</TableCell>
-                <TableCell>{member.email}</TableCell>
-                <TableCell>{member.imageUrl}</TableCell>
-                <TableCell className="flex items-center space-x-2">
-                  <Button variant="outline" size="sm" onClick={() => handleEditStaff(member)}>
-                    <Edit size={16} />
-                  </Button>
-                  <Button variant="destructive" size="sm" onClick={() => handleDeleteStaff(member.id)}>
-                    <Trash2 size={16} />
-                  </Button>
-                </TableCell>
-              </TableRow>
-            ))}
-          </TableBody>
-        </Table>
+    <div className="space-y-6">
+      {/* Header */}
+      <div className="flex items-center justify-between">
+        <div>
+          <h1 className="text-3xl font-bold text-gray-900">Staff Management</h1>
+          <p className="text-gray-600 mt-1">Manage your organization's staff directory</p>
+        </div>
+        <div className="flex items-center space-x-3">
+          <Button variant="outline" onClick={exportToCSV} disabled={staff.length === 0}>
+            <Download className="h-4 w-4 mr-2" />
+            Export CSV
+          </Button>
+          <Button onClick={handleAddStaff} className="bg-blue-600 hover:bg-blue-700">
+            <PlusCircle className="h-4 w-4 mr-2" />
+            Add Staff Member
+          </Button>
+        </div>
       </div>
 
+      {/* Statistics Cards */}
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+        <Card>
+          <CardContent className="p-4">
+            <div className="flex items-center justify-between">
+              <div>
+                <p className="text-sm font-medium text-gray-600">Total Staff</p>
+                <p className="text-2xl font-bold text-gray-900">{stats.total}</p>
+              </div>
+              <Users className="h-8 w-8 text-blue-600" />
+            </div>
+          </CardContent>
+        </Card>
+        
+        <Card>
+          <CardContent className="p-4">
+            <div className="flex items-center justify-between">
+              <div>
+                <p className="text-sm font-medium text-gray-600">Senior Management</p>
+                <p className="text-2xl font-bold text-gray-900">{stats.senior}</p>
+              </div>
+              <Crown className="h-8 w-8 text-yellow-600" />
+            </div>
+          </CardContent>
+        </Card>
+        
+        <Card>
+          <CardContent className="p-4">
+            <div className="flex items-center justify-between">
+              <div>
+                <p className="text-sm font-medium text-gray-600">Departments</p>
+                <p className="text-2xl font-bold text-gray-900">{stats.departments}</p>
+              </div>
+              <Building className="h-8 w-8 text-green-600" />
+            </div>
+          </CardContent>
+        </Card>
+        
+        <Card>
+          <CardContent className="p-4">
+            <div className="flex items-center justify-between">
+              <div>
+                <p className="text-sm font-medium text-gray-600">With Photos</p>
+                <p className="text-2xl font-bold text-gray-900">{stats.withPhotos}</p>
+              </div>
+              <Eye className="h-8 w-8 text-purple-600" />
+            </div>
+          </CardContent>
+        </Card>
+      </div>
+
+      {/* Filters and Search */}
+      <Card>
+        <CardContent className="p-4">
+          <div className="flex flex-col lg:flex-row gap-4">
+            <div className="flex-1">
+              <div className="relative">
+                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-4 w-4" />
+                <Input
+                  placeholder="Search staff members..."
+                  value={searchTerm}
+                  onChange={(e) => setSearchTerm(e.target.value)}
+                  className="pl-10"
+                />
+              </div>
+            </div>
+            
+            <div className="flex gap-2">
+              <Select value={departmentFilter} onValueChange={setDepartmentFilter}>
+                <SelectTrigger className="w-40">
+                  <SelectValue placeholder="Department" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="all">All Departments</SelectItem>
+                  {allDepartments.map(dept => (
+                    <SelectItem key={dept} value={dept}>{dept}</SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+              
+              <Select value={positionFilter} onValueChange={setPositionFilter}>
+                <SelectTrigger className="w-40">
+                  <SelectValue placeholder="Position" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="all">All Positions</SelectItem>
+                  {allPositions.map(position => (
+                    <SelectItem key={position} value={position}>{position}</SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+              
+              <Select value={seniorManagementFilter} onValueChange={setSeniorManagementFilter}>
+                <SelectTrigger className="w-40">
+                  <SelectValue placeholder="Level" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="all">All Levels</SelectItem>
+                  <SelectItem value="senior">Senior Management</SelectItem>
+                  <SelectItem value="regular">Regular Staff</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
+          </div>
+        </CardContent>
+      </Card>
+
+      {/* Staff Directory */}
+      {viewMode === 'cards' ? (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {filteredAndSortedStaff.map((member) => (
+            <Card key={member.id} className={`${member.isSeniorManagement ? 'border-yellow-200 bg-yellow-50/30' : ''}`}>
+              <CardContent className="p-6">
+                <div className="flex items-start justify-between mb-4">
+                  <div className="flex items-center space-x-3">
+                    <Avatar className="h-12 w-12">
+                      <AvatarImage 
+                        src={member.imageUrl} 
+                        alt={`${member.firstName} ${member.lastName}`}
+                        onError={(e) => {
+                          // Hide the image if it fails to load
+                          e.currentTarget.style.display = 'none';
+                        }}
+                      />
+                      <AvatarFallback className="bg-blue-100 text-blue-600 font-semibold">
+                        {member.firstName?.charAt(0)?.toUpperCase()}{member.lastName?.charAt(0)?.toUpperCase()}
+                      </AvatarFallback>
+                    </Avatar>
+                    <div>
+                      <h3 className="font-semibold text-gray-900">
+                        {member.displayName || `${member.firstName} ${member.lastName}`}
+                      </h3>
+                      <p className="text-sm text-gray-600">{member.position}</p>
+                      {member.isSeniorManagement && (
+                        <Badge variant="secondary" className="mt-1">
+                          <Crown className="h-3 w-3 mr-1" />
+                          Senior Management
+                        </Badge>
+                      )}
+                    </div>
+                  </div>
+                  <div className="flex items-center space-x-1">
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      onClick={() => handleEditStaff(member)}
+                    >
+                      <Edit className="h-4 w-4" />
+                    </Button>
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      onClick={() => handleDeleteStaff(member)}
+                    >
+                      <Trash2 className="h-4 w-4" />
+                    </Button>
+                  </div>
+                </div>
+                
+                <div className="space-y-2">
+                  {member.email && (
+                    <div className="flex items-center text-sm text-gray-600">
+                      <Mail className="h-4 w-4 mr-2" />
+                      {member.email}
+                    </div>
+                  )}
+                  {member.phone && (
+                    <div className="flex items-center text-sm text-gray-600">
+                      <Phone className="h-4 w-4 mr-2" />
+                      {member.phone}
+                    </div>
+                  )}
+                  {member.department && (
+                    <div className="flex items-center text-sm text-gray-600">
+                      <Building className="h-4 w-4 mr-2" />
+                      {member.department}
+                    </div>
+                  )}
+                </div>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+      ) : (
+        <Card>
+          <CardContent className="p-0">
+            <Table>
+              <TableHeader>
+                <TableRow>
+                  <TableHead>Photo</TableHead>
+                  <TableHead>Name</TableHead>
+                  <TableHead>Position</TableHead>
+                  <TableHead>Department</TableHead>
+                  <TableHead>Email</TableHead>
+                  <TableHead>Phone</TableHead>
+                  <TableHead>Level</TableHead>
+                  <TableHead>Actions</TableHead>
+                </TableRow>
+              </TableHeader>
+              <TableBody>
+                {filteredAndSortedStaff.map((member) => (
+                  <TableRow key={member.id} className={member.isSeniorManagement ? 'bg-yellow-50/30' : ''}>
+                    <TableCell>
+                      <Avatar className="h-8 w-8">
+                        <AvatarImage 
+                          src={member.imageUrl} 
+                          alt={`${member.firstName} ${member.lastName}`}
+                          onError={(e) => {
+                            e.currentTarget.style.display = 'none';
+                          }}
+                        />
+                        <AvatarFallback className="bg-blue-100 text-blue-600 font-semibold text-xs">
+                          {member.firstName?.charAt(0)?.toUpperCase()}{member.lastName?.charAt(0)?.toUpperCase()}
+                        </AvatarFallback>
+                      </Avatar>
+                    </TableCell>
+                    <TableCell className="font-medium">
+                      {member.displayName || `${member.firstName} ${member.lastName}`}
+                    </TableCell>
+                    <TableCell>{member.position}</TableCell>
+                    <TableCell>{member.department}</TableCell>
+                    <TableCell>{member.email}</TableCell>
+                    <TableCell>{member.phone}</TableCell>
+                    <TableCell>
+                      {member.isSeniorManagement ? (
+                        <Badge variant="secondary">
+                          <Crown className="h-3 w-3 mr-1" />
+                          Senior
+                        </Badge>
+                      ) : (
+                        <Badge variant="outline">Regular</Badge>
+                      )}
+                    </TableCell>
+                    <TableCell>
+                      <div className="flex items-center space-x-2">
+                        <Button
+                          variant="ghost"
+                          size="sm"
+                          onClick={() => handleEditStaff(member)}
+                        >
+                          <Edit className="h-4 w-4" />
+                        </Button>
+                        <Button
+                          variant="ghost"
+                          size="sm"
+                          onClick={() => handleDeleteStaff(member)}
+                        >
+                          <Trash2 className="h-4 w-4" />
+                        </Button>
+                      </div>
+                    </TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </CardContent>
+        </Card>
+      )}
+
+      {filteredAndSortedStaff.length === 0 && (
+        <Card>
+          <CardContent className="flex flex-col items-center justify-center py-12">
+            <Users className="h-12 w-12 text-gray-400 mb-4" />
+            <h3 className="text-lg font-medium text-gray-900 mb-2">No staff members found</h3>
+            <p className="text-gray-600 mb-4">Try adjusting your search criteria or add a new staff member.</p>
+            <Button onClick={handleAddStaff}>
+              <PlusCircle className="h-4 w-4 mr-2" />
+              Add Staff Member
+            </Button>
+          </CardContent>
+        </Card>
+      )}
+
+      {/* Add/Edit Modal */}
       <AddEditStaffModal
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
@@ -392,10 +772,33 @@ const StaffManagement = () => {
         onSave={handleSaveStaff}
         isEditing={editingStaff !== null}
         initialImageUrl={editingStaff?.imageUrl}
-        allDepartments={allDepartments} // Pass allDepartments to the modal
+        allDepartments={allDepartments}
+        allPositions={allPositions}
       />
+
+      {/* Delete Confirmation Dialog */}
+      <AlertDialog open={deleteDialogOpen} onOpenChange={setDeleteDialogOpen}>
+        <AlertDialogContent>
+          <AlertDialogHeader>
+            <AlertDialogTitle>Delete Staff Member</AlertDialogTitle>
+            <AlertDialogDescription>
+              Are you sure you want to delete <strong>{staffToDelete?.displayName || `${staffToDelete?.firstName} ${staffToDelete?.lastName}`}</strong>? 
+              This action cannot be undone.
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogCancel>Cancel</AlertDialogCancel>
+            <AlertDialogAction
+              onClick={confirmDelete}
+              className="bg-red-600 hover:bg-red-700"
+            >
+              Delete
+            </AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
     </div>
   );
 };
 
-export default StaffManagement; 
+export default StaffManagement;

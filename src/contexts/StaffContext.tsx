@@ -1,6 +1,6 @@
-import React, { createContext, useContext, useState, useEffect, useCallback, useMemo } from 'react';
-import { supabase } from '@/lib/supabase';
+import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 import { toast } from 'sonner';
+import { supabaseStaffService } from '@/services/supabaseStaffService';
 
 export interface StaffMember {
   id: number;
@@ -13,199 +13,124 @@ export interface StaffMember {
   email?: string;
   imageUrl?: string;
   isSeniorManagement?: boolean;
+  bio?: string;
+  startDate?: string;
+  location?: string;
+  createdAt?: string;
+  updatedAt?: string;
 }
 
 interface StaffContextType {
   staff: StaffMember[];
-  isLoading: boolean;
+  loading: boolean;
   error: string | null;
-  addStaff: (newStaff: Omit<StaffMember, 'id' | 'isSeniorManagement'>) => Promise<void>;
-  updateStaff: (id: number, updatedFields: Partial<Omit<StaffMember, 'id' | 'isSeniorManagement'>>) => Promise<void>;
+  addStaff: (staff: Omit<StaffMember, 'id'>) => Promise<void>;
+  updateStaff: (id: number, staff: Partial<StaffMember>) => Promise<void>;
   deleteStaff: (id: number) => Promise<void>;
-  seniorManagementTitles: string[];
+  fetchStaff: () => Promise<void>;
   allDepartments: string[];
+  seniorManagementTitles: string[];
 }
 
 const StaffContext = createContext<StaffContextType | undefined>(undefined);
 
-const seniorManagementTitles = [
-  'Executive director',
-  'Coordinator of Administration and Finance Services',
-  'Programs Coordinator',
-  'National coordinator/EU',
-  'Human Resource Officer',
-  'Dean of Studies',
-  'Accountant/MISEREOR',
-  'Project coordinator/Interpeace',
-  'Digital Transformation Officer/Y4Y',
-  'LA MENNAIS DIRECTOR'
-];
-
-export const StaffProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+export const StaffProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [staff, setStaff] = useState<StaffMember[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
+  const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
-  const fetchStaff = useCallback(async () => {
-    setIsLoading(true);
-    setError(null);
+  const [allDepartments, setAllDepartments] = useState<string[]>([]);
+
+  const fetchStaff = async () => {
     try {
-      const { data, error: fetchError } = await supabase
-        .from('staff')
-        .select('id, display_name, first_name, last_name, position, department, phone, email, image_url');
-
-      if (fetchError) throw fetchError;
-
-      const formattedStaff: StaffMember[] = data.map(s => ({
-        id: s.id,
-        displayName: s.display_name,
-        firstName: s.first_name,
-        lastName: s.last_name,
-        position: s.position,
-        department: s.department,
-        phone: s.phone,
-        email: s.email,
-        imageUrl: s.image_url,
-        isSeniorManagement: seniorManagementTitles.includes(s.position.trim()),
-      }));
-
-      setStaff(formattedStaff);
-    } catch (err: any) {
-      console.error('Error fetching staff:', err.message);
-      setError('Failed to load staff data: ' + err.message);
-      toast.error('Failed to load staff data.');
+      setLoading(true);
+      setError(null);
+      const data = await supabaseStaffService.getAllStaff();
+      setStaff(data);
+      
+      // Also fetch departments
+      const departments = await supabaseStaffService.getAllDepartments();
+      setAllDepartments(departments);
+    } catch (err) {
+      const errorMessage = err instanceof Error ? err.message : 'Failed to fetch staff';
+      setError(errorMessage);
+      toast.error(errorMessage);
     } finally {
-      setIsLoading(false);
-    }
-  }, []);
-
-  useEffect(() => {
-    fetchStaff();
-  }, [fetchStaff]);
-
-  const addStaff = async (newStaff: Omit<StaffMember, 'id' | 'isSeniorManagement'>) => {
-    setError(null);
-    try {
-      const { data, error: insertError } = await supabase
-        .from('staff')
-        .insert({
-          display_name: newStaff.displayName,
-          first_name: newStaff.firstName,
-          last_name: newStaff.lastName,
-          position: newStaff.position,
-          department: newStaff.department,
-          phone: newStaff.phone,
-          email: newStaff.email,
-          image_url: newStaff.imageUrl,
-        })
-        .select()
-        .single();
-
-      if (insertError) throw insertError;
-
-      const addedStaff: StaffMember = {
-        id: data.id,
-        displayName: data.display_name,
-        firstName: data.first_name,
-        lastName: data.last_name,
-        position: data.position,
-        department: data.department,
-        phone: data.phone,
-        email: data.email,
-        imageUrl: data.image_url,
-        isSeniorManagement: seniorManagementTitles.includes(data.position.trim()),
-      };
-      setStaff(prev => [...prev, addedStaff]);
-      toast.success('Staff member added successfully!');
-    } catch (err: any) {
-      console.error('Error adding staff:', err.message);
-      setError('Failed to add staff member: ' + err.message);
-      toast.error('Failed to add staff member.');
+      setLoading(false);
     }
   };
 
-  const updateStaff = async (id: number, updatedFields: Partial<Omit<StaffMember, 'id' | 'isSeniorManagement'>>) => {
-    setError(null);
+  const addStaff = async (newStaff: Omit<StaffMember, 'id'>) => {
     try {
-      const { data, error: updateError } = await supabase
-        .from('staff')
-        .update({
-          display_name: updatedFields.displayName,
-          first_name: updatedFields.firstName,
-          last_name: updatedFields.lastName,
-          position: updatedFields.position,
-          department: updatedFields.department,
-          phone: updatedFields.phone,
-          email: updatedFields.email,
-          image_url: updatedFields.imageUrl,
-        })
-        .eq('id', id)
-        .select()
-        .single();
+      const addedStaff = await supabaseStaffService.addStaff(newStaff);
+      setStaff(prev => [...prev, addedStaff]);
+      
+      // Refresh departments
+      const departments = await supabaseStaffService.getAllDepartments();
+      setAllDepartments(departments);
+      
+      toast.success('Staff member added successfully');
+    } catch (err) {
+      const errorMessage = err instanceof Error ? err.message : 'Failed to add staff member';
+      toast.error(errorMessage);
+      throw err;
+    }
+  };
 
-      if (updateError) throw updateError;
-
-      const updatedStaffMember: StaffMember = {
-        id: data.id,
-        displayName: data.display_name,
-        firstName: data.first_name,
-        lastName: data.last_name,
-        position: data.position,
-        department: data.department,
-        phone: data.phone,
-        email: data.email,
-        imageUrl: data.image_url,
-        isSeniorManagement: seniorManagementTitles.includes(data.position.trim()),
-      };
-
-      setStaff(prev => prev.map(s => (s.id === id ? updatedStaffMember : s)));
-      toast.success('Staff member updated successfully!');
-    } catch (err: any) {
-      console.error('Error updating staff:', err.message);
-      setError('Failed to update staff member: ' + err.message);
-      toast.error('Failed to update staff member.');
+  const updateStaff = async (id: number, updates: Partial<StaffMember>) => {
+    try {
+      const updatedStaff = await supabaseStaffService.updateStaff(id, updates);
+      setStaff(prev => prev.map(member => 
+        member.id === id ? updatedStaff : member
+      ));
+      
+      // Refresh departments if department was updated
+      if (updates.department) {
+        const departments = await supabaseStaffService.getAllDepartments();
+        setAllDepartments(departments);
+      }
+      
+      toast.success('Staff member updated successfully');
+    } catch (err) {
+      const errorMessage = err instanceof Error ? err.message : 'Failed to update staff member';
+      toast.error(errorMessage);
+      throw err;
     }
   };
 
   const deleteStaff = async (id: number) => {
-    setError(null);
     try {
-      const { error: deleteError } = await supabase
-        .from('staff')
-        .delete()
-        .eq('id', id);
-
-      if (deleteError) throw deleteError;
-
-      setStaff(prev => prev.filter(s => s.id !== id));
-      toast.success('Staff member deleted successfully!');
-    } catch (err: any) {
-      console.error('Error deleting staff:', err.message);
-      setError('Failed to delete staff member: ' + err.message);
-      toast.error('Failed to delete staff member.');
+      await supabaseStaffService.deleteStaff(id);
+      setStaff(prev => prev.filter(member => member.id !== id));
+      
+      // Refresh departments
+      const departments = await supabaseStaffService.getAllDepartments();
+      setAllDepartments(departments);
+      
+      toast.success('Staff member deleted successfully');
+    } catch (err) {
+      const errorMessage = err instanceof Error ? err.message : 'Failed to delete staff member';
+      toast.error(errorMessage);
+      throw err;
     }
   };
 
-  const allDepartments = useMemo(() => {
-    const departments = new Set<string>();
-    staff.forEach(s => {
-      if (s.department && s.department.trim() !== '') {
-        departments.add(s.department.trim());
-      }
-    });
-    return Array.from(departments).sort();
-  }, [staff]);
+  // Fetch staff on mount
+  useEffect(() => {
+    fetchStaff();
+  }, []);
 
-  const value = useMemo(() => ({
+  const value: StaffContextType = {
     staff,
-    isLoading,
+    loading,
     error,
     addStaff,
     updateStaff,
     deleteStaff,
-    seniorManagementTitles,
+    fetchStaff,
     allDepartments,
-  }), [staff, isLoading, error, addStaff, updateStaff, deleteStaff, allDepartments]);
+    seniorManagementTitles: supabaseStaffService.getSeniorManagementTitles(),
+  };
 
   return (
     <StaffContext.Provider value={value}>
@@ -214,10 +139,10 @@ export const StaffProvider: React.FC<{ children: React.ReactNode }> = ({ childre
   );
 };
 
-export const useStaff = () => {
+export const useStaff = (): StaffContextType => {
   const context = useContext(StaffContext);
   if (context === undefined) {
     throw new Error('useStaff must be used within a StaffProvider');
   }
   return context;
-}; 
+};

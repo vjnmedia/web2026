@@ -12,6 +12,7 @@ import { AuthProvider } from '@/hooks/useAuth';
 import { DonationProvider } from '@/contexts/DonationContext';
 import PayPalProvider from '@/components/PayPalProvider';
 import { StaffProvider } from '@/contexts/StaffContext';
+import { EventsProvider } from '@/contexts/EventsContext';
 import ErrorBoundary from '@/components/ErrorBoundary';
 import { SkipToMainContent, HighContrastMode, ReducedMotion } from '@/components/Accessibility';
 import Navbar from "./components/Navbar";
@@ -39,6 +40,7 @@ import BlogPost from '@/pages/BlogPost';
 import Donate from './pages/Donate';
 import Stories from './pages/Stories';
 import Partners from './pages/Partners';
+import { Navigate } from 'react-router-dom';
 import SportCultureArts from "./pages/programs/SportCultureArts";
 import Volunteer from "./pages/Volunteer";
 import ImageManager from './pages/ImageManager';
@@ -94,7 +96,7 @@ const App = () => {
         retry: 3,
         retryDelay: (attemptIndex) => Math.min(1000 * 2 ** attemptIndex, 30000),
         staleTime: 5 * 60 * 1000, // 5 minutes
-        cacheTime: 10 * 60 * 1000, // 10 minutes
+        gcTime: 10 * 60 * 1000, // 10 minutes
       },
     },
   }));
@@ -111,8 +113,9 @@ const App = () => {
                     <AuthProvider>
                       <PayPalProvider>
                         <StaffProvider>
-                          <TooltipProvider>
-                            <DonationProvider>
+                          <EventsProvider>
+                            <TooltipProvider>
+                              <DonationProvider>
                             <div className="min-h-screen flex flex-col">
                               <SkipToMainContent />
                               <Navbar />
@@ -139,6 +142,7 @@ const App = () => {
                           <Route path="/volunteer" element={<Volunteer />} />
                           <Route path="/career" element={<Career />} />
                           <Route path="/careers" element={<Career />} />
+                          <Route path="/blog" element={<Navigate to="/news" replace />} />
                           <Route path="/blog/:id" element={<BlogPost />} />
                           <Route path="/search" element={<Search />} />
                           <Route path="/privacy" element={<Privacy />} />
@@ -194,8 +198,9 @@ const App = () => {
                             </div>
                             <Toaster />
                             <Sonner />
-                            </DonationProvider>
-                          </TooltipProvider>
+                              </DonationProvider>
+                            </TooltipProvider>
+                          </EventsProvider>
                         </StaffProvider>
                       </PayPalProvider>
                     </AuthProvider>

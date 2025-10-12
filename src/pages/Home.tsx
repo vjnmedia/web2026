@@ -33,11 +33,14 @@ import {
   ChevronDown,
   Youtube,
   YoutubeIcon,
-  MessageCircle
+  MessageCircle,
+  XCircle
 } from 'lucide-react';
 import SEO from '@/components/SEO';
 import Hero from "@/components/Hero";
 import EventsSlider from "@/components/EventsSlider";
+import { supabaseEventService } from '@/services/supabaseEventService';
+import { Event } from '@/services/eventService';
 import OptimizedImage from '@/components/OptimizedImage';
 import LazyWrapper from '@/components/LazyWrapper';
 import { supabase } from '@/lib/supabase';
@@ -113,6 +116,245 @@ interface Blog {
   author: string;
   language: 'en' | 'fr';
 }
+
+// Modern Events Section Component
+const ModernEventsSection: React.FC = () => {
+  const [events, setEvents] = useState<Event[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  const fetchEvents = async () => {
+    try {
+      setIsLoading(true);
+      setError(null);
+      
+      // Get all events from Supabase
+      const allEvents = await supabaseEventService.getAllEvents();
+      
+      // Filter for truly upcoming events
+      const now = new Date();
+      const upcomingEvents = allEvents.filter(event => {
+        const eventDateTime = new Date(`${event.date}T${event.time || '00:00:00'}`);
+        return eventDateTime >= now;
+      }).sort((a, b) => {
+        const dateA = new Date(`${a.date}T${a.time || '00:00:00'}`);
+        const dateB = new Date(`${b.date}T${b.time || '00:00:00'}`);
+        return dateA.getTime() - dateB.getTime();
+      });
+      
+      // Limit to 6 events for the grid
+      setEvents(upcomingEvents.slice(0, 6));
+    } catch (err) {
+      console.error('Error fetching events:', err);
+      setError('Error loading events. Please try again later.');
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchEvents();
+  }, []);
+
+  const getRelativeTime = (eventDate: string, eventTime?: string) => {
+    const now = new Date();
+    const eventDateTime = new Date(`${eventDate}T${eventTime || '00:00:00'}`);
+    const diffInMs = eventDateTime.getTime() - now.getTime();
+    const diffInDays = Math.ceil(diffInMs / (1000 * 60 * 60 * 24));
+    
+    if (diffInDays === 0) return 'Today';
+    if (diffInDays === 1) return 'Tomorrow';
+    if (diffInDays < 7) return `In ${diffInDays} days`;
+    if (diffInDays < 30) return `In ${Math.ceil(diffInDays / 7)} weeks`;
+    return `In ${Math.ceil(diffInDays / 30)} months`;
+  };
+
+  const formatEventDate = (date: string) => {
+    return new Date(date).toLocaleDateString('en-US', { 
+      day: 'numeric', 
+      month: 'short', 
+      year: 'numeric' 
+    });
+  };
+
+  const formatEventTime = (time: string) => {
+    return new Date(`2000-01-01T${time}`).toLocaleTimeString('en-US', {
+      hour: 'numeric',
+      minute: '2-digit',
+      hour12: true
+    });
+  };
+
+  if (isLoading) {
+    return (
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {[1, 2, 3, 4, 5, 6].map((i) => (
+          <motion.div
+            key={i}
+            variants={fadeInUp}
+            className="bg-white rounded-3xl shadow-xl overflow-hidden animate-pulse"
+          >
+            <div className="h-48 bg-gradient-to-br from-gray-200 to-gray-300"></div>
+            <div className="p-8">
+              <div className="h-4 bg-gray-200 rounded mb-4"></div>
+              <div className="h-6 bg-gray-200 rounded mb-2"></div>
+              <div className="h-4 bg-gray-200 rounded mb-4"></div>
+              <div className="h-4 bg-gray-200 rounded mb-2"></div>
+              <div className="h-4 bg-gray-200 rounded"></div>
+            </div>
+          </motion.div>
+        ))}
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="text-center py-12">
+        <div className="bg-white rounded-3xl shadow-xl p-12 max-w-md mx-auto">
+          <div className="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-6">
+            <XCircle className="h-8 w-8 text-red-600" />
+          </div>
+          <h3 className="text-xl font-semibold text-gray-900 mb-2">Unable to Load Events</h3>
+          <p className="text-gray-600 mb-6">{error}</p>
+          <button
+            onClick={fetchEvents}
+            className="px-6 py-3 bg-vjn-blue text-white rounded-xl hover:bg-blue-700 transition-colors font-semibold"
+          >
+            Try Again
+          </button>
+        </div>
+      </div>
+    );
+  }
+
+  if (events.length === 0) {
+    return (
+      <div className="text-center py-12">
+        <div className="bg-white rounded-3xl shadow-xl p-12 max-w-md mx-auto">
+          <div className="w-16 h-16 bg-vjn-blue/10 rounded-full flex items-center justify-center mx-auto mb-6">
+            <Calendar className="h-8 w-8 text-vjn-blue" />
+          </div>
+          <h3 className="text-xl font-semibold text-gray-900 mb-2">No Upcoming Events</h3>
+          <p className="text-gray-600 mb-6">
+            There are currently no upcoming events scheduled. Check back soon for new events!
+          </p>
+          <button
+            onClick={fetchEvents}
+            className="px-6 py-3 bg-vjn-blue text-white rounded-xl hover:bg-blue-700 transition-colors font-semibold"
+          >
+            Refresh
+          </button>
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {events.map((event, index) => (
+        <motion.div
+          key={event.id}
+          variants={fadeInUp}
+          whileHover={{ y: -8, scale: 1.02 }}
+          className="group bg-white rounded-3xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-500 border border-gray-100"
+        >
+          {/* Event Image */}
+          <div className="relative h-48 overflow-hidden">
+            <img
+              src={event.imageUrl || 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=600&q=80'}
+              alt={event.title}
+              className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+            
+            {/* Event Date Badge */}
+            <div className="absolute top-4 left-4">
+              <div className="bg-white/95 backdrop-blur-sm rounded-2xl px-4 py-2 text-center">
+                <div className="text-sm font-bold text-vjn-blue">
+                  {new Date(event.date).getDate()}
+                </div>
+                <div className="text-xs text-gray-600">
+                  {new Date(event.date).toLocaleDateString('en-US', { month: 'short' })}
+                </div>
+              </div>
+            </div>
+
+            {/* Category Badge */}
+            <div className="absolute top-4 right-4">
+              <span className="bg-vjn-green/90 backdrop-blur-sm text-white px-3 py-1 rounded-full text-xs font-semibold">
+                {event.category}
+              </span>
+            </div>
+
+            {/* Participants Count */}
+            {event.participants && event.participants > 0 && (
+              <div className="absolute bottom-4 right-4">
+                <div className="bg-white/95 backdrop-blur-sm rounded-full px-3 py-1 flex items-center space-x-1">
+                  <Users className="h-3 w-3 text-vjn-blue" />
+                  <span className="text-xs font-semibold text-vjn-blue">
+                    {event.participants}
+                  </span>
+                </div>
+              </div>
+            )}
+          </div>
+
+          {/* Event Content */}
+          <div className="p-8">
+            {/* Event Title */}
+            <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-vjn-blue transition-colors line-clamp-2">
+              {event.title}
+            </h3>
+
+            {/* Event Description */}
+            <p className="text-gray-600 text-sm mb-4 line-clamp-3 leading-relaxed">
+              {event.description}
+            </p>
+
+            {/* Event Details */}
+            <div className="space-y-3 mb-6">
+              {/* Date & Time */}
+              <div className="flex items-center space-x-3">
+                <div className="w-8 h-8 bg-vjn-blue/10 rounded-lg flex items-center justify-center">
+                  <Calendar className="h-4 w-4 text-vjn-blue" />
+                </div>
+                <div>
+                  <div className="text-sm font-semibold text-gray-900">
+                    {formatEventDate(event.date)}
+                  </div>
+                  <div className="text-xs text-gray-600">
+                    {formatEventTime(event.time)} • {getRelativeTime(event.date, event.time)}
+                  </div>
+                </div>
+              </div>
+
+              {/* Location */}
+              <div className="flex items-center space-x-3">
+                <div className="w-8 h-8 bg-vjn-green/10 rounded-lg flex items-center justify-center">
+                  <MapPin className="h-4 w-4 text-vjn-green" />
+                </div>
+                <div className="text-sm text-gray-600 line-clamp-1">
+                  {event.location}
+                </div>
+              </div>
+            </div>
+
+            {/* Action Button */}
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="w-full bg-gradient-to-r from-vjn-blue to-vjn-light-blue text-white py-3 px-6 rounded-xl font-semibold hover:shadow-lg transition-all duration-300 flex items-center justify-center space-x-2 group"
+            >
+              <span>View Details</span>
+              <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
+            </motion.button>
+          </div>
+        </motion.div>
+      ))}
+    </div>
+  );
+};
 
 const Home: React.FC = () => {
   const { t } = useTranslation();
@@ -1185,19 +1427,37 @@ const Home: React.FC = () => {
           </div>
         </motion.section>
 
-        {/* Events Slider Section */}
-        <section className="py-16 bg-gray-50">
-          <div className="container mx-auto px-4">
-            <div className="text-center mb-8">
-              <h2 className="text-3xl font-bold mb-4 text-vjn-blue">Upcoming Events</h2>
-              <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-                Join us for our upcoming events and be part of the positive change in our community. 
-                Stay updated with the latest activities and opportunities.
+        {/* Modern Events Section */}
+        <motion.section 
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={staggerContainer}
+          className="py-24 bg-gradient-to-br from-slate-50 via-white to-blue-50 relative overflow-hidden"
+        >
+          {/* Background decoration */}
+          <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg%20width%3D%2260%22%20height%3D%2260%22%20viewBox%3D%220%200%2060%2060%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%3E%3Cg%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%3Cg%20fill%3D%22%23059669%22%20fill-opacity%3D%220.03%22%3E%3Ccircle%20cx%3D%2230%22%20cy%3D%2230%22%20r%3D%222%22/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')] opacity-40"></div>
+          
+          <div className="container mx-auto px-4 relative">
+            <motion.div
+              variants={fadeInUp}
+              className="text-center mb-16"
+            >
+              <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-vjn-blue to-vjn-light-blue rounded-2xl mb-6">
+                <Calendar className="h-8 w-8 text-white" />
+              </div>
+              <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-vjn-blue to-vjn-light-blue bg-clip-text text-transparent">
+                Upcoming Events
+              </h2>
+              <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+                Join us for transformative experiences that shape our community's future. 
+                Discover opportunities to connect, learn, and make a lasting impact.
               </p>
-            </div>
-            <EventsSlider />
+            </motion.div>
+
+            <ModernEventsSection />
           </div>
-        </section>
+        </motion.section>
 
         {/* Get in Touch Section */}
         <motion.section

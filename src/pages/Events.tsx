@@ -40,17 +40,21 @@ const Events: React.FC = () => {
     });
   }, [events, search, selectedCategory, selectedYear]);
 
-  const upcomingEvents = useMemo(() => 
-    filteredEvents.filter(event => event.status === 'Upcoming')
-      .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime()),
-    [filteredEvents]
-  );
+  const upcomingEvents = useMemo(() => {
+    const now = new Date();
+    return filteredEvents.filter(event => {
+      const eventDateTime = new Date(`${event.date}T${event.time || '00:00:00'}`);
+      return eventDateTime >= now;
+    }).sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
+  }, [filteredEvents]);
 
-  const pastEvents = useMemo(() => 
-    filteredEvents.filter(event => event.status === 'Past')
-      .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()),
-    [filteredEvents]
-  );
+  const pastEvents = useMemo(() => {
+    const now = new Date();
+    return filteredEvents.filter(event => {
+      const eventDateTime = new Date(`${event.date}T${event.time || '00:00:00'}`);
+      return eventDateTime < now;
+    }).sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+  }, [filteredEvents]);
 
   const years = useMemo(() => {
     const uniqueYears = [...new Set(events.map(event => event.date.split('-')[0]))];

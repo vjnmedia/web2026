@@ -7,6 +7,7 @@ import { useTranslation } from 'react-i18next';
 const NewsletterSubscription = () => {
   const [email, setEmail] = useState('');
   const [loading, setLoading] = useState(false);
+  const [blogOptIn, setBlogOptIn] = useState(false);
   const { toast } = useToast();
   const { t } = useTranslation();
 
@@ -20,7 +21,7 @@ const NewsletterSubscription = () => {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ email }),
+        body: JSON.stringify({ email, blogOptIn }),
       });
 
       const data = await response.json();
@@ -31,6 +32,7 @@ const NewsletterSubscription = () => {
           description: t('newsletter.successMessage'),
         });
         setEmail('');
+        setBlogOptIn(false);
       } else {
         throw new Error(data.message || 'Something went wrong');
       }
@@ -46,19 +48,30 @@ const NewsletterSubscription = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-2 max-w-md">
-      <Input
-        type="email"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-        placeholder={t('newsletter.emailPlaceholder')}
-        required
-        className="flex-grow"
-        disabled={loading}
-      />
-      <Button type="submit" disabled={loading}>
-        {loading ? t('newsletter.subscribing') : t('newsletter.subscribe')}
-      </Button>
+    <form onSubmit={handleSubmit} className="flex flex-col gap-2 max-w-md">
+      <div className="flex flex-col sm:flex-row gap-2">
+        <Input
+          type="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          placeholder={t('newsletter.emailPlaceholder')}
+          required
+          className="flex-grow"
+          disabled={loading}
+        />
+        <Button type="submit" disabled={loading}>
+          {loading ? t('newsletter.subscribing') : t('newsletter.subscribe')}
+        </Button>
+      </div>
+      <label className="flex items-center gap-2 text-sm text-gray-300">
+        <input
+          type="checkbox"
+          checked={blogOptIn}
+          onChange={(e) => setBlogOptIn(e.target.checked)}
+          disabled={loading}
+        />
+        <span>{t('newsletter.blogOptIn', 'Also send me new blog posts')}</span>
+      </label>
     </form>
   );
 };
